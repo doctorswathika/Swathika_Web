@@ -5,14 +5,14 @@ import { X, CheckCircle } from "lucide-react";
 import { z } from "zod";
 
 const services = [
-  { title: "Wide Local Excision", desc: "Precise removal of breast tumours while preserving the natural breast shape and appearance." },
-  { title: "Sentinel Lymph Node Biopsy", desc: "Minimally invasive technique to stage breast cancer and guide further treatment decisions." },
-  { title: "Therapeutic Mammoplasty", desc: "Combining cancer surgery with breast reshaping for optimal oncological and aesthetic outcomes." },
   { title: "Mastectomy", desc: "Complete breast removal with meticulous surgical technique for cancer treatment or risk reduction." },
-  { title: "Implant-based Reconstruction", desc: "Restoring breast form using implant techniques tailored to individual anatomy and preferences." },
-  { title: "Lipofilling", desc: "Using the patient's own fat to refine breast shape and correct contour deformities after surgery." },
-  { title: "Chest Wall Perforator Flaps", desc: "Advanced flap techniques using local tissue to reconstruct the breast without distant donor sites." },
+  { title: "Breast Conserving Surgery", desc: "Precise removal of breast tumours while preserving the natural breast shape and appearance." },
+  { title: "Sentinel Node Biopsy", desc: "Minimally invasive technique to stage breast cancer and guide further treatment decisions." },
   { title: "Breast Reduction & Augmentation", desc: "Aesthetic and functional breast surgery for improved comfort, symmetry, and confidence." },
+  { title: "Lipomodelling", desc: "Using the patient's own fat to refine breast shape and correct contour deformities after surgery." },
+  { title: "Implant Reconstruction", desc: "Restoring breast form using implant techniques tailored to individual anatomy and preferences." },
+  { title: "Oncoplastic Surgery", desc: "Combining cancer surgery with breast reshaping for optimal oncological and aesthetic outcomes." },
+  { title: "Gynaecomastia Correction", desc: "Surgical treatment of enlarged male breast tissue for a flatter, more masculine chest contour." },
 ];
 
 const formSchema = z.object({

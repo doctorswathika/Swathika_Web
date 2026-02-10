@@ -12,14 +12,14 @@ const credentials = [
 ];
 
 const expertise = [
-  "Wide Local Excision",
-  "Sentinel Lymph Node Biopsy",
-  "Therapeutic Mammoplasty",
   "Mastectomy",
-  "Implant-based Reconstruction",
-  "Lipofilling",
-  "Chest Wall Perforator Flaps",
+  "Breast Conserving Surgery",
+  "Sentinel Node Biopsy",
   "Breast Reduction & Augmentation",
+  "Lipomodelling",
+  "Implant Reconstruction",
+  "Oncoplastic Surgery",
+  "Gynaecomastia Correction",
 ];
 
 export default function AboutSection() {
