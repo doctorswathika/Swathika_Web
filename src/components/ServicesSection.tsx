@@ -41,7 +41,7 @@ export default function ServicesSection() {
           wasInView = true;
         } else if (wasInView && !showModal) {
           // Only trigger when scrolling DOWN (section scrolled above viewport)
-          if (entry.boundingClientRect.bottom < entry.rootBounds!.top + 100) {
+          if (entry.boundingClientRect.bottom < 0) {
             setShowModal(true);
             wasInView = false;
           }
