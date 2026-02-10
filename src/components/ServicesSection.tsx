@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { X, CheckCircle } from "lucide-react";
@@ -27,16 +27,29 @@ export default function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [showModal, setShowModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const wasVisible = useRef(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Show modal when user scrolls past the services section
+  // Separate observer that tracks when section leaves viewport
   useEffect(() => {
-    if (wasVisible.current && !isVisible && !showModal) {
-      const timer = setTimeout(() => setShowModal(true), 300);
-      return () => clearTimeout(timer);
-    }
-    if (isVisible) wasVisible.current = true;
-  }, [isVisible, showModal]);
+    const el = sectionRef.current;
+    if (!el) return;
+
+    let wasInView = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          wasInView = true;
+        } else if (wasInView && !showModal) {
+          setShowModal(true);
+          wasInView = false;
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [showModal]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,7 +65,7 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-background relative" ref={ref}>
+    <section id="services" className="py-24 lg:py-32 bg-background relative" ref={(el: HTMLDivElement | null) => { (ref as React.MutableRefObject<HTMLDivElement | null>).current = el; sectionRef.current = el; }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
