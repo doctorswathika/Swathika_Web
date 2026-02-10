@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated gradient bg */}
-      <div className="absolute inset-0 gradient-hero" />
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" loading="eager" />
+        <div className="absolute inset-0 bg-background/60" />
+      </div>
+
+      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -30,15 +36,15 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center pt-24">
-        {/* Text */}
+      {/* Centered text */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          <div className="space-y-4">
+          <div className="space-y-5">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -47,40 +53,22 @@ export default function HeroSection() {
             >
               UK Trained Oncoplastic Surgeon
             </motion.p>
-            <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] text-foreground">
+            <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
               Advanced Breast Surgery with{" "}
               <span className="text-gradient-rose italic">Precision & Compassion</span>
             </h1>
-            <p className="text-lg text-muted-foreground font-sans-body max-w-lg leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed">
               UK Trained Oncoplastic Surgeon · 600+ Procedures · Reconstructing Confidence
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex justify-center">
             <button
               onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-3.5 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
             >
               Schedule Private Consultation
             </button>
-          </div>
-        </motion.div>
-
-        {/* Photo */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex justify-center md:justify-end"
-        >
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/30 to-secondary/30 blur-2xl" />
-            <img
-              src="/images/dr-swathika.jpeg"
-              alt="Dr. Swathika Rajendran - UK Trained Breast Oncoplastic Surgeon"
-              className="relative rounded-2xl w-72 sm:w-80 lg:w-96 object-cover shadow-xl"
-              loading="eager"
-            />
           </div>
         </motion.div>
       </div>
