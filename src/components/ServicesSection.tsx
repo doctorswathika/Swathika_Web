@@ -27,16 +27,16 @@ export default function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [showModal, setShowModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const hasShown = useRef(false);
+  const wasVisible = useRef(false);
 
-  // Show modal once per visit when scrolling to this section
+  // Show modal every time user scrolls into this section
   useEffect(() => {
-    if (isVisible && !hasShown.current) {
-      hasShown.current = true;
+    if (isVisible && !wasVisible.current && !showModal) {
       const timer = setTimeout(() => setShowModal(true), 800);
       return () => clearTimeout(timer);
     }
-  }, [isVisible]);
+    wasVisible.current = isVisible;
+  }, [isVisible, showModal]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
