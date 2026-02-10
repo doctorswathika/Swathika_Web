@@ -52,15 +52,6 @@ export default function AboutSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-8"
           >
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl" />
-              <img
-                src="/images/dr-swathika.jpeg"
-                alt="Dr. Swathika Rajendran"
-                className="relative rounded-2xl w-full max-w-md object-cover shadow-lg"
-                loading="lazy"
-              />
-            </div>
 
             {/* Counters */}
             <div className="flex gap-8">
