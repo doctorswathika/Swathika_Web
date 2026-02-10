@@ -1,13 +1,53 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import AwarenessSection from "@/components/AwarenessSection";
+import ServicesSection from "@/components/ServicesSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Dr. Swathika Rajendran",
+  description: "UK Trained Breast Oncoplastic & Reconstructive Surgeon based in Chennai, India.",
+  medicalSpecialty: "Breast Oncoplastic & Reconstructive Surgery",
+  image: "/images/dr-swathika.jpeg",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Kauvery Hospital",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+  url: "https://drswathika.com",
+  sameAs: ["https://www.linkedin.com/in/swathika-rajendran-38253b165/"],
+};
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Dr. Swathika Rajendran — UK Trained Breast Oncoplastic Surgeon | Chennai</title>
+        <meta name="description" content="Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai with 600+ procedures. Expert in breast cancer surgery, reconstruction, and aesthetic breast surgery." />
+        <meta name="keywords" content="Best Breast Surgeon in Chennai, UK Trained Oncoplastic Surgeon India, Breast Reconstruction Specialist Chennai, Breast Cancer Surgeon Chennai, Oncoplastic Breast Surgery" />
+        <link rel="canonical" href="https://drswathika.com" />
+        <meta property="og:title" content="Dr. Swathika Rajendran — UK Trained Breast Oncoplastic Surgeon" />
+        <meta property="og:description" content="Advanced Breast Surgery with Precision & Compassion. 600+ Procedures. UK Trained." />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <AwarenessSection />
+        <ServicesSection />
+        <TestimonialsSection />
+      </main>
+      <Footer />
+    </>
   );
 };
 
