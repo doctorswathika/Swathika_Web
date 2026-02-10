@@ -136,7 +136,6 @@ export default function ServicesSection() {
                   className="text-center py-8"
                 >
                   <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h3 className="font-serif-display text-2xl font-semibold text-foreground mb-2">Thank You!</h3>
                   <p className="text-sm text-muted-foreground font-sans-body">We'll get back to you shortly.</p>
                 </motion.div>
