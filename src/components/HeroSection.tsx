@@ -58,7 +58,7 @@ export default function HeroSection() {
               <span className="text-gradient-rose italic">Precision & Compassion</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed">
-              UK Trained Oncoplastic Surgeon · 600+ Procedures · Reconstructing Confidence
+              UK Trained Oncoplastic Surgeon · 700+ Procedures · Reconstructing Confidence
             </p>
           </div>
 

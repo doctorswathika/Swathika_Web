@@ -24,7 +24,7 @@ const expertise = [
 
 export default function AboutSection() {
   const { ref, isVisible } = useScrollAnimation();
-  const procedures = useAnimatedCounter(600, 2000, isVisible);
+  const procedures = useAnimatedCounter(700, 2000, isVisible);
   const years = useAnimatedCounter(6, 1500, isVisible);
 
   return (
@@ -53,7 +53,13 @@ export default function AboutSection() {
             className="space-y-8"
           >
             <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-              Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon practicing across multiple centres in Chennai. With extensive training in the UK's NHS system and fellowship in oncoplastic breast surgery, she brings global expertise with a compassionate, patient-first approach to every procedure.
+              Dr. Swathika Rajendran is a highly trained Breast Oncoplastic and Reconstructive Surgeon, dedicated to delivering comprehensive and patient-centric breast care. She completed her MS in General Surgery at Sri Ramachandra Institute of Higher Education and Research, India, followed by advanced fellowship training (MCh) in Breast Oncoplastic and Reconstructive Surgery in the UK.
+            </p>
+            <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
+              With over 700 breast surgeries to her credit, Dr. Rajendran has extensive expertise across the full spectrum of procedures — from oncoplastic reconstructions for breast cancer to advanced aesthetic surgeries such as augmentations, reductions, liposuction, and gynecomastia correction.
+            </p>
+            <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
+              Her unique background, blending oncology and aesthetic surgery, allows her to offer tailored solutions that restore both form and confidence, while maintaining a compassionate, patient-focused approach.
             </p>
 
             {/* Counters */}
