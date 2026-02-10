@@ -80,14 +80,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Publications */}
-        <div className="border-t border-border pt-8 mb-8">
-          <h4 className="font-serif-display text-lg font-semibold text-foreground mb-3">Publications</h4>
-          <ul className="space-y-1 text-xs text-muted-foreground font-sans-body">
-            <li>• Immediate Breast Reconstruction — Quality of Life Outcomes (Journal of Plastic & Reconstructive Surgery)</li>
-            <li>• Post Mastectomy Radiation Therapy and Breast Reconstruction — A Collaborative Approach</li>
-          </ul>
-        </div>
 
         {/* Disclaimer */}
         <div className="border-t border-border pt-8 text-center space-y-2">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation, useAnimatedCounter } from "@/hooks/useScrollAnimation";
-import { Award, GraduationCap, Briefcase, Shield } from "lucide-react";
+import { Award, GraduationCap, Briefcase, Shield, BookOpen } from "lucide-react";
 
 const credentials = [
   "MBBS — Sri Ramachandra Institute",
@@ -45,13 +45,16 @@ export default function AboutSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Portrait side */}
+          {/* Left column: Bio + Counters */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-8"
           >
+            <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
+              Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon currently practicing at Kauvery Hospital, Chennai. With extensive training in the UK's NHS system and fellowship in oncoplastic breast surgery, she brings global expertise with a compassionate, patient-first approach to every procedure.
+            </p>
 
             {/* Counters */}
             <div className="flex gap-8">
@@ -64,18 +67,6 @@ export default function AboutSection() {
                 <p className="text-sm text-muted-foreground font-sans-body mt-1">Years Experience</p>
               </div>
             </div>
-          </motion.div>
-
-          {/* Bio card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="glass rounded-2xl p-8 lg:p-10 space-y-8"
-          >
-            <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-              Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon currently practicing at Kauvery Hospital, Chennai. With extensive training in the UK's NHS system and fellowship in oncoplastic breast surgery, she brings global expertise with a compassionate, patient-first approach to every procedure.
-            </p>
 
             <div className="space-y-4">
               <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
@@ -91,22 +82,6 @@ export default function AboutSection() {
               </ul>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
-                <Award className="w-5 h-5 text-rose-gold" /> Surgical Expertise
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {expertise.map((e) => (
-                  <span
-                    key={e}
-                    className="px-3 py-1.5 rounded-full bg-primary/15 text-xs font-sans-body text-foreground tracking-wide"
-                  >
-                    {e}
-                  </span>
-                ))}
-              </div>
-            </div>
-
             <div className="space-y-2">
               <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
                 <Briefcase className="w-5 h-5 text-rose-gold" /> Current Practice
@@ -117,6 +92,48 @@ export default function AboutSection() {
               <p className="text-sm text-muted-foreground font-sans-body">
                 Previously: NHS UK Fellowship · Pearl Health · Sri Ramachandra Hospital
               </p>
+            </div>
+          </motion.div>
+
+          {/* Right column: Expertise + Publications */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="space-y-8"
+          >
+            <div className="glass rounded-2xl p-8 lg:p-10 space-y-8">
+              <div className="space-y-4">
+                <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
+                  <Award className="w-5 h-5 text-rose-gold" /> Surgical Expertise
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {expertise.map((e) => (
+                    <span
+                      key={e}
+                      className="px-3 py-1.5 rounded-full bg-primary/15 text-xs font-sans-body text-foreground tracking-wide"
+                    >
+                      {e}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
+                  <BookOpen className="w-5 h-5 text-rose-gold" /> Publications
+                </h3>
+                <ul className="space-y-2">
+                  <li className="text-sm text-muted-foreground font-sans-body flex items-start gap-2">
+                    <Shield className="w-3.5 h-3.5 mt-1 text-primary flex-shrink-0" />
+                    Immediate Breast Reconstruction — Quality of Life Outcomes (Journal of Plastic & Reconstructive Surgery)
+                  </li>
+                  <li className="text-sm text-muted-foreground font-sans-body flex items-start gap-2">
+                    <Shield className="w-3.5 h-3.5 mt-1 text-primary flex-shrink-0" />
+                    Post Mastectomy Radiation Therapy and Breast Reconstruction — A Collaborative Approach
+                  </li>
+                </ul>
+              </div>
             </div>
           </motion.div>
         </div>
