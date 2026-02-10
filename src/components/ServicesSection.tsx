@@ -40,15 +40,14 @@ export default function ServicesSection() {
         if (entry.isIntersecting) {
           wasInView = true;
         } else if (wasInView && !showModal) {
-          // Only trigger when scrolling DOWN (section is above viewport)
-          const rect = el.getBoundingClientRect();
-          if (rect.bottom < 0) {
+          // Only trigger when scrolling DOWN (section scrolled above viewport)
+          if (entry.boundingClientRect.bottom < entry.rootBounds!.top + 100) {
             setShowModal(true);
             wasInView = false;
           }
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
 
     observer.observe(el);
