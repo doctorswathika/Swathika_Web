@@ -29,13 +29,13 @@ export default function ServicesSection() {
   const [submitted, setSubmitted] = useState(false);
   const wasVisible = useRef(false);
 
-  // Show modal every time user scrolls into this section
+  // Show modal when user scrolls past the services section
   useEffect(() => {
-    if (isVisible && !wasVisible.current && !showModal) {
-      const timer = setTimeout(() => setShowModal(true), 800);
+    if (wasVisible.current && !isVisible && !showModal) {
+      const timer = setTimeout(() => setShowModal(true), 300);
       return () => clearTimeout(timer);
     }
-    wasVisible.current = isVisible;
+    if (isVisible) wasVisible.current = true;
   }, [isVisible, showModal]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
