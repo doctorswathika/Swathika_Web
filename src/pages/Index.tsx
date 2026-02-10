@@ -16,7 +16,6 @@ const jsonLd = {
   image: "/images/dr-swathika.jpeg",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Kauvery Hospital",
     addressLocality: "Chennai",
     addressRegion: "Tamil Nadu",
     addressCountry: "IN",

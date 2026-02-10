@@ -53,7 +53,7 @@ export default function AboutSection() {
             className="space-y-8"
           >
             <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-              Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon currently practicing at Kauvery Hospital, Chennai. With extensive training in the UK's NHS system and fellowship in oncoplastic breast surgery, she brings global expertise with a compassionate, patient-first approach to every procedure.
+              Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon practicing across multiple centres in Chennai. With extensive training in the UK's NHS system and fellowship in oncoplastic breast surgery, she brings global expertise with a compassionate, patient-first approach to every procedure.
             </p>
 
             {/* Counters */}
@@ -84,10 +84,10 @@ export default function AboutSection() {
 
             <div className="space-y-2">
               <h3 className="font-serif-display text-xl font-semibold flex items-center gap-2 text-foreground">
-                <Briefcase className="w-5 h-5 text-rose-gold" /> Current Practice
+                <Briefcase className="w-5 h-5 text-rose-gold" /> Experience
               </h3>
               <p className="text-sm text-muted-foreground font-sans-body">
-                Consultant Breast Oncoplastic Surgeon — Kauvery Hospital, Chennai
+                Consultant Breast Oncoplastic & Reconstructive Surgeon
               </p>
               <p className="text-sm text-muted-foreground font-sans-body">
                 Previously: NHS UK Fellowship · Pearl Health · Sri Ramachandra Hospital

@@ -57,7 +57,7 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="flex items-start gap-2 text-sm text-muted-foreground font-sans-body">
                 <MapPin className="w-4 h-4 mt-0.5 text-rose-gold flex-shrink-0" />
-                Kauvery Hospital, Chennai, Tamil Nadu, India
+                Chennai, Tamil Nadu, India
               </p>
               <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4 text-rose-gold" />
