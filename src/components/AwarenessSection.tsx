@@ -1,27 +1,54 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Heart, Search, Sparkles, ShieldCheck } from "lucide-react";
+import { Heart, Search, Sparkles, ShieldCheck, CheckCircle, XCircle, AlertTriangle, Lightbulb } from "lucide-react";
 
-const topics = [
+const symptoms = [
+  "A new lump or thickening in the breast or underarm",
+  "Change in breast size, shape, or symmetry",
+  "Skin dimpling, puckering, or redness on the breast",
+  "Nipple discharge (especially if bloody), retraction, or inversion",
+  "Persistent breast pain not linked to your menstrual cycle",
+  "Swelling or warmth in part of the breast",
+];
+
+const dos = [
+  "Perform monthly breast self-examinations after age 20",
+  "Get annual clinical breast exams from age 30+",
+  "Schedule regular mammograms as recommended by your doctor",
+  "Maintain a healthy weight and stay physically active",
+  "Discuss your family history with your surgeon",
+  "Seek a second opinion — it's your right and it matters",
+];
+
+const donts = [
+  "Don't ignore a lump — even if it's painless",
+  "Don't delay a doctor's visit out of fear",
+  "Don't rely on self-diagnosis from the internet",
+  "Don't assume young women can't get breast cancer",
+  "Don't skip follow-up appointments after treatment",
+  "Don't let stigma prevent you from seeking care",
+];
+
+const motivation = [
   {
-    icon: Search,
-    title: "Early Detection Saves Lives",
-    text: "Breast cancer, when caught early, has a 5-year survival rate of over 99%. Regular screening and self-examinations are your first line of defence.",
+    icon: Lightbulb,
+    title: "Knowledge Is Power",
+    text: "Early detection increases the 5-year survival rate to over 99%. Awareness isn't just information — it's a lifeline. The more you know, the better you protect yourself and your loved ones.",
   },
   {
     icon: Heart,
-    title: "Emotional & Physical Recovery",
-    text: "Breast surgery impacts more than the body — it touches identity, confidence, and emotional well-being. A holistic approach to care addresses every dimension of healing.",
+    title: "You Are Not Alone",
+    text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path — and thrived. Modern oncoplastic surgery restores not just the body, but confidence, identity, and hope.",
   },
   {
     icon: Sparkles,
-    title: "The Oncoplastic Difference",
-    text: "Oncoplastic surgery combines cancer removal with reconstructive techniques, preserving the natural breast shape while ensuring complete oncological safety.",
+    title: "Healing Beyond Surgery",
+    text: "Recovery is physical, emotional, and deeply personal. With the right surgeon, every step — from diagnosis to reconstruction — becomes a journey towards reclaiming yourself, not just surviving.",
   },
   {
     icon: ShieldCheck,
-    title: "Restoring Confidence",
-    text: "Modern reconstructive surgery offers women the ability to reclaim their body image after breast cancer treatment, with results that are both safe and aesthetically refined.",
+    title: "Your Body, Your Choice",
+    text: "Whether it's breast conservation, reconstruction, or aesthetic surgery — the decision is yours. An experienced oncoplastic surgeon ensures you have the information and options to choose what's right for you.",
   },
 ];
 
@@ -35,24 +62,26 @@ export default function AwarenessSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(268_80%_84%_/_0.1),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-16 max-w-2xl mx-auto"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Thought Leadership</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Breast Health Awareness</p>
           <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            Breast Health in <span className="text-gradient-rose italic">Today's World</span>
+            What Every Woman <span className="text-gradient-rose italic">Should Know</span>
           </h2>
           <div className="divider-rose w-24 mx-auto mb-6" />
           <p className="text-muted-foreground font-sans-body leading-relaxed">
-            Understanding breast health is the first step towards empowerment. Knowledge transforms fear into action, and action transforms outcomes.
+            Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {topics.map((t, i) => (
+        {/* Motivation cards */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {motivation.map((t, i) => (
             <motion.div
               key={t.title}
               initial={{ opacity: 0, y: 25 }}
@@ -67,6 +96,105 @@ export default function AwarenessSection() {
               <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{t.text}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Symptoms */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="glass rounded-2xl p-8 lg:p-10 mb-10"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center">
+              <AlertTriangle className="w-5 h-5 text-destructive" />
+            </div>
+            <h3 className="font-serif-display text-2xl font-semibold text-foreground">
+              Warning Signs — <span className="text-gradient-rose italic">Don't Ignore These</span>
+            </h3>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {symptoms.map((s, i) => (
+              <motion.div
+                key={s}
+                initial={{ opacity: 0, x: -10 }}
+                animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.5 + i * 0.06 }}
+                className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
+              >
+                <AlertTriangle className="w-4 h-4 mt-0.5 text-destructive/70 flex-shrink-0" />
+                {s}
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-5 text-xs text-muted-foreground font-sans-body italic">
+            If you notice any of these symptoms, please consult a specialist promptly. Early evaluation is always better than waiting.
+          </p>
+        </motion.div>
+
+        {/* Do's and Don'ts */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {/* Do's */}
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="glass rounded-2xl p-8 lg:p-10"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-serif-display text-2xl font-semibold text-foreground">
+                The <span className="text-gradient-rose italic">Do's</span>
+              </h3>
+            </div>
+            <ul className="space-y-3">
+              {dos.map((d, i) => (
+                <motion.li
+                  key={d}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.6 + i * 0.06 }}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
+                >
+                  <CheckCircle className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                  {d}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Don'ts */}
+          <motion.div
+            initial={{ opacity: 0, x: 25 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="glass rounded-2xl p-8 lg:p-10"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center">
+                <XCircle className="w-5 h-5 text-destructive" />
+              </div>
+              <h3 className="font-serif-display text-2xl font-semibold text-foreground">
+                The <span className="text-gradient-rose italic">Don'ts</span>
+              </h3>
+            </div>
+            <ul className="space-y-3">
+              {donts.map((d, i) => (
+                <motion.li
+                  key={d}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.6 + i * 0.06 }}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
+                >
+                  <XCircle className="w-4 h-4 mt-0.5 text-destructive/70 flex-shrink-0" />
+                  {d}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </div>
     </section>
