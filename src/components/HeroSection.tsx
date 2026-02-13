@@ -97,14 +97,8 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
+            className="flex justify-center"
           >
-            <button
-              onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-3.5 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] transition-all duration-300 shimmer"
-            >
-              Schedule Private Consultation
-            </button>
             <button
               onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-3.5 rounded-full border border-border/60 bg-background/30 backdrop-blur-sm text-foreground font-sans-body font-medium tracking-wide hover:bg-background/60 hover:scale-[1.02] transition-all duration-300"
