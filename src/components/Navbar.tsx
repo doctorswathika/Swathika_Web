@@ -74,12 +74,6 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] gradient-rose-gold group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <button
-              onClick={() => scrollTo("#services")}
-              className="px-5 py-2 rounded-full gradient-rose-gold text-foreground text-sm font-medium tracking-wide hover:opacity-90 hover:scale-[1.03] transition-all duration-300"
-            >
-              Book Consultation
-            </button>
           </div>
 
           {/* Mobile toggle */}
