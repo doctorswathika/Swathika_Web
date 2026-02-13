@@ -67,19 +67,19 @@ export default function HeroSection() {
               className="inline-block px-4 py-1.5 rounded-full border border-border/60 bg-background/30 backdrop-blur-sm"
             >
               <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body">
-                UK Trained Oncoplastic Surgeon
+                Dr. Swathika Rajendran
               </p>
             </motion.div>
 
             <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
-              Advanced Breast Surgery with{" "}
+              Your Breast Health,{" "}
               <motion.span
                 className="text-gradient-rose italic"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
               >
-                Precision & Compassion
+                in Expert Hands
               </motion.span>
             </h1>
 
@@ -89,23 +89,34 @@ export default function HeroSection() {
               transition={{ delay: 1 }}
               className="text-base sm:text-lg text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed"
             >
-              UK Trained Oncoplastic Surgeon · 700+ Procedures · Reconstructing Confidence
+              UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.
             </motion.p>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex justify-center"
-          >
-            <button
-              onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-3.5 rounded-full border border-border/60 bg-background/30 backdrop-blur-sm text-foreground font-sans-body font-medium tracking-wide hover:bg-background/60 hover:scale-[1.02] transition-all duration-300"
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
             >
-              Learn More
-            </button>
-          </motion.div>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                MCh (UK) Trained
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                GMC Registered
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                700+ Surgeries
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                Oncology + Aesthetics
+              </span>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
