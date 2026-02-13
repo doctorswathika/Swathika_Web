@@ -40,7 +40,7 @@ export default function AboutSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">About the Surgeon</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">About Me</p>
           <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground">
             Expertise & <span className="text-gradient-rose italic">Philosophy</span>
           </h2>
