@@ -45,21 +45,24 @@ export default function AwarenessSection() {
           <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground mb-6">
             Breast Health in <span className="text-gradient-rose italic">Today's World</span>
           </h2>
+          <div className="divider-rose w-24 mx-auto mb-6" />
           <p className="text-muted-foreground font-sans-body leading-relaxed">
             Understanding breast health is the first step towards empowerment. Knowledge transforms fear into action, and action transforms outcomes.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {topics.map((t, i) => (
             <motion.div
               key={t.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="glass rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 group"
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.12 }}
+              className="glass rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-500 group"
             >
-              <t.icon className="w-8 h-8 text-rose-gold mb-4 group-hover:scale-110 transition-transform" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
+                <t.icon className="w-6 h-6 text-rose-gold group-hover:scale-110 transition-transform duration-300" />
+              </div>
               <h3 className="font-serif-display text-xl font-semibold text-foreground mb-3">{t.title}</h3>
               <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{t.text}</p>
             </motion.div>
