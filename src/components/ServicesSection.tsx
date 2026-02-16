@@ -43,20 +43,69 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
         initial={{ opacity: 0, y: 20 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-        className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/15 transition-shadow duration-500 cursor-pointer"
       >
-        <div className="aspect-square overflow-hidden">
-          <img
+        <div className="aspect-square overflow-hidden relative">
+          {/* Animated glow overlay */}
+          <motion.div
+            className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+            style={{
+              background: "radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.15), transparent 70%)",
+            }}
+          />
+          {/* Floating animation on image */}
+          <motion.img
             src={img}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover"
             loading="lazy"
+            animate={{
+              scale: [1, 1.03, 1],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: index * 0.8,
+            }}
+            whileHover={{
+              scale: 1.08,
+              transition: { duration: 0.5 },
+            }}
+          />
+          {/* Shimmer sweep */}
+          <motion.div
+            className="absolute inset-0 z-20 pointer-events-none"
+            style={{
+              background: "linear-gradient(105deg, transparent 40%, hsl(0 0% 100% / 0.12) 50%, transparent 60%)",
+            }}
+            animate={{
+              x: ["-100%", "200%"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: index * 0.5 + 2,
+              repeatDelay: 3,
+            }}
           />
         </div>
         <div className="p-4 text-center">
-          <h3 className="font-serif-display text-lg font-semibold text-foreground">
+          <motion.h3
+            className="font-serif-display text-lg font-semibold text-foreground"
+            whileHover={{ scale: 1.02 }}
+          >
             {title}
-          </h3>
+          </motion.h3>
+          <motion.div
+            className="h-0.5 mx-auto mt-2 gradient-rose-gold rounded-full"
+            initial={{ width: 0 }}
+            whileInView={{ width: "40%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+          />
         </div>
       </motion.div>
     </Link>
