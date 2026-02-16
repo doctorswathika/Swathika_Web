@@ -20,7 +20,7 @@ export default function AboutSection() {
         >
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">About Me</p>
           <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground">
-            Meet Dr. Swathika <span className="text-foreground italic">Rajendran</span>
+            Meet Dr. Swathika Rajendran
           </h2>
           <div className="divider-rose w-24 mx-auto mt-6" />
         </motion.div>
