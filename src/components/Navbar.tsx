@@ -58,8 +58,8 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => scrollTo("#hero")} className="font-serif-display text-xl md:text-2xl font-semibold tracking-wide text-foreground hover:opacity-80 transition-opacity">
-            DR. SWATHIKA <span className="text-foreground">RAJENDRAN</span>
+          <button onClick={() => scrollTo("#hero")} className="hover:opacity-80 transition-opacity" aria-label="Scroll to top">
+            <span className="sr-only">Home</span>
           </button>
 
           {/* Desktop */}
