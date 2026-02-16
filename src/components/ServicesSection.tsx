@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { X, CheckCircle } from "lucide-react";
 import { z } from "zod";
+import { Link } from "react-router-dom";
 
 import mastectomyImg from "@/assets/services/mastectomy.jpg";
 import breastConservingImg from "@/assets/services/breast-conserving.jpg";
@@ -14,17 +15,17 @@ import implantReconstructionImg from "@/assets/services/implant-reconstruction.j
 import gynaecomastiaImg from "@/assets/services/gynaecomastia.jpg";
 
 const clinicalServices = [
-  { title: "Mastectomy", img: mastectomyImg },
-  { title: "Breast Conserving Surgery", img: breastConservingImg },
-  { title: "Sentinel Node Biopsy", img: sentinelNodeImg },
-  { title: "Oncoplastic Surgery", img: oncoplasticImg },
+  { title: "Mastectomy", img: mastectomyImg, slug: "mastectomy" },
+  { title: "Breast Conserving Surgery", img: breastConservingImg, slug: "breast-conserving-surgery" },
+  { title: "Sentinel Node Biopsy", img: sentinelNodeImg, slug: "sentinel-node-biopsy" },
+  { title: "Oncoplastic Surgery", img: oncoplasticImg, slug: "oncoplastic-surgery" },
 ];
 
 const cosmeticServices = [
-  { title: "Breast Reduction & Augmentation", img: reductionAugmentationImg },
-  { title: "Lipomodelling", img: lipomodellingImg },
-  { title: "Implant Reconstruction", img: implantReconstructionImg },
-  { title: "Gynaecomastia Correction", img: gynaecomastiaImg },
+  { title: "Breast Reduction & Augmentation", img: reductionAugmentationImg, slug: "breast-reduction-augmentation" },
+  { title: "Lipomodelling", img: lipomodellingImg, slug: "lipomodelling" },
+  { title: "Implant Reconstruction", img: implantReconstructionImg, slug: "implant-reconstruction" },
+  { title: "Gynaecomastia Correction", img: gynaecomastiaImg, slug: "gynaecomastia-correction" },
 ];
 
 const formSchema = z.object({
@@ -35,31 +36,32 @@ const formSchema = z.object({
   message: z.string().trim().max(1000),
 });
 
-function ServiceCard({ title, img, index, isVisible }: { title: string; img: string; index: number; isVisible: boolean }) {
+function ServiceCard({ title, img, slug, index, isVisible }: { title: string; img: string; slug: string; index: number; isVisible: boolean }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-      className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
-    >
-      <div className="aspect-square overflow-hidden">
-        <img
-          src={img}
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
-      </div>
-      <div className="p-4 text-center">
-        <h3 className="font-serif-display text-lg font-semibold text-foreground">
-          {title}
-        </h3>
-      </div>
-    </motion.div>
+    <Link to={`/services/${slug}`} onClick={() => window.scrollTo(0, 0)}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+        className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+      >
+        <div className="aspect-square overflow-hidden">
+          <img
+            src={img}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div className="p-4 text-center">
+          <h3 className="font-serif-display text-lg font-semibold text-foreground">
+            {title}
+          </h3>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
-
 export default function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [showModal, setShowModal] = useState(false);
@@ -129,7 +131,7 @@ export default function ServicesSection() {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {clinicalServices.map((s, i) => (
-              <ServiceCard key={s.title} title={s.title} img={s.img} index={i} isVisible={isVisible} />
+              <ServiceCard key={s.title} title={s.title} img={s.img} slug={s.slug} index={i} isVisible={isVisible} />
             ))}
           </div>
         </motion.div>
@@ -145,7 +147,7 @@ export default function ServicesSection() {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {cosmeticServices.map((s, i) => (
-              <ServiceCard key={s.title} title={s.title} img={s.img} index={i + 4} isVisible={isVisible} />
+              <ServiceCard key={s.title} title={s.title} img={s.img} slug={s.slug} index={i + 4} isVisible={isVisible} />
             ))}
           </div>
         </motion.div>
