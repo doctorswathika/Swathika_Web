@@ -60,17 +60,6 @@ export default function HeroSection() {
           className="space-y-8"
         >
           <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="inline-block px-4 py-1.5 rounded-full border border-border/60 bg-background/30 backdrop-blur-sm"
-            >
-              <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body">
-                Dr. Swathika Rajendran
-              </p>
-            </motion.div>
-
             <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
               Your Breast Health,{" "}
               <motion.span
