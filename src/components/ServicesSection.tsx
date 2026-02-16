@@ -1,18 +1,30 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { X, CheckCircle } from "lucide-react";
 import { z } from "zod";
 
-const services = [
-  { title: "Mastectomy", desc: "Complete breast removal with meticulous surgical technique for cancer treatment or risk reduction." },
-  { title: "Breast Conserving Surgery", desc: "Precise removal of breast tumours while preserving the natural breast shape and appearance." },
-  { title: "Sentinel Node Biopsy", desc: "Minimally invasive technique to stage breast cancer and guide further treatment decisions." },
-  { title: "Breast Reduction & Augmentation", desc: "Aesthetic and functional breast surgery for improved comfort, symmetry, and confidence." },
-  { title: "Lipomodelling", desc: "Using the patient's own fat to refine breast shape and correct contour deformities after surgery." },
-  { title: "Implant Reconstruction", desc: "Restoring breast form using implant techniques tailored to individual anatomy and preferences." },
-  { title: "Oncoplastic Surgery", desc: "Combining cancer surgery with breast reshaping for optimal oncological and aesthetic outcomes." },
-  { title: "Gynaecomastia Correction", desc: "Surgical treatment of enlarged male breast tissue for a flatter, more masculine chest contour." },
+import mastectomyImg from "@/assets/services/mastectomy.jpg";
+import breastConservingImg from "@/assets/services/breast-conserving.jpg";
+import sentinelNodeImg from "@/assets/services/sentinel-node.jpg";
+import oncoplasticImg from "@/assets/services/oncoplastic.jpg";
+import reductionAugmentationImg from "@/assets/services/reduction-augmentation.jpg";
+import lipomodellingImg from "@/assets/services/lipomodelling.jpg";
+import implantReconstructionImg from "@/assets/services/implant-reconstruction.jpg";
+import gynaecomastiaImg from "@/assets/services/gynaecomastia.jpg";
+
+const clinicalServices = [
+  { title: "Mastectomy", img: mastectomyImg },
+  { title: "Breast Conserving Surgery", img: breastConservingImg },
+  { title: "Sentinel Node Biopsy", img: sentinelNodeImg },
+  { title: "Oncoplastic Surgery", img: oncoplasticImg },
+];
+
+const cosmeticServices = [
+  { title: "Breast Reduction & Augmentation", img: reductionAugmentationImg },
+  { title: "Lipomodelling", img: lipomodellingImg },
+  { title: "Implant Reconstruction", img: implantReconstructionImg },
+  { title: "Gynaecomastia Correction", img: gynaecomastiaImg },
 ];
 
 const formSchema = z.object({
@@ -23,13 +35,37 @@ const formSchema = z.object({
   message: z.string().trim().max(1000),
 });
 
+function ServiceCard({ title, img, index, isVisible }: { title: string; img: string; index: number; isVisible: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+      className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+    >
+      <div className="aspect-square overflow-hidden">
+        <img
+          src={img}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+      <div className="p-4 text-center">
+        <h3 className="font-serif-display text-lg font-semibold text-foreground">
+          {title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [showModal, setShowModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Separate observer that tracks when section leaves viewport
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -40,7 +76,6 @@ export default function ServicesSection() {
         if (entry.isIntersecting) {
           wasInView = true;
         } else if (wasInView && !showModal) {
-          // Only trigger when scrolling DOWN (section scrolled above viewport)
           if (entry.boundingClientRect.bottom < 0) {
             setShowModal(true);
             wasInView = false;
@@ -82,24 +117,38 @@ export default function ServicesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-              className="group glass rounded-2xl p-6 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
-              style={{ perspective: "800px" }}
-            >
-              <h3 className="font-serif-display text-lg font-semibold text-foreground mb-3 relative inline-block">
-                {s.title}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 gradient-rose-gold group-hover:w-full transition-all duration-500" />
-              </h3>
-              <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{s.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Clinical Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-16"
+        >
+          <h3 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground mb-8 text-center">
+            Clinical
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {clinicalServices.map((s, i) => (
+              <ServiceCard key={s.title} title={s.title} img={s.img} index={i} isVisible={isVisible} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Cosmetic Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <h3 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground mb-8 text-center">
+            Cosmetic
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {cosmeticServices.map((s, i) => (
+              <ServiceCard key={s.title} title={s.title} img={s.img} index={i + 4} isVisible={isVisible} />
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Consultation Modal */}
