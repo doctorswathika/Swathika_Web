@@ -102,9 +102,9 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
           <motion.div
             className="h-0.5 mx-auto mt-2 gradient-rose-gold rounded-full"
             initial={{ width: 0 }}
-            whileInView={{ width: "40%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+            whileHover={{ width: "40%" }}
+            animate={{ width: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           />
         </div>
       </motion.div>
