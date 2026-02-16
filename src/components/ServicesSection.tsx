@@ -94,14 +94,12 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
         </div>
         <div className="p-4 text-center">
           <motion.h3
-            className="font-serif-display text-lg font-semibold text-foreground"
+            className="relative font-serif-display text-lg font-semibold text-foreground inline-block"
             whileHover={{ scale: 1.02 }}
           >
             {title}
+            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] gradient-rose-gold group-hover:w-full transition-all duration-300" />
           </motion.h3>
-          <div
-            className="h-1.5 mx-auto mt-3 gradient-rose-gold rounded-full transition-all duration-500 ease-out w-0 group-hover:w-1/2"
-          />
         </div>
       </motion.div>
     </Link>
