@@ -59,6 +59,7 @@ export default function AboutSection() {
 
             <Link
               to="/about"
+              onClick={() => window.scrollTo(0, 0)}
               className="inline-flex items-center gap-2 font-sans-body text-sm tracking-widest uppercase text-foreground hover:text-primary transition-colors group"
             >
               Learn more about my journey
