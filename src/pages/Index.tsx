@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import AwarenessSection from "@/components/AwarenessSection";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -44,6 +45,7 @@ const Index = () => {
         <ServicesSection />
         <AwarenessSection />
         <TestimonialsSection />
+        <GoogleReviewsSection />
       </main>
       <Footer />
     </>
