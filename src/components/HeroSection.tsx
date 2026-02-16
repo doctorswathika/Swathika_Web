@@ -63,7 +63,7 @@ export default function HeroSection() {
             <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
               Your Breast Health,{" "}
               <motion.span
-                className="text-gradient-rose italic"
+                className="text-[hsl(var(--lavender))] italic"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
