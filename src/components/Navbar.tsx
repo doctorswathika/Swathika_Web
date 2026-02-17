@@ -141,7 +141,7 @@ export default function Navbar() {
             {/* Decorative rose-gold line */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[60%] opacity-10 gradient-rose-gold" />
 
-            <nav className="flex flex-col items-center gap-8">
+            <nav className="flex flex-col items-center gap-8 mt-8">
               {navLinks.map((l, i) => (
                 <motion.button
                   key={l.href}
