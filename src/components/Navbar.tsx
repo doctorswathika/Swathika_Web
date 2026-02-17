@@ -136,7 +136,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[55] bg-background flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[55] bg-background flex flex-col items-center justify-center overflow-y-auto py-24"
           >
             {/* Decorative rose-gold line */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[60%] opacity-10 gradient-rose-gold" />
