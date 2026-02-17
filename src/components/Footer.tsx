@@ -1,19 +1,33 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, Phone, Mail, Linkedin, Heart } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const quickLinks = [
-  { label: "About", href: "#about" },
-  { label: "Awareness", href: "#awareness" },
+const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
+  { label: "About Me", href: "/about", isRoute: true },
   { label: "Services", href: "#services" },
+  { label: "Awareness", href: "#awareness" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "Blog", href: "#blog" },
+  { label: "Instagram", href: "#instagram" },
+  { label: "YouTube", href: "#youtube" },
+  { label: "Book Consultation", href: "/book-consultation", isRoute: true },
 ];
 
 export default function Footer() {
   const { ref, isVisible } = useScrollAnimation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  const handleNav = (href: string, isRoute?: boolean) => {
+    if (isRoute) {
+      navigate(href);
+      window.scrollTo(0, 0);
+    } else if (location.pathname !== "/") {
+      navigate("/" + href);
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -44,7 +58,7 @@ export default function Footer() {
               {quickLinks.map((l) => (
                 <button
                   key={l.href}
-                  onClick={() => scrollTo(l.href)}
+                  onClick={() => handleNav(l.href, l.isRoute)}
                   className="block text-sm text-muted-foreground font-sans-body hover:text-foreground hover:translate-x-1 transition-all duration-300"
                 >
                   {l.label}
