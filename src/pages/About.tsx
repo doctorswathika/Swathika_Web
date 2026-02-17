@@ -71,7 +71,7 @@ export default function About() {
               >
                 <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body">About Me</p>
                 <h1 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground">
-                  Dr. Swathika <span className="text-gradient-rose italic">Rajendran</span>
+                  Dr. Swathika <span className="text-foreground">Rajendran</span>
                 </h1>
                 <p className="text-muted-foreground font-sans-body leading-relaxed">
                   I am a UK-trained Breast Oncoplastic and Reconstructive Surgeon with a deep commitment to providing comprehensive, patient-centred breast care. My journey across India and the United Kingdom has shaped a surgical philosophy rooted in clinical precision, aesthetic excellence, and genuine compassion.
