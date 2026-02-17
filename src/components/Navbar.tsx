@@ -8,6 +8,9 @@ const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "Services", href: "#services" },
   { label: "Awareness", href: "#awareness" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "Blog", href: "#blog" },
+  { label: "Instagram", href: "#instagram" },
+  { label: "YouTube", href: "#youtube" },
 ];
 
 export default function Navbar() {
