@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -14,6 +14,7 @@ const contactInfo = [
 ];
 
 export default function BookConsultation() {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
