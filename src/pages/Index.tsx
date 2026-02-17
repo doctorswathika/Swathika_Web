@@ -5,6 +5,9 @@ import AwarenessSection from "@/components/AwarenessSection";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
+import BlogSection from "@/components/BlogSection";
+import InstaSection from "@/components/InstaSection";
+import YoutubeSection from "@/components/YoutubeSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -46,6 +49,9 @@ const Index = () => {
         <AwarenessSection />
         <TestimonialsSection />
         <GoogleReviewsSection />
+        <BlogSection />
+        <InstaSection />
+        <YoutubeSection />
       </main>
       <Footer />
     </>
