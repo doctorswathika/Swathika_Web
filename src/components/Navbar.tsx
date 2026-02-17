@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const navLinks = [
+const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "About Me", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Awareness", href: "#awareness" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact Me", href: "#footer" },
+  { label: "Contact Me", href: "/book-consultation", isRoute: true },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -35,11 +38,17 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const scrollTo = (href: string) => {
+  const handleNav = (href: string, isRoute?: boolean) => {
     setMenuOpen(false);
-    setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    }, 400);
+    if (isRoute) {
+      setTimeout(() => navigate(href), 300);
+    } else if (location.pathname !== "/") {
+      navigate("/" + href);
+    } else {
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }, 400);
+    }
   };
 
   return (
@@ -65,7 +74,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
-            onClick={() => { setMenuOpen(false); scrollTo("#hero"); }}
+            onClick={() => { setMenuOpen(false); handleNav("#hero"); }}
             className="font-serif-display text-xl md:text-2xl font-semibold tracking-wide text-foreground hover:opacity-80 transition-opacity z-[61]"
           >
             DR. SWATHIKA <span className="text-foreground">RAJENDRAN</span>
@@ -125,7 +134,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={() => scrollTo(l.href)}
+                  onClick={() => handleNav(l.href, l.isRoute)}
                   className="group relative font-serif-display text-2xl md:text-4xl tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
                   {l.label}
@@ -139,7 +148,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
-                onClick={() => scrollTo("#services")}
+                onClick={() => handleNav("/book-consultation", true)}
                 className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
               >
                 Book Consultation

@@ -260,7 +260,7 @@ export default function ServicePageLayout({
                 Book a private consultation with Dr. Swathika Rajendran to discuss your personalised treatment plan.
               </p>
               <Link
-                to="/#services"
+                to="/book-consultation"
                 className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
               >
                 Book Consultation
