@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LogOut } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "About Me", href: "/about", isRoute: true },
@@ -17,8 +19,19 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -154,6 +167,26 @@ export default function Navbar() {
                 className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
               >
                 Book Consultation
+              </motion.button>
+
+              {/* Login / Logout */}
+              <motion.button
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: (navLinks.length + 1) * 0.08, duration: 0.5 }}
+                onClick={async () => {
+                  if (user) {
+                    await supabase.auth.signOut();
+                    setMenuOpen(false);
+                  } else {
+                    handleNav("/auth", true);
+                  }
+                }}
+                className="flex items-center gap-2 text-sm font-sans-body tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {user ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
+                {user ? "Sign Out" : "Login / Sign Up"}
               </motion.button>
             </nav>
           </motion.div>
