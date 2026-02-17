@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { label: "About Me", href: "#about" },
@@ -62,19 +69,24 @@ export default function Navbar() {
             DR. SWATHIKA <span className="text-foreground">RAJENDRAN</span>
           </button>
 
-          {/* Desktop */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((l) => (
-              <button
-                key={l.href}
-                onClick={() => scrollTo(l.href)}
-                className="relative font-sans-body text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 group"
-              >
-                {l.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] gradient-rose-gold group-hover:w-full transition-all duration-300" />
-              </button>
-            ))}
-          </div>
+          {/* Menu Dropdown - Desktop */}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="hidden lg:flex items-center gap-2 font-sans-body text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 outline-none">
+              <Menu className="w-5 h-5" />
+              Menu
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              {navLinks.map((l) => (
+                <DropdownMenuItem
+                  key={l.href}
+                  onClick={() => scrollTo(l.href)}
+                  className="font-sans-body text-sm tracking-wide uppercase cursor-pointer"
+                >
+                  {l.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* Mobile toggle */}
           <button
