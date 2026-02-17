@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About Me", href: "#about" },
@@ -19,7 +13,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -31,22 +25,27 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on resize
+  // Lock body scroll when menu is open
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 1024) setMobileOpen(false); };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const scrollTo = (href: string) => {
-    setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }, 400);
   };
 
   return (
     <>
       {/* Scroll progress */}
-      <div className="fixed top-0 left-0 w-full h-[2px] z-[60]">
+      <div className="fixed top-0 left-0 w-full h-[2px] z-[70]">
         <motion.div
           className="h-full gradient-rose-gold"
           style={{ width: `${progress}%` }}
@@ -58,85 +57,97 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 ${
+          scrolled && !menuOpen
             ? "bg-background/90 backdrop-blur-xl shadow-sm border-b border-border/50"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => scrollTo("#hero")} className="font-serif-display text-xl md:text-2xl font-semibold tracking-wide text-foreground hover:opacity-80 transition-opacity">
+          <button
+            onClick={() => { setMenuOpen(false); scrollTo("#hero"); }}
+            className="font-serif-display text-xl md:text-2xl font-semibold tracking-wide text-foreground hover:opacity-80 transition-opacity z-[61]"
+          >
             DR. SWATHIKA <span className="text-foreground">RAJENDRAN</span>
           </button>
 
-          {/* Menu Dropdown - Desktop */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="hidden lg:flex items-center gap-2 font-sans-body text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 outline-none">
-              <Menu className="w-5 h-5" />
-              Menu
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              {navLinks.map((l) => (
-                <DropdownMenuItem
-                  key={l.href}
-                  onClick={() => scrollTo(l.href)}
-                  className="font-sans-body text-sm tracking-wide uppercase cursor-pointer"
-                >
-                  {l.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Mobile toggle */}
+          {/* Menu toggle icon */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="relative z-[61] p-2 text-foreground hover:opacity-80 transition-opacity"
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            <AnimatePresence mode="wait">
+              {menuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="w-6 h-6" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="w-6 h-6" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
-
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border overflow-hidden"
-            >
-              <div className="px-6 py-6 space-y-4">
-                {navLinks.map((l, i) => (
-                  <motion.button
-                    key={l.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    onClick={() => scrollTo(l.href)}
-                    className="block w-full text-left font-sans-body text-sm tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {l.label}
-                  </motion.button>
-                ))}
-                <motion.button
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 }}
-                  onClick={() => scrollTo("#services")}
-                  className="w-full py-3 rounded-full gradient-rose-gold text-foreground text-sm font-medium tracking-wide text-center"
-                >
-                  Book Consultation
-                </motion.button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
+
+      {/* Full-page menu overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[55] bg-background flex flex-col items-center justify-center"
+          >
+            {/* Decorative rose-gold line */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[60%] opacity-10 gradient-rose-gold" />
+
+            <nav className="flex flex-col items-center gap-8">
+              {navLinks.map((l, i) => (
+                <motion.button
+                  key={l.href}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => scrollTo(l.href)}
+                  className="group relative font-serif-display text-2xl md:text-4xl tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  {l.label}
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] gradient-rose-gold group-hover:w-full transition-all duration-400" />
+                </motion.button>
+              ))}
+
+              {/* Book Consultation CTA */}
+              <motion.button
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
+                onClick={() => scrollTo("#services")}
+                className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+              >
+                Book Consultation
+              </motion.button>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
