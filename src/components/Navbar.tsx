@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
-  { label: "About Me", href: "#about" },
+  { label: "About Me", href: "/about", isRoute: true },
   { label: "Services", href: "#services" },
   { label: "Awareness", href: "#awareness" },
   { label: "Testimonials", href: "#testimonials" },
