@@ -107,7 +107,7 @@ export default function InstaSection() {
           className="text-center mt-10"
         >
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/drswathikarajendran?igsh=MTFzYzIzMTgyd2IzZQ=="
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-sans-body text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
