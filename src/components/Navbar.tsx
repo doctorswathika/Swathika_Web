@@ -26,7 +26,7 @@ export default function Navbar() {
 
   // Close mobile menu on resize
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 768) setMobileOpen(false); };
+    const onResize = () => { if (window.innerWidth >= 1024) setMobileOpen(false); };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -63,7 +63,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
               <button
                 key={l.href}
@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex flex-col gap-1.5 p-2"
             aria-label="Toggle menu"
           >
             <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
@@ -96,7 +96,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border overflow-hidden"
+              className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border overflow-hidden"
             >
               <div className="px-6 py-6 space-y-4">
                 {navLinks.map((l, i) => (
