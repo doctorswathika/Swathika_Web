@@ -150,7 +150,7 @@ export default function YoutubeSection() {
           className="text-center mt-10"
         >
           <a
-            href="https://www.youtube.com/"
+            href="https://youtube.com/@drswathikarajendran?si=k-QxdGM-SqWfJuUQ"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-sans-body text-muted-foreground hover:text-foreground hover:border-destructive/50 transition-all duration-300"
