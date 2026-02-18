@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Youtube, ExternalLink } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const YOUTUBE_URL = "https://youtube.com/@drswathikarajendran?si=k-QxdGM-SqWfJuUQ";
+
+// Add your YouTube video IDs here to embed them
+const VIDEO_IDS = [
+  "Z-VdQWnI0JE",
+  // Add more video IDs like: "dQw4w9WgXcQ"
+];
 
 export default function YoutubeSection() {
   const { ref, isVisible } = useScrollAnimation();
@@ -11,7 +18,7 @@ export default function YoutubeSection() {
     <section id="youtube" className="py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 left-1/3 w-80 h-80 bg-destructive/5 rounded-full blur-3xl" />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -31,31 +38,59 @@ export default function YoutubeSection() {
           </p>
         </motion.div>
 
-        {/* YouTube channel card */}
+        {/* Embedded YouTube videos */}
+        {VIDEO_IDS.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className={`grid gap-6 mb-10 ${
+              VIDEO_IDS.length === 1
+                ? "max-w-2xl mx-auto"
+                : VIDEO_IDS.length === 2
+                ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
+                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
+            {VIDEO_IDS.map((videoId, index) => (
+              <motion.div
+                key={videoId}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                className="glass rounded-2xl overflow-hidden"
+              >
+                <AspectRatio ratio={16 / 9}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    title={`YouTube video ${index + 1}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                </AspectRatio>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Subscribe CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center"
         >
           <a
             href={YOUTUBE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass rounded-2xl p-8 md:p-12 flex flex-col items-center gap-6 hover:shadow-lg transition-shadow duration-300 max-w-md w-full group"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-destructive text-destructive-foreground text-sm font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
           >
-            <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
-              <Youtube className="w-10 h-10 text-destructive" />
-            </div>
-            <div className="text-center">
-              <h3 className="font-serif-display text-xl font-semibold text-foreground mb-1">Dr. Swathika Rajendran</h3>
-              <p className="text-sm text-muted-foreground font-sans-body">Breast Health • Surgery • Awareness</p>
-            </div>
-            <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-destructive text-destructive-foreground text-sm font-sans-body font-medium tracking-wide group-hover:opacity-90 transition-opacity">
-              <Youtube className="w-4 h-4" />
-              Subscribe on YouTube
-              <ExternalLink className="w-3.5 h-3.5" />
-            </span>
+            <Youtube className="w-5 h-5" />
+            Subscribe on YouTube
+            <ExternalLink className="w-4 h-4" />
           </a>
         </motion.div>
       </div>
