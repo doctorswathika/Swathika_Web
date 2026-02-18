@@ -9,12 +9,14 @@ import {
   BarChart3,
   LogOut,
   ChevronLeft,
+  BookOpen,
 } from "lucide-react";
 import AdminGuard from "@/components/admin/AdminGuard";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, path: "/admin/dashboard" },
   { label: "API Keys", icon: Key, path: "/admin/api-keys" },
+  { label: "Blog", icon: BookOpen, path: "/admin/blog" },
   { label: "Content", icon: FileText, path: "/admin/content" },
   { label: "Analytics", icon: BarChart3, path: "/admin/analytics" },
 ];

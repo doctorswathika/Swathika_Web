@@ -23,6 +23,9 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminBlog from "./pages/admin/AdminBlog";
+import Blog from "./pages/Blog";
+import BlogPostPage from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -46,12 +49,15 @@ const App = () => (
             <Route path="/services/lipomodelling" element={<Lipomodelling />} />
             <Route path="/services/implant-reconstruction" element={<ImplantReconstruction />} />
             <Route path="/services/gynaecomastia-correction" element={<GynaecomastiaCorrection />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Admin Portal */}
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="api-keys" element={<AdminApiKeys />} />
               <Route path="content" element={<AdminContent />} />
+              <Route path="blog" element={<AdminBlog />} />
               <Route path="analytics" element={<AdminAnalytics />} />
             </Route>
             <Route path="*" element={<NotFound />} />
