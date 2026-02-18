@@ -3,8 +3,18 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const bookingSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("Invalid email").max(255),
+  phone: z.string().trim().min(6, "Phone is required").max(20),
+  service: z.string().optional(),
+  message: z.string().trim().max(1000).optional(),
+});
 
 const contactInfo = [
   { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
@@ -24,13 +34,30 @@ export default function BookConsultation() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Consultation Request Sent",
-      description: "Dr. Swathika's team will contact you within 24 hours.",
+    const result = bookingSchema.safeParse(formData);
+    if (!result.success) {
+      toast({ title: "Validation error", description: result.error.errors[0]?.message, variant: "destructive" });
+      return;
+    }
+    setSubmitting(true);
+    const { error } = await supabase.from("bookings").insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service || null,
+      message: formData.message || "",
     });
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    setSubmitting(false);
+    if (error) {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } else {
+      toast({ title: "Consultation Request Sent", description: "Dr. Swathika's team will contact you within 24 hours." });
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -194,10 +221,11 @@ export default function BookConsultation() {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
+                disabled={submitting}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60"
               >
-                <Send className="w-4 h-4" />
-                Send Request
+                {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                {submitting ? "Sending..." : "Send Request"}
               </button>
             </motion.form>
           </div>
