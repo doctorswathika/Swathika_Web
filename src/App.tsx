@@ -17,6 +17,12 @@ import BreastReductionAugmentation from "./pages/services/BreastReductionAugment
 import Lipomodelling from "./pages/services/Lipomodelling";
 import ImplantReconstruction from "./pages/services/ImplantReconstruction";
 import GynaecomastiaCorrection from "./pages/services/GynaecomastiaCorrection";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminApiKeys from "./pages/admin/AdminApiKeys";
+import AdminContent from "./pages/admin/AdminContent";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +46,14 @@ const App = () => (
             <Route path="/services/lipomodelling" element={<Lipomodelling />} />
             <Route path="/services/implant-reconstruction" element={<ImplantReconstruction />} />
             <Route path="/services/gynaecomastia-correction" element={<GynaecomastiaCorrection />} />
+            {/* Admin Portal */}
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="api-keys" element={<AdminApiKeys />} />
+              <Route path="content" element={<AdminContent />} />
+              <Route path="analytics" element={<AdminAnalytics />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
