@@ -4,9 +4,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 
-const WHATSAPP_NUMBER = "919876543210";
-const PHONE_NUMBER = "+91 98765 43210";
-const PHONE_HREF = "tel:+919876543210";
+const WHATSAPP_NUMBER = "919080328082";
+const PHONE_NUMBER = "+91 90803 28082";
+const PHONE_HREF = "tel:+919080328082";
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
