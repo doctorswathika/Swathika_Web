@@ -1,8 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { X, CheckCircle } from "lucide-react";
-import { z } from "zod";
 import { Link } from "react-router-dom";
 
 import mastectomyImg from "@/assets/services/mastectomy.jpg";
@@ -28,13 +25,6 @@ const cosmeticServices = [
   { title: "Gynaecomastia Correction", img: gynaecomastiaImg, slug: "gynaecomastia-correction" },
 ];
 
-const formSchema = z.object({
-  name: z.string().trim().min(1).max(100),
-  phone: z.string().trim().min(6).max(20),
-  email: z.string().trim().email().max(255),
-  date: z.string().trim().min(1),
-  message: z.string().trim().max(1000),
-});
 
 function ServiceCard({ title, img, slug, index, isVisible }: { title: string; img: string; slug: string; index: number; isVisible: boolean }) {
   return (
@@ -107,48 +97,9 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
 }
 export default function ServicesSection() {
   const { ref, isVisible } = useScrollAnimation();
-  const [showModal, setShowModal] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    let wasInView = false;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          wasInView = true;
-        } else if (wasInView && !showModal) {
-          if (entry.boundingClientRect.bottom < 0) {
-            setShowModal(true);
-            wasInView = false;
-          }
-        }
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [showModal]);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const data = Object.fromEntries(fd);
-    const result = formSchema.safeParse(data);
-    if (!result.success) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setShowModal(false);
-      setTimeout(() => setSubmitted(false), 500);
-    }, 2500);
-  };
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-background relative" ref={(el: HTMLDivElement | null) => { (ref as React.MutableRefObject<HTMLDivElement | null>).current = el; sectionRef.current = el; }}>
+    <section id="services" className="py-24 lg:py-32 bg-background relative" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -195,65 +146,6 @@ export default function ServicesSection() {
           </div>
         </motion.div>
       </div>
-
-      {/* Consultation Modal */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center p-4"
-          >
-            <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" onClick={() => setShowModal(false)} />
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative bg-background rounded-2xl shadow-2xl max-w-md w-full p-8 border border-border"
-            >
-              <button
-                onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {!submitted ? (
-                <>
-                  <h3 className="font-serif-display text-2xl font-semibold text-foreground mb-2">
-                    Schedule Your <span className="text-gradient-rose">Private Consultation</span>
-                  </h3>
-                  <p className="text-sm text-muted-foreground font-sans-body mb-6">
-                    Take the first step towards expert care.
-                  </p>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <input name="name" required placeholder="Full Name" maxLength={100} className="w-full px-4 py-3 rounded-xl border border-border bg-accent/30 text-foreground font-sans-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <input name="phone" required placeholder="Phone Number" maxLength={20} className="w-full px-4 py-3 rounded-xl border border-border bg-accent/30 text-foreground font-sans-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <input name="email" type="email" required placeholder="Email Address" maxLength={255} className="w-full px-4 py-3 rounded-xl border border-border bg-accent/30 text-foreground font-sans-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <input name="date" type="date" required className="w-full px-4 py-3 rounded-xl border border-border bg-accent/30 text-foreground font-sans-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <textarea name="message" placeholder="Your Message (optional)" maxLength={1000} rows={3} className="w-full px-4 py-3 rounded-xl border border-border bg-accent/30 text-foreground font-sans-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-                    <button type="submit" className="w-full py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity">
-                      Request Consultation
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="text-center py-8"
-                >
-                  <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
-                  <h3 className="font-serif-display text-2xl font-semibold text-foreground mb-2">Thank You!</h3>
-                  <p className="text-sm text-muted-foreground font-sans-body">We'll get back to you shortly.</p>
-                </motion.div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

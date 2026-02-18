@@ -24,6 +24,8 @@ import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminBlog from "./pages/admin/AdminBlog";
+import AdminTestimonials from "./pages/admin/AdminTestimonials";
+import AdminBookings from "./pages/admin/AdminBookings";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 
@@ -58,6 +60,8 @@ const App = () => (
               <Route path="api-keys" element={<AdminApiKeys />} />
               <Route path="content" element={<AdminContent />} />
               <Route path="blog" element={<AdminBlog />} />
+              <Route path="testimonials" element={<AdminTestimonials />} />
+              <Route path="bookings" element={<AdminBookings />} />
               <Route path="analytics" element={<AdminAnalytics />} />
             </Route>
             <Route path="*" element={<NotFound />} />
