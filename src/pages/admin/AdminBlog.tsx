@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import RichTextEditor from "@/components/RichTextEditor";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -280,7 +281,7 @@ export default function AdminBlog() {
 
             <div className="space-y-2">
               <Label className="font-sans-body">Content</Label>
-              <Textarea value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} placeholder="Write your blog post content here..." rows={12} className="font-sans-body" />
+              <RichTextEditor content={form.content} onChange={(html) => setForm({ ...form, content: html })} />
             </div>
 
             <div className="flex items-center justify-between pt-4 border-t border-border">

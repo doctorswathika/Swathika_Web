@@ -178,12 +178,9 @@ export default function BlogPostPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="prose prose-lg max-w-none font-sans-body text-foreground leading-relaxed mb-16"
-          >
-            {post.content.split("\n").map((paragraph, i) => (
-              paragraph.trim() ? <p key={i} className="mb-4">{paragraph}</p> : null
-            ))}
-          </motion.div>
+            className="prose prose-lg max-w-none font-sans-body text-foreground leading-relaxed mb-16 [&_h1]:font-serif-display [&_h2]:font-serif-display [&_h3]:font-serif-display [&_a]:text-primary [&_blockquote]:border-l-primary/50 [&_img]:rounded-xl"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
           {/* Comments Section */}
           <motion.section
