@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogIn, LogOut } from "lucide-react";
+import { Menu, X, LogIn, LogOut, ShieldCheck } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -188,6 +188,21 @@ export default function Navbar() {
                 {user ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
                 {user ? "Sign Out" : "Login / Sign Up"}
               </motion.button>
+
+              {/* Admin Portal - visible only to admin */}
+              {user?.email?.toLowerCase() === "bbm.genai@gmail.com" && (
+                <motion.button
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: (navLinks.length + 2) * 0.08, duration: 0.5 }}
+                  onClick={() => handleNav("/admin/dashboard", true)}
+                  className="flex items-center gap-2 text-sm font-sans-body tracking-widest uppercase text-primary hover:text-foreground transition-colors"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  Admin Portal
+                </motion.button>
+              )}
             </nav>
           </motion.div>
         )}
