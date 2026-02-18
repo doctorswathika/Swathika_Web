@@ -135,7 +135,7 @@ export default function HeroSection() {
       {/* Floating contact icons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
         <motion.a
-          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300"
