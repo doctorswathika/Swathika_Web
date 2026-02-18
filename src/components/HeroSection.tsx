@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
+
+const WHATSAPP_NUMBER = "919876543210";
+const PHONE_NUMBER = "+91 98765 43210";
+const PHONE_HREF = "tel:+919876543210";
 
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+  const [showNumber, setShowNumber] = useState(false);
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with parallax-like effect */}
@@ -125,9 +133,9 @@ export default function HeroSection() {
       </div>
 
       {/* Floating contact icons */}
-      <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-3">
+      <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
         <motion.a
-          href="https://wa.me/919876543210"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300"
@@ -138,16 +146,42 @@ export default function HeroSection() {
         >
           <MessageCircle className="w-6 h-6 text-background" />
         </motion.a>
-        <motion.a
-          href="tel:+919876543210"
-          className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
-          aria-label="Call now"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.7, type: "spring" }}
-        >
-          <Phone className="w-6 h-6 text-foreground" />
-        </motion.a>
+
+        {/* Phone: dial on mobile, show number on desktop */}
+        {isMobile ? (
+          <motion.a
+            href={PHONE_HREF}
+            className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
+            aria-label="Call now"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.7, type: "spring" }}
+          >
+            <Phone className="w-6 h-6 text-foreground" />
+          </motion.a>
+        ) : (
+          <div className="flex items-center gap-2">
+            {showNumber && (
+              <motion.span
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-card text-foreground text-sm font-sans-body px-4 py-2 rounded-full shadow-lg whitespace-nowrap"
+              >
+                {PHONE_NUMBER}
+              </motion.span>
+            )}
+            <motion.button
+              onClick={() => setShowNumber((v) => !v)}
+              className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300 cursor-pointer"
+              aria-label="Show phone number"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.7, type: "spring" }}
+            >
+              <Phone className="w-6 h-6 text-foreground" />
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );
