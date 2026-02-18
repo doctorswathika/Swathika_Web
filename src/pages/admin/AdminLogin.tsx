@@ -8,7 +8,10 @@ import { Mail, Lock, ArrowRight, ShieldCheck } from "lucide-react";
 
 const ADMIN_EMAIL = "bbm.genai@gmail.com";
 
+type Mode = "login" | "signup";
+
 export default function AdminLogin() {
+  const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,10 +32,19 @@ export default function AdminLogin() {
 
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-      toast({ title: "Welcome, Admin!", description: "You have signed in successfully." });
-      navigate("/admin/dashboard");
+      if (mode === "signup") {
+        const { data, error } = await supabase.functions.invoke("create-admin", {
+          body: { email, password },
+        });
+        if (error || data?.error) throw new Error(data?.error || error?.message);
+        toast({ title: "Account created!", description: "You can now sign in." });
+        setMode("login");
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        toast({ title: "Welcome, Admin!", description: "You have signed in successfully." });
+        navigate("/admin/dashboard");
+      }
     } catch (error: any) {
       toast({
         title: "Error",
@@ -66,7 +78,7 @@ export default function AdminLogin() {
                 <ShieldCheck className="w-8 h-8 text-primary" />
               </div>
               <h1 className="font-serif-display text-3xl font-semibold text-foreground">
-                Admin Portal
+                {mode === "login" ? "Admin Portal" : "Create Admin Account"}
               </h1>
               <p className="text-sm text-muted-foreground font-sans-body">
                 Restricted access. Authorized administrators only.
@@ -110,15 +122,24 @@ export default function AdminLogin() {
                 disabled={loading}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                {loading ? "Signing in..." : "Sign In to Admin"}
+                {loading ? "Please wait..." : mode === "login" ? "Sign In to Admin" : "Create Admin Account"}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
 
-            <div className="text-center">
-              <a href="/" className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors">
-                ← Back to website
-              </a>
+            <div className="text-center space-y-2">
+              <button
+                onClick={() => setMode(mode === "login" ? "signup" : "login")}
+                className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors"
+              >
+                {mode === "login" ? "First time? " : "Already have an account? "}
+                <span className="text-primary font-medium">{mode === "login" ? "Create Account" : "Sign In"}</span>
+              </button>
+              <div>
+                <a href="/" className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors">
+                  ← Back to website
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
