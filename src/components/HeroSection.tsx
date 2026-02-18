@@ -134,18 +134,16 @@ export default function HeroSection() {
 
       {/* Floating contact icons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
-        <motion.a
-          href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300"
+        <motion.button
+          onClick={() => window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, '_blank', 'noopener,noreferrer')}
+          className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Chat on WhatsApp"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.5, type: "spring" }}
         >
           <MessageCircle className="w-6 h-6 text-background" />
-        </motion.a>
+        </motion.button>
 
         {/* Phone: dial on mobile, show number on desktop */}
         {isMobile ? (
