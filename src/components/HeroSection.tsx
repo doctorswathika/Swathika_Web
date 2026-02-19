@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 
@@ -11,9 +12,10 @@ const PHONE_HREF = "tel:+919080328082";
 export default function HeroSection() {
   const isMobile = useIsMobile();
   const [showNumber, setShowNumber] = useState(false);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with parallax-like effect */}
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background image */}
       <div className="absolute inset-0">
         <motion.img
           src={heroBg}
@@ -59,77 +61,99 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Centered text */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-8"
-        >
-          <div className="space-y-6">
-            <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.1] text-foreground">
-              Your Breast Health,{" "}
-              <motion.span
-                className="text-[hsl(270,60%,50%)] italic"
+      {/* Main content: portrait left, text right */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 pb-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          {/* Doctor portrait */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-shrink-0 w-full max-w-sm lg:max-w-md xl:max-w-lg"
+          >
+            <div className="relative">
+              <img
+                src={drSwathikaHero}
+                alt="Dr. Swathika Rajendran — Breast Surgeon"
+                className="w-full h-auto rounded-2xl object-cover shadow-2xl"
+                loading="eager"
+              />
+              {/* Subtle glow behind image */}
+              <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-3xl -z-10" />
+            </div>
+          </motion.div>
+
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-1 text-center lg:text-left space-y-8"
+          >
+            <div className="space-y-6">
+              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground">
+                Your Breast Health,{" "}
+                <motion.span
+                  className="text-[hsl(270,60%,50%)] italic"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  in Expert Hands
+                </motion.span>
+              </h1>
+
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
+                transition={{ delay: 1.2 }}
+                className="text-base sm:text-lg text-muted-foreground font-sans-body max-w-2xl leading-relaxed"
               >
-                in Expert Hands
-              </motion.span>
-            </h1>
+                UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.
+              </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="text-base sm:text-lg text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed"
-            >
-              UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.
-            </motion.p>
+              {/* Scroll indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4 }}
+                className="flex justify-center lg:justify-start"
+              >
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowDown className="w-5 h-5 text-muted-foreground" />
+                </motion.div>
+              </motion.div>
 
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
-            >
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                MCh (UK) Trained
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                GMC Registered
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                700+ Surgeries
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                Oncology + Aesthetics
-              </span>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="w-5 h-5 text-muted-foreground" />
+              {/* Trust indicators */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
+              >
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                  MCh (UK) Trained
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                  GMC Registered
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                  700+ Surgeries
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                  Oncology + Aesthetics
+                </span>
+              </motion.div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Floating contact icons */}
@@ -145,7 +169,6 @@ export default function HeroSection() {
           <MessageCircle className="w-6 h-6 text-background" />
         </motion.button>
 
-        {/* Phone: dial on mobile, show number on desktop */}
         {isMobile ? (
           <motion.a
             href={PHONE_HREF}
