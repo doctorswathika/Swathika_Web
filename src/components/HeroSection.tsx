@@ -68,12 +68,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-[42%] xl:w-[40%] flex-shrink-0 self-end lg:self-stretch flex items-end"
+          className="w-full lg:w-[45%] xl:w-[43%] flex-shrink-0 self-end lg:self-stretch flex items-end relative"
+          style={{ maskImage: 'linear-gradient(to right, black 50%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, black 50%, transparent 100%)' }}
         >
           <img
             src={drSwathikaHero}
             alt="Dr. Swathika Rajendran — Breast Surgeon"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-[60%_top]"
             loading="eager"
           />
         </motion.div>
