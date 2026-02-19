@@ -81,24 +81,22 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 ${
-          scrolled && !menuOpen
-            ? "bg-background/90 backdrop-blur-xl shadow-sm border-b border-border/50"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 bg-background border-b border-border/50 ${
+          scrolled && !menuOpen ? "shadow-sm" : ""
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
           <button
             onClick={() => { setMenuOpen(false); handleNav("#hero"); }}
-            className="font-serif-display text-xl md:text-2xl font-semibold tracking-wide text-foreground hover:opacity-80 transition-opacity z-[61]"
+            className="font-serif-display text-xl md:text-2xl font-semibold tracking-[0.15em] text-foreground hover:opacity-80 transition-opacity z-[61] uppercase"
           >
-            DR. SWATHIKA <span className="text-foreground">RAJENDRAN</span>
+            DR. SWATHIKA RAJENDRAN
           </button>
 
-          {/* Menu toggle icon */}
+          {/* Menu toggle icon - absolute right */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="relative z-[61] p-2 text-foreground hover:opacity-80 transition-opacity"
+            className="absolute right-6 z-[61] p-2 text-foreground hover:opacity-80 transition-opacity"
             aria-label="Toggle menu"
           >
             <AnimatePresence mode="wait">
