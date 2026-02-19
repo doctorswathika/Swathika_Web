@@ -56,7 +56,7 @@ export default function About() {
                 <div className="relative">
                   <div className="absolute -inset-3 rounded-2xl gradient-rose-gold opacity-20 blur-xl" />
                   <img
-                    src="/images/dr-swathika-portrait.jpeg"
+                    src="/images/dr-swathika-about.jpeg"
                     alt="Dr. Swathika Rajendran"
                     className="relative rounded-2xl w-full object-cover shadow-xl"
                   />
