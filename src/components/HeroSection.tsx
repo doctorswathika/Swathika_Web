@@ -65,13 +65,17 @@ export default function HeroSection() {
       <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row pt-16">
         {/* Doctor portrait — flush left, full height */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 20 : 0 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative"
+          className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative order-first"
           style={{
-            maskImage: isMobile ? undefined : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
-            WebkitMaskImage: isMobile ? undefined : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
+            maskImage: isMobile
+              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
+              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
+            WebkitMaskImage: isMobile
+              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
+              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
             maskComposite: isMobile ? undefined : 'intersect',
             WebkitMaskComposite: isMobile ? undefined : 'source-in',
           }}
@@ -79,7 +83,7 @@ export default function HeroSection() {
           <img
             src={drSwathikaHero}
             alt="Dr. Swathika Rajendran — Breast Surgeon"
-            className="w-full h-auto lg:h-full object-cover object-[10%_top] max-h-[50vh] lg:max-h-none"
+            className="w-full h-auto lg:h-full object-cover object-[10%_top] max-h-[60vh] lg:max-h-none"
             loading="eager"
           />
         </motion.div>
