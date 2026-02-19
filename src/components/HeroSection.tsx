@@ -62,18 +62,18 @@ export default function HeroSection() {
       </div>
 
       {/* Main content layout */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-end pt-20">
-        {/* Doctor portrait — flush left, anchored to bottom */}
+      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row pt-16">
+        {/* Doctor portrait — flush left, full height */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-[45%] xl:w-[42%] flex-shrink-0 self-end"
+          className="w-full lg:w-[42%] xl:w-[40%] flex-shrink-0 self-end lg:self-stretch flex items-end"
         >
           <img
             src={drSwathikaHero}
             alt="Dr. Swathika Rajendran — Breast Surgeon"
-            className="w-full h-auto object-cover object-top max-h-[85vh]"
+            className="w-full h-full object-cover object-top"
             loading="eager"
           />
         </motion.div>
