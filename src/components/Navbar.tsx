@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
           <button
             onClick={() => { setMenuOpen(false); handleNav("#hero"); }}
-            className="font-serif-display text-xl md:text-2xl font-semibold tracking-[0.15em] text-foreground hover:opacity-80 transition-opacity z-[61] uppercase"
+            className="font-serif-display text-base sm:text-xl md:text-2xl font-semibold tracking-[0.1em] sm:tracking-[0.15em] text-foreground hover:opacity-80 transition-opacity z-[61] uppercase"
           >
             DR. SWATHIKA RAJENDRAN
           </button>
