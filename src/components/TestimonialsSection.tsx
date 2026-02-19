@@ -2,43 +2,50 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
-const testimonials = [
-  {
-    name: "Priya M.",
-    text: "Dr. Swathika's expertise and compassion made my entire journey feel safe and supported. Her surgical skill is matched only by her kindness. I am forever grateful.",
-    rating: 5,
-  },
-  {
-    name: "Lakshmi R.",
-    text: "From diagnosis to recovery, Dr. Swathika was with me every step. The reconstructive outcome exceeded all my expectations. She truly changed my life.",
-    rating: 5,
-  },
-  {
-    name: "Ananya S.",
-    text: "I travelled from abroad specifically for Dr. Swathika's expertise. Her UK training and meticulous approach gave me complete confidence. Exceptional care.",
-    rating: 5,
-  },
-  {
-    name: "Deepa K.",
-    text: "The level of care and attention I received was extraordinary. Dr. Swathika explains everything clearly and makes you feel completely at ease. Highly recommended.",
-    rating: 5,
-  },
-];
+interface Testimonial {
+  id: string;
+  name: string;
+  text: string;
+  rating: number;
+}
 
 export default function TestimonialsSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [current, setCurrent] = useState(0);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % testimonials.length), []);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length), []);
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const { data } = await supabase
+        .from("testimonials")
+        .select("id, name, text, rating")
+        .eq("is_active", true)
+        .order("display_order");
+      if (data && data.length > 0) setTestimonials(data);
+    };
+    fetchTestimonials();
+  }, []);
+
+  const next = useCallback(() => {
+    if (testimonials.length === 0) return;
+    setCurrent((c) => (c + 1) % testimonials.length);
+  }, [testimonials.length]);
+
+  const prev = useCallback(() => {
+    if (testimonials.length === 0) return;
+    setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
 
   // Auto-advance
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || testimonials.length === 0) return;
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [isVisible, next]);
+  }, [isVisible, next, testimonials.length]);
+
+  if (testimonials.length === 0) return null;
 
   return (
     <section id="testimonials" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
