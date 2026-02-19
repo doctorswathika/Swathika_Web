@@ -68,16 +68,16 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-[45%] xl:w-[43%] flex-shrink-0 self-end lg:self-stretch flex items-end relative"
+          className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative"
           style={{
-            maskImage: isMobile ? undefined : 'linear-gradient(to right, black 50%, transparent 100%)',
-            WebkitMaskImage: isMobile ? undefined : 'linear-gradient(to right, black 50%, transparent 100%)',
+            maskImage: isMobile ? undefined : 'linear-gradient(to right, black 60%, transparent 95%)',
+            WebkitMaskImage: isMobile ? undefined : 'linear-gradient(to right, black 60%, transparent 95%)',
           }}
         >
           <img
             src={drSwathikaHero}
             alt="Dr. Swathika Rajendran — Breast Surgeon"
-            className="w-full h-auto lg:h-full object-cover object-[55%_top] max-h-[50vh] lg:max-h-none"
+            className="w-full h-auto lg:h-full object-cover object-[50%_top] max-h-[50vh] lg:max-h-none"
             loading="eager"
           />
         </motion.div>
@@ -132,24 +132,28 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
+                className="space-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
               >
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                  MCh (UK) Trained
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                  GMC Registered
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                  700+ Surgeries
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                  Oncology + Aesthetics
-                </span>
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                    MCh (UK) Trained
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                    GMC Registered
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                    700+ Surgeries
+                  </span>
+                </div>
+                <div className="flex justify-center">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                    Oncology + Aesthetics
+                  </span>
+                </div>
               </motion.div>
             </div>
           </div>
