@@ -14,8 +14,8 @@ export default function HeroSection() {
   const [showNumber, setShowNumber] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
+    <section id="hero" className="relative min-h-screen overflow-hidden">
+      {/* Background image with parallax-like effect */}
       <div className="absolute inset-0">
         <motion.img
           src={heroBg}
@@ -26,7 +26,7 @@ export default function HeroSection() {
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/70" />
       </div>
 
       {/* Floating particles */}
@@ -61,40 +61,36 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Main content: portrait left, text right */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 pb-16">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-          {/* Doctor portrait */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-shrink-0 w-full max-w-sm lg:max-w-md xl:max-w-lg"
-          >
-            <div className="relative">
-              <img
-                src={drSwathikaHero}
-                alt="Dr. Swathika Rajendran — Breast Surgeon"
-                className="w-full h-auto rounded-2xl object-cover shadow-2xl"
-                loading="eager"
-              />
-              {/* Subtle glow behind image */}
-              <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-3xl -z-10" />
-            </div>
-          </motion.div>
+      {/* Main content layout */}
+      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-end pt-20">
+        {/* Doctor portrait — flush left, anchored to bottom */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full lg:w-[45%] xl:w-[42%] flex-shrink-0 self-end"
+        >
+          <img
+            src={drSwathikaHero}
+            alt="Dr. Swathika Rajendran — Breast Surgeon"
+            className="w-full h-auto object-cover object-top max-h-[85vh]"
+            loading="eager"
+          />
+        </motion.div>
 
-          {/* Text content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-1 text-center lg:text-left space-y-8"
-          >
+        {/* Text content — right side, vertically centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex-1 flex items-center justify-center px-6 lg:px-12 py-12 lg:py-0 self-center"
+        >
+          <div className="text-center space-y-8 max-w-xl">
             <div className="space-y-6">
               <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground">
                 Your Breast Health,{" "}
                 <motion.span
-                  className="text-[hsl(270,60%,50%)] italic"
+                  className="text-[hsl(270,60%,50%)] italic block"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -107,7 +103,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="text-base sm:text-lg text-muted-foreground font-sans-body max-w-2xl leading-relaxed"
+                className="text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed"
               >
                 UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.
               </motion.p>
@@ -117,7 +113,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className="flex justify-center lg:justify-start"
+                className="flex justify-center"
               >
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
@@ -132,7 +128,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
+                className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
               >
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
@@ -152,8 +148,8 @@ export default function HeroSection() {
                 </span>
               </motion.div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Floating contact icons */}
