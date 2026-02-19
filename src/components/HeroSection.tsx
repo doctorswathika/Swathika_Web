@@ -77,7 +77,7 @@ export default function HeroSection() {
           <img
             src={drSwathikaHero}
             alt="Dr. Swathika Rajendran — Breast Surgeon"
-            className="w-full h-auto lg:h-full object-cover object-[50%_top] max-h-[50vh] lg:max-h-none"
+            className="w-full h-auto lg:h-full object-cover object-[65%_top] max-h-[50vh] lg:max-h-none"
             loading="eager"
           />
         </motion.div>
