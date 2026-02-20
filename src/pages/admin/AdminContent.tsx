@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Type, ImageIcon, Save, Upload, Trash2, Copy,
-  Loader2, ChevronDown, ChevronRight, RefreshCw,
+  Loader2, ChevronDown, ChevronRight,
+  AlignLeft, AlignCenter, AlignRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -18,6 +19,7 @@ interface SiteContent {
   section_key: string;
   section_label: string;
   content: string;
+  alignment: string;
   updated_at: string;
 }
 
@@ -36,6 +38,15 @@ const SECTION_GROUPS: { key: string; label: string }[] = [
   { key: "testimonials", label: "⭐ Testimonials Section" },
   { key: "consultation", label: "📅 Consultation Modal" },
   { key: "footer", label: "📍 Footer Section" },
+  // Service detail page groups
+  { key: "svc_mastectomy", label: "🔬 Service — Mastectomy" },
+  { key: "svc_bco", label: "🔬 Service — Breast Conserving & Oncoplastic" },
+  { key: "svc_sentinel", label: "🔬 Service — Sentinel Node Biopsy" },
+  { key: "svc_axillary", label: "🔬 Service — Axillary Node Surgery" },
+  { key: "svc_reduction", label: "🔬 Service — Breast Reduction & Augmentation" },
+  { key: "svc_lipo", label: "🔬 Service — Lipomodelling" },
+  { key: "svc_implant", label: "🔬 Service — Implant Reconstruction" },
+  { key: "svc_gynae", label: "🔬 Service — Gynaecomastia Correction" },
 ];
 
 const RICH_TEXT_KEYS = [
@@ -54,7 +65,6 @@ const TEXTAREA_KEYS = [
   "hero_trust_indicators",
 ];
 
-// Image slots for each section
 const IMAGE_SECTIONS: { key: string; label: string; slots: { id: string; label: string; description: string }[] }[] = [
   {
     key: "hero",
@@ -76,13 +86,14 @@ const IMAGE_SECTIONS: { key: string; label: string; slots: { id: string; label: 
     label: "🩺 Services Section",
     slots: [
       { id: "service-mastectomy", label: "Mastectomy", description: "Service card image for Mastectomy" },
-      { id: "service-breast-conserving", label: "Breast Conserving Surgery", description: "Service card image for Breast Conserving Surgery" },
-      { id: "service-sentinel-node", label: "Sentinel Node Biopsy", description: "Service card image for Sentinel Node Biopsy" },
+      { id: "service-breast-conserving", label: "Breast Conserving Surgery", description: "Service card image" },
+      { id: "service-sentinel-node", label: "Sentinel Node Biopsy", description: "Service card image" },
       { id: "service-oncoplastic", label: "Oncoplastic Surgery", description: "Service card image for Oncoplastic Surgery" },
       { id: "service-reduction-augmentation", label: "Breast Reduction & Augmentation", description: "Service card image" },
       { id: "service-lipomodelling", label: "Lipomodelling", description: "Service card image for Lipomodelling" },
       { id: "service-implant-reconstruction", label: "Implant Reconstruction", description: "Service card image" },
       { id: "service-gynaecomastia", label: "Gynaecomastia Correction", description: "Service card image" },
+      { id: "service-axillary-node", label: "Axillary Node Surgery", description: "Service card image for Axillary Node Surgery" },
     ],
   },
   {
@@ -115,7 +126,7 @@ export default function AdminContent() {
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-serif-display text-3xl font-semibold text-foreground">Content Management</h1>
         <p className="text-muted-foreground font-sans-body mt-2">
-          Edit every section of your website — text, images, and media.
+          Edit every section of your website — text, images, alignment, and media.
         </p>
       </motion.div>
 
@@ -136,36 +147,81 @@ export default function AdminContent() {
   );
 }
 
+/* ─── Alignment Picker ─── */
+function AlignmentPicker({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const options = [
+    { v: "left", Icon: AlignLeft, label: "Left" },
+    { v: "center", Icon: AlignCenter, label: "Centre" },
+    { v: "right", Icon: AlignRight, label: "Right" },
+  ];
+  return (
+    <div className="flex items-center gap-1 p-1 bg-muted/40 rounded-lg w-fit">
+      {options.map(({ v, Icon, label }) => (
+        <button
+          key={v}
+          title={label}
+          onClick={() => onChange(v)}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-sans-body transition-colors ${
+            value === v
+              ? "bg-primary text-primary-foreground shadow-sm"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted"
+          }`}
+        >
+          <Icon className="w-3.5 h-3.5" />
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /* ───────── Text & Copy Section ───────── */
 function TextCopySection() {
   const [items, setItems] = useState<SiteContent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [edited, setEdited] = useState<Record<string, string>>({});
+  const [edited, setEdited] = useState<Record<string, { content?: string; alignment?: string }>>({});
   const [saving, setSaving] = useState<string | null>(null);
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
   const { toast } = useToast();
 
   const fetchContent = async () => {
     const { data } = await supabase.from("site_content").select("*").order("section_key");
-    if (data) setItems(data);
+    if (data) setItems(data as SiteContent[]);
     setLoading(false);
   };
 
   useEffect(() => { fetchContent(); }, []);
 
-  const handleChange = (key: string, value: string) => {
-    setEdited((prev) => ({ ...prev, [key]: value }));
+  const handleChange = (key: string, field: "content" | "alignment", value: string) => {
+    setEdited((prev) => ({
+      ...prev,
+      [key]: { ...prev[key], [field]: value },
+    }));
   };
 
   const handleSave = async (item: SiteContent) => {
-    const newContent = edited[item.section_key];
-    if (newContent === undefined || newContent === item.content) return;
+    const changes = edited[item.section_key];
+    if (!changes) return;
+    const newContent = changes.content ?? item.content;
+    const newAlignment = changes.alignment ?? item.alignment;
+    if (newContent === item.content && newAlignment === item.alignment) return;
+
     setSaving(item.section_key);
-    const { error } = await supabase.from("site_content").update({ content: newContent }).eq("id", item.id);
+    const { error } = await supabase
+      .from("site_content")
+      .update({ content: newContent, alignment: newAlignment })
+      .eq("id", item.id);
+
     if (error) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } else {
-      toast({ title: "Saved", description: `${item.section_label} updated.` });
+      toast({ title: "Saved ✓", description: `${item.section_label.split(" — ").pop()} updated.` });
       setEdited((prev) => { const n = { ...prev }; delete n[item.section_key]; return n; });
       fetchContent();
     }
@@ -174,26 +230,33 @@ function TextCopySection() {
 
   const toggleGroup = (key: string) => setOpenGroups((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  if (loading) return <p className="text-muted-foreground font-sans-body">Loading...</p>;
+  if (loading) return <p className="text-muted-foreground font-sans-body">Loading content...</p>;
 
   const grouped = SECTION_GROUPS.map((g) => ({
     ...g,
-    items: items.filter((item) => item.section_key.startsWith(g.key + "_")),
+    items: items.filter((item) => item.section_key.startsWith(g.key + "_") || item.section_key === g.key),
   })).filter((g) => g.items.length > 0);
 
   return (
     <div className="space-y-4">
       {grouped.map((group) => {
         const isOpen = openGroups[group.key] ?? false;
-        const hasChanges = group.items.some((item) => edited[item.section_key] !== undefined && edited[item.section_key] !== item.content);
+        const hasChanges = group.items.some((item) => edited[item.section_key] !== undefined);
+        const isServiceGroup = group.key.startsWith("svc_");
 
         return (
-          <motion.div key={group.key} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="glass rounded-2xl overflow-hidden">
+          <motion.div key={group.key} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}
+            className={`glass rounded-2xl overflow-hidden ${isServiceGroup ? "border-l-4 border-primary/30" : ""}`}>
             <button onClick={() => toggleGroup(group.key)} className="w-full flex items-center justify-between p-5 hover:bg-muted/30 transition-colors">
               <div className="flex items-center gap-3">
                 <span className="text-xl">{group.label.split(" ")[0]}</span>
-                <h3 className="font-serif-display text-lg font-semibold text-foreground">{group.label.substring(group.label.indexOf(" ") + 1)}</h3>
+                <h3 className="font-serif-display text-lg font-semibold text-foreground">
+                  {group.label.substring(group.label.indexOf(" ") + 1)}
+                </h3>
                 {hasChanges && <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />}
+                {isServiceGroup && (
+                  <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-sans-body">Service Page</span>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground font-sans-body">{group.items.length} fields</span>
@@ -202,17 +265,22 @@ function TextCopySection() {
             </button>
 
             {isOpen && (
-              <div className="px-5 pb-5 space-y-5 border-t border-border pt-5">
+              <div className="px-5 pb-5 space-y-6 border-t border-border pt-5">
                 {group.items.map((item) => {
-                  const currentValue = edited[item.section_key] ?? item.content;
-                  const isDirty = edited[item.section_key] !== undefined && edited[item.section_key] !== item.content;
+                  const editedEntry = edited[item.section_key] ?? {};
+                  const currentContent = editedEntry.content ?? item.content;
+                  const currentAlignment = editedEntry.alignment ?? item.alignment ?? "left";
+                  const isDirty = edited[item.section_key] !== undefined;
                   const isRichText = RICH_TEXT_KEYS.includes(item.section_key);
                   const isTextarea = TEXTAREA_KEYS.includes(item.section_key);
 
                   return (
-                    <div key={item.id} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <Label className="font-sans-body font-medium text-foreground text-sm">{item.section_label.split(" — ").pop()}</Label>
+                    <div key={item.id} className="space-y-3 pb-5 border-b border-border last:border-0 last:pb-0">
+                      {/* Header row */}
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <Label className="font-sans-body font-semibold text-foreground text-sm">
+                          {item.section_label.split(" — ").pop()}
+                        </Label>
                         {isDirty && (
                           <Button size="sm" onClick={() => handleSave(item)} disabled={saving === item.section_key} className="gap-1.5 h-8">
                             {saving === item.section_key ? <Loader2 className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />}
@@ -220,14 +288,40 @@ function TextCopySection() {
                           </Button>
                         )}
                       </div>
+
+                      {/* Alignment picker */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-muted-foreground font-sans-body">Alignment:</span>
+                        <AlignmentPicker
+                          value={currentAlignment}
+                          onChange={(v) => handleChange(item.section_key, "alignment", v)}
+                        />
+                      </div>
+
+                      {/* Content editor */}
                       {isRichText ? (
-                        <RichTextEditor content={currentValue} onChange={(html) => handleChange(item.section_key, html)} />
+                        <RichTextEditor
+                          content={currentContent}
+                          onChange={(html) => handleChange(item.section_key, "content", html)}
+                        />
                       ) : isTextarea ? (
-                        <Textarea value={currentValue} onChange={(e) => handleChange(item.section_key, e.target.value)} rows={Math.max(3, currentValue.split("\n").length + 1)} className="font-sans-body text-sm" />
+                        <Textarea
+                          value={currentContent}
+                          onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                          rows={Math.max(3, currentContent.split("\n").length + 1)}
+                          className="font-sans-body text-sm"
+                          style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
+                        />
                       ) : (
-                        <Input value={currentValue} onChange={(e) => handleChange(item.section_key, e.target.value)} className="font-sans-body text-sm" />
+                        <Input
+                          value={currentContent}
+                          onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                          className="font-sans-body text-sm"
+                          style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
+                        />
                       )}
-                      {isDirty && <p className="text-xs text-primary font-sans-body">Unsaved changes</p>}
+
+                      {isDirty && <p className="text-xs text-primary font-sans-body">● Unsaved changes</p>}
                     </div>
                   );
                 })}
@@ -249,14 +343,12 @@ function MediaSection() {
 
   const toggleGroup = (key: string) => setOpenGroups((prev) => ({ ...prev, [key]: !prev[key] }));
 
-  // Check which images already exist in storage
   const fetchExistingImages = async () => {
     const { data } = await supabase.storage.from("blog-images").list("site", { limit: 200 });
     if (data) {
       const map: Record<string, string> = {};
       data.forEach((f) => {
         const { data: urlData } = supabase.storage.from("blog-images").getPublicUrl(`site/${f.name}`);
-        // Extract slot id from filename (e.g. "hero-bg.jpg" → "hero-bg")
         const slotId = f.name.replace(/\.[^.]+$/, "");
         map[slotId] = urlData.publicUrl;
       });
@@ -270,8 +362,6 @@ function MediaSection() {
     setUploading(slotId);
     const ext = file.name.split(".").pop();
     const path = `site/${slotId}.${ext}`;
-
-    // Delete old file if exists (any extension)
     const { data: existing } = await supabase.storage.from("blog-images").list("site");
     if (existing) {
       const oldFiles = existing.filter((f) => f.name.startsWith(slotId + "."));
@@ -279,7 +369,6 @@ function MediaSection() {
         await supabase.storage.from("blog-images").remove(oldFiles.map((f) => `site/${f.name}`));
       }
     }
-
     const { error } = await supabase.storage.from("blog-images").upload(path, file, { upsert: true });
     if (error) {
       toast({ title: "Upload failed", description: error.message, variant: "destructive" });
@@ -342,7 +431,6 @@ function MediaSection() {
                       </div>
 
                       <div className="flex items-start gap-4">
-                        {/* Image preview */}
                         <div className="w-32 h-24 rounded-xl border-2 border-dashed border-border bg-muted/20 flex items-center justify-center overflow-hidden flex-shrink-0">
                           {imageUrl ? (
                             <img src={imageUrl} alt={slot.label} className="w-full h-full object-cover rounded-xl" />
@@ -351,7 +439,6 @@ function MediaSection() {
                           )}
                         </div>
 
-                        {/* Actions */}
                         <div className="flex flex-col gap-2">
                           <label className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-colors text-xs font-sans-body font-medium ${
                             isUploading ? "bg-muted text-muted-foreground" : "bg-primary text-primary-foreground hover:bg-primary/90"

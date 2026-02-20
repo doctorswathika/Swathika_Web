@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/lipomodelling.jpg";
 export default function Lipomodelling() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_lipo"
       title="Lipomodelling"
       subtitle="Using your own body's fat to refine breast shape, correct contour deformities, and enhance volume — a natural approach to breast refinement."
       heroImage={heroImg}

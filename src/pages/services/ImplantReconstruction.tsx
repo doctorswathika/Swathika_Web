@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/implant-reconstruction.jpg";
 export default function ImplantReconstruction() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_implant"
       title="Implant Reconstruction"
       subtitle="Restoring breast form and confidence after mastectomy using advanced implant techniques tailored to your individual anatomy and preferences."
       heroImage={heroImg}

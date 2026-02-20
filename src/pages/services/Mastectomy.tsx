@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/mastectomy.jpg";
 export default function Mastectomy() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_mastectomy"
       title="Mastectomy"
       subtitle="Complete breast removal performed with meticulous surgical technique for cancer treatment or risk reduction, prioritising both safety and aesthetic outcomes."
       heroImage={heroImg}

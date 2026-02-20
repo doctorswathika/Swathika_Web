@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ServicePageLayoutProps {
   title: string;
@@ -16,6 +18,21 @@ interface ServicePageLayoutProps {
   process: { step: string; description: string }[];
   faqs: { q: string; a: string }[];
   proofOfWork: { stat: string; label: string }[];
+  /** DB content prefix, e.g. "svc_mastectomy". If provided, editable fields
+   *  are fetched from the site_content table and override the props. */
+  contentPrefix?: string;
+}
+
+interface DbContent {
+  section_key: string;
+  content: string;
+  alignment: string;
+}
+
+function alignClass(a: string) {
+  if (a === "center") return "text-center";
+  if (a === "right") return "text-right";
+  return "text-left";
 }
 
 export default function ServicePageLayout({
@@ -29,7 +46,42 @@ export default function ServicePageLayout({
   process,
   faqs,
   proofOfWork,
+  contentPrefix,
 }: ServicePageLayoutProps) {
+  const [dbContent, setDbContent] = useState<Record<string, DbContent>>({});
+
+  useEffect(() => {
+    if (!contentPrefix) return;
+    supabase
+      .from("site_content")
+      .select("section_key, content, alignment")
+      .like("section_key", `${contentPrefix}_%`)
+      .then(({ data }) => {
+        if (data) {
+          const map: Record<string, DbContent> = {};
+          data.forEach((row) => { map[row.section_key] = row as DbContent; });
+          setDbContent(map);
+        }
+      });
+  }, [contentPrefix]);
+
+  /** Get content for a key — DB wins over prop fallback */
+  const get = (suffix: string, fallback: string) => {
+    const key = `${contentPrefix}_${suffix}`;
+    return dbContent[key]?.content ?? fallback;
+  };
+
+  /** Get alignment class for a key */
+  const getAlign = (suffix: string) => {
+    const key = `${contentPrefix}_${suffix}`;
+    return alignClass(dbContent[key]?.alignment ?? "left");
+  };
+
+  const displaySubtitle = contentPrefix ? get("subtitle", subtitle) : subtitle;
+  const displayOverview = contentPrefix
+    ? overview.map((p, i) => get(`overview_${i + 1}`, p))
+    : overview;
+
   return (
     <>
       <Helmet>
@@ -38,7 +90,8 @@ export default function ServicePageLayout({
       </Helmet>
       <Navbar />
       <main className="pt-24">
-        {/* Hero */}
+
+        {/* ── Hero ── */}
         <section className="py-16 lg:py-24 bg-background relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blush/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
@@ -64,8 +117,8 @@ export default function ServicePageLayout({
                 <h1 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground leading-tight">
                   {title}
                 </h1>
-                <p className="text-lg text-muted-foreground font-sans-body leading-relaxed">
-                  {subtitle}
+                <p className={`text-lg text-muted-foreground font-sans-body leading-relaxed ${contentPrefix ? getAlign("subtitle") : ""}`}>
+                  {displaySubtitle}
                 </p>
               </motion.div>
 
@@ -87,7 +140,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* Proof of Work Stats */}
+        {/* ── Proof of Work Stats ── */}
         <section className="py-12 bg-card/50 border-y border-border">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -100,19 +153,15 @@ export default function ServicePageLayout({
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="text-center"
                 >
-                  <p className="font-serif-display text-3xl lg:text-4xl font-bold text-primary">
-                    {item.stat}
-                  </p>
-                  <p className="text-xs font-sans-body text-muted-foreground tracking-widest uppercase mt-1">
-                    {item.label}
-                  </p>
+                  <p className="font-serif-display text-3xl lg:text-4xl font-bold text-primary">{item.stat}</p>
+                  <p className="text-xs font-sans-body text-muted-foreground tracking-widest uppercase mt-1">{item.label}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Detailed Overview */}
+        {/* ── Overview ── */}
         <section className="py-16 lg:py-24 bg-background">
           <div className="max-w-4xl mx-auto px-6">
             <motion.div
@@ -127,8 +176,13 @@ export default function ServicePageLayout({
                 What is <span className="text-gradient-rose italic">{title}</span>?
               </h2>
               <div className="space-y-5">
-                {overview.map((para, i) => (
-                  <p key={i} className="text-muted-foreground font-sans-body leading-relaxed text-base lg:text-lg">
+                {displayOverview.map((para, i) => (
+                  <p
+                    key={i}
+                    className={`text-muted-foreground font-sans-body leading-relaxed text-base lg:text-lg ${
+                      contentPrefix ? getAlign(`overview_${i + 1}`) : ""
+                    }`}
+                  >
                     {para}
                   </p>
                 ))}
@@ -137,7 +191,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* ── Benefits ── */}
         <section className="py-16 lg:py-24 bg-card/50">
           <div className="max-w-4xl mx-auto px-6">
             <motion.div
@@ -169,7 +223,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* Process */}
+        {/* ── Process ── */}
         <section className="py-16 lg:py-24 bg-background">
           <div className="max-w-4xl mx-auto px-6">
             <motion.div
@@ -206,7 +260,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* CTA */}
+        {/* ── CTA ── */}
         <section className="py-16 lg:py-20 bg-background">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <motion.div
@@ -232,7 +286,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* FAQs */}
+        {/* ── FAQs ── */}
         <section className="py-16 lg:py-24 bg-card/50">
           <div className="max-w-4xl mx-auto px-6">
             <motion.div
@@ -268,6 +322,7 @@ export default function ServicePageLayout({
             </motion.div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
