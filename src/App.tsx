@@ -11,8 +11,10 @@ import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import Mastectomy from "./pages/services/Mastectomy";
 import BreastConservingSurgery from "./pages/services/BreastConservingSurgery";
+import BreastConservingOncoplastic from "./pages/services/BreastConservingOncoplastic";
 import SentinelNodeBiopsy from "./pages/services/SentinelNodeBiopsy";
 import OncoplasticSurgery from "./pages/services/OncoplasticSurgery";
+import AxillaryNode from "./pages/services/AxillaryNode";
 import BreastReductionAugmentation from "./pages/services/BreastReductionAugmentation";
 import Lipomodelling from "./pages/services/Lipomodelling";
 import ImplantReconstruction from "./pages/services/ImplantReconstruction";
@@ -44,9 +46,12 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/about" element={<About />} />
             <Route path="/services/mastectomy" element={<Mastectomy />} />
-            <Route path="/services/breast-conserving-surgery" element={<BreastConservingSurgery />} />
+            <Route path="/services/breast-conserving-oncoplastic" element={<BreastConservingOncoplastic />} />
+            {/* Legacy routes — redirect to combined page */}
+            <Route path="/services/breast-conserving-surgery" element={<BreastConservingOncoplastic />} />
+            <Route path="/services/oncoplastic-surgery" element={<BreastConservingOncoplastic />} />
             <Route path="/services/sentinel-node-biopsy" element={<SentinelNodeBiopsy />} />
-            <Route path="/services/oncoplastic-surgery" element={<OncoplasticSurgery />} />
+            <Route path="/services/axillary-node" element={<AxillaryNode />} />
             <Route path="/services/breast-reduction-augmentation" element={<BreastReductionAugmentation />} />
             <Route path="/services/lipomodelling" element={<Lipomodelling />} />
             <Route path="/services/implant-reconstruction" element={<ImplantReconstruction />} />
