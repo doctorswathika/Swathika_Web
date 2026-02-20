@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 import mastectomyImg from "@/assets/services/mastectomy.jpg";
 import breastConservingImg from "@/assets/services/breast-conserving.jpg";
 import sentinelNodeImg from "@/assets/services/sentinel-node.jpg";
-import oncoplasticImg from "@/assets/services/oncoplastic.jpg";
 import reductionAugmentationImg from "@/assets/services/reduction-augmentation.jpg";
 import lipomodellingImg from "@/assets/services/lipomodelling.jpg";
 import implantReconstructionImg from "@/assets/services/implant-reconstruction.jpg";
 import gynaecomastiaImg from "@/assets/services/gynaecomastia.jpg";
+import axillaryNodeImg from "@/assets/services/axillary-node.jpg";
 
 const clinicalServices = [
   { title: "Mastectomy", img: mastectomyImg, slug: "mastectomy" },
-  { title: "Breast Conserving Surgery", img: breastConservingImg, slug: "breast-conserving-surgery" },
+  { title: "Breast Conserving & Oncoplastic Surgery", img: breastConservingImg, slug: "breast-conserving-oncoplastic" },
   { title: "Sentinel Node Biopsy", img: sentinelNodeImg, slug: "sentinel-node-biopsy" },
-  { title: "Oncoplastic Surgery", img: oncoplasticImg, slug: "oncoplastic-surgery" },
+  { title: "Axillary Node Surgery", img: axillaryNodeImg, slug: "axillary-node" },
 ];
 
 const cosmeticServices = [
