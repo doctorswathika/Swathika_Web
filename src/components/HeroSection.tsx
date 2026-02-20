@@ -20,18 +20,18 @@ export default function HeroSection() {
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { size: 120, x: 8,  y: 15, color: `hsl(var(--blush) / 0.25)`,     dur: 9,  delay: 0   },
-          { size: 80,  x: 22, y: 70, color: `hsl(var(--rose-gold) / 0.2)`,   dur: 11, delay: 1.2 },
-          { size: 160, x: 55, y: 10, color: `hsl(var(--blush) / 0.18)`,      dur: 13, delay: 0.5 },
-          { size: 60,  x: 75, y: 55, color: `hsl(var(--rose-gold) / 0.22)`,  dur: 8,  delay: 2   },
-          { size: 100, x: 90, y: 20, color: `hsl(var(--blush) / 0.2)`,       dur: 12, delay: 0.8 },
-          { size: 50,  x: 40, y: 80, color: `hsl(var(--lavender) / 0.15)`,   dur: 10, delay: 1.5 },
-          { size: 90,  x: 15, y: 50, color: `hsl(var(--rose-gold) / 0.18)`,  dur: 14, delay: 3   },
-          { size: 70,  x: 65, y: 85, color: `hsl(var(--blush) / 0.22)`,      dur: 7,  delay: 0.3 },
-          { size: 140, x: 82, y: 72, color: `hsl(var(--blush) / 0.15)`,      dur: 15, delay: 2.5 },
-          { size: 45,  x: 33, y: 30, color: `hsl(var(--lavender) / 0.18)`,   dur: 9,  delay: 1   },
-          { size: 110, x: 50, y: 50, color: `hsl(var(--rose-gold) / 0.12)`,  dur: 11, delay: 4   },
-          { size: 55,  x: 5,  y: 88, color: `hsl(var(--blush) / 0.2)`,       dur: 8,  delay: 1.8 },
+          { size: 180, x: 8,  y: 15, color: `hsl(var(--blush) / 0.55)`,     dur: 9,  delay: 0   },
+          { size: 120, x: 22, y: 70, color: `hsl(var(--rose-gold) / 0.45)`,  dur: 11, delay: 1.2 },
+          { size: 220, x: 55, y: 10, color: `hsl(var(--blush) / 0.45)`,      dur: 13, delay: 0.5 },
+          { size: 100, x: 75, y: 55, color: `hsl(var(--rose-gold) / 0.5)`,   dur: 8,  delay: 2   },
+          { size: 160, x: 90, y: 20, color: `hsl(var(--blush) / 0.45)`,      dur: 12, delay: 0.8 },
+          { size: 90,  x: 40, y: 80, color: `hsl(var(--lavender) / 0.4)`,    dur: 10, delay: 1.5 },
+          { size: 140, x: 15, y: 50, color: `hsl(var(--rose-gold) / 0.4)`,   dur: 14, delay: 3   },
+          { size: 110, x: 65, y: 85, color: `hsl(var(--blush) / 0.5)`,       dur: 7,  delay: 0.3 },
+          { size: 200, x: 82, y: 72, color: `hsl(var(--blush) / 0.4)`,       dur: 15, delay: 2.5 },
+          { size: 80,  x: 33, y: 30, color: `hsl(var(--lavender) / 0.45)`,   dur: 9,  delay: 1   },
+          { size: 160, x: 50, y: 50, color: `hsl(var(--rose-gold) / 0.35)`,  dur: 11, delay: 4   },
+          { size: 90,  x: 5,  y: 88, color: `hsl(var(--blush) / 0.5)`,       dur: 8,  delay: 1.8 },
         ].map((orb, i) => (
           <motion.div
             key={i}
