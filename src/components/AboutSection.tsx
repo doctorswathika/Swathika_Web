@@ -58,10 +58,11 @@ export default function AboutSection() {
             <Link
               to="/about"
               onClick={() => window.scrollTo(0, 0)}
-              className="group inline-flex items-center gap-3 px-7 py-3 rounded-full font-sans-body font-semibold text-sm tracking-wide text-white hover:scale-105 transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-7 py-3 rounded-full font-sans-body font-semibold text-sm tracking-wide hover:scale-105 transition-all duration-300"
               style={{
                 background: "linear-gradient(135deg, hsl(15, 60%, 62%), hsl(15, 75%, 75%), hsl(15, 55%, 60%))",
                 boxShadow: "0 8px 28px hsl(15, 60%, 65%, 0.45)",
+                color: "hsl(258, 89%, 45%)",
               }}
             >
               Learn More About My Journey
