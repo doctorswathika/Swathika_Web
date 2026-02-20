@@ -20,18 +20,18 @@ export default function HeroSection() {
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { size: 180, x: 8,  y: 15, color: `hsl(var(--blush) / 0.55)`,     dur: 9,  delay: 0   },
-          { size: 120, x: 22, y: 70, color: `hsl(var(--rose-gold) / 0.45)`,  dur: 11, delay: 1.2 },
-          { size: 220, x: 55, y: 10, color: `hsl(var(--blush) / 0.45)`,      dur: 13, delay: 0.5 },
-          { size: 100, x: 75, y: 55, color: `hsl(var(--rose-gold) / 0.5)`,   dur: 8,  delay: 2   },
-          { size: 160, x: 90, y: 20, color: `hsl(var(--blush) / 0.45)`,      dur: 12, delay: 0.8 },
-          { size: 90,  x: 40, y: 80, color: `hsl(var(--lavender) / 0.4)`,    dur: 10, delay: 1.5 },
-          { size: 140, x: 15, y: 50, color: `hsl(var(--rose-gold) / 0.4)`,   dur: 14, delay: 3   },
-          { size: 110, x: 65, y: 85, color: `hsl(var(--blush) / 0.5)`,       dur: 7,  delay: 0.3 },
-          { size: 200, x: 82, y: 72, color: `hsl(var(--blush) / 0.4)`,       dur: 15, delay: 2.5 },
-          { size: 80,  x: 33, y: 30, color: `hsl(var(--lavender) / 0.45)`,   dur: 9,  delay: 1   },
-          { size: 160, x: 50, y: 50, color: `hsl(var(--rose-gold) / 0.35)`,  dur: 11, delay: 4   },
-          { size: 90,  x: 5,  y: 88, color: `hsl(var(--blush) / 0.5)`,       dur: 8,  delay: 1.8 },
+          { size: 200, x: 60, y: 5,  color: `hsl(340 70% 80%)`,  dur: 9,  delay: 0   },
+          { size: 150, x: 80, y: 30, color: `hsl(15 70% 80%)`,   dur: 11, delay: 1.2 },
+          { size: 180, x: 72, y: 65, color: `hsl(340 65% 85%)`,  dur: 13, delay: 0.5 },
+          { size: 120, x: 90, y: 50, color: `hsl(268 70% 85%)`,  dur: 8,  delay: 2   },
+          { size: 160, x: 50, y: 20, color: `hsl(340 70% 82%)`,  dur: 12, delay: 0.8 },
+          { size: 100, x: 45, y: 75, color: `hsl(268 75% 88%)`,  dur: 10, delay: 1.5 },
+          { size: 130, x: 95, y: 80, color: `hsl(15 65% 82%)`,   dur: 14, delay: 3   },
+          { size: 90,  x: 55, y: 90, color: `hsl(340 70% 85%)`,  dur: 7,  delay: 0.3 },
+          { size: 170, x: 85, y: 10, color: `hsl(268 70% 87%)`,  dur: 15, delay: 2.5 },
+          { size: 110, x: 65, y: 45, color: `hsl(340 65% 83%)`,  dur: 9,  delay: 1   },
+          { size: 140, x: 75, y: 85, color: `hsl(15 70% 84%)`,   dur: 11, delay: 4   },
+          { size: 80,  x: 40, y: 60, color: `hsl(268 72% 86%)`,  dur: 8,  delay: 1.8 },
         ].map((orb, i) => (
           <motion.div
             key={i}
@@ -41,14 +41,14 @@ export default function HeroSection() {
               height: orb.size,
               left: `${orb.x}%`,
               top: `${orb.y}%`,
-              background: `radial-gradient(circle at 35% 35%, white, ${orb.color})`,
-              filter: `blur(${orb.size * 0.28}px)`,
+              background: orb.color,
+              filter: `blur(${orb.size * 0.18}px)`,
             }}
             animate={{
               y: [0, -20, 0],
               x: [0, 10, 0],
               scale: [1, 1.08, 1],
-              opacity: [0.6, 1, 0.6],
+              opacity: [0.85, 1, 0.85],
             }}
             transition={{
               duration: orb.dur,
