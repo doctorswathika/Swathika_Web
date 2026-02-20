@@ -211,6 +211,32 @@ export default function ServicePageLayout({
           </div>
         </section>
 
+        {/* CTA */}
+        <section className="py-16 lg:py-20 bg-background">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
+                Ready to Begin Your <span className="text-gradient-rose italic">Journey</span>?
+              </h2>
+              <p className="text-muted-foreground font-sans-body">
+                Book a private consultation with Dr. Swathika Rajendran to discuss your personalised treatment plan.
+              </p>
+              <Link
+                to="/book-consultation"
+                className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
+              >
+                Book Consultation
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
         {/* FAQs */}
         <section className="py-16 lg:py-24 bg-card/50">
           <div className="max-w-4xl mx-auto px-6">
@@ -244,32 +270,6 @@ export default function ServicePageLayout({
                   </motion.details>
                 ))}
               </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 lg:py-20 bg-background">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
-                Ready to Begin Your <span className="text-gradient-rose italic">Journey</span>?
-              </h2>
-              <p className="text-muted-foreground font-sans-body">
-                Book a private consultation with Dr. Swathika Rajendran to discuss your personalised treatment plan.
-              </p>
-              <Link
-                to="/book-consultation"
-                className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
-              >
-                Book Consultation
-              </Link>
             </motion.div>
           </div>
         </section>
