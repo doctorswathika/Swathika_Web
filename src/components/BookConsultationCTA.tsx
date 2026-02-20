@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Calendar, ArrowRight, Phone } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-const WHATSAPP_NUMBER = "919080328082";
 
 export default function BookConsultationCTA() {
   const { ref, isVisible } = useScrollAnimation();
@@ -100,13 +98,6 @@ export default function BookConsultationCTA() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
 
-            <button
-              onClick={() => window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, "_blank", "noopener,noreferrer")}
-              className="flex items-center gap-3 px-8 py-4 rounded-full border border-[hsl(var(--border))] bg-card/60 backdrop-blur-sm text-foreground font-semibold font-sans-body text-base hover:bg-card hover:scale-105 transition-all duration-300 shadow-sm"
-            >
-              <Phone className="w-5 h-5 text-[hsl(142_70%_40%)]" />
-              Chat on WhatsApp
-            </button>
           </motion.div>
         </motion.div>
       </div>
