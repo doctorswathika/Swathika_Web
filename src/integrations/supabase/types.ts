@@ -132,6 +132,7 @@ export type Database = {
       }
       site_content: {
         Row: {
+          alignment: string
           content: string
           id: string
           section_key: string
@@ -139,6 +140,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          alignment?: string
           content?: string
           id?: string
           section_key: string
@@ -146,6 +148,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          alignment?: string
           content?: string
           id?: string
           section_key?: string
