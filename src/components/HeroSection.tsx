@@ -29,32 +29,43 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/70" />
       </div>
 
-      {/* Floating particles */}
+      {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(25)].map((_, i) => (
+        {[
+          { size: 120, x: 8,  y: 15, color: `hsl(var(--blush) / 0.25)`,     dur: 9,  delay: 0   },
+          { size: 80,  x: 22, y: 70, color: `hsl(var(--rose-gold) / 0.2)`,   dur: 11, delay: 1.2 },
+          { size: 160, x: 55, y: 10, color: `hsl(var(--blush) / 0.18)`,      dur: 13, delay: 0.5 },
+          { size: 60,  x: 75, y: 55, color: `hsl(var(--rose-gold) / 0.22)`,  dur: 8,  delay: 2   },
+          { size: 100, x: 90, y: 20, color: `hsl(var(--blush) / 0.2)`,       dur: 12, delay: 0.8 },
+          { size: 50,  x: 40, y: 80, color: `hsl(var(--lavender) / 0.15)`,   dur: 10, delay: 1.5 },
+          { size: 90,  x: 15, y: 50, color: `hsl(var(--rose-gold) / 0.18)`,  dur: 14, delay: 3   },
+          { size: 70,  x: 65, y: 85, color: `hsl(var(--blush) / 0.22)`,      dur: 7,  delay: 0.3 },
+          { size: 140, x: 82, y: 72, color: `hsl(var(--blush) / 0.15)`,      dur: 15, delay: 2.5 },
+          { size: 45,  x: 33, y: 30, color: `hsl(var(--lavender) / 0.18)`,   dur: 9,  delay: 1   },
+          { size: 110, x: 50, y: 50, color: `hsl(var(--rose-gold) / 0.12)`,  dur: 11, delay: 4   },
+          { size: 55,  x: 5,  y: 88, color: `hsl(var(--blush) / 0.2)`,       dur: 8,  delay: 1.8 },
+        ].map((orb, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"
             style={{
-              width: Math.random() * 5 + 2,
-              height: Math.random() * 5 + 2,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 3 === 0
-                ? `hsl(var(--blush) / 0.3)`
-                : i % 3 === 1
-                ? `hsl(var(--lavender) / 0.3)`
-                : `hsl(var(--rose-gold) / 0.3)`,
+              width: orb.size,
+              height: orb.size,
+              left: `${orb.x}%`,
+              top: `${orb.y}%`,
+              background: `radial-gradient(circle at 35% 35%, white, ${orb.color})`,
+              filter: `blur(${orb.size * 0.28}px)`,
             }}
             animate={{
-              y: [0, -40, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.15, 0.5, 0.15],
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.08, 1],
+              opacity: [0.6, 1, 0.6],
             }}
             transition={{
-              duration: Math.random() * 5 + 4,
+              duration: orb.dur,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: orb.delay,
               ease: "easeInOut",
             }}
           />
