@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, ArrowDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
@@ -15,19 +14,8 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
-      {/* Background image with parallax-like effect */}
-      <div className="absolute inset-0">
-        <motion.img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover scale-110"
-          initial={{ scale: 1.15 }}
-          animate={{ scale: 1.05 }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/70" />
-      </div>
+      {/* Soft gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(268_80%_95%)] to-[hsl(0_0%_98%)]" />
 
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
