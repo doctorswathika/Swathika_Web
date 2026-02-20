@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/oncoplastic.jpg";
 export default function BreastConservingOncoplastic() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_bco"
       title="Breast Conserving & Oncoplastic Surgery"
       subtitle="Precise tumour removal with expert breast reshaping — combining oncological safety with cosmetic excellence for the best possible outcome."
       heroImage={heroImg}

@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/axillary-node.jpg";
 export default function AxillaryNode() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_axillary"
       title="Axillary Node Surgery"
       subtitle="Precise assessment and management of axillary lymph nodes — a critical step in staging and treating breast cancer with expert surgical care."
       heroImage={heroImg}

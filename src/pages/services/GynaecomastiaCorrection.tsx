@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/gynaecomastia.jpg";
 export default function GynaecomastiaCorrection() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_gynae"
       title="Gynaecomastia Correction"
       subtitle="Surgical treatment of enlarged male breast tissue for a flatter, more masculine chest contour — restoring confidence and comfort."
       heroImage={heroImg}

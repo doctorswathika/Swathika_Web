@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/reduction-augmentation.jpg";
 export default function BreastReductionAugmentation() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_reduction"
       title="Breast Reduction & Augmentation"
       subtitle="Aesthetic and functional breast surgery for improved comfort, symmetry, and confidence — performed with surgical precision and artistic sensibility."
       heroImage={heroImg}

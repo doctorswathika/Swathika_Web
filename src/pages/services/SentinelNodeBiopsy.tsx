@@ -4,6 +4,7 @@ import heroImg from "@/assets/services/sentinel-node.jpg";
 export default function SentinelNodeBiopsy() {
   return (
     <ServicePageLayout
+      contentPrefix="svc_sentinel"
       title="Sentinel Node Biopsy"
       subtitle="A minimally invasive technique to accurately stage breast cancer and guide further treatment decisions — avoiding unnecessary extensive surgery."
       heroImage={heroImg}
