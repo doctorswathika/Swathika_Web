@@ -8,6 +8,59 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const clearLocalAuthState = () => {
+  if (typeof window === "undefined") return;
+
+  const authTokenKey = `sb-${import.meta.env.VITE_SUPABASE_PROJECT_ID}-auth-token`;
+  const storages = [window.localStorage, window.sessionStorage];
+
+  storages.forEach((storage) => {
+    storage.removeItem(authTokenKey);
+    storage.removeItem("supabase.auth.token");
+
+    Object.keys(storage).forEach((key) => {
+      if (/^sb-.*-auth-token$/.test(key)) {
+        storage.removeItem(key);
+      }
+    });
+  });
+};
+
+const isNetworkError = (error: unknown) => {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return /failed to fetch|network/i.test(message);
+};
+
+const signInWithRetry = async (email: string, password: string) => {
+  let lastError: unknown;
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) throw error;
+      if (!data.session) throw new Error("Unable to start session. Please try again.");
+
+      return data;
+    } catch (error) {
+      lastError = error;
+
+      if (attempt === 0 && isNetworkError(error)) {
+        clearLocalAuthState();
+        await supabase.auth.signOut({ scope: "local" }).catch(() => undefined);
+        await wait(500);
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
+  throw lastError;
+};
+
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -38,13 +91,7 @@ export default function Auth() {
 
     try {
       if (isLogin) {
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: normalizedEmail,
-          password,
-        });
-
-        if (error) throw error;
-        if (!data.session) throw new Error("Unable to start session. Please try again.");
+        await signInWithRetry(normalizedEmail, password);
 
         toast({ title: "Welcome back!", description: "You have signed in successfully." });
         navigate("/");
