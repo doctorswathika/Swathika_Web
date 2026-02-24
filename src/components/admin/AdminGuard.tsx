@@ -18,7 +18,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
     const checkAdmin = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session || session.user.email?.toLowerCase() !== ADMIN_EMAIL) {
-        navigate("/admin/login", { replace: true });
+        navigate("/auth", { replace: true });
         return;
       }
       setAuthorized(true);
@@ -27,7 +27,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!session || session.user.email?.toLowerCase() !== ADMIN_EMAIL) {
-        navigate("/admin/login", { replace: true });
+        navigate("/auth", { replace: true });
         return;
       }
       setAuthorized(true);

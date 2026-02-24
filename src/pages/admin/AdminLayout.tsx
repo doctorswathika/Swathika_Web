@@ -33,7 +33,7 @@ export default function AdminLayout() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     toast({ title: "Signed out", description: "You have been signed out." });
-    navigate("/admin/login");
+    navigate("/auth");
   };
 
   return (

@@ -19,8 +19,6 @@ import BreastReductionAugmentation from "./pages/services/BreastReductionAugment
 import Lipomodelling from "./pages/services/Lipomodelling";
 import ImplantReconstruction from "./pages/services/ImplantReconstruction";
 import GynaecomastiaCorrection from "./pages/services/GynaecomastiaCorrection";
-import AdminLogin from "./pages/admin/AdminLogin";
-import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
@@ -60,8 +58,6 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Admin Portal */}
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminApiKeys />} />
               <Route path="api-keys" element={<AdminApiKeys />} />
