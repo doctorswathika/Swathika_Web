@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, LogIn, LogOut, ShieldCheck } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
@@ -20,7 +21,7 @@ export default function Navbar() {
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const navigate = useNavigate();
+  const handleNav = useHashNavigation();
   const location = useLocation();
 
   useEffect(() => {
@@ -53,16 +54,12 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const handleNav = (href: string, isRoute?: boolean) => {
+  const handleNavClick = (href: string, isRoute?: boolean) => {
     setMenuOpen(false);
     if (isRoute) {
-      setTimeout(() => navigate(href), 300);
-    } else if (location.pathname !== "/") {
-      navigate("/" + href);
+      setTimeout(() => handleNav(href, true), 300);
     } else {
-      setTimeout(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-      }, 400);
+      handleNav(href);
     }
   };
 
@@ -87,7 +84,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
           <button
-            onClick={() => { setMenuOpen(false); handleNav("#hero"); }}
+            onClick={() => { setMenuOpen(false); handleNavClick("#hero"); }}
             className="font-serif-display text-base sm:text-xl md:text-2xl font-semibold tracking-[0.1em] sm:tracking-[0.15em] text-foreground hover:opacity-80 transition-opacity z-[61] uppercase"
           >
             DR. SWATHIKA RAJENDRAN
@@ -147,7 +144,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={() => handleNav(l.href, l.isRoute)}
+                  onClick={() => handleNavClick(l.href, l.isRoute)}
                   className="group relative font-serif-display text-2xl md:text-4xl tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
                   {l.label}
@@ -161,7 +158,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
-                onClick={() => handleNav("/book-consultation", true)}
+                onClick={() => handleNavClick("/book-consultation", true)}
                 className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
               >
                 Book Consultation
@@ -174,7 +171,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: (navLinks.length + 1) * 0.08, duration: 0.5 }}
-                  onClick={() => handleNav("/admin/dashboard", true)}
+                  onClick={() => handleNavClick("/admin/dashboard", true)}
                   className="flex items-center gap-2 text-sm font-sans-body font-semibold tracking-widest uppercase text-primary hover:text-foreground transition-colors"
                 >
                   Admin Portal
@@ -192,7 +189,7 @@ export default function Navbar() {
                     await supabase.auth.signOut();
                     setMenuOpen(false);
                   } else {
-                    handleNav("/auth", true);
+                    handleNavClick("/auth", true);
                   }
                 }}
                 className="flex items-center gap-2 text-sm font-sans-body tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
