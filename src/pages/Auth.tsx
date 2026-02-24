@@ -16,9 +16,9 @@ export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Clear any stale/expired session on mount
+  // Clear any stale/expired local session on mount
   useEffect(() => {
-    supabase.auth.signOut().catch(() => {});
+    supabase.auth.signOut({ scope: "local" }).catch(() => {});
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,7 +27,14 @@ export default function Auth() {
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        let { error } = await supabase.auth.signInWithPassword({ email, password });
+
+        if (error && /failed to fetch/i.test(error.message ?? "")) {
+          await supabase.auth.signOut({ scope: "local" }).catch(() => {});
+          const retry = await supabase.auth.signInWithPassword({ email, password });
+          error = retry.error;
+        }
+
         if (error) throw error;
         toast({ title: "Welcome back!", description: "You have signed in successfully." });
         navigate("/");
