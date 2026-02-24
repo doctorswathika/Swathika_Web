@@ -120,20 +120,6 @@ export default function HeroSection() {
                 dangerouslySetInnerHTML={{ __html: description }}
               />
 
-              {/* Scroll indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4 }}
-                className="flex justify-center"
-              >
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowDown className="w-5 h-5 text-muted-foreground" />
-                </motion.div>
-              </motion.div>
 
               {/* Trust indicators */}
               <motion.div
@@ -145,11 +131,30 @@ export default function HeroSection() {
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                   {trustItems.map((item) => (
                     <span key={item} className="flex items-center gap-1.5 whitespace-nowrap">
-                      <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block flex-shrink-0" />
                       {item}
                     </span>
                   ))}
                 </div>
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.6 }}
+                className="flex justify-center"
+              >
+                <button
+                  onClick={() => {
+                    const el = document.getElementById("services");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="group inline-flex items-center gap-3 px-7 py-3 rounded-full gradient-rose-gold font-sans-body font-semibold text-sm tracking-wide text-white hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  Explore Treatments
+                  <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                </button>
               </motion.div>
             </div>
           </div>
