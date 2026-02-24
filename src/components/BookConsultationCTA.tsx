@@ -10,7 +10,7 @@ export default function BookConsultationCTA() {
   const { getText, getAlignClass } = useSiteContent();
 
   const ctaTitle = getText("consultation_title", "Your Health Deserves Expert Hands.");
-  const ctaDesc = getText("consultation_description", "Every journey to wellness begins with a single conversation. Let Dr. Swathika guide you with world-class expertise and heartfelt compassion.");
+  const ctaDesc = getText("consultation_description", "Take the first step towards expert care.");
 
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
@@ -52,9 +52,9 @@ export default function BookConsultationCTA() {
 
           {/* Headline */}
           <div className="space-y-4">
-            <h2 className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] ${getAlignClass("consultation_title")}`}
+            <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] text-center"
               dangerouslySetInnerHTML={{ __html: ctaTitle }} />
-            <p className={`text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed ${getAlignClass("consultation_description")}`}
+            <p className="text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed text-center"
               dangerouslySetInnerHTML={{ __html: ctaDesc }} />
           </div>
 
