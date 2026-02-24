@@ -126,9 +126,9 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className={`space-y-2 text-[10px] sm:text-xs md:text-sm lg:text-base font-sans-body font-medium text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
+                className={`space-y-2 text-xs sm:text-sm md:text-base font-sans-body font-medium text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
               >
-                <div className="flex flex-nowrap justify-center gap-x-2 sm:gap-x-4 md:gap-x-6">
+                <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-1 sm:flex-nowrap">
                   {trustItems.map((item) => (
                     <span key={item} className="flex items-center gap-1.5 whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block flex-shrink-0" />
