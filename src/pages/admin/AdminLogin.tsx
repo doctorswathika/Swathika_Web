@@ -43,7 +43,7 @@ export default function AdminLogin() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         toast({ title: "Welcome, Admin!", description: "You have signed in successfully." });
-        navigate("/admin/dashboard");
+        navigate("/admin/api-keys");
       }
     } catch (error: any) {
       toast({
