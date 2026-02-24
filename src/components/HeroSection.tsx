@@ -147,12 +147,11 @@ export default function HeroSection() {
               >
                 <button
                   onClick={() => {
-                    const el = document.getElementById("services");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    window.location.href = "/book-consultation";
                   }}
-                  className="group inline-flex items-center gap-3 px-7 py-3 rounded-full gradient-rose-gold font-sans-body font-semibold text-sm tracking-wide text-white hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="group inline-flex items-center gap-3 px-7 py-3 rounded-full gradient-rose-gold font-sans-body font-semibold text-sm tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
                 >
-                  Explore Treatments
+                  Book a Consultation
                   <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
                 </button>
               </motion.div>
@@ -178,13 +177,13 @@ export default function HeroSection() {
           <motion.a
             href={PHONE_HREF}
             className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
-            style={{ color: 'white' }}
+            style={{ color: 'hsl(var(--foreground))' }}
             aria-label="Call now"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.7, type: "spring" }}
           >
-            <Phone className="w-6 h-6 text-white" />
+            <Phone className="w-6 h-6 text-foreground" />
           </motion.a>
         ) : (
           <div className="flex items-center gap-2">
@@ -205,7 +204,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.7, type: "spring" }}
             >
-              <Phone className="w-6 h-6 text-white" />
+              <Phone className="w-6 h-6 text-foreground" />
             </motion.button>
           </div>
         )}

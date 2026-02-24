@@ -142,7 +142,7 @@ export default function About() {
 
                 <Link
                   to="/book-consultation"
-                  className="inline-block mt-2 px-8 py-3 rounded-full gradient-rose-gold text-white text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+                  className="inline-block mt-2 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
                 >
                   Book a Consultation
                 </Link>
@@ -397,7 +397,7 @@ export default function About() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Link
                   to="/book-consultation"
-                  className="px-8 py-3 rounded-full gradient-rose-gold text-white text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+                  className="px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
                 >
                   Book a Consultation
                 </Link>

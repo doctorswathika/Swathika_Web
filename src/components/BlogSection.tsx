@@ -79,7 +79,7 @@ export default function BlogSection() {
               onClick={() => setFilter(cat)}
               className={`px-4 py-1.5 rounded-full text-xs font-sans-body tracking-wide uppercase transition-all ${
                 filter === cat
-                  ? "gradient-rose-gold text-white font-medium"
+                  ? "gradient-rose-gold text-foreground font-medium"
                   : "bg-muted/50 text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -135,7 +135,7 @@ export default function BlogSection() {
         >
           <button
             onClick={() => navigate("/blog")}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-rose-gold text-white text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
           >
             View All Articles
             <ArrowRight className="w-4 h-4" />

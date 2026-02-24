@@ -159,7 +159,7 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
                 onClick={() => handleNavClick("/book-consultation", true)}
-                className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-white text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+                className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
               >
                 Book Consultation
               </motion.button>

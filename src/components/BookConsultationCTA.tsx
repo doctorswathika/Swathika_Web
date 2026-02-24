@@ -92,7 +92,7 @@ export default function BookConsultationCTA() {
           >
             <button
               onClick={() => navigate("/book-consultation")}
-              className="group flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-semibold font-sans-body text-base text-white hover:scale-105 transition-all duration-300 shadow-lg"
+              className="group flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-semibold font-sans-body text-base text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
             >
               <Calendar className="w-5 h-5" />
               Book a Consultation
