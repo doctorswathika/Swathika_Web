@@ -6,8 +6,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-const faqs = [
+const DEFAULT_FAQS = [
   {
     q: "What types of breast surgery does Dr. Swathika perform?",
     a: "Dr. Swathika offers a comprehensive range of breast procedures including mastectomy, breast conserving & oncoplastic surgery, sentinel node biopsy, axillary node surgery, breast reduction & augmentation, lipomodelling, implant reconstruction, and gynaecomastia correction.",
@@ -44,6 +45,20 @@ const faqs = [
 
 export default function FAQSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const { getText } = useSiteContent();
+
+  const faqJson = getText("faq_items", "");
+  let faqs = DEFAULT_FAQS;
+  try {
+    if (faqJson) {
+      const parsed = JSON.parse(faqJson);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        faqs = parsed;
+      }
+    }
+  } catch {
+    // fallback to defaults
+  }
 
   return (
     <section id="faq" className="py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>

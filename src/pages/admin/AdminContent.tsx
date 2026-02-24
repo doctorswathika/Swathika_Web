@@ -36,7 +36,7 @@ const RICH_TEXT_KEYS = [
 
 const TEXTAREA_KEYS = [
   "awareness_symptoms", "awareness_dos", "awareness_donts",
-  "hero_trust_indicators",
+  "hero_trust_indicators", "faq_items",
 ];
 
 const JSON_LIST_KEYS = ["_benefits", "_process", "_faqs"];
@@ -89,6 +89,7 @@ const UNIFIED_SECTIONS: UnifiedSection[] = [
     ],
   },
   { key: "testimonials", label: "⭐ Testimonials Section", imageSlots: [] },
+  { key: "faq", label: "❓ FAQ Section", imageSlots: [] },
   { key: "consultation", label: "📅 Consultation Modal", imageSlots: [] },
   {
     key: "footer", label: "📍 Footer Section",

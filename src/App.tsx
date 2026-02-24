@@ -59,7 +59,7 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Admin Portal */}
-            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="api-keys" element={<AdminApiKeys />} />
               <Route path="content" element={<AdminContent />} />

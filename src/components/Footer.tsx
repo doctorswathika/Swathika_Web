@@ -13,6 +13,7 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "Blog", href: "#blog" },
   { label: "Instagram", href: "#instagram" },
   { label: "YouTube", href: "#youtube" },
+  { label: "FAQ", href: "#faq" },
   { label: "Book Consultation", href: "/book-consultation", isRoute: true },
 ];
 
