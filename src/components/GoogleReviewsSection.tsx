@@ -1,52 +1,96 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Star } from "lucide-react";
+import { Star, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
-const googleReviews = [
+interface Review {
+  id: string;
+  author_name: string;
+  rating: number;
+  text: string;
+  profile_photo_url: string | null;
+  relative_time: string;
+}
+
+// Fallback reviews when DB is empty
+const fallbackReviews: Review[] = [
   {
-    name: "Kavitha S.",
-    date: "2 weeks ago",
+    id: "fallback-1",
+    author_name: "Kavitha S.",
+    rating: 5,
     text: "Dr. Swathika is an incredibly skilled and compassionate surgeon. She took the time to explain every detail of my treatment plan and made me feel completely at ease. The results of my surgery were beyond what I imagined. Highly recommend her to anyone seeking expert breast care.",
-    rating: 5,
+    profile_photo_url: null,
+    relative_time: "2 weeks ago",
   },
   {
-    name: "Meena R.",
-    date: "1 month ago",
+    id: "fallback-2",
+    author_name: "Meena R.",
+    rating: 5,
     text: "I was terrified when I was first diagnosed, but Dr. Swathika's calm and confident demeanour instantly reassured me. Her UK training truly shows in her surgical precision. I'm now fully recovered and feeling more confident than ever. Thank you, Doctor!",
-    rating: 5,
+    profile_photo_url: null,
+    relative_time: "1 month ago",
   },
   {
-    name: "Revathi P.",
-    date: "1 month ago",
+    id: "fallback-3",
+    author_name: "Revathi P.",
+    rating: 5,
     text: "From the very first consultation, Dr. Swathika treated me with respect and empathy. She answered all my questions patiently and the post-operative care was exceptional. I couldn't have asked for a better surgeon. Five stars is not enough!",
-    rating: 5,
+    profile_photo_url: null,
+    relative_time: "1 month ago",
   },
   {
-    name: "Sangeetha V.",
-    date: "2 months ago",
+    id: "fallback-4",
+    author_name: "Sangeetha V.",
+    rating: 5,
     text: "Dr. Swathika performed my breast reconstruction and the outcome is absolutely wonderful. She has a rare combination of technical excellence and genuine warmth. I felt supported throughout my entire journey. Truly grateful.",
-    rating: 5,
+    profile_photo_url: null,
+    relative_time: "2 months ago",
   },
   {
-    name: "Nithya J.",
-    date: "3 months ago",
-    text: "I travelled from Bangalore specifically to consult Dr. Swathika after hearing about her expertise. She exceeded every expectation — the surgery went smoothly, recovery was faster than expected, and the cosmetic result is beautiful. Absolutely world-class care.",
+    id: "fallback-5",
+    author_name: "Nithya J.",
     rating: 5,
+    text: "I travelled from Bangalore specifically to consult Dr. Swathika after hearing about her expertise. She exceeded every expectation — the surgery went smoothly, recovery was faster than expected, and the cosmetic result is beautiful. Absolutely world-class care.",
+    profile_photo_url: null,
+    relative_time: "3 months ago",
   },
 ];
 
 export default function GoogleReviewsSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [current, setCurrent] = useState(0);
+  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
+  const [loaded, setLoaded] = useState(false);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % googleReviews.length), []);
+  useEffect(() => {
+    async function fetchDisplayedReviews() {
+      const { data } = await supabase
+        .from("google_reviews")
+        .select("id, author_name, rating, text, profile_photo_url, relative_time")
+        .eq("is_displayed", true)
+        .order("review_time", { ascending: false });
+
+      if (data && data.length > 0) {
+        setReviews(data as Review[]);
+      }
+      setLoaded(true);
+    }
+    fetchDisplayedReviews();
+  }, []);
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % reviews.length), [reviews.length]);
 
   useEffect(() => {
     if (!isVisible) return;
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [isVisible, next]);
+
+  // Reset current if reviews change
+  useEffect(() => { setCurrent(0); }, [reviews.length]);
+
+  if (reviews.length === 0) return null;
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" ref={ref}>
@@ -89,17 +133,26 @@ export default function GoogleReviewsSection() {
               className="bg-background/10 backdrop-blur-md border border-background/20 rounded-2xl p-8 lg:p-12"
             >
               <div className="flex items-center gap-1.5 mb-5">
-                {[...Array(googleReviews[current].rating)].map((_, i) => (
+                {[...Array(reviews[current].rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               <p className="font-sans-body text-background/90 text-base lg:text-lg leading-relaxed mb-6">
-                "{googleReviews[current].text}"
+                "{reviews[current].text}"
               </p>
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-sans-body text-sm font-medium text-background">{googleReviews[current].name}</p>
-                  <p className="font-sans-body text-xs text-background/50">{googleReviews[current].date}</p>
+                <div className="flex items-center gap-3">
+                  {reviews[current].profile_photo_url && (
+                    <img
+                      src={reviews[current].profile_photo_url!}
+                      alt={reviews[current].author_name}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-sans-body text-sm font-medium text-background">{reviews[current].author_name}</p>
+                    <p className="font-sans-body text-xs text-background/50">{reviews[current].relative_time}</p>
+                  </div>
                 </div>
                 <svg viewBox="0 0 24 24" className="w-5 h-5 opacity-40" aria-hidden="true">
                   <path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
@@ -113,7 +166,7 @@ export default function GoogleReviewsSection() {
 
           {/* Dots */}
           <div className="flex justify-center gap-2 mt-8">
-            {googleReviews.map((_, i) => (
+            {reviews.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
