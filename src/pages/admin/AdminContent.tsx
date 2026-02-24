@@ -103,14 +103,30 @@ const UNIFIED_SECTIONS: UnifiedSection[] = [
       { id: "blog-default-cover", label: "Default Blog Cover", description: "Default cover image when a blog post has no image" },
     ],
   },
-  { key: "svc_mastectomy", label: "🔬 Service — Mastectomy", isServicePage: true, imageSlots: [] },
-  { key: "svc_bco", label: "🔬 Service — Breast Conserving & Oncoplastic", isServicePage: true, imageSlots: [] },
-  { key: "svc_sentinel", label: "🔬 Service — Sentinel Node Biopsy", isServicePage: true, imageSlots: [] },
-  { key: "svc_axillary", label: "🔬 Service — Axillary Node Surgery", isServicePage: true, imageSlots: [] },
-  { key: "svc_reduction", label: "🔬 Service — Breast Reduction & Augmentation", isServicePage: true, imageSlots: [] },
-  { key: "svc_lipo", label: "🔬 Service — Lipomodelling", isServicePage: true, imageSlots: [] },
-  { key: "svc_implant", label: "🔬 Service — Implant Reconstruction", isServicePage: true, imageSlots: [] },
-  { key: "svc_gynae", label: "🔬 Service — Gynaecomastia Correction", isServicePage: true, imageSlots: [] },
+  { key: "svc_mastectomy", label: "🔬 Service — Mastectomy", isServicePage: true, imageSlots: [
+    { id: "svc-cover-mastectomy", label: "Cover Image", description: "Hero/cover image for the Mastectomy service page" },
+  ] },
+  { key: "svc_bco", label: "🔬 Service — Breast Conserving & Oncoplastic", isServicePage: true, imageSlots: [
+    { id: "svc-cover-bco", label: "Cover Image", description: "Hero/cover image for the BCO service page" },
+  ] },
+  { key: "svc_sentinel", label: "🔬 Service — Sentinel Node Biopsy", isServicePage: true, imageSlots: [
+    { id: "svc-cover-sentinel", label: "Cover Image", description: "Hero/cover image for the Sentinel Node service page" },
+  ] },
+  { key: "svc_axillary", label: "🔬 Service — Axillary Node Surgery", isServicePage: true, imageSlots: [
+    { id: "svc-cover-axillary", label: "Cover Image", description: "Hero/cover image for the Axillary Node service page" },
+  ] },
+  { key: "svc_reduction", label: "🔬 Service — Breast Reduction & Augmentation", isServicePage: true, imageSlots: [
+    { id: "svc-cover-reduction", label: "Cover Image", description: "Hero/cover image for the Reduction & Augmentation service page" },
+  ] },
+  { key: "svc_lipo", label: "🔬 Service — Lipomodelling", isServicePage: true, imageSlots: [
+    { id: "svc-cover-lipo", label: "Cover Image", description: "Hero/cover image for the Lipomodelling service page" },
+  ] },
+  { key: "svc_implant", label: "🔬 Service — Implant Reconstruction", isServicePage: true, imageSlots: [
+    { id: "svc-cover-implant", label: "Cover Image", description: "Hero/cover image for the Implant Reconstruction service page" },
+  ] },
+  { key: "svc_gynae", label: "🔬 Service — Gynaecomastia Correction", isServicePage: true, imageSlots: [
+    { id: "svc-cover-gynae", label: "Cover Image", description: "Hero/cover image for the Gynaecomastia service page" },
+  ] },
 ];
 
 export default function AdminContent() {
@@ -282,12 +298,56 @@ export default function AdminContent() {
 
               {isOpen && (
                 <div className="px-5 pb-5 border-t border-border pt-5 space-y-6">
-                  {/* ── Text Fields ── */}
+
+                  {/* ── Cover Image (for service pages, show at top) ── */}
+                  {section.isServicePage && section.imageSlots.length > 0 && section.imageSlots.map((slot) => {
+                    const imageUrl = images[slot.id];
+                    const isUploadingSlot = uploading === slot.id;
+                    return (
+                      <div key={slot.id} className="space-y-2">
+                        <Label className="font-sans-body font-semibold text-foreground text-sm">{slot.label}</Label>
+                        <p className="text-xs text-muted-foreground font-sans-body">{slot.description}</p>
+                        <div className="flex items-start gap-4">
+                          <div className="w-40 h-28 rounded-xl border-2 border-dashed border-border bg-muted/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                            {imageUrl ? (
+                              <img src={imageUrl} alt={slot.label} className="w-full h-full object-cover rounded-xl" />
+                            ) : (
+                              <ImageIcon className="w-8 h-8 text-muted-foreground/30" />
+                            )}
+                          </div>
+                          <div className="flex flex-col gap-2">
+                            <label className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-colors text-xs font-sans-body font-medium ${
+                              isUploadingSlot ? "bg-muted text-muted-foreground" : "bg-primary text-primary-foreground hover:bg-primary/90"
+                            }`}>
+                              {isUploadingSlot ? <Loader2 className="w-3 h-3 animate-spin" /> : <Upload className="w-3 h-3" />}
+                              {isUploadingSlot ? "Uploading..." : imageUrl ? "Replace" : "Upload"}
+                              <input type="file" accept="image/*" className="hidden" disabled={isUploadingSlot}
+                                onChange={(e) => { const file = e.target.files?.[0]; if (file) handleUpload(slot.id, file); e.target.value = ""; }} />
+                            </label>
+                            {imageUrl && (
+                              <div className="flex gap-2">
+                                <Button size="sm" variant="outline" className="h-8 text-xs gap-1" onClick={() => copyUrl(imageUrl)}>
+                                  <Copy className="w-3 h-3" /> Copy URL
+                                </Button>
+                                <Button size="sm" variant="outline" className="h-8 text-xs gap-1 text-destructive hover:text-destructive" onClick={() => handleRemove(slot.id)}>
+                                  <Trash2 className="w-3 h-3" /> Remove
+                                </Button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {/* ── Non-service section header ── */}
                   {!section.isServicePage && textItems.length > 0 && (
                     <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
                       <Type className="w-4 h-4" /> Text & Copy
                     </h4>
                   )}
+
+                  {/* ── Text Fields (no separating borders for service pages) ── */}
                   {textItems.map((item) => {
                     const editedEntry = edited[item.section_key] ?? {};
                     const currentContent = editedEntry.content ?? item.content;
@@ -297,7 +357,7 @@ export default function AdminContent() {
                     const isTextarea = TEXTAREA_KEYS.includes(item.section_key);
 
                     return (
-                      <div key={item.id} className="space-y-3 pb-5 border-b border-border last:border-0 last:pb-0">
+                      <div key={item.id} className={`space-y-3 ${section.isServicePage ? "" : "pb-5 border-b border-border last:border-0 last:pb-0"}`}>
                         <div className="flex items-center justify-between flex-wrap gap-2">
                           <Label className="font-sans-body font-semibold text-foreground text-sm">
                             {item.section_label.split(" — ").pop()}
@@ -319,25 +379,14 @@ export default function AdminContent() {
                         </div>
 
                         {isRichText ? (
-                          <RichTextEditor
-                            content={currentContent}
-                            onChange={(html) => handleChange(item.section_key, "content", html)}
-                          />
+                          <RichTextEditor content={currentContent} onChange={(html) => handleChange(item.section_key, "content", html)} />
                         ) : isTextarea ? (
-                          <Textarea
-                            value={currentContent}
-                            onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
-                            rows={Math.max(3, currentContent.split("\n").length + 1)}
-                            className="font-sans-body text-sm"
-                            style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
-                          />
+                          <Textarea value={currentContent} onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                            rows={Math.max(3, currentContent.split("\n").length + 1)} className="font-sans-body text-sm"
+                            style={{ textAlign: currentAlignment as "left" | "center" | "right" }} />
                         ) : (
-                          <Input
-                            value={currentContent}
-                            onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
-                            className="font-sans-body text-sm"
-                            style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
-                          />
+                          <Input value={currentContent} onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                            className="font-sans-body text-sm" style={{ textAlign: currentAlignment as "left" | "center" | "right" }} />
                         )}
 
                         {isDirty && <p className="text-xs text-primary font-sans-body">● Unsaved changes</p>}
@@ -347,17 +396,11 @@ export default function AdminContent() {
 
                   {/* ── Structured Lists (Benefits/Process/FAQs) ── */}
                   {jsonItems.map((item) => (
-                    <div key={item.id} className="pb-5 border-b border-border last:border-0 last:pb-0">
-                      <StructuredListEditor
-                        item={item}
-                        type={getJsonType(item.section_key)}
-                        onSaved={fetchContent}
-                      />
-                    </div>
+                    <StructuredListEditor key={item.id} item={item} type={getJsonType(item.section_key)} onSaved={fetchContent} />
                   ))}
 
-                  {/* ── Image Slots ── */}
-                  {section.imageSlots.length > 0 && (
+                  {/* ── Image Slots (non-service sections) ── */}
+                  {!section.isServicePage && section.imageSlots.length > 0 && (
                     <div className="space-y-6">
                       <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
                         <ImageIcon className="w-4 h-4" /> Images & Media
@@ -365,14 +408,12 @@ export default function AdminContent() {
                       {section.imageSlots.map((slot) => {
                         const imageUrl = images[slot.id];
                         const isUploadingSlot = uploading === slot.id;
-
                         return (
                           <div key={slot.id} className="space-y-3 pb-5 border-b border-border last:border-0 last:pb-0">
                             <div>
                               <Label className="font-sans-body font-medium text-foreground text-sm">{slot.label}</Label>
                               <p className="text-xs text-muted-foreground font-sans-body mt-0.5">{slot.description}</p>
                             </div>
-
                             <div className="flex items-start gap-4">
                               <div className="w-32 h-24 rounded-xl border-2 border-dashed border-border bg-muted/20 flex items-center justify-center overflow-hidden flex-shrink-0">
                                 {imageUrl ? (
@@ -381,26 +422,15 @@ export default function AdminContent() {
                                   <ImageIcon className="w-8 h-8 text-muted-foreground/30" />
                                 )}
                               </div>
-
                               <div className="flex flex-col gap-2">
                                 <label className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-colors text-xs font-sans-body font-medium ${
                                   isUploadingSlot ? "bg-muted text-muted-foreground" : "bg-primary text-primary-foreground hover:bg-primary/90"
                                 }`}>
                                   {isUploadingSlot ? <Loader2 className="w-3 h-3 animate-spin" /> : <Upload className="w-3 h-3" />}
                                   {isUploadingSlot ? "Uploading..." : imageUrl ? "Replace" : "Upload"}
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    disabled={isUploadingSlot}
-                                    onChange={(e) => {
-                                      const file = e.target.files?.[0];
-                                      if (file) handleUpload(slot.id, file);
-                                      e.target.value = "";
-                                    }}
-                                  />
+                                  <input type="file" accept="image/*" className="hidden" disabled={isUploadingSlot}
+                                    onChange={(e) => { const file = e.target.files?.[0]; if (file) handleUpload(slot.id, file); e.target.value = ""; }} />
                                 </label>
-
                                 {imageUrl && (
                                   <div className="flex gap-2">
                                     <Button size="sm" variant="outline" className="h-8 text-xs gap-1" onClick={() => copyUrl(imageUrl)}>
