@@ -132,7 +132,7 @@ export default function HeroSection() {
                   {trustItems.map((item) => (
                     <span key={item} className="flex items-center gap-1.5 whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block flex-shrink-0" />
-                      {item}
+                      <span className="text-[hsl(350_50%_60%)]">{item}</span>
                     </span>
                   ))}
                 </div>

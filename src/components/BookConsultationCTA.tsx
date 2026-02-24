@@ -68,7 +68,7 @@ export default function BookConsultationCTA() {
             {["Confidential Consultation", "Personalised Care Plan", "UK-Trained Specialist", "700+ Successful Surgeries"].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block" />
-                {item}
+                <span className="text-[hsl(350_50%_60%)]">{item}</span>
               </span>
             ))}
           </motion.div>
