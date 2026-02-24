@@ -82,6 +82,30 @@ export default function ServicePageLayout({
     ? overview.map((p, i) => get(`overview_${i + 1}`, p))
     : overview;
 
+  const displayBenefits = (() => {
+    if (!contentPrefix) return benefits;
+    const key = `${contentPrefix}_benefits`;
+    const raw = dbContent[key]?.content;
+    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
+    return benefits;
+  })();
+
+  const displayProcess = (() => {
+    if (!contentPrefix) return process;
+    const key = `${contentPrefix}_process`;
+    const raw = dbContent[key]?.content;
+    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
+    return process;
+  })();
+
+  const displayFaqs = (() => {
+    if (!contentPrefix) return faqs;
+    const key = `${contentPrefix}_faqs`;
+    const raw = dbContent[key]?.content;
+    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
+    return faqs;
+  })();
+
   return (
     <>
       <Helmet>
@@ -205,7 +229,7 @@ export default function ServicePageLayout({
                 Why Choose This <span className="text-gradient-rose italic">Procedure</span>?
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
-                {benefits.map((benefit, i) => (
+                {displayBenefits.map((benefit, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
@@ -237,7 +261,7 @@ export default function ServicePageLayout({
                 Your <span className="text-gradient-rose italic">Journey</span>
               </h2>
               <div className="space-y-8">
-                {process.map((step, i) => (
+                {displayProcess.map((step, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -300,7 +324,7 @@ export default function ServicePageLayout({
                 Frequently Asked <span className="text-gradient-rose italic">Questions</span>
               </h2>
               <div className="space-y-4">
-                {faqs.map((faq, i) => (
+                {displayFaqs.map((faq, i) => (
                   <motion.details
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
