@@ -130,6 +130,48 @@ export type Database = {
         }
         Relationships: []
       }
+      google_reviews: {
+        Row: {
+          author_name: string
+          created_at: string
+          id: string
+          is_displayed: boolean
+          profile_photo_url: string | null
+          rating: number
+          relative_time: string | null
+          review_id: string | null
+          review_time: number | null
+          text: string
+          updated_at: string
+        }
+        Insert: {
+          author_name: string
+          created_at?: string
+          id?: string
+          is_displayed?: boolean
+          profile_photo_url?: string | null
+          rating?: number
+          relative_time?: string | null
+          review_id?: string | null
+          review_time?: number | null
+          text?: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string
+          created_at?: string
+          id?: string
+          is_displayed?: boolean
+          profile_photo_url?: string | null
+          rating?: number
+          relative_time?: string | null
+          review_id?: string | null
+          review_time?: number | null
+          text?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       site_content: {
         Row: {
           alignment: string

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Key, Youtube, Instagram, Save, Loader2, Eye, EyeOff, CheckCircle, XCircle } from "lucide-react";
+import { Key, Youtube, Instagram, MapPin, Save, Loader2, Eye, EyeOff, CheckCircle, XCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,34 @@ const API_KEYS: ApiKeyConfig[] = [
       { text: "Create a Business App and add Instagram Graph API" },
       { text: "Connect your Instagram account and generate a long-lived token" },
       { text: "Paste the token below and save" },
+    ],
+  },
+  {
+    key: "GOOGLE_PLACES_API_KEY",
+    label: "Google Places API",
+    icon: MapPin,
+    iconClass: "text-green-600",
+    bgClass: "bg-green-600/10",
+    placeholder: "AIzaSy...",
+    helpSteps: [
+      { text: "Go to", link: { url: "https://console.cloud.google.com/", label: "Google Cloud Console" } },
+      { text: "Enable the Places API (or Places API New)" },
+      { text: "Go to Credentials → Create API Key" },
+      { text: "Paste the key below and save" },
+    ],
+  },
+  {
+    key: "GOOGLE_PLACE_ID",
+    label: "Google Place ID",
+    icon: MapPin,
+    iconClass: "text-green-600",
+    bgClass: "bg-green-600/10",
+    placeholder: "ChIJ...",
+    helpSteps: [
+      { text: "Go to", link: { url: "https://developers.google.com/maps/documentation/places/web-service/place-id", label: "Place ID Finder" } },
+      { text: "Search for your clinic / business name" },
+      { text: "Copy the Place ID shown in the results" },
+      { text: "Paste it below and save" },
     ],
   },
 ];
