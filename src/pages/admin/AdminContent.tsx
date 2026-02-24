@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import RichTextEditor from "@/components/RichTextEditor";
+import StructuredListEditor from "@/components/admin/StructuredListEditor";
 
 interface SiteContent {
   id: string;
@@ -37,6 +38,8 @@ const TEXTAREA_KEYS = [
   "awareness_symptoms", "awareness_dos", "awareness_donts",
   "hero_trust_indicators",
 ];
+
+const JSON_LIST_KEYS = ["_benefits", "_process", "_faqs"];
 
 interface ImageSlot {
   id: string;
@@ -210,6 +213,13 @@ export default function AdminContent() {
 
   if (loading) return <p className="text-muted-foreground font-sans-body">Loading content...</p>;
 
+  const isJsonKey = (key: string) => JSON_LIST_KEYS.some((suffix) => key.endsWith(suffix));
+  const getJsonType = (key: string): "benefits" | "process" | "faqs" => {
+    if (key.endsWith("_benefits")) return "benefits";
+    if (key.endsWith("_process")) return "process";
+    return "faqs";
+  };
+
   const getGroupItems = (groupKey: string) =>
     items.filter((item) => item.section_key.startsWith(groupKey + "_") || item.section_key === groupKey);
 
@@ -224,8 +234,10 @@ export default function AdminContent() {
 
       <div className="space-y-4">
         {UNIFIED_SECTIONS.map((section) => {
-          const textItems = getGroupItems(section.key);
-          const hasContent = textItems.length > 0 || section.imageSlots.length > 0;
+          const allItems = getGroupItems(section.key);
+          const textItems = allItems.filter((item) => !isJsonKey(item.section_key));
+          const jsonItems = allItems.filter((item) => isJsonKey(item.section_key));
+          const hasContent = allItems.length > 0 || section.imageSlots.length > 0;
           if (!hasContent) return null;
 
           const isOpen = openSection === section.key;
@@ -332,6 +344,24 @@ export default function AdminContent() {
                           </div>
                         );
                       })}
+                    </div>
+                  )}
+
+                  {/* ── Structured Lists (Benefits/Process/FAQs) ── */}
+                  {jsonItems.length > 0 && (
+                    <div className="space-y-6">
+                      <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
+                        📋 Structured Content
+                      </h4>
+                      {jsonItems.map((item) => (
+                        <div key={item.id} className="pb-5 border-b border-border last:border-0 last:pb-0">
+                          <StructuredListEditor
+                            item={item}
+                            type={getJsonType(item.section_key)}
+                            onSaved={fetchContent}
+                          />
+                        </div>
+                      ))}
                     </div>
                   )}
 
