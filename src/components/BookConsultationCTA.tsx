@@ -49,16 +49,6 @@ export default function BookConsultationCTA() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="space-y-8"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--rose-gold)/0.4)] bg-[hsl(var(--rose-gold)/0.1)] text-xs tracking-widest uppercase font-semibold text-[hsl(var(--rose-gold))]"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--rose-gold))] animate-pulse" />
-            Now Accepting New Patients
-          </motion.div>
 
           {/* Headline */}
           <div className="space-y-4">
