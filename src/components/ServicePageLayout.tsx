@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ServicePageLayoutProps {
@@ -48,6 +48,7 @@ export default function ServicePageLayout({
   proofOfWork,
   contentPrefix,
 }: ServicePageLayoutProps) {
+  const navigate = useNavigate();
   const [dbContent, setDbContent] = useState<Record<string, DbContent>>({});
 
   useEffect(() => {
@@ -121,12 +122,17 @@ export default function ServicePageLayout({
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blush/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="max-w-5xl mx-auto px-6">
-            <Link
-              to="/#services"
+            <button
+              onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }}
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-sans-body mb-8"
             >
               <ArrowLeft className="w-4 h-4" /> Back to Services
-            </Link>
+            </button>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
