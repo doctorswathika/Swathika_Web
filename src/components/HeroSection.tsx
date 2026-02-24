@@ -143,23 +143,13 @@ export default function HeroSection() {
                 className={`space-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
               >
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                  {trustItems.slice(0, 3).map((item) => (
-                    <span key={item} className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                  {trustItems.map((item) => (
+                    <span key={item} className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block flex-shrink-0" />
                       {item}
                     </span>
                   ))}
                 </div>
-                {trustItems.length > 3 && (
-                  <div className="flex justify-center">
-                    {trustItems.slice(3).map((item) => (
-                      <span key={item} className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                )}
               </motion.div>
             </div>
           </div>
