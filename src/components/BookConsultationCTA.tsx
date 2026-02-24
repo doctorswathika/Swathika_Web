@@ -9,7 +9,7 @@ export default function BookConsultationCTA() {
   const navigate = useNavigate();
   const { getText, getAlignClass } = useSiteContent();
 
-  const ctaTitle = getText("consultation_title", "Your Health Deserves Expert Hands.");
+  const ctaTitle = getText("consultation_title", 'Your Health Deserves<br/><em class="text-gradient-rose" style="font-style:italic">Expert Hands.</em>');
   const ctaDesc = getText("consultation_description", "Take the first step towards expert care.");
 
   return (
