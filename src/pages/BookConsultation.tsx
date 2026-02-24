@@ -222,7 +222,7 @@ export default function BookConsultation() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full gradient-rose-gold text-white font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60"
               >
                 {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 {submitting ? "Sending..." : "Send Request"}
