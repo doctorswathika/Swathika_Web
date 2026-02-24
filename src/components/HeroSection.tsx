@@ -14,7 +14,7 @@ export default function HeroSection() {
   const [showNumber, setShowNumber] = useState(false);
   const { getText, getAlignClass } = useSiteContent();
 
-  const headline = getText("hero_headline", 'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>');
+  const headline = getText("hero_headline", 'Your Health Deserves<br/><em class="text-gradient-rose" style="font-style:italic">Expert</em> Hands.');
   const description = getText("hero_description", "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.");
   const trustRaw = getText("hero_trust_indicators", "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics");
   const trustItems = trustRaw.split(",").map((s) => s.trim()).filter(Boolean);
