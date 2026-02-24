@@ -2,9 +2,20 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 export default function AboutSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const { getText, getAlignClass } = useSiteContent();
+
+  const greeting = getText("about_greeting", "Hi, I'm");
+  const name = getText("about_name", "DR. SWATHIKA");
+  const tagline = getText("about_tagline", "I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon and Medical Educator.");
+  const p1 = getText("about_paragraph_1", "With over 700 successful procedures and training from both India and the UK, I've seen first-hand the fear, frustration and uncertainty that my patients go through when facing breast health concerns.");
+  const p2 = getText("about_paragraph_2", "As a breast specialist with global experience, I understand finding the right information, processing a diagnosis, understanding treatment options and getting accurate, practical advice can be really overwhelming.");
+  const subheading = getText("about_subheading", "But I'm here to help.");
+  const p3 = getText("about_paragraph_3", "Many people think that as a Breast Specialist Surgeon, I just do surgery. But that's far from the truth.");
+  const p4 = getText("about_paragraph_4", "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as much as your health.");
 
   return (
     <section id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
@@ -21,38 +32,30 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div>
-              <h2 className="font-serif-display text-2xl lg:text-3xl italic text-muted-foreground font-normal">
-                Hi, I'm
-              </h2>
-              <h2 className="font-serif-display text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                DR. SWATHIKA
-              </h2>
+              <h2 className={`font-serif-display text-2xl lg:text-3xl italic text-muted-foreground font-normal ${getAlignClass("about_greeting")}`}
+                dangerouslySetInnerHTML={{ __html: greeting }} />
+              <h2 className={`font-serif-display text-4xl lg:text-5xl font-bold text-foreground leading-tight ${getAlignClass("about_name")}`}
+                dangerouslySetInnerHTML={{ __html: name }} />
             </div>
 
-            <p className="font-sans-body text-base lg:text-lg font-semibold text-foreground">
-              I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon and Medical Educator.
-            </p>
+            <p className={`font-sans-body text-base lg:text-lg font-semibold text-foreground ${getAlignClass("about_tagline")}`}
+              dangerouslySetInnerHTML={{ __html: tagline }} />
 
             <div className="space-y-5">
-              <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-                With over 700 successful procedures and training from both India and the UK, I've seen first-hand the fear, frustration and uncertainty that my patients go through when facing breast health concerns.
-              </p>
-              <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-                As a breast specialist with global experience, I understand finding the right information, processing a diagnosis, understanding treatment options and getting accurate, practical advice can be really overwhelming.
-              </p>
+              <p className={`text-muted-foreground font-sans-body leading-relaxed text-base ${getAlignClass("about_paragraph_1")}`}
+                dangerouslySetInnerHTML={{ __html: p1 }} />
+              <p className={`text-muted-foreground font-sans-body leading-relaxed text-base ${getAlignClass("about_paragraph_2")}`}
+                dangerouslySetInnerHTML={{ __html: p2 }} />
             </div>
 
-            <h3 className="font-serif-display text-2xl lg:text-3xl font-bold italic text-foreground">
-              But I'm here to help.
-            </h3>
+            <h3 className={`font-serif-display text-2xl lg:text-3xl font-bold italic text-foreground ${getAlignClass("about_subheading")}`}
+              dangerouslySetInnerHTML={{ __html: subheading }} />
 
             <div className="space-y-5">
-              <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-                Many people think that as a Breast Specialist Surgeon, I just do surgery. But that's far from the truth.
-              </p>
-              <p className="text-muted-foreground font-sans-body leading-relaxed text-base">
-                My approach combines oncology precision with aesthetic sensibility — because your confidence matters as much as your health.
-              </p>
+              <p className={`text-muted-foreground font-sans-body leading-relaxed text-base ${getAlignClass("about_paragraph_3")}`}
+                dangerouslySetInnerHTML={{ __html: p3 }} />
+              <p className={`text-muted-foreground font-sans-body leading-relaxed text-base ${getAlignClass("about_paragraph_4")}`}
+                dangerouslySetInnerHTML={{ __html: p4 }} />
             </div>
 
             <Link

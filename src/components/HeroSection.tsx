@@ -3,6 +3,7 @@ import { Phone, MessageCircle, ArrowDown } from "lucide-react";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const WHATSAPP_NUMBER = "919080328082";
 const PHONE_NUMBER = "+91 90803 28082";
@@ -11,13 +12,19 @@ const PHONE_HREF = "tel:+919080328082";
 export default function HeroSection() {
   const isMobile = useIsMobile();
   const [showNumber, setShowNumber] = useState(false);
+  const { getText, getAlignClass } = useSiteContent();
+
+  const headline = getText("hero_headline", "Your Breast Health, in Expert Hands");
+  const description = getText("hero_description", "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.");
+  const trustRaw = getText("hero_trust_indicators", "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics");
+  const trustItems = trustRaw.split(",").map((s) => s.trim()).filter(Boolean);
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Warm blush base background */}
       <div className="absolute inset-0 bg-[hsl(340_55%_91%)]" />
 
-      {/* Bokeh floating orbs — soft pink circles with bright centres */}
+      {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
           { size: 130, x: 50, y: 2,   dur: 10, delay: 0   },
@@ -66,7 +73,7 @@ export default function HeroSection() {
 
       {/* Main content layout */}
       <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row pt-16">
-        {/* Doctor portrait — flush left, full height */}
+        {/* Doctor portrait */}
         <motion.div
           initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 20 : 0 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
@@ -91,35 +98,27 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        {/* Text content — right side, vertically centered */}
+        {/* Text content */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="flex-1 flex items-center justify-center px-6 lg:px-12 py-12 lg:py-0 self-center"
         >
-          <div className="text-center space-y-8 max-w-xl">
+          <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">
-              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground">
-                Your Breast Health,{" "}
-                <motion.span
-                  className="text-[hsl(270,60%,50%)] italic block"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                >
-                  in Expert Hands
-                </motion.span>
-              </h1>
+              <h1
+                className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground ${getAlignClass("hero_headline")}`}
+                dangerouslySetInnerHTML={{ __html: headline }}
+              />
 
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed"
-              >
-                UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.
-              </motion.p>
+                className={`text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("hero_description")}`}
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
 
               {/* Scroll indicator */}
               <motion.div
@@ -141,28 +140,26 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className="space-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground"
+                className={`space-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
               >
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                    MCh (UK) Trained
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                    GMC Registered
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                    700+ Surgeries
-                  </span>
+                  {trustItems.slice(0, 3).map((item) => (
+                    <span key={item} className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                      {item}
+                    </span>
+                  ))}
                 </div>
-                <div className="flex justify-center">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
-                    Oncology + Aesthetics
-                  </span>
-                </div>
+                {trustItems.length > 3 && (
+                  <div className="flex justify-center">
+                    {trustItems.slice(3).map((item) => (
+                      <span key={item} className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full gradient-rose-gold inline-block" />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             </div>
           </div>

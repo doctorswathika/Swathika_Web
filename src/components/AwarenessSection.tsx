@@ -1,33 +1,7 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Heart, Search, Sparkles, ShieldCheck, CheckCircle, XCircle, AlertTriangle, Lightbulb } from "lucide-react";
-
-const symptoms = [
-  "A new lump or thickening in the breast or underarm",
-  "Change in breast size, shape, or symmetry",
-  "Skin dimpling, puckering, or redness on the breast",
-  "Nipple discharge (especially if bloody), retraction, or inversion",
-  "Persistent breast pain not linked to your menstrual cycle",
-  "Swelling or warmth in part of the breast",
-];
-
-const dos = [
-  "Perform monthly breast self-examinations after age 20",
-  "Get annual clinical breast exams from age 30+",
-  "Schedule regular mammograms as recommended by your doctor",
-  "Maintain a healthy weight and stay physically active",
-  "Discuss your family history with your surgeon",
-  "Seek a second opinion — it's your right and it matters",
-];
-
-const donts = [
-  "Don't ignore a lump — even if it's painless",
-  "Don't delay a doctor's visit out of fear",
-  "Don't rely on self-diagnosis from the internet",
-  "Don't assume young women can't get breast cancer",
-  "Don't skip follow-up appointments after treatment",
-  "Don't let stigma prevent you from seeking care",
-];
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 const motivation = [
   {
@@ -52,8 +26,47 @@ const motivation = [
   },
 ];
 
+const defaultSymptoms = [
+  "A new lump or thickening in the breast or underarm",
+  "Change in breast size, shape, or symmetry",
+  "Skin dimpling, puckering, or redness on the breast",
+  "Nipple discharge (especially if bloody), retraction, or inversion",
+  "Persistent breast pain not linked to your menstrual cycle",
+  "Swelling or warmth in part of the breast",
+];
+
+const defaultDos = [
+  "Perform monthly breast self-examinations after age 20",
+  "Get annual clinical breast exams from age 30+",
+  "Schedule regular mammograms as recommended by your doctor",
+  "Maintain a healthy weight and stay physically active",
+  "Discuss your family history with your surgeon",
+  "Seek a second opinion — it's your right and it matters",
+];
+
+const defaultDonts = [
+  "Don't ignore a lump — even if it's painless",
+  "Don't delay a doctor's visit out of fear",
+  "Don't rely on self-diagnosis from the internet",
+  "Don't assume young women can't get breast cancer",
+  "Don't skip follow-up appointments after treatment",
+  "Don't let stigma prevent you from seeking care",
+];
+
 export default function AwarenessSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const { getText, getAlignClass } = useSiteContent();
+
+  const subtitle = getText("awareness_subtitle", "Breast Health Awareness");
+  const title = getText("awareness_title", "What Every Woman <span class=\"text-gradient-rose italic\">Should Know</span>");
+  const description = getText("awareness_description", "Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.");
+  
+  const symptomsRaw = getText("awareness_symptoms", "");
+  const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
+  const dosRaw = getText("awareness_dos", "");
+  const dos = dosRaw ? dosRaw.split("\n").filter(Boolean) : defaultDos;
+  const dontsRaw = getText("awareness_donts", "");
+  const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
   return (
     <section id="awareness" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
@@ -67,16 +80,15 @@ export default function AwarenessSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16 max-w-2xl mx-auto"
+          className={`mb-16 max-w-2xl mx-auto ${getAlignClass("awareness_title")}`}
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Breast Health Awareness</p>
-          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            What Every Woman <span className="text-gradient-rose italic">Should Know</span>
-          </h2>
+          <p className={`text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3 ${getAlignClass("awareness_subtitle")}`}
+            dangerouslySetInnerHTML={{ __html: subtitle }} />
+          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground mb-6"
+            dangerouslySetInnerHTML={{ __html: title }} />
           <div className="divider-rose w-24 mx-auto mb-6" />
-          <p className="text-muted-foreground font-sans-body leading-relaxed">
-            Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.
-          </p>
+          <p className={`text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("awareness_description")}`}
+            dangerouslySetInnerHTML={{ __html: description }} />
         </motion.div>
 
         {/* Motivation cards */}
