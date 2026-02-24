@@ -61,6 +61,7 @@ const App = () => (
             {/* Admin Portal */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminApiKeys />} />
               <Route path="api-keys" element={<AdminApiKeys />} />
               <Route path="content" element={<AdminContent />} />
               <Route path="blog" element={<AdminBlog />} />
