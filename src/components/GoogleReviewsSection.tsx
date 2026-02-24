@@ -13,54 +13,12 @@ interface Review {
   relative_time: string;
 }
 
-// Fallback reviews when DB is empty
-const fallbackReviews: Review[] = [
-  {
-    id: "fallback-1",
-    author_name: "Kavitha S.",
-    rating: 5,
-    text: "Dr. Swathika is an incredibly skilled and compassionate surgeon. She took the time to explain every detail of my treatment plan and made me feel completely at ease. The results of my surgery were beyond what I imagined. Highly recommend her to anyone seeking expert breast care.",
-    profile_photo_url: null,
-    relative_time: "2 weeks ago",
-  },
-  {
-    id: "fallback-2",
-    author_name: "Meena R.",
-    rating: 5,
-    text: "I was terrified when I was first diagnosed, but Dr. Swathika's calm and confident demeanour instantly reassured me. Her UK training truly shows in her surgical precision. I'm now fully recovered and feeling more confident than ever. Thank you, Doctor!",
-    profile_photo_url: null,
-    relative_time: "1 month ago",
-  },
-  {
-    id: "fallback-3",
-    author_name: "Revathi P.",
-    rating: 5,
-    text: "From the very first consultation, Dr. Swathika treated me with respect and empathy. She answered all my questions patiently and the post-operative care was exceptional. I couldn't have asked for a better surgeon. Five stars is not enough!",
-    profile_photo_url: null,
-    relative_time: "1 month ago",
-  },
-  {
-    id: "fallback-4",
-    author_name: "Sangeetha V.",
-    rating: 5,
-    text: "Dr. Swathika performed my breast reconstruction and the outcome is absolutely wonderful. She has a rare combination of technical excellence and genuine warmth. I felt supported throughout my entire journey. Truly grateful.",
-    profile_photo_url: null,
-    relative_time: "2 months ago",
-  },
-  {
-    id: "fallback-5",
-    author_name: "Nithya J.",
-    rating: 5,
-    text: "I travelled from Bangalore specifically to consult Dr. Swathika after hearing about her expertise. She exceeded every expectation — the surgery went smoothly, recovery was faster than expected, and the cosmetic result is beautiful. Absolutely world-class care.",
-    profile_photo_url: null,
-    relative_time: "3 months ago",
-  },
-];
+// No fallback reviews — only real Google reviews from DB
 
 export default function GoogleReviewsSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [current, setCurrent] = useState(0);
-  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
