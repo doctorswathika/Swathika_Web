@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, ArrowDown, Calendar, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Phone, MessageCircle, ArrowDown } from "lucide-react";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
@@ -13,7 +12,6 @@ const PHONE_HREF = "tel:+919080328082";
 export default function HeroSection() {
   const isMobile = useIsMobile();
   const [showNumber, setShowNumber] = useState(false);
-  const navigate = useNavigate();
   const { getText, getAlignClass } = useSiteContent();
 
   const headline = getText("hero_headline", "Your Breast Health, in Expert Hands");
@@ -121,23 +119,6 @@ export default function HeroSection() {
                 className={`text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("hero_description")}`}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
-
-              {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
-                className="flex justify-center"
-              >
-                <button
-                  onClick={() => navigate("/book-consultation")}
-                  className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full gradient-rose-gold font-sans-body font-semibold text-sm tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  <Calendar className="w-4 h-4" />
-                  Book Consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
-              </motion.div>
 
               {/* Scroll indicator */}
               <motion.div
