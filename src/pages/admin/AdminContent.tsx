@@ -281,89 +281,80 @@ export default function AdminContent() {
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 border-t border-border pt-5 space-y-8">
+                <div className="px-5 pb-5 border-t border-border pt-5 space-y-6">
                   {/* ── Text Fields ── */}
-                  {textItems.length > 0 && (
-                    <div className="space-y-6">
-                      <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
-                        <Type className="w-4 h-4" /> Text & Copy
-                      </h4>
-                      {textItems.map((item) => {
-                        const editedEntry = edited[item.section_key] ?? {};
-                        const currentContent = editedEntry.content ?? item.content;
-                        const currentAlignment = editedEntry.alignment ?? item.alignment ?? "left";
-                        const isDirty = edited[item.section_key] !== undefined;
-                        const isRichText = RICH_TEXT_KEYS.includes(item.section_key);
-                        const isTextarea = TEXTAREA_KEYS.includes(item.section_key);
-
-                        return (
-                          <div key={item.id} className="space-y-3 pb-5 border-b border-border last:border-0 last:pb-0">
-                            <div className="flex items-center justify-between flex-wrap gap-2">
-                              <Label className="font-sans-body font-semibold text-foreground text-sm">
-                                {item.section_label.split(" — ").pop()}
-                              </Label>
-                              {isDirty && (
-                                <Button size="sm" onClick={() => handleSave(item)} disabled={saving === item.section_key} className="gap-1.5 h-8">
-                                  {saving === item.section_key ? <Loader2 className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />}
-                                  Save
-                                </Button>
-                              )}
-                            </div>
-
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs text-muted-foreground font-sans-body">Alignment:</span>
-                              <AlignmentPicker
-                                value={currentAlignment}
-                                onChange={(v) => handleChange(item.section_key, "alignment", v)}
-                              />
-                            </div>
-
-                            {isRichText ? (
-                              <RichTextEditor
-                                content={currentContent}
-                                onChange={(html) => handleChange(item.section_key, "content", html)}
-                              />
-                            ) : isTextarea ? (
-                              <Textarea
-                                value={currentContent}
-                                onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
-                                rows={Math.max(3, currentContent.split("\n").length + 1)}
-                                className="font-sans-body text-sm"
-                                style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
-                              />
-                            ) : (
-                              <Input
-                                value={currentContent}
-                                onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
-                                className="font-sans-body text-sm"
-                                style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
-                              />
-                            )}
-
-                            {isDirty && <p className="text-xs text-primary font-sans-body">● Unsaved changes</p>}
-                          </div>
-                        );
-                      })}
-                    </div>
+                  {!section.isServicePage && textItems.length > 0 && (
+                    <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
+                      <Type className="w-4 h-4" /> Text & Copy
+                    </h4>
                   )}
+                  {textItems.map((item) => {
+                    const editedEntry = edited[item.section_key] ?? {};
+                    const currentContent = editedEntry.content ?? item.content;
+                    const currentAlignment = editedEntry.alignment ?? item.alignment ?? "left";
+                    const isDirty = edited[item.section_key] !== undefined;
+                    const isRichText = RICH_TEXT_KEYS.includes(item.section_key);
+                    const isTextarea = TEXTAREA_KEYS.includes(item.section_key);
 
-                  {/* ── Structured Lists (Benefits/Process/FAQs) ── */}
-                  {jsonItems.length > 0 && (
-                    <div className="space-y-6">
-                      <h4 className="text-sm font-semibold text-muted-foreground font-sans-body uppercase tracking-wider flex items-center gap-2">
-                        📋 Structured Content
-                      </h4>
-                      {jsonItems.map((item) => (
-                        <div key={item.id} className="pb-5 border-b border-border last:border-0 last:pb-0">
-                          <StructuredListEditor
-                            item={item}
-                            type={getJsonType(item.section_key)}
-                            onSaved={fetchContent}
+                    return (
+                      <div key={item.id} className="space-y-3 pb-5 border-b border-border last:border-0 last:pb-0">
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                          <Label className="font-sans-body font-semibold text-foreground text-sm">
+                            {item.section_label.split(" — ").pop()}
+                          </Label>
+                          {isDirty && (
+                            <Button size="sm" onClick={() => handleSave(item)} disabled={saving === item.section_key} className="gap-1.5 h-8">
+                              {saving === item.section_key ? <Loader2 className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />}
+                              Save
+                            </Button>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground font-sans-body">Alignment:</span>
+                          <AlignmentPicker
+                            value={currentAlignment}
+                            onChange={(v) => handleChange(item.section_key, "alignment", v)}
                           />
                         </div>
-                      ))}
+
+                        {isRichText ? (
+                          <RichTextEditor
+                            content={currentContent}
+                            onChange={(html) => handleChange(item.section_key, "content", html)}
+                          />
+                        ) : isTextarea ? (
+                          <Textarea
+                            value={currentContent}
+                            onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                            rows={Math.max(3, currentContent.split("\n").length + 1)}
+                            className="font-sans-body text-sm"
+                            style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
+                          />
+                        ) : (
+                          <Input
+                            value={currentContent}
+                            onChange={(e) => handleChange(item.section_key, "content", e.target.value)}
+                            className="font-sans-body text-sm"
+                            style={{ textAlign: currentAlignment as "left" | "center" | "right" }}
+                          />
+                        )}
+
+                        {isDirty && <p className="text-xs text-primary font-sans-body">● Unsaved changes</p>}
+                      </div>
+                    );
+                  })}
+
+                  {/* ── Structured Lists (Benefits/Process/FAQs) ── */}
+                  {jsonItems.map((item) => (
+                    <div key={item.id} className="pb-5 border-b border-border last:border-0 last:pb-0">
+                      <StructuredListEditor
+                        item={item}
+                        type={getJsonType(item.section_key)}
+                        onSaved={fetchContent}
+                      />
                     </div>
-                  )}
+                  ))}
 
                   {/* ── Image Slots ── */}
                   {section.imageSlots.length > 0 && (
