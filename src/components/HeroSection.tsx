@@ -126,7 +126,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className={`space-y-2 text-xs sm:text-sm font-sans-body text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
+                className={`space-y-2 text-sm sm:text-base font-sans-body font-medium text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
               >
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                   {trustItems.map((item) => (
@@ -149,7 +149,7 @@ export default function HeroSection() {
                   onClick={() => {
                     window.location.href = "/book-consultation";
                   }}
-                  className="group inline-flex items-center gap-3 px-7 py-3 rounded-full gradient-rose-gold font-sans-body font-semibold text-sm tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="group inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-base tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Book a Consultation
                   <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
