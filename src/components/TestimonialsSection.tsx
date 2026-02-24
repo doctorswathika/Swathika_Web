@@ -51,8 +51,8 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/30 to-background" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/40 to-background" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <motion.div
@@ -79,7 +79,7 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="glass rounded-3xl p-10 lg:p-14 text-center"
               >
-                <Quote className="w-10 h-10 text-rose-gold mx-auto mb-6 opacity-50" />
+                <Quote className="w-10 h-10 text-primary mx-auto mb-6 opacity-50" />
                 <div className="flex justify-center gap-1.5 mb-6">
                   {[...Array(testimonials[current].rating)].map((_, i) => (
                     <motion.div
@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 + i * 0.08 }}
                     >
-                      <Star className="w-5 h-5 fill-rose-gold text-rose-gold" />
+                      <Star className="w-5 h-5 fill-primary text-primary" />
                     </motion.div>
                   ))}
                 </div>

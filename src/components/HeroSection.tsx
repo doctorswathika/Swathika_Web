@@ -22,7 +22,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Warm blush base background */}
-      <div className="absolute inset-0 bg-[hsl(340_55%_91%)]" />
+      <div className="absolute inset-0 bg-[hsl(270_40%_92%)]" />
 
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -52,7 +52,7 @@ export default function HeroSection() {
               height: orb.size,
               left: `${orb.x}%`,
               top: `${orb.y}%`,
-              background: `radial-gradient(circle at 38% 38%, hsl(0 0% 100% / 0.98), hsl(340 60% 88% / 0.85) 45%, hsl(340 55% 80% / 0.55) 100%)`,
+              background: `radial-gradient(circle at 38% 38%, hsl(0 0% 100% / 0.98), hsl(270 50% 88% / 0.85) 45%, hsl(260 45% 80% / 0.55) 100%)`,
               filter: `blur(${orb.size * 0.09}px)`,
             }}
             animate={{
@@ -173,12 +173,13 @@ export default function HeroSection() {
           <motion.a
             href={PHONE_HREF}
             className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
+            style={{ color: 'white' }}
             aria-label="Call now"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.7, type: "spring" }}
           >
-            <Phone className="w-6 h-6 text-foreground" />
+            <Phone className="w-6 h-6 text-white" />
           </motion.a>
         ) : (
           <div className="flex items-center gap-2">
@@ -199,7 +200,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.7, type: "spring" }}
             >
-              <Phone className="w-6 h-6 text-foreground" />
+              <Phone className="w-6 h-6 text-white" />
             </motion.button>
           </div>
         )}

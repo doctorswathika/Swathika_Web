@@ -120,7 +120,7 @@ export default function AdminLogin() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full gradient-rose-gold text-white font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? "Please wait..." : mode === "login" ? "Sign In to Admin" : "Create Admin Account"}
                 <ArrowRight className="w-4 h-4" />

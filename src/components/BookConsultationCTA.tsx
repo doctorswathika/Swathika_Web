@@ -15,7 +15,7 @@ export default function BookConsultationCTA() {
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--blush)/0.35)] via-[hsl(var(--lavender)/0.2)] to-[hsl(var(--rose-gold)/0.25)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270_50%_92%/0.6)] via-[hsl(258_60%_88%/0.4)] to-[hsl(280_40%_90%/0.5)]" />
 
       {/* Decorative bokeh orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -92,7 +92,7 @@ export default function BookConsultationCTA() {
           >
             <button
               onClick={() => navigate("/book-consultation")}
-              className="group flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-semibold font-sans-body text-base text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
+              className="group flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-semibold font-sans-body text-base text-white hover:scale-105 transition-all duration-300 shadow-lg"
             >
               <Calendar className="w-5 h-5" />
               Book a Consultation

@@ -73,15 +73,15 @@ export default function Footer() {
             <h4 className="font-serif-display text-lg font-semibold text-foreground">Contact</h4>
             <div className="space-y-3">
               <p className={`flex items-start gap-2 text-sm text-muted-foreground font-sans-body ${getAlignClass("footer_address")}`}>
-                <MapPin className="w-4 h-4 mt-0.5 text-rose-gold flex-shrink-0" />
+                <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span dangerouslySetInnerHTML={{ __html: address }} />
               </p>
               <a href={`tel:${phone.replace(/\s/g, "")}`} className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group">
-                <Phone className="w-4 h-4 text-rose-gold group-hover:scale-110 transition-transform" />
+                <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
                 {phone}
               </a>
               <a href={`mailto:${email}`} className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group">
-                <Mail className="w-4 h-4 text-rose-gold group-hover:scale-110 transition-transform" />
+                <Mail className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
                 {email}
               </a>
               <a
@@ -90,7 +90,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group"
               >
-                <Linkedin className="w-4 h-4 text-rose-gold group-hover:scale-110 transition-transform" />
+                <Linkedin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
                 LinkedIn Profile
               </a>
             </div>
@@ -103,7 +103,7 @@ export default function Footer() {
           <p className={`text-xs text-muted-foreground font-sans-body leading-relaxed max-w-2xl mx-auto ${getAlignClass("footer_disclaimer")}`}
             dangerouslySetInnerHTML={{ __html: disclaimer }} />
           <p className="text-xs text-muted-foreground font-sans-body flex items-center justify-center gap-1">
-            © {new Date().getFullYear()} Dr. Swathika Rajendran. All rights reserved. Made with <Heart className="w-3 h-3 text-rose-gold inline" /> in Chennai.
+            © {new Date().getFullYear()} Dr. Swathika Rajendran. All rights reserved. Made with <Heart className="w-3 h-3 text-primary inline" /> in Chennai.
           </p>
         </div>
       </motion.div>

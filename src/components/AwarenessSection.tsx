@@ -71,8 +71,8 @@ export default function AwarenessSection() {
   return (
     <section id="awareness" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
       {/* Soft parallax bg */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/50 via-primary/5 to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(268_80%_84%_/_0.1),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/50 via-primary/8 to-background" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(268_80%_84%_/_0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Section header */}
@@ -102,7 +102,7 @@ export default function AwarenessSection() {
               className="glass rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-500 group"
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-                <t.icon className="w-6 h-6 text-rose-gold group-hover:scale-110 transition-transform duration-300" />
+                <t.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="font-serif-display text-xl font-semibold text-foreground mb-3">{t.title}</h3>
               <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{t.text}</p>
