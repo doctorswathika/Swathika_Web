@@ -31,15 +31,29 @@ export function useSiteContent() {
   const [loading, setLoading] = useState(!cachedContent);
 
   useEffect(() => {
-    if (cachedContent) return;
+    let isMounted = true;
+
     if (!fetchPromise) {
-      fetchPromise = fetchAllContent();
+      fetchPromise = fetchAllContent().finally(() => {
+        fetchPromise = null;
+      });
     }
-    fetchPromise.then((map) => {
-      cachedContent = map;
-      setContent(map);
-      setLoading(false);
-    });
+
+    fetchPromise
+      .then((map) => {
+        cachedContent = map;
+        if (isMounted) {
+          setContent(map);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   /** Get content string for a key, with optional fallback */
