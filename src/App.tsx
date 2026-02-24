@@ -21,7 +21,6 @@ import ImplantReconstruction from "./pages/services/ImplantReconstruction";
 import GynaecomastiaCorrection from "./pages/services/GynaecomastiaCorrection";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
-import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
@@ -61,7 +60,6 @@ const App = () => (
             {/* Admin Portal */}
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
-              <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="api-keys" element={<AdminApiKeys />} />
               <Route path="content" element={<AdminContent />} />
               <Route path="blog" element={<AdminBlog />} />

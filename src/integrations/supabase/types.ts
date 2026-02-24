@@ -157,6 +157,27 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          key: string
+          label: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          label?: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          key?: string
+          label?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           created_at: string

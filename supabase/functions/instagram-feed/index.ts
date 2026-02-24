@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -11,7 +12,14 @@ serve(async (req) => {
   }
 
   try {
-    const accessToken = Deno.env.get('INSTAGRAM_ACCESS_TOKEN');
+    // Read access token from site_settings table
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const sb = createClient(supabaseUrl, serviceRoleKey);
+
+    const { data: setting } = await sb.from('site_settings').select('value').eq('key', 'INSTAGRAM_ACCESS_TOKEN').single();
+    const accessToken = setting?.value || Deno.env.get('INSTAGRAM_ACCESS_TOKEN');
+
     if (!accessToken) {
       return new Response(
         JSON.stringify({ error: 'Instagram access token not configured', reels: [] }),
@@ -19,7 +27,6 @@ serve(async (req) => {
       );
     }
 
-    // Fetch recent media from Instagram Graph API
     const res = await fetch(
       `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=20&access_token=${accessToken}`
     );
@@ -33,7 +40,6 @@ serve(async (req) => {
       );
     }
 
-    // Filter for VIDEO type (reels) and take latest 3
     const reels = (data.data || [])
       .filter((item: any) => item.media_type === 'VIDEO')
       .slice(0, 3)
