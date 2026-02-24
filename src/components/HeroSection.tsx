@@ -72,7 +72,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main content layout */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row pt-16">
+      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row pt-0 lg:pt-16">
         {/* Doctor portrait */}
         <motion.div
           initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 20 : 0 }}
