@@ -171,7 +171,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: (navLinks.length + 1) * 0.08, duration: 0.5 }}
-                  onClick={() => handleNavClick("/admin/dashboard", true)}
+                  onClick={() => handleNavClick("/admin/api-keys", true)}
                   className="flex items-center gap-2 text-sm font-sans-body font-semibold tracking-widest uppercase text-primary hover:text-foreground transition-colors"
                 >
                   Admin Portal
