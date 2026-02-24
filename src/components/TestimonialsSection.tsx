@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 interface Testimonial {
   id: string;
@@ -15,6 +16,10 @@ export default function TestimonialsSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [current, setCurrent] = useState(0);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const { getText, getAlignClass } = useSiteContent();
+
+  const subtitle = getText("testimonials_subtitle", "Testimonials");
+  const title = getText("testimonials_title", "Words from My <span class=\"text-gradient-rose italic\">Patients</span>");
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -38,7 +43,6 @@ export default function TestimonialsSection() {
     setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
   }, [testimonials.length]);
 
-  // Auto-advance
   useEffect(() => {
     if (!isVisible || testimonials.length === 0) return;
     const timer = setInterval(next, 5000);
@@ -55,12 +59,12 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className={`mb-16 ${getAlignClass("testimonials_title")}`}
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Testimonials</p>
-          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground">
-            Words from My <span className="text-gradient-rose italic">Patients</span>
-          </h2>
+          <p className={`text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3 ${getAlignClass("testimonials_subtitle")}`}
+            dangerouslySetInnerHTML={{ __html: subtitle }} />
+          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground"
+            dangerouslySetInnerHTML={{ __html: title }} />
           <div className="divider-rose w-24 mx-auto mt-6" />
         </motion.div>
 

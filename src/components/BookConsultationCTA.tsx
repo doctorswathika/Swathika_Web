@@ -2,10 +2,15 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 export default function BookConsultationCTA() {
   const { ref, isVisible } = useScrollAnimation();
   const navigate = useNavigate();
+  const { getText, getAlignClass } = useSiteContent();
+
+  const ctaTitle = getText("consultation_title", "Your Health Deserves Expert Hands.");
+  const ctaDesc = getText("consultation_description", "Every journey to wellness begins with a single conversation. Let Dr. Swathika guide you with world-class expertise and heartfelt compassion.");
 
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
@@ -57,14 +62,10 @@ export default function BookConsultationCTA() {
 
           {/* Headline */}
           <div className="space-y-4">
-            <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1]">
-              Your Health Deserves{" "}
-              <span className="italic text-[hsl(270,60%,50%)]">Expert Hands.</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed">
-              Every journey to wellness begins with a single conversation.
-              Let Dr. Swathika guide you with world-class expertise and heartfelt compassion.
-            </p>
+            <h2 className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] ${getAlignClass("consultation_title")}`}
+              dangerouslySetInnerHTML={{ __html: ctaTitle }} />
+            <p className={`text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed ${getAlignClass("consultation_description")}`}
+              dangerouslySetInnerHTML={{ __html: ctaDesc }} />
           </div>
 
           {/* Trust strip */}
@@ -102,7 +103,6 @@ export default function BookConsultationCTA() {
               Book a Consultation
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
-
           </motion.div>
         </motion.div>
       </div>
