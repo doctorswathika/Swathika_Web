@@ -8,30 +8,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 
-const clearLocalAuthState = () => {
-  if (typeof window === "undefined") return;
-
-  const authTokenKey = `sb-${import.meta.env.VITE_SUPABASE_PROJECT_ID}-auth-token`;
-  window.localStorage.removeItem(authTokenKey);
-  window.sessionStorage.removeItem(authTokenKey);
-
-  // Fallback for older/alternate keys
-  Object.keys(window.localStorage).forEach((key) => {
-    if (/^sb-.*-auth-token$/.test(key) || key === "supabase.auth.token") {
-      window.localStorage.removeItem(key);
-    }
-  });
-
-  Object.keys(window.sessionStorage).forEach((key) => {
-    if (/^sb-.*-auth-token$/.test(key) || key === "supabase.auth.token") {
-      window.sessionStorage.removeItem(key);
-    }
-  });
-};
-
-// Clear stale token immediately when module loads
-clearLocalAuthState();
-
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -42,14 +18,15 @@ export default function Auth() {
   const { toast } = useToast();
 
   useEffect(() => {
-    setEmail("");
-    setPassword("");
-
-    supabase.auth
-      .signOut({ scope: "local" })
-      .catch(() => {})
-      .finally(() => setInitializing(false));
-  }, []);
+    // If already logged in, redirect to home
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        navigate("/", { replace: true });
+      } else {
+        setInitializing(false);
+      }
+    });
+  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -181,8 +158,6 @@ export default function Auth() {
                   setIsLogin(!isLogin);
                   setEmail("");
                   setPassword("");
-                  clearLocalAuthState();
-                  supabase.auth.signOut({ scope: "local" }).catch(() => {});
                 }}
                 className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors"
                 disabled={loading || initializing}
