@@ -304,7 +304,7 @@ export default function ServicePageLayout({
               </p>
               <Link
                 to="/book-consultation"
-                className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
+                className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-white font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
               >
                 Book Consultation
               </Link>

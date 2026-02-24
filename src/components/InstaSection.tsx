@@ -135,7 +135,7 @@ export default function InstaSection() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-rose-gold text-white text-sm font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
           >
             <Instagram className="w-5 h-5" />
             Follow on Instagram
