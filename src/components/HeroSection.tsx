@@ -22,7 +22,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Warm blush base background */}
-      <div className="absolute inset-0 bg-[hsl(270_40%_92%)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(350_60%_90%)] to-[hsl(20_60%_90%)]" />
 
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
