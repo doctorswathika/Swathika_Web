@@ -8,52 +8,94 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 
+const clearLocalAuthState = () => {
+  if (typeof window === "undefined") return;
+
+  const authTokenKey = `sb-${import.meta.env.VITE_SUPABASE_PROJECT_ID}-auth-token`;
+  window.localStorage.removeItem(authTokenKey);
+  window.sessionStorage.removeItem(authTokenKey);
+
+  // Fallback for older/alternate keys
+  Object.keys(window.localStorage).forEach((key) => {
+    if (/^sb-.*-auth-token$/.test(key) || key === "supabase.auth.token") {
+      window.localStorage.removeItem(key);
+    }
+  });
+
+  Object.keys(window.sessionStorage).forEach((key) => {
+    if (/^sb-.*-auth-token$/.test(key) || key === "supabase.auth.token") {
+      window.sessionStorage.removeItem(key);
+    }
+  });
+};
+
+// Clear stale token immediately when module loads
+clearLocalAuthState();
+
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [initializing, setInitializing] = useState(true);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Clear any stale/expired local session on mount
   useEffect(() => {
-    supabase.auth.signOut({ scope: "local" }).catch(() => {});
+    setEmail("");
+    setPassword("");
+
+    supabase.auth
+      .signOut({ scope: "local" })
+      .catch(() => {})
+      .finally(() => setInitializing(false));
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail || !password) return;
+
     setLoading(true);
 
     try {
       if (isLogin) {
-        let { error } = await supabase.auth.signInWithPassword({ email, password });
-
-        if (error && /failed to fetch/i.test(error.message ?? "")) {
-          await supabase.auth.signOut({ scope: "local" }).catch(() => {});
-          const retry = await supabase.auth.signInWithPassword({ email, password });
-          error = retry.error;
-        }
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: normalizedEmail,
+          password,
+        });
 
         if (error) throw error;
+        if (!data.session) throw new Error("Unable to start session. Please try again.");
+
         toast({ title: "Welcome back!", description: "You have signed in successfully." });
         navigate("/");
       } else {
         const { error } = await supabase.auth.signUp({
-          email,
+          email: normalizedEmail,
           password,
           options: { emailRedirectTo: window.location.origin },
         });
+
         if (error) throw error;
+
         toast({
           title: "Check your email",
           description: "We've sent you a verification link to confirm your account.",
         });
+
+        setPassword("");
       }
     } catch (error: any) {
+      const rawMessage = error?.message ?? "Unable to continue.";
+      const message = /failed to fetch/i.test(rawMessage)
+        ? "Network issue while connecting to authentication. Please refresh and try again."
+        : rawMessage;
+
       toast({
         title: "Error",
-        description: error.message,
+        description: message,
         variant: "destructive",
       });
     } finally {
@@ -83,9 +125,7 @@ export default function Auth() {
                 {isLogin ? "Welcome Back" : "Create Account"}
               </h1>
               <p className="text-sm text-muted-foreground font-sans-body">
-                {isLogin
-                  ? "Sign in to your account"
-                  : "Join us to stay updated"}
+                {isLogin ? "Sign in to your account" : "Join us to stay updated"}
               </p>
             </div>
 
@@ -99,8 +139,10 @@ export default function Auth() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="off"
                     className="w-full pl-10 pr-4 py-3 rounded-xl bg-background border border-border text-foreground font-sans-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                     placeholder="your@email.com"
+                    disabled={loading || initializing}
                   />
                 </div>
               </div>
@@ -114,27 +156,36 @@ export default function Auth() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete={isLogin ? "current-password" : "new-password"}
                     className="w-full pl-10 pr-4 py-3 rounded-xl bg-background border border-border text-foreground font-sans-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                     placeholder="••••••••"
                     minLength={6}
+                    disabled={loading || initializing}
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || initializing}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                {loading ? "Please wait..." : isLogin ? "Sign In" : "Sign Up"}
+                {initializing ? "Preparing..." : loading ? "Please wait..." : isLogin ? "Sign In" : "Sign Up"}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
 
             <div className="text-center">
               <button
-                onClick={() => setIsLogin(!isLogin)}
+                onClick={() => {
+                  setIsLogin(!isLogin);
+                  setEmail("");
+                  setPassword("");
+                  clearLocalAuthState();
+                  supabase.auth.signOut({ scope: "local" }).catch(() => {});
+                }}
                 className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors"
+                disabled={loading || initializing}
               >
                 {isLogin ? "Don't have an account? " : "Already have an account? "}
                 <span className="text-primary font-medium">{isLogin ? "Sign Up" : "Sign In"}</span>
