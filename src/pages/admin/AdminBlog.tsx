@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, X, Save } from "lucide-react";
+import { Plus, Edit2, Trash2, Upload, X, Save } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -205,8 +205,8 @@ export default function AdminBlog() {
                 </p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <Button variant="ghost" size="icon" onClick={() => togglePublish(post)} title={post.published ? "Unpublish" : "Publish"}>
-                  {post.published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                <Button variant="ghost" size="sm" onClick={() => togglePublish(post)} className="text-xs font-sans-body">
+                  {post.published ? "Unpublish" : "Publish"}
                 </Button>
                 <Button variant="ghost" size="icon" onClick={() => openEdit(post)}>
                   <Edit2 className="w-4 h-4" />
@@ -239,20 +239,14 @@ export default function AdminBlog() {
               <Input value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="url-friendly-slug" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label className="font-sans-body">Category</Label>
-                <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label className="font-sans-body">Read Time</Label>
-                <Input value={form.read_time} onChange={(e) => setForm({ ...form, read_time: e.target.value })} placeholder="5 min read" />
-              </div>
+            <div className="space-y-2">
+              <Label className="font-sans-body">Category</Label>
+              <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">
