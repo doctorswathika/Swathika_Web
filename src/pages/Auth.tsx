@@ -30,35 +30,97 @@ const clearLocalAuthState = () => {
 
 const isNetworkError = (error: unknown) => {
   const message = error instanceof Error ? error.message : String(error ?? "");
-  return /failed to fetch|network/i.test(message);
+  return /failed to fetch|network|timeout/i.test(message);
+};
+
+const signInWithPassword = async (email: string, password: string) => {
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+  if (error) throw error;
+  if (!data.session) throw new Error("Unable to start session. Please try again.");
+};
+
+type PasswordTokenResponse = {
+  access_token?: string;
+  refresh_token?: string;
+  error?: string;
+  error_description?: string;
+  msg?: string;
+};
+
+const signInWithXhr = (email: string, password: string) =>
+  new Promise<PasswordTokenResponse>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", `${import.meta.env.VITE_SUPABASE_URL}/auth/v1/token?grant_type=password`, true);
+    xhr.setRequestHeader("content-type", "application/json;charset=UTF-8");
+    xhr.setRequestHeader("apikey", import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
+    xhr.timeout = 10000;
+
+    xhr.onload = () => {
+      let payload: PasswordTokenResponse = {};
+
+      try {
+        payload = JSON.parse(xhr.responseText ?? "{}");
+      } catch {
+        // keep default empty payload
+      }
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(payload);
+        return;
+      }
+
+      reject(
+        new Error(
+          payload.error_description || payload.msg || payload.error || "Unable to sign in. Please try again.",
+        ),
+      );
+    };
+
+    xhr.onerror = () => reject(new Error("Failed to fetch"));
+    xhr.ontimeout = () => reject(new Error("Request timed out"));
+    xhr.send(JSON.stringify({ email, password, gotrue_meta_security: {} }));
+  });
+
+const signInWithXhrFallback = async (email: string, password: string) => {
+  const tokenData = await signInWithXhr(email, password);
+
+  if (!tokenData.access_token || !tokenData.refresh_token) {
+    throw new Error("Unable to start session. Please try again.");
+  }
+
+  const { error } = await supabase.auth.setSession({
+    access_token: tokenData.access_token,
+    refresh_token: tokenData.refresh_token,
+  });
+
+  if (error) throw error;
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) throw new Error("Unable to start session. Please try again.");
 };
 
 const signInWithRetry = async (email: string, password: string) => {
-  let lastError: unknown;
+  try {
+    await signInWithPassword(email, password);
+    return;
+  } catch (error) {
+    if (!isNetworkError(error)) throw error;
 
-  for (let attempt = 0; attempt < 2; attempt += 1) {
+    clearLocalAuthState();
+    await supabase.auth.signOut({ scope: "local" }).catch(() => undefined);
+
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-      if (error) throw error;
-      if (!data.session) throw new Error("Unable to start session. Please try again.");
-
-      return data;
-    } catch (error) {
-      lastError = error;
-
-      if (attempt === 0 && isNetworkError(error)) {
-        clearLocalAuthState();
-        await supabase.auth.signOut({ scope: "local" }).catch(() => undefined);
-        await wait(500);
-        continue;
-      }
-
-      throw error;
+      await signInWithXhrFallback(email, password);
+      return;
+    } catch {
+      await wait(600);
+      await signInWithPassword(email, password);
     }
   }
-
-  throw lastError;
 };
 
 export default function Auth() {
@@ -111,8 +173,20 @@ export default function Auth() {
 
         setPassword("");
       }
-    } catch (error: any) {
-      const rawMessage = error?.message ?? "Unable to continue.";
+    } catch (error: unknown) {
+      if (isLogin && isNetworkError(error)) {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (session) {
+          toast({ title: "Welcome back!", description: "You have signed in successfully." });
+          navigate("/");
+          return;
+        }
+      }
+
+      const rawMessage = error instanceof Error ? error.message : "Unable to continue.";
       const message = /failed to fetch/i.test(rawMessage)
         ? "Network issue while connecting to authentication. Please refresh and try again."
         : rawMessage;
