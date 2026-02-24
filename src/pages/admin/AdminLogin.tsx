@@ -114,34 +114,10 @@ export default function AdminLogin() {
               </button>
             </form>
 
-            <div className="text-center space-y-2">
-              <button
-                type="button"
-                onClick={async () => {
-                  if (!email || email.toLowerCase() !== ADMIN_EMAIL) {
-                    toast({ title: "Enter the admin email first", variant: "destructive" });
-                    return;
-                  }
-                  setLoading(true);
-                  const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                    redirectTo: `${window.location.origin}/admin/reset-password`,
-                  });
-                  setLoading(false);
-                  if (error) {
-                    toast({ title: "Error", description: error.message, variant: "destructive" });
-                  } else {
-                    toast({ title: "Check your email", description: "A password reset link has been sent." });
-                  }
-                }}
-                className="text-sm text-primary font-sans-body hover:underline transition-colors"
-              >
-                Forgot Password?
-              </button>
-              <div>
-                <a href="/" className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors">
-                  ← Back to website
-                </a>
-              </div>
+            <div className="text-center">
+              <a href="/" className="text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors">
+                ← Back to website
+              </a>
             </div>
           </div>
         </motion.div>
