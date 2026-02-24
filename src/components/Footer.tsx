@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, Phone, Mail, Linkedin, Heart } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
@@ -17,7 +18,7 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
 
 export default function Footer() {
   const { ref, isVisible } = useScrollAnimation();
-  const navigate = useNavigate();
+  const handleNav = useHashNavigation();
   const location = useLocation();
   const { getText, getAlignClass } = useSiteContent();
 
@@ -27,15 +28,8 @@ export default function Footer() {
   const email = getText("footer_email", "contact@drswathika.com");
   const disclaimer = getText("footer_disclaimer", "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.");
 
-  const handleNav = (href: string, isRoute?: boolean) => {
-    if (isRoute) {
-      navigate(href);
-      window.scrollTo(0, 0);
-    } else if (location.pathname !== "/") {
-      navigate("/" + href);
-    } else {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleNavClick = (href: string, isRoute?: boolean) => {
+    handleNav(href, isRoute);
   };
 
   return (
@@ -65,7 +59,7 @@ export default function Footer() {
               {quickLinks.map((l) => (
                 <button
                   key={l.href}
-                  onClick={() => handleNav(l.href, l.isRoute)}
+                  onClick={() => handleNavClick(l.href, l.isRoute)}
                   className="block text-sm text-muted-foreground font-sans-body hover:text-foreground hover:translate-x-1 transition-all duration-300"
                 >
                   {l.label}
