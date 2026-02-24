@@ -34,7 +34,7 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
         whileHover={{ y: -8, transition: { duration: 0.3 } }}
-        className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/15 transition-shadow duration-500 cursor-pointer"
+        className="group glass rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary/15 transition-shadow duration-500 cursor-pointer h-full flex flex-col"
       >
         <div className="aspect-square overflow-hidden relative">
           <motion.div
@@ -61,7 +61,7 @@ function ServiceCard({ title, img, slug, index, isVisible }: { title: string; im
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 + 2, repeatDelay: 3 }}
           />
         </div>
-        <div className="p-4 text-center">
+        <div className="p-4 text-center flex-1 flex items-center justify-center min-h-[72px]">
           <motion.h3
             className="relative font-serif-display text-lg font-semibold text-foreground inline-block"
             whileHover={{ scale: 1.02 }}
