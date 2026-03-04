@@ -394,18 +394,12 @@ export default function About() {
               <p className="text-muted-foreground font-sans-body leading-relaxed max-w-lg mx-auto">
                 Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm here to guide you with precision, compassion, and world-class expertise.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <div className="flex items-center justify-center pt-4">
                 <Link
                   to="/book-consultation"
                   className="px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
                 >
                   Book a Consultation
-                </Link>
-                <Link
-                  to="/"
-                  className="px-8 py-3 rounded-full border border-border text-sm font-sans-body font-medium tracking-widest uppercase text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-                >
-                  Back to Home
                 </Link>
               </div>
             </motion.div>
