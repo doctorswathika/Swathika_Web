@@ -151,10 +151,10 @@ export default function HeroSection() {
               >
                 <button
                   onClick={() => navigate("/book-consultation")}
-                  className="group inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-base tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="group inline-flex items-center gap-3 px-11 py-5 rounded-full gradient-rose-gold font-sans-body font-bold text-lg tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.45)] hover:shadow-[0_12px_40px_-4px_hsl(var(--primary)/0.6)] ring-2 ring-[hsl(var(--primary)/0.3)]"
                 >
                   Book a Consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
               </motion.div>
             </div>
