@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, ArrowDown } from "lucide-react";
+import { Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
