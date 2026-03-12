@@ -149,13 +149,11 @@ export default function HeroSection() {
                 className="flex justify-center"
               >
                 <button
-                  onClick={() => {
-                    window.location.href = "/book-consultation";
-                  }}
+                  onClick={() => navigate("/book-consultation")}
                   className="group inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-base tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Book a Consultation
-                  <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
               </motion.div>
             </div>
