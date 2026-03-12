@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, ArrowDown } from "lucide-react";
+import { Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
@@ -11,6 +12,7 @@ const PHONE_HREF = "tel:+919080328082";
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [showNumber, setShowNumber] = useState(false);
   const { getText, getAlignClass } = useSiteContent();
 
@@ -148,13 +150,11 @@ export default function HeroSection() {
                 className="flex justify-center"
               >
                 <button
-                  onClick={() => {
-                    window.location.href = "/book-consultation";
-                  }}
+                  onClick={() => navigate("/book-consultation")}
                   className="group inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-base tracking-wide text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Book a Consultation
-                  <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
               </motion.div>
             </div>
