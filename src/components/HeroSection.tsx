@@ -12,6 +12,7 @@ const PHONE_HREF = "tel:+919080328082";
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [showNumber, setShowNumber] = useState(false);
   const { getText, getAlignClass } = useSiteContent();
 
