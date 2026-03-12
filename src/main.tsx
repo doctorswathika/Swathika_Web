@@ -1,3 +1,12 @@
+// Preload hero image with correct bundled URL
+import heroImg from "@/assets/dr-swathika-hero.jpeg";
+const preloadLink = document.createElement("link");
+preloadLink.rel = "preload";
+preloadLink.as = "image";
+preloadLink.href = heroImg;
+preloadLink.setAttribute("fetchpriority", "high");
+document.head.appendChild(preloadLink);
+
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
