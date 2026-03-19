@@ -1,0 +1,10 @@
+project_id = "pciuhptokthbbyyjbnaf"
+
+[functions.youtube-feed]
+verify_jwt = false
+
+[functions.instagram-feed]
+verify_jwt = false
+
+[functions.create-admin]
+verify_jwt = false
