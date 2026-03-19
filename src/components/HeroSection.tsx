@@ -29,22 +29,22 @@ export default function HeroSection() {
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { size: 130, x: 50, y: 2,   dur: 10, delay: 0   },
-          { size: 90,  x: 68, y: 8,   dur: 12, delay: 1   },
-          { size: 160, x: 82, y: 3,   dur: 14, delay: 0.5 },
-          { size: 110, x: 95, y: 22,  dur: 9,  delay: 2   },
-          { size: 140, x: 58, y: 25,  dur: 11, delay: 0.8 },
-          { size: 80,  x: 44, y: 48,  dur: 13, delay: 1.5 },
-          { size: 120, x: 74, y: 42,  dur: 8,  delay: 0.3 },
-          { size: 100, x: 88, y: 58,  dur: 15, delay: 2.5 },
-          { size: 150, x: 63, y: 68,  dur: 10, delay: 1.2 },
-          { size: 70,  x: 52, y: 82,  dur: 9,  delay: 3   },
-          { size: 110, x: 78, y: 80,  dur: 12, delay: 0.6 },
-          { size: 85,  x: 92, y: 88,  dur: 8,  delay: 1.8 },
-          { size: 95,  x: 38, y: 18,  dur: 11, delay: 4   },
-          { size: 75,  x: 30, y: 65,  dur: 9,  delay: 2.2 },
-          { size: 105, x: 18, y: 40,  dur: 13, delay: 0.4 },
-          { size: 85,  x: 8,  y: 15,  dur: 10, delay: 1.6 },
+          { size: 130, x: 50, y: 2, dur: 10, delay: 0 },
+          { size: 90, x: 68, y: 8, dur: 12, delay: 1 },
+          { size: 160, x: 82, y: 3, dur: 14, delay: 0.5 },
+          { size: 110, x: 95, y: 22, dur: 9, delay: 2 },
+          { size: 140, x: 58, y: 25, dur: 11, delay: 0.8 },
+          { size: 80, x: 44, y: 48, dur: 13, delay: 1.5 },
+          { size: 120, x: 74, y: 42, dur: 8, delay: 0.3 },
+          { size: 100, x: 88, y: 58, dur: 15, delay: 2.5 },
+          { size: 150, x: 63, y: 68, dur: 10, delay: 1.2 },
+          { size: 70, x: 52, y: 82, dur: 9, delay: 3 },
+          { size: 110, x: 78, y: 80, dur: 12, delay: 0.6 },
+          { size: 85, x: 92, y: 88, dur: 8, delay: 1.8 },
+          { size: 95, x: 38, y: 18, dur: 11, delay: 4 },
+          { size: 75, x: 30, y: 65, dur: 9, delay: 2.2 },
+          { size: 105, x: 18, y: 40, dur: 13, delay: 0.4 },
+          { size: 85, x: 8, y: 15, dur: 10, delay: 1.6 },
         ].map((orb, i) => (
           <motion.div
             key={i}
@@ -97,7 +97,7 @@ export default function HeroSection() {
             alt="Dr. Swathika Rajendran — Breast Surgeon"
             className="w-full h-auto lg:h-full object-cover object-[10%_top] max-h-[60vh] lg:max-h-none"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="sync"
           />
         </motion.div>
