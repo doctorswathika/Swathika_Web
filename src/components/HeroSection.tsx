@@ -16,10 +16,22 @@ export default function HeroSection() {
   const [showNumber, setShowNumber] = useState(false);
   const { getText, getAlignClass } = useSiteContent();
 
-  const headline = getText("hero_headline", 'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>');
-  const description = getText("hero_description", "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.");
-  const trustRaw = getText("hero_trust_indicators", "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics");
-  const trustItems = trustRaw.split(",").map((s) => s.trim()).filter(Boolean);
+  const headline = getText(
+    "hero_headline",
+    'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>',
+  );
+  const description = getText(
+    "hero_description",
+    "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.",
+  );
+  const trustRaw = getText(
+    "hero_trust_indicators",
+    "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics",
+  );
+  const trustItems = trustRaw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
@@ -29,22 +41,22 @@ export default function HeroSection() {
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[
-          { size: 130, x: 50, y: 2,   dur: 10, delay: 0   },
-          { size: 90,  x: 68, y: 8,   dur: 12, delay: 1   },
-          { size: 160, x: 82, y: 3,   dur: 14, delay: 0.5 },
-          { size: 110, x: 95, y: 22,  dur: 9,  delay: 2   },
-          { size: 140, x: 58, y: 25,  dur: 11, delay: 0.8 },
-          { size: 80,  x: 44, y: 48,  dur: 13, delay: 1.5 },
-          { size: 120, x: 74, y: 42,  dur: 8,  delay: 0.3 },
-          { size: 100, x: 88, y: 58,  dur: 15, delay: 2.5 },
-          { size: 150, x: 63, y: 68,  dur: 10, delay: 1.2 },
-          { size: 70,  x: 52, y: 82,  dur: 9,  delay: 3   },
-          { size: 110, x: 78, y: 80,  dur: 12, delay: 0.6 },
-          { size: 85,  x: 92, y: 88,  dur: 8,  delay: 1.8 },
-          { size: 95,  x: 38, y: 18,  dur: 11, delay: 4   },
-          { size: 75,  x: 30, y: 65,  dur: 9,  delay: 2.2 },
-          { size: 105, x: 18, y: 40,  dur: 13, delay: 0.4 },
-          { size: 85,  x: 8,  y: 15,  dur: 10, delay: 1.6 },
+          { size: 130, x: 50, y: 2, dur: 10, delay: 0 },
+          { size: 90, x: 68, y: 8, dur: 12, delay: 1 },
+          { size: 160, x: 82, y: 3, dur: 14, delay: 0.5 },
+          { size: 110, x: 95, y: 22, dur: 9, delay: 2 },
+          { size: 140, x: 58, y: 25, dur: 11, delay: 0.8 },
+          { size: 80, x: 44, y: 48, dur: 13, delay: 1.5 },
+          { size: 120, x: 74, y: 42, dur: 8, delay: 0.3 },
+          { size: 100, x: 88, y: 58, dur: 15, delay: 2.5 },
+          { size: 150, x: 63, y: 68, dur: 10, delay: 1.2 },
+          { size: 70, x: 52, y: 82, dur: 9, delay: 3 },
+          { size: 110, x: 78, y: 80, dur: 12, delay: 0.6 },
+          { size: 85, x: 92, y: 88, dur: 8, delay: 1.8 },
+          { size: 95, x: 38, y: 18, dur: 11, delay: 4 },
+          { size: 75, x: 30, y: 65, dur: 9, delay: 2.2 },
+          { size: 105, x: 18, y: 40, dur: 13, delay: 0.4 },
+          { size: 85, x: 8, y: 15, dur: 10, delay: 1.6 },
         ].map((orb, i) => (
           <motion.div
             key={i}
@@ -83,13 +95,13 @@ export default function HeroSection() {
           className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative order-first"
           style={{
             maskImage: isMobile
-              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
-              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
+              ? "linear-gradient(to bottom, black 60%, transparent 100%)"
+              : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
             WebkitMaskImage: isMobile
-              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
-              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
-            maskComposite: isMobile ? undefined : 'intersect',
-            WebkitMaskComposite: isMobile ? undefined : 'source-in',
+              ? "linear-gradient(to bottom, black 60%, transparent 100%)"
+              : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
+            maskComposite: isMobile ? undefined : "intersect",
+            WebkitMaskComposite: isMobile ? undefined : "source-in",
           }}
         >
           <img
@@ -97,7 +109,7 @@ export default function HeroSection() {
             alt="Dr. Swathika Rajendran — Breast Surgeon"
             className="w-full h-auto lg:h-full object-cover object-[10%_top] max-h-[60vh] lg:max-h-none"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="sync"
           />
         </motion.div>
@@ -123,7 +135,6 @@ export default function HeroSection() {
                 className={`text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("hero_description")}`}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
-
 
               {/* Trust indicators */}
               <motion.div
@@ -165,7 +176,9 @@ export default function HeroSection() {
       {/* Floating contact icons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
         <motion.button
-          onClick={() => window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, '_blank', 'noopener,noreferrer')}
+          onClick={() =>
+            window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, "_blank", "noopener,noreferrer")
+          }
           className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Chat on WhatsApp"
           initial={{ opacity: 0, scale: 0 }}
@@ -179,7 +192,7 @@ export default function HeroSection() {
           <motion.a
             href={PHONE_HREF}
             className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
-            style={{ color: 'hsl(var(--foreground))' }}
+            style={{ color: "hsl(var(--foreground))" }}
             aria-label="Call now"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
