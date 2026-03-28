@@ -10,7 +10,7 @@ export default function AboutSection() {
 
   const greeting = getText("about_greeting", "Hi, I'm");
   const name = getText("about_name", "DR. SWATHIKA");
-  const tagline = getText("about_tagline", "I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon and Medical Educator.");
+  const tagline = getText("about_tagline", "I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon.");
   const p1 = getText("about_paragraph_1", "With over 700 successful procedures and training from both India and the UK, I've seen first-hand the fear, frustration and uncertainty that my patients go through when facing breast health concerns.");
   const p2 = getText("about_paragraph_2", "As a breast specialist with global experience, I understand finding the right information, processing a diagnosis, understanding treatment options and getting accurate, practical advice can be really overwhelming.");
   const subheading = getText("about_subheading", "But I'm here to help.");
