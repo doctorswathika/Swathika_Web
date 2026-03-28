@@ -7,7 +7,6 @@ import {
   GraduationCap,
   Briefcase,
   Shield,
-  
   MapPin,
   ArrowLeft,
   Heart,
@@ -118,21 +117,22 @@ export default function About() {
                 transition={{ duration: 0.7 }}
                 className="space-y-6 order-2 lg:order-1"
               >
-                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium">
-                  About Me
-                </p>
+                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium">About Me</p>
                 <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1]">
-                  Dr. Swathika{" "}
-                  <span className="text-foreground">Rajendran</span>
+                  Dr. Swathika <span className="text-foreground">Rajendran</span>
                 </h1>
                 <p className="font-sans-body text-base lg:text-lg font-semibold text-foreground">
                   UK-trained Breast Oncoplastic & Reconstructive Surgeon
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  I am committed to providing comprehensive, patient-centred breast care. My journey across India and the United Kingdom has shaped a surgical philosophy rooted in clinical precision, aesthetic excellence, and genuine compassion.
+                  I am committed to providing comprehensive, patient-centred breast care. My journey across India and
+                  the United Kingdom has shaped a surgical philosophy rooted in clinical precision, aesthetic
+                  excellence, and genuine compassion.
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  Having performed over 700 breast surgeries — from complex oncological reconstructions to cosmetic enhancements — I believe every patient deserves care that not only treats disease but restores confidence and dignity.
+                  Having performed over 700 breast surgeries — from complex oncological reconstructions to cosmetic
+                  enhancements — I believe every patient deserves care that not only treats disease but restores
+                  confidence and dignity.
                 </p>
 
                 <Link
@@ -183,12 +183,8 @@ export default function About() {
                     className="bg-card p-6 lg:p-8 text-center space-y-2"
                   >
                     <Icon className="w-5 h-5 text-primary mx-auto" />
-                    <p className="font-serif-display text-3xl lg:text-4xl font-bold text-foreground">
-                      {s.number}
-                    </p>
-                    <p className="text-xs font-sans-body text-muted-foreground tracking-wider uppercase">
-                      {s.label}
-                    </p>
+                    <p className="font-serif-display text-3xl lg:text-4xl font-bold text-foreground">{s.number}</p>
+                    <p className="text-xs font-sans-body text-muted-foreground tracking-wider uppercase">{s.label}</p>
                   </motion.div>
                 );
               })}
@@ -203,7 +199,8 @@ export default function About() {
             <motion.div {...fadeUp} transition={{ duration: 0.7 }} className="text-center space-y-6">
               <Quote className="w-10 h-10 text-blush/40 mx-auto" />
               <blockquote className="font-serif-display text-2xl sm:text-3xl lg:text-4xl italic text-foreground leading-snug">
-                "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as much as your health."
+                "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as
+                much as your health."
               </blockquote>
               <div className="divider-rose w-16 mx-auto" />
               <p className="font-sans-body text-sm text-muted-foreground tracking-widest uppercase">
@@ -252,11 +249,7 @@ export default function About() {
                     </div>
 
                     {/* Card */}
-                    <div
-                      className={`ml-20 md:ml-0 md:w-[43%] ${
-                        isLeft ? "md:pr-14 md:text-right" : "md:pl-14"
-                      }`}
-                    >
+                    <div className={`ml-20 md:ml-0 md:w-[43%] ${isLeft ? "md:pr-14 md:text-right" : "md:pl-14"}`}>
                       <div className="glass rounded-xl p-5 space-y-2 hover:shadow-lg transition-shadow duration-300">
                         <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
                           {item.title}
@@ -276,9 +269,7 @@ export default function About() {
         <section className="py-20 lg:py-28 bg-background">
           <div className="max-w-6xl mx-auto px-6">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-              <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
-                What I Do
-              </p>
+              <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">MY</p>
               <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
                 Surgical <span className="text-gradient-rose italic">Expertise</span>
               </h2>
@@ -339,11 +330,7 @@ export default function About() {
             </motion.div>
 
             {/* Professional Memberships */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="space-y-8"
-            >
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }} className="space-y-8">
               <div>
                 <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
                   Credentials
@@ -387,7 +374,8 @@ export default function About() {
                 Ready to Discuss Your <span className="text-gradient-rose italic">Care?</span>
               </h2>
               <p className="text-muted-foreground font-sans-body leading-relaxed max-w-lg mx-auto">
-                Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm here to guide you with precision, compassion, and world-class expertise.
+                Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm
+                here to guide you with precision, compassion, and world-class expertise.
               </p>
               <div className="flex items-center justify-center pt-4">
                 <Link
