@@ -26,35 +26,30 @@ const stats = [
 
 const timeline = [
   {
-    year: "2012–2017",
     title: "MBBS",
     institution: "Sri Ramachandra Institute of Higher Education & Research, Chennai",
     icon: GraduationCap,
     detail: "Built a strong clinical foundation in medicine and surgery.",
   },
   {
-    year: "2017–2020",
     title: "MS General Surgery",
     institution: "Sri Ramachandra Institute of Higher Education & Research, Chennai",
     icon: GraduationCap,
     detail: "Mastered advanced surgical techniques and patient management.",
   },
   {
-    year: "2020–2021",
-    title: "Clinical Fellowship — Breast Surgery",
-    institution: "Pearl Health, Chennai",
+    title: "Focused Training — Plastic & Aesthetic Surgery",
+    institution: "Specialised training in plastic and aesthetic surgical techniques",
     icon: Briefcase,
-    detail: "Focused exclusively on breast surgical oncology and reconstruction.",
+    detail: "Developed expertise in aesthetic principles applied to breast surgery.",
   },
   {
-    year: "2021–2023",
     title: "MCh Breast Oncoplastic & Reconstructive Surgery",
-    institution: "Edge Hill University & NHS Trusts, United Kingdom",
+    institution: "England, United Kingdom",
     icon: Award,
     detail: "World-class training in oncoplastic techniques across leading UK hospitals.",
   },
   {
-    year: "2023–Present",
     title: "Consultant Breast Oncoplastic & Reconstructive Surgeon",
     institution: "Multiple leading centres across Chennai",
     icon: MapPin,
@@ -65,23 +60,23 @@ const timeline = [
 const expertise = [
   { name: "Mastectomy", desc: "Complete breast tissue removal with precision" },
   { name: "Breast Conserving Surgery", desc: "Removing cancer while preserving the breast" },
-  { name: "Sentinel Node Biopsy", desc: "Minimally invasive lymph node assessment" },
+  { name: "Sentinel Node Biopsy", desc: "Minimally invasive lymph node excision" },
   { name: "Breast Reduction & Augmentation", desc: "Aesthetic reshaping and enhancement" },
-  { name: "Lipomodelling", desc: "Fat transfer for natural breast reconstruction" },
+  { name: "Lipomodelling", desc: "Fat transfer for natural breast enhancement" },
   { name: "Implant Reconstruction", desc: "Restoring form after mastectomy" },
   { name: "Oncoplastic Surgery", desc: "Combining cancer surgery with cosmetic techniques" },
   { name: "Gynaecomastia Correction", desc: "Male breast tissue reduction" },
 ];
 
-const memberships = [
-  { name: "GMC Registered (United Kingdom)", icon: Globe },
-  { name: "Member — Association of Breast Surgeons (ABS)", icon: Shield },
-  { name: "Member — Association of Surgeons of India", icon: Shield },
+const licences = [
+  { name: "GMC — General Medical Council (United Kingdom)", icon: Globe },
+  { name: "TNMC — Tamil Nadu Medical Council", icon: Shield },
 ];
 
-const publications = [
-  "Immediate Breast Reconstruction — Quality of Life Outcomes (Journal of Plastic & Reconstructive Surgery)",
-  "Post Mastectomy Radiation Therapy and Breast Reconstruction — A Collaborative Approach",
+const memberships = [
+  { name: "Member — Association of Breast Surgeons (ABS)", icon: Shield },
+  { name: "Member — Association of Breast Surgeons of India (ABSI)", icon: Shield },
+  { name: "Member — Association of Surgeons of India (ASI)", icon: Shield },
 ];
 
 const fadeUp = {
@@ -131,7 +126,7 @@ export default function About() {
                   <span className="text-foreground">Rajendran</span>
                 </h1>
                 <p className="font-sans-body text-base lg:text-lg font-semibold text-foreground">
-                  UK-trained Breast Oncoplastic & Reconstructive Surgeon · Medical Educator
+                  UK-trained Breast Oncoplastic & Reconstructive Surgeon
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
                   I am committed to providing comprehensive, patient-centred breast care. My journey across India and the United Kingdom has shaped a surgical philosophy rooted in clinical precision, aesthetic excellence, and genuine compassion.
