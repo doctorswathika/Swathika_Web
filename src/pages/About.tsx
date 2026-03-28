@@ -235,7 +235,7 @@ export default function About() {
                 const isLeft = i % 2 === 0;
                 return (
                   <motion.div
-                    key={item.year}
+                    key={item.title}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -258,9 +258,7 @@ export default function About() {
                       }`}
                     >
                       <div className="glass rounded-xl p-5 space-y-2 hover:shadow-lg transition-shadow duration-300">
-                        <span className="text-xs font-sans-body tracking-widest uppercase text-primary font-semibold">
-                          {item.year}
-                        </span>
+                        <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
                         <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
                           {item.title}
                         </h3>
@@ -312,8 +310,41 @@ export default function About() {
         {/* ─── MEMBERSHIPS & PUBLICATIONS ─── */}
         <section className="py-20 lg:py-28 bg-card/40">
           <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-            {/* Memberships */}
+            {/* Licences to Practise */}
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="space-y-8">
+              <div>
+                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
+                  Registrations
+                </p>
+                <h2 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground">
+                  Licences to Practise
+                </h2>
+                <div className="divider-rose w-16 mt-4" />
+              </div>
+              <ul className="space-y-4">
+                {licences.map((m) => {
+                  const Icon = m.icon;
+                  return (
+                    <li
+                      key={m.name}
+                      className="glass rounded-xl p-4 flex items-center gap-4 hover:shadow-md transition-shadow"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-sm text-foreground font-sans-body font-medium">{m.name}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+
+            {/* Professional Memberships */}
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="space-y-8"
+            >
               <div>
                 <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
                   Credentials
@@ -338,36 +369,6 @@ export default function About() {
                     </li>
                   );
                 })}
-              </ul>
-            </motion.div>
-
-            {/* Publications */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="space-y-8"
-            >
-              <div>
-                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
-                  Research
-                </p>
-                <h2 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground">
-                  Publications
-                </h2>
-                <div className="divider-rose w-16 mt-4" />
-              </div>
-              <ul className="space-y-4">
-                {publications.map((p) => (
-                  <li
-                    key={p}
-                    className="glass rounded-xl p-5 hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-start gap-3">
-                      <BookOpen className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{p}</p>
-                    </div>
-                  </li>
-                ))}
               </ul>
             </motion.div>
           </div>
