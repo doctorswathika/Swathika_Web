@@ -259,7 +259,6 @@ export default function About() {
                     >
                       <div className="glass rounded-xl p-5 space-y-2 hover:shadow-lg transition-shadow duration-300">
                         <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
-                        <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
                           {item.title}
                         </h3>
                         <p className="text-sm text-muted-foreground font-sans-body">{item.institution}</p>
