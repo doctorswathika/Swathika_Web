@@ -7,7 +7,7 @@ import {
   GraduationCap,
   Briefcase,
   Shield,
-  BookOpen,
+  
   MapPin,
   ArrowLeft,
   Heart,
