@@ -16,10 +16,22 @@ export default function HeroSection() {
   const [showNumber, setShowNumber] = useState(false);
   const { getText, getAlignClass } = useSiteContent();
 
-  const headline = getText("hero_headline", 'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>');
-  const description = getText("hero_description", "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.");
-  const trustRaw = getText("hero_trust_indicators", "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics");
-  const trustItems = trustRaw.split(",").map((s) => s.trim()).filter(Boolean);
+  const headline = getText(
+    "hero_headline",
+    'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>',
+  );
+  const description = getText(
+    "hero_description",
+    "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.",
+  );
+  const trustRaw = getText(
+    "hero_trust_indicators",
+    "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics",
+  );
+  const trustItems = trustRaw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
@@ -83,13 +95,13 @@ export default function HeroSection() {
           className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative order-first"
           style={{
             maskImage: isMobile
-              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
-              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
+              ? "linear-gradient(to bottom, black 60%, transparent 100%)"
+              : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
             WebkitMaskImage: isMobile
-              ? 'linear-gradient(to bottom, black 60%, transparent 100%)'
-              : 'linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)',
-            maskComposite: isMobile ? undefined : 'intersect',
-            WebkitMaskComposite: isMobile ? undefined : 'source-in',
+              ? "linear-gradient(to bottom, black 60%, transparent 100%)"
+              : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
+            maskComposite: isMobile ? undefined : "intersect",
+            WebkitMaskComposite: isMobile ? undefined : "source-in",
           }}
         >
           <img
@@ -123,7 +135,6 @@ export default function HeroSection() {
                 className={`text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("hero_description")}`}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
-
 
               {/* Trust indicators */}
               <motion.div
@@ -165,7 +176,9 @@ export default function HeroSection() {
       {/* Floating contact icons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
         <motion.button
-          onClick={() => window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, '_blank', 'noopener,noreferrer')}
+          onClick={() =>
+            window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, "_blank", "noopener,noreferrer")
+          }
           className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Chat on WhatsApp"
           initial={{ opacity: 0, scale: 0 }}
@@ -179,7 +192,7 @@ export default function HeroSection() {
           <motion.a
             href={PHONE_HREF}
             className="w-14 h-14 rounded-full gradient-rose-gold flex items-center justify-center shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all duration-300"
-            style={{ color: 'hsl(var(--foreground))' }}
+            style={{ color: "hsl(var(--foreground))" }}
             aria-label="Call now"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
