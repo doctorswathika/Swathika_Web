@@ -98,8 +98,8 @@ export default function About() {
       <main className="pt-24">
         {/* ─── CINEMATIC HERO ─── */}
         <section className="relative overflow-hidden bg-background">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blush/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blush/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
           <div className="max-w-6xl mx-auto px-6 py-16 lg:py-24">
             <Link
