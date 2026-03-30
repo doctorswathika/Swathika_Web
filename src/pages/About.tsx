@@ -269,7 +269,7 @@ export default function About() {
         <section className="py-20 lg:py-28 bg-background">
           <div className="max-w-6xl mx-auto px-6">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-              <p className="text-base tracking-[0.3em] uppercase text-gradient-rose font-sans-body font-semibold mb-3">MY</p>
+              <p className="text-lg tracking-[0.3em] uppercase text-gradient-rose font-sans-body font-semibold mb-3">MY</p>
               <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
                 Surgical <span className="text-gradient-rose italic">Expertise</span>
               </h2>
