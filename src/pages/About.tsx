@@ -58,12 +58,12 @@ const timeline = [
 
 const expertise = [
   { name: "Mastectomy", desc: "Complete breast tissue removal with precision" },
-  { name: "Breast Conserving Surgery", desc: "Removing cancer while preserving the breast" },
+  { name: "Breast Conserving & Oncoplastic Surgery", desc: "Removing cancer while preserving the breast with cosmetic techniques" },
   { name: "Sentinel Node Biopsy", desc: "Minimally invasive lymph node excision" },
+  { name: "Axillary Node Surgery", desc: "Targeted lymph node management for staging and treatment" },
   { name: "Breast Reduction & Augmentation", desc: "Aesthetic reshaping and enhancement" },
   { name: "Lipomodelling", desc: "Fat transfer for natural breast enhancement" },
   { name: "Implant Reconstruction", desc: "Restoring form after mastectomy" },
-  { name: "Oncoplastic Surgery", desc: "Combining cancer surgery with cosmetic techniques" },
   { name: "Gynaecomastia Correction", desc: "Male breast tissue reduction" },
 ];
 
@@ -269,7 +269,7 @@ export default function About() {
         <section className="py-20 lg:py-28 bg-background">
           <div className="max-w-6xl mx-auto px-6">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-              <p className="text-lg tracking-[0.3em] uppercase text-gradient-rose font-sans-body font-semibold mb-3">MY</p>
+              <p className="text-2xl lg:text-3xl tracking-[0.3em] uppercase text-gradient-rose font-sans-body font-bold mb-3">MY</p>
               <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
                 Surgical <span className="text-gradient-rose italic">Expertise</span>
               </h2>
