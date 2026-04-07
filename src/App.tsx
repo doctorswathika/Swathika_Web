@@ -21,7 +21,6 @@ import Lipomodelling from "./pages/services/Lipomodelling";
 import ImplantReconstruction from "./pages/services/ImplantReconstruction";
 import GynaecomastiaCorrection from "./pages/services/GynaecomastiaCorrection";
 import AdminLayout from "./pages/admin/AdminLayout";
-import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminBlog from "./pages/admin/AdminBlog";
