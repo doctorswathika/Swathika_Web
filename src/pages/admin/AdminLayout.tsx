@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Key,
   FileText,
   BarChart3,
   LogOut,
