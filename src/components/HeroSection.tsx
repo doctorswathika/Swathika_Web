@@ -18,7 +18,7 @@ export default function HeroSection() {
 
   const headline = getText(
     "hero_headline",
-    'Your Breast Health<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>',
+    'Your Breast Health<br/><em class="text-gradient-rose" style="font-style:italic;display:block;text-align:center">in Expert Hands</em>',
   );
   const description = getText(
     "hero_description",
@@ -124,7 +124,7 @@ export default function HeroSection() {
           <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">
               <h1
-                className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground text-center lg:text-left ${getAlignClass("hero_headline")}`}
+                className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground ${getAlignClass("hero_headline")}`}
                 dangerouslySetInnerHTML={{ __html: headline }}
               />
 
