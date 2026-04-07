@@ -1,0 +1,1 @@
+UPDATE site_content SET content = 'Your Breast Health<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>' WHERE section_key = 'hero_headline';
