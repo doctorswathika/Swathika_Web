@@ -21,7 +21,6 @@ import Lipomodelling from "./pages/services/Lipomodelling";
 import ImplantReconstruction from "./pages/services/ImplantReconstruction";
 import GynaecomastiaCorrection from "./pages/services/GynaecomastiaCorrection";
 import AdminLayout from "./pages/admin/AdminLayout";
-import AdminApiKeys from "./pages/admin/AdminApiKeys";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminBlog from "./pages/admin/AdminBlog";
@@ -61,8 +60,7 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Admin Portal */}
             <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminApiKeys />} />
-              <Route path="api-keys" element={<AdminApiKeys />} />
+              <Route index element={<AdminBlog />} />
               <Route path="content" element={<AdminContent />} />
               <Route path="blog" element={<AdminBlog />} />
               <Route path="google-reviews" element={<AdminGoogleReviews />} />
