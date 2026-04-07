@@ -60,8 +60,7 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             {/* Admin Portal */}
             <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminApiKeys />} />
-              <Route path="api-keys" element={<AdminApiKeys />} />
+              <Route index element={<AdminBlog />} />
               <Route path="content" element={<AdminContent />} />
               <Route path="blog" element={<AdminBlog />} />
               <Route path="google-reviews" element={<AdminGoogleReviews />} />

@@ -15,7 +15,6 @@ import {
 import AdminGuard from "@/components/admin/AdminGuard";
 
 const NAV_ITEMS = [
-  { label: "API Keys", icon: Key, path: "/admin/api-keys" },
   { label: "Blog", icon: BookOpen, path: "/admin/blog" },
   { label: "Content", icon: FileText, path: "/admin/content" },
   { label: "Google Reviews", icon: MessageSquare, path: "/admin/google-reviews" },
