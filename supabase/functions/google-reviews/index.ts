@@ -16,8 +16,17 @@ serve(async (req) => {
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const sb = createClient(supabaseUrl, serviceRoleKey);
 
-    const apiKey = Deno.env.get('GOOGLE_PLACES_API_KEY');
-    const placeId = Deno.env.get('GOOGLE_PLACE_ID');
+    // Read API key and Place ID from site_settings
+    const { data: settings } = await sb
+      .from('site_settings')
+      .select('key, value')
+      .in('key', ['GOOGLE_PLACES_API_KEY', 'GOOGLE_PLACE_ID']);
+
+    const settingsMap: Record<string, string> = {};
+    (settings || []).forEach((s: any) => { settingsMap[s.key] = s.value; });
+
+    const apiKey = settingsMap['GOOGLE_PLACES_API_KEY'];
+    const placeId = settingsMap['GOOGLE_PLACE_ID'];
 
     if (!apiKey || !placeId) {
       return new Response(
@@ -60,6 +69,7 @@ serve(async (req) => {
       if (!existing) {
         await sb.from('google_reviews').insert(review);
       } else {
+        // Update text/rating/time but keep is_displayed
         await sb.from('google_reviews')
           .update({
             author_name: review.author_name,

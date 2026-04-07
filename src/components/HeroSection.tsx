@@ -18,7 +18,7 @@ export default function HeroSection() {
 
   const headline = getText(
     "hero_headline",
-    'Your Breast Health<br/><em class="text-gradient-rose" style="font-style:italic;display:block;padding-left:1.5em">in Expert Hands</em>',
+    'Your Breast Health,<br/><em class="text-gradient-rose" style="font-style:italic">in Expert Hands</em>',
   );
   const description = getText(
     "hero_description",
