@@ -1,0 +1,1 @@
+UPDATE public.site_content SET content = 'Your Breast Health<br/><em class="text-gradient-rose" style="font-style:italic;display:block;padding-left:1.5em">in Expert Hands</em>', updated_at = now() WHERE section_key = 'hero_headline';
