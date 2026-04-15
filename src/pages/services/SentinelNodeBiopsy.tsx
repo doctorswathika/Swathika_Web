@@ -15,9 +15,7 @@ export default function SentinelNodeBiopsy() {
         "By identifying and removing only the sentinel node in eligible patients, unnecessary extensive surgery can be avoided, thereby significantly reducing the risk of complications like lymphoedema.",
         "This technique has revolutionised breast cancer surgery, allowing patients to receive precise staging information while preserving arm function and reducing morbidity, with proven efficacy and comparable outcomes.",
       ]}
-      benefits={[
-        "Performed as part of breast cancer surgery — no separate procedure needed",
-      ]}
+      benefits={[]}
       process={[
         { step: "Pre-operative Mapping", description: "A small amount of radioactive tracer and/or blue dye is injected in the breast to identify the sentinel lymph node(s). This is done on the day of surgery." },
         { step: "Identification & Removal", description: "The sentinel node(s) are identified during surgery and are then carefully removed through a small incision in the armpit." },
