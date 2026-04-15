@@ -18,7 +18,7 @@ interface ServicePageLayoutProps {
   benefits: string[];
   process: { step: string; description: string }[];
   faqs: { q: string; a: string }[];
-  proofOfWork: { stat: string; label: string }[];
+  proofOfWork?: { stat: string; label: string }[];
   /** DB content prefix, e.g. "svc_mastectomy". If provided, editable fields
    *  are fetched from the site_content table and override the props. */
   contentPrefix?: string;
@@ -166,26 +166,6 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* ── Proof of Work Stats ── */}
-        <section className="py-12 bg-card/50 border-y border-border">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {proofOfWork.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="text-center"
-                >
-                  <p className="font-serif-display text-3xl lg:text-4xl font-bold text-primary">{item.stat}</p>
-                  <p className="text-xs font-sans-body text-muted-foreground tracking-widest uppercase mt-1">{item.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ── Overview ── */}
         <section className="py-16 lg:py-24 bg-background">
