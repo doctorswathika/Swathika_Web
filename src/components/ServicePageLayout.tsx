@@ -198,6 +198,7 @@ export default function ServicePageLayout({
         </section>
 
         {/* ── Benefits ── */}
+        {displayBenefits.length > 0 && (
         <section className="py-16 lg:py-24 bg-card/50">
           <div className="max-w-4xl mx-auto px-6">
             <motion.div
@@ -228,6 +229,7 @@ export default function ServicePageLayout({
             </motion.div>
           </div>
         </section>
+        )}
 
         {/* ── Process ── */}
         <section className="py-16 lg:py-24 bg-background">
