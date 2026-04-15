@@ -36,7 +36,7 @@ export default function SentinelNodeBiopsy() {
         {
           step: "Follow-up",
           description:
-            "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team based on individual circumstances.",
+            "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team.",
         },
       ]}
       faqs={[
