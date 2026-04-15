@@ -16,18 +16,46 @@ export default function SentinelNodeBiopsy() {
         "This technique has revolutionised breast cancer surgery, allowing patients to receive precise staging information while preserving arm function and reducing morbidity, with proven efficacy and comparable outcomes.",
       ]}
       benefits={[
-        "Performed as part of breast cancer surgery — no separate procedure needed",
+        "Accurate cancer staging with minimal invasiveness",
+        "Significantly lower risk of lymphoedema compared to full axillary clearance",
+        "Faster recovery and less post-operative discomfort",
+        "Preserves arm function and mobility",
+        "Guides personalised treatment planning",
       ]}
       process={[
-        { step: "Pre-operative Mapping", description: "A small amount of radioactive tracer and/or blue dye is injected in the breast to identify the sentinel lymph node(s). This is done on the day of surgery." },
-        { step: "Identification & Removal", description: "The sentinel node(s) are identified during surgery and are then carefully removed through a small incision in the armpit." },
-        { step: "Follow-up", description: "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team based on individual circumstances." },
+        {
+          step: "Pre-operative Mapping",
+          description:
+            "A small amount of radioactive tracer and/or blue dye is injected in the breast to identify the sentinel lymph node(s). This is done on the day of surgery.",
+        },
+        {
+          step: "Identification & Removal",
+          description:
+            "The sentinel node(s) are identified during surgery and are then carefully removed through a small incision in the armpit.",
+        },
+        {
+          step: "Follow-up",
+          description:
+            "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team.",
+        },
       ]}
       faqs={[
-        { q: "Is sentinel node biopsy painful?", a: "The procedure is performed under general anaesthesia as part of your breast surgery, so you won't feel any pain during the procedure. Post-operative discomfort is usually mild." },
-        { q: "What is the risk of lymphoedema with SNB?", a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance." },
-        { q: "What happens if cancer is found in the sentinel node?", a: "Further treatment options, which may include additional surgery, radiation, or systemic therapy, are discussed by the multidisciplinary team based on individual circumstances." },
-        { q: "Will I have a visible scar?", a: "The incision is small (2–3cm) and placed in the armpit crease, making it barely visible once healed." },
+        {
+          q: "Is sentinel node biopsy painful?",
+          a: "The procedure is performed under general anaesthesia as part of your breast surgery, so you won't feel any pain during the procedure. Post-operative discomfort is usually mild.",
+        },
+        {
+          q: "What is the risk of lymphoedema with SNB?",
+          a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance.",
+        },
+        {
+          q: "What happens if cancer is found in the sentinel node?",
+          a: "Further treatment options, which may include additional surgery, radiation, or systemic therapy, are discussed by the multidisciplinary team based on individual circumstances.",
+        },
+        {
+          q: "Will I have a visible scar?",
+          a: "The incision is small (2–3cm) and placed in the armpit crease, making it barely visible once healed.",
+        },
       ]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
