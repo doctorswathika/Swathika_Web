@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 
-const ADMIN_EMAIL = "bbm.genai@gmail.com";
+const ADMIN_ID = "6c699a7c-d104-41fb-b26f-b93ee25245e3";
 
 interface AdminGuardProps {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
   useEffect(() => {
     const checkAdmin = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session || session.user.email?.toLowerCase() !== ADMIN_EMAIL) {
+      if (!session || session.user.id !== ADMIN_ID) {
         navigate("/auth", { replace: true });
         return;
       }
@@ -26,7 +26,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
     };
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session || session.user.email?.toLowerCase() !== ADMIN_EMAIL) {
+      if (!session || session.user.id !== ADMIN_ID) {
         navigate("/auth", { replace: true });
         return;
       }

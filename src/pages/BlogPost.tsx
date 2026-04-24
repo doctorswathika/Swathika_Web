@@ -51,7 +51,7 @@ export default function BlogPostPage() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const isAdmin = user?.email?.toLowerCase() === "bbm.genai@gmail.com";
+  const isAdmin = user?.id === "6c699a7c-d104-41fb-b26f-b93ee25245e3";
 
   useEffect(() => {
     if (!slug) return;
