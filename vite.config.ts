@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
   const supabaseUrl = env.VITE_SUPABASE_URL;
 
   return {
+    base: "/",
     server: {
       host: "::",
       port: 8080,
