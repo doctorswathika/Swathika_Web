@@ -41,6 +41,8 @@ const defaultDos = [
   "Don't ignore a lump — especially if it's painless",
 ];
 
+const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters"]);
+
 const defaultDonts = [
   "Don't ignore a lump — even if it's painless",
   "Don't delay a doctor's visit out of fear",
@@ -61,7 +63,7 @@ export default function AwarenessSection() {
   const symptomsRaw = getText("awareness_symptoms", "");
   const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
   const dosRaw = getText("awareness_dos", "");
-  const dos = dosRaw ? dosRaw.split("\n").filter(Boolean) : defaultDos;
+  const dos = dosRaw ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item)) : defaultDos;
   const dontsRaw = getText("awareness_donts", "");
   const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
