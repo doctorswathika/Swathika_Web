@@ -11,9 +11,10 @@ export default function BreastReductionAugmentation() {
       category="Cosmetic"
       metaDescription="Breast reduction and augmentation surgery by Dr. Swathika Rajendran in Chennai. UK-trained breast surgeon offering expert cosmetic breast procedures."
       overview={[
-        "Breast reduction surgery removes excess breast tissue, fat, and skin to achieve a breast size proportionate to your body. It relieves physical discomfort such as back pain, neck pain, and skin irritation while improving body proportions.",
-        "Breast augmentation enhances breast size and shape using implants or fat transfer techniques. Dr. Swathika's oncoplastic training gives her a unique advantage — understanding breast anatomy at the deepest level allows her to achieve natural, harmonious results.",
-        "Whether you're seeking relief from oversized breasts or enhancement for improved confidence, Dr. Swathika provides personalised surgical plans that prioritise both your physical comfort and aesthetic goals.",
+        "What is Breast Reduction & Augmentation? Breast reduction surgery is performed to remove excess breast tissue, fat, and skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back and neck pain, bra strap indentations, and recurrent skin infections, while improving posture and overall comfort.",
+        "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques.",
+        "With UK-trained oncoplastic expertise, Dr. Swathika combines a detailed understanding of breast anatomy with advanced surgical techniques to achieve natural, balanced results.",
+        "Each treatment plan is individualised, focusing on both functional improvement and aesthetically realistic outcomes.",
       ]}
       benefits={[
         "Relief from back, neck, and shoulder pain (reduction)",
@@ -24,16 +25,16 @@ export default function BreastReductionAugmentation() {
         "Combined oncoplastic expertise for superior outcomes",
       ]}
       process={[
-        { step: "Personal Consultation", description: "A confidential discussion about your goals, concerns, and expectations. Dr. Swathika will examine your breast anatomy and recommend the most suitable approach." },
+        { step: "Personal Consultation", description: "A confidential discussion to understand your goals, concerns, and expectations, followed by a detailed clinical examination and personalised recommendations tailored to your needs." },
         { step: "Customised Planning", description: "Detailed surgical planning including incision patterns, implant selection (for augmentation), or tissue removal volume (for reduction). Pre-operative photographs and measurements guide the plan." },
         { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 2–3 hours. Dr. Swathika uses proven techniques to achieve symmetrical, natural-looking results with minimal scarring." },
         { step: "Recovery", description: "Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months as swelling settles and scars mature." },
       ]}
       faqs={[
-        { q: "Will I lose nipple sensation after breast reduction?", a: "Some temporary changes in sensation are common but usually resolve over weeks to months. Dr. Swathika uses techniques that preserve the nerve supply to the nipple." },
-        { q: "What implant types are available for augmentation?", a: "Both silicone and saline implants are available in various shapes and profiles. Fat transfer augmentation is also an option. The best choice depends on your anatomy and goals." },
-        { q: "How long do results last?", a: "Reduction results are long-lasting, though weight changes and ageing can affect breast shape. Augmentation implants typically last 10–15 years before potential replacement." },
-        { q: "Can I breastfeed after breast reduction?", a: "Many women can still breastfeed after reduction, though there may be some reduction in milk supply. This should be discussed during consultation." },
+        { q: "Will my symptoms and posture improve after breast reduction?", a: "Yes, most patients experience significant relief from symptoms such as back, neck, and shoulder pain as the excess weight on the chest is reduced." },
+        { q: "What are the options for breast augmentation?", a: "Breast augmentation can be performed using silicone implants or fat transfer techniques. The most suitable option depends on your anatomy, preferences, and desired outcome." },
+        { q: "How long do the results last?", a: "Breast reduction results are long-lasting, although ageing and weight changes can influence breast shape over time. Augmentation implants typically last around 10–15 years, provided there are no implant-related complications." },
+        { q: "Can cosmetic procedures affect breastfeeding?", a: "It depends on the type of procedure performed, as some techniques may impact breastfeeding. This is best discussed during your consultation based on your individual surgical plan." },
       ]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
