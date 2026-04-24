@@ -7,17 +7,17 @@ const motivation = [
   {
     icon: Lightbulb,
     title: "Knowledge Is Power",
-    text: "Early detection increases the 5-year survival rate to over 99%. Awareness isn't just information — it's a lifeline. The more you know, the better you protect yourself and your loved ones.",
+    text: "Early detection can significantly improve breast cancer outcomes. Awareness isn't just information — it's a lifeline. The more you know, the better you protect yourself and your loved ones.",
   },
   {
     icon: Heart,
     title: "You Are Not Alone",
-    text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path — and thrived. Modern oncoplastic surgery restores not just the body, but confidence, identity, and hope.",
+    text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path — and thrived. Modern oncoplastic surgery restores not just the breast, but confidence, identity, and hope.",
   },
   {
     icon: Sparkles,
     title: "Healing Beyond Surgery",
-    text: "Recovery is physical, emotional, and deeply personal. With the right surgeon, every step — from diagnosis to reconstruction — becomes a journey towards reclaiming yourself, not just surviving.",
+    text: "Recovery is physical, emotional, and deeply personal. With the right surgeon, every step — from diagnosis to treatment — becomes a journey towards reclaiming yourself, not just surviving.",
   },
   {
     icon: ShieldCheck,
@@ -28,20 +28,17 @@ const motivation = [
 
 const defaultSymptoms = [
   "A new lump or thickening in the breast or underarm",
-  "Change in breast size, shape, or symmetry",
+  "Sudden change in breast size, shape, or symmetry",
   "Skin dimpling, puckering, or redness on the breast",
   "Nipple discharge (especially if bloody), retraction, or inversion",
   "Persistent breast pain not linked to your menstrual cycle",
-  "Swelling or warmth in part of the breast",
+  "Swelling or warmth in one part of the breast",
 ];
 
 const defaultDos = [
-  "Perform monthly breast self-examinations after age 20",
-  "Get annual clinical breast exams from age 30+",
-  "Schedule regular mammograms as recommended by your doctor",
-  "Maintain a healthy weight and stay physically active",
-  "Discuss your family history with your surgeon",
-  "Seek a second opinion — it's your right and it matters",
+  "Perform monthly breast self-examinations",
+  "Schedule regular mammograms above the age of 40 as recommended by your doctor",
+  "Don't ignore a lump — especially if it's painless",
 ];
 
 const defaultDonts = [
