@@ -33,15 +33,9 @@ const DEFAULT_FAQS = [
     q: "What is the risk of lymphoedema after sentinel node biopsy?",
     a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance. This minimally invasive technique preserves arm function while providing accurate cancer staging.",
   },
-  {
-    q: "How experienced is Dr. Swathika?",
-    a: "Dr. Swathika holds a dedicated MCh in Breast Oncoplastic & Reconstructive Surgery from the UK, is GMC registered, and has performed over 700 breast procedures — making her one of the most qualified oncoplastic surgeons in Chennai.",
-  },
-  {
-    q: "How do I book a consultation?",
-    a: "You can book a consultation through our website by clicking 'Book a Consultation', or reach out via WhatsApp or phone. Consultations are confidential and include a thorough assessment with a personalised care plan.",
-  },
 ];
+
+const PDF_MAIN_FAQ_QUESTIONS = new Set(DEFAULT_FAQS.map((faq) => faq.q));
 
 export default function FAQSection() {
   const { ref, isVisible } = useScrollAnimation();
@@ -53,7 +47,7 @@ export default function FAQSection() {
     if (faqJson) {
       const parsed = JSON.parse(faqJson);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        faqs = parsed;
+        faqs = parsed.filter((faq) => PDF_MAIN_FAQ_QUESTIONS.has(faq.q));
       }
     }
   } catch {
