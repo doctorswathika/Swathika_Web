@@ -28,17 +28,11 @@ export default function OncoplasticSurgery() {
         { step: "Combined Surgery", description: "Cancer removal and breast reshaping are performed in a single operation under general anaesthesia. Contralateral (opposite) breast surgery for symmetry may be performed simultaneously." },
         { step: "Recovery & Monitoring", description: "Recovery is similar to standard breast surgery. Close follow-up ensures both oncological safety and aesthetic satisfaction, with adjustments if needed." },
       ]}
-      faqs={[
-        { q: "What makes oncoplastic surgery different from regular breast surgery?", a: "Regular breast surgery focuses on removing cancer. Oncoplastic surgery does the same but adds plastic surgery techniques to reshape the breast, resulting in a better appearance without compromising cancer treatment." },
-        { q: "Is oncoplastic surgery safe for cancer treatment?", a: "Absolutely. Studies show that oncoplastic surgery achieves equivalent or better oncological outcomes compared to standard surgery, while providing superior cosmetic results." },
-        { q: "Can both breasts be operated on for symmetry?", a: "Yes. If needed, surgery on the opposite breast (reduction, lift, or augmentation) can be performed simultaneously to achieve symmetry." },
-        { q: "How experienced is Dr. Swathika in oncoplastic surgery?", a: "Dr. Swathika holds a dedicated MCh in Breast Oncoplastic Surgery from the UK and has performed over 700 breast procedures, making her one of the most qualified oncoplastic surgeons in Chennai." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Breast Procedures" },
         { stat: "MCh", label: "UK Qualification" },
-        { stat: "GMC", label: "Registered" },
-        { stat: "99%", label: "Patient Satisfaction" },
+        { stat: "UK", label: "Certified Professional" },
       ]}
     />
   );

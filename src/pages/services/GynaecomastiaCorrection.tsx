@@ -27,16 +27,11 @@ export default function GynaecomastiaCorrection() {
         { step: "The Procedure", description: "Performed under general anaesthesia, typically taking 1–2 hours. Excess tissue is removed through carefully placed incisions." },
         { step: "Recovery", description: "A compression garment is worn for 4–6 weeks. Most patients return to work within 1–2 weeks and full physical activities after 6 weeks. Results are immediately visible." },
       ]}
-      faqs={[
-        { q: "What causes gynaecomastia?", a: "It can be caused by hormonal imbalances, certain medications, obesity, or may be idiopathic (no identifiable cause). Blood tests are often performed to rule out hormonal causes before surgery." },
-        { q: "Will the condition come back after surgery?", a: "Recurrence is rare when the breast tissue is adequately removed. Maintaining a healthy weight and avoiding causative medications helps ensure lasting results." },
-        { q: "Are there visible scars?", a: "Incisions are placed around the edge of the areola or in the armpit crease to minimise visibility. Most scars fade significantly over 6–12 months." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
         { stat: "UK", label: "Specialist Training" },
-        { stat: "97%", label: "Satisfaction Rate" },
-        { stat: "GMC", label: "Registered" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );

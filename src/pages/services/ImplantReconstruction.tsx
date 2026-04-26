@@ -25,17 +25,11 @@ export default function ImplantReconstruction() {
         { step: "Reconstruction Planning", description: "Detailed discussion about reconstruction options, timing, implant choices, and expected outcomes. Dr. Swathika uses her expertise to recommend the best approach for your situation." },
         { step: "Refinement & Follow-up", description: "Secondary procedures such as nipple reconstruction, fat grafting for contour refinement, or symmetry adjustments may be performed. Regular follow-up ensures long-term satisfaction." },
       ]}
-      faqs={[
-        { q: "Should I choose immediate or delayed reconstruction?", a: "Immediate reconstruction is preferred when oncologically safe, as it achieves better cosmetic outcomes and reduces the psychological impact. Dr. Swathika will advise based on your cancer treatment plan." },
-        { q: "How long do breast implants last?", a: "Modern implants are designed to last 10–15 years or longer. They don't have a fixed expiry date, but monitoring through regular check-ups is recommended." },
-        { q: "Will the reconstructed breast feel natural?", a: "While a reconstructed breast won't feel identical to a natural breast, modern techniques achieve a result that looks natural in clothing and feels comfortable." },
-        { q: "What are the risks of implant reconstruction?", a: "Risks include infection, capsular contracture, implant rupture, and the need for revision surgery. Dr. Swathika discusses all risks thoroughly during consultation." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
         { stat: "MCh", label: "Reconstructive Training" },
         { stat: "UK", label: "NHS Experience" },
-        { stat: "98%", label: "Satisfaction Rate" },
       ]}
     />
   );
