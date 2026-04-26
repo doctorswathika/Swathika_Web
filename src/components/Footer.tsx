@@ -42,7 +42,7 @@ export default function Footer() {
         transition={{ duration: 0.7 }}
         className="max-w-7xl mx-auto px-6"
       >
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="font-serif-display text-2xl font-semibold text-foreground">
@@ -55,12 +55,12 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="font-serif-display text-lg font-semibold text-foreground">Quick Links</h4>
-            <div className="space-y-2.5">
+            <div className="space-y-2.5 flex flex-col items-center md:items-start">
               {quickLinks.map((l) => (
                 <button
                   key={l.href}
                   onClick={() => handleNavClick(l.href, l.isRoute)}
-                  className="block text-sm text-muted-foreground font-sans-body hover:text-foreground hover:translate-x-1 transition-all duration-300"
+                  className="block text-sm text-muted-foreground font-sans-body hover:text-foreground md:hover:translate-x-1 transition-all duration-300"
                 >
                   {l.label}
                 </button>
@@ -71,8 +71,8 @@ export default function Footer() {
           {/* Contact */}
           <div className="space-y-4">
             <h4 className="font-serif-display text-lg font-semibold text-foreground">Contact</h4>
-            <div className="space-y-3">
-              <p className={`flex items-start gap-2 text-sm text-muted-foreground font-sans-body ${getAlignClass("footer_address")}`}>
+            <div className="space-y-3 flex flex-col items-center md:items-start">
+              <p className={`flex items-start gap-2 text-sm text-muted-foreground font-sans-body justify-center md:justify-start ${getAlignClass("footer_address")}`}>
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span dangerouslySetInnerHTML={{ __html: address }} />
               </p>
