@@ -4,14 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhyChooseMeSection from "@/components/WhyChooseMeSection";
 import {
-  Award,
   GraduationCap,
   Briefcase,
   Shield,
   MapPin,
   ArrowLeft,
   Heart,
-  Globe,
   Quote,
 } from "lucide-react";
 import { Link } from "react-router-dom";
