@@ -10,7 +10,7 @@ import {
   MapPin,
   ArrowLeft,
   Heart,
-  Stethoscope,
+  Heart,
   Globe,
   Quote,
 } from "lucide-react";
