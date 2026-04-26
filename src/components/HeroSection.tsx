@@ -18,7 +18,7 @@ export default function HeroSection() {
   );
   const description = getText(
     "hero_description",
-    "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.",
+    "UK-trained Breast Oncoplastic & Reconstructive Surgeon, with over 700 surgeries performed — bringing world-class precision, personalised care, and the confidence you deserve.",
   );
   const trustRaw = getText(
     "hero_trust_indicators",
