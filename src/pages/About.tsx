@@ -130,7 +130,7 @@ export default function About() {
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
                   Having performed over 700 breast surgeries — from complex oncological reconstructions to cosmetic
-                  enhancements — I believe every patient deserves care that not only treats disease but restores
+                  enhancements — my focus is care that not only treats disease but also restores
                   confidence and dignity.
                 </p>
 
@@ -168,7 +168,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-1 rounded-2xl overflow-hidden shadow-xl"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-1 rounded-2xl overflow-hidden shadow-xl"
             >
               {stats.map((s, i) => {
                 const Icon = s.icon;
