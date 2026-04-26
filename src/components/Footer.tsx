@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, Phone, Mail, Linkedin, Heart } from "lucide-react";
+import { MapPin, MessageCircle, Mail, Linkedin, Heart } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -9,7 +9,6 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "About Me", href: "/about", isRoute: true },
   { label: "Services", href: "#services" },
   { label: "Awareness", href: "#awareness" },
-  { label: "Testimonials", href: "#testimonials" },
   { label: "Blog", href: "#blog" },
   { label: "Instagram", href: "#instagram" },
   { label: "YouTube", href: "#youtube" },
@@ -25,7 +24,7 @@ export default function Footer() {
 
   const brandDesc = getText("footer_brand_description", "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.");
   const address = getText("footer_address", "Chennai, Tamil Nadu, India");
-  const phone = getText("footer_phone", "+91 98765 43210");
+  const whatsappNumber = "919080328082";
   const email = getText("footer_email", "contact@drswathika.com");
   const disclaimer = getText("footer_disclaimer", "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.");
 
@@ -77,9 +76,14 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
                 <span dangerouslySetInnerHTML={{ __html: address }} />
               </p>
-              <a href={`tel:${phone.replace(/\s/g, "")}`} className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group">
-                <Phone className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                {phone}
+              <a
+                href={`https://api.whatsapp.com/send?phone=${whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group"
+              >
+                <MessageCircle className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+                Chat on WhatsApp
               </a>
               <a href={`mailto:${email}`} className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group">
                 <Mail className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
