@@ -28,17 +28,11 @@ export default function BreastConservingSurgery() {
         { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 1–2 hours. The tumour is removed with a surrounding margin of healthy tissue. Sentinel node biopsy is often performed simultaneously." },
         { step: "Post-operative Care", description: "Most patients go home the same day or the next day. Radiation therapy is typically recommended afterwards. Regular follow-up ensures optimal healing and monitoring." },
       ]}
-      faqs={[
-        { q: "Am I a candidate for breast conserving surgery?", a: "Suitability depends on tumour size relative to breast size, tumour location, and whether clear margins can be achieved. Dr. Swathika will assess this during your consultation." },
-        { q: "Will my breast look different after surgery?", a: "With oncoplastic techniques, Dr. Swathika reshapes the remaining tissue to maintain a natural appearance. Most patients are very satisfied with the cosmetic outcome." },
-        { q: "Is radiation therapy always needed after BCS?", a: "In most cases, yes. Radiation therapy significantly reduces the risk of local recurrence and is a standard part of breast conserving treatment." },
-        { q: "How long until I can return to normal activities?", a: "Most patients return to daily activities within 1–2 weeks. Full recovery typically takes 3–4 weeks." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
-        { stat: "98%", label: "Clear Margins Rate" },
         { stat: "UK", label: "Oncoplastic Training" },
-        { stat: "GMC", label: "Registered" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );

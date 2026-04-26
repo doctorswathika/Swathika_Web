@@ -24,15 +24,11 @@ export default function BreastConservingOncoplastic() {
         { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 1–3 hours. The tumour is removed with a surrounding margin of healthy tissue, and the breast is actively reshaped. Sentinel node biopsy or axillary dissection is often performed simultaneously." },
         { step: "Post-operative Care", description: "Most patients go home the next day. Radiation therapy is typically recommended afterwards. Regular follow-up ensures optimal healing, oncological safety, and aesthetic satisfaction." },
       ]}
-      faqs={[
-        { q: "What is the difference between breast conserving and oncoplastic surgery?", a: "Breast conserving surgery removes the tumour while preserving the breast. Oncoplastic surgery adds plastic surgery reshaping techniques on top of this, resulting in a better cosmetic appearance without compromising cancer treatment." },
-        { q: "Will my breast look different after surgery?", a: "With oncoplastic techniques, Dr. Swathika aims to reshape the remaining tissue to maintain a natural, symmetrical appearance. Most patients are very satisfied with the cosmetic outcome. Expectations must be realistic as oncological safety takes priority." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
-        { stat: "98%", label: "Clear Margins Rate" },
         { stat: "MCh", label: "UK Qualification" },
-        { stat: "GMC", label: "Registered" },
+        { stat: "UK", label: "Certified Professional" },
       ]}
     />
   );

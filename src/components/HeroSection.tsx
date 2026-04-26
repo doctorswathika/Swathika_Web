@@ -18,16 +18,18 @@ export default function HeroSection() {
   );
   const description = getText(
     "hero_description",
-    "UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ successful surgeries — bringing world-class precision, personalised care, and the confidence you deserve.",
+    "UK-trained Breast Oncoplastic & Reconstructive Surgeon, with over 700 surgeries performed — bringing world-class precision, personalised care, and the confidence you deserve.",
   );
   const trustRaw = getText(
     "hero_trust_indicators",
-    "MCh (UK) Trained,GMC Registered,700+ Surgeries,Oncology + Aesthetics",
+    "MCh (UK) Trained,UK Certified Professional,700+ Surgeries,Oncology + Aesthetics",
   );
+  // Filter out any legacy GMC entries that may still live in the CMS
+  const removedTrustItems = new Set(["GMC Registered"]);
   const trustItems = trustRaw
     .split(",")
     .map((s) => s.trim())
-    .filter(Boolean);
+    .filter((item) => item && !removedTrustItems.has(item));
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">

@@ -65,7 +65,7 @@ export default function BookConsultationCTA() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-muted-foreground font-sans-body"
           >
-            {["Confidential Consultation", "Personalised Care Plan", "UK-Trained Specialist", "700+ Successful Surgeries"].map((item) => (
+            {["Confidential Consultation", "Personalised Care Plan", "UK Certified Professional", "700+ Surgeries Performed"].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block" />
                 <span className="text-[hsl(350_50%_60%)]">{item}</span>

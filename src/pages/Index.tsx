@@ -1,14 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import WhyChooseMeSection from "@/components/WhyChooseMeSection";
 import AwarenessSection from "@/components/AwarenessSection";
 import ServicesSection from "@/components/ServicesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import BookConsultationCTA from "@/components/BookConsultationCTA";
 import BlogSection from "@/components/BlogSection";
 import InstaSection from "@/components/InstaSection";
 import YoutubeSection from "@/components/YoutubeSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -55,14 +56,15 @@ const Index = () => {
       <main>
         <HeroSection />
         <AboutSection />
+        <WhyChooseMeSection />
         <ServicesSection />
         <AwarenessSection />
-        <TestimonialsSection />
         <GoogleReviewsSection />
         <BookConsultationCTA />
         <BlogSection />
         <InstaSection />
         <YoutubeSection />
+        <FAQSection />
       </main>
       <Footer />
     </>

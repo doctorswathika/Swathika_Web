@@ -39,29 +39,11 @@ export default function SentinelNodeBiopsy() {
             "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team.",
         },
       ]}
-      faqs={[
-        {
-          q: "Is sentinel node biopsy painful?",
-          a: "The procedure is performed under general anaesthesia as part of your breast surgery, so you won't feel any pain during the procedure. Post-operative discomfort is usually mild.",
-        },
-        {
-          q: "What is the risk of lymphoedema with SNB?",
-          a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance.",
-        },
-        {
-          q: "What happens if cancer is found in the sentinel node?",
-          a: "Further treatment options, which may include additional surgery, radiation, or systemic therapy, are discussed by the multidisciplinary team based on individual circumstances.",
-        },
-        {
-          q: "Will I have a visible scar?",
-          a: "The incision is small (2–3cm) and placed in the armpit crease, making it barely visible once healed.",
-        },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
-        { stat: "97%", label: "Detection Rate" },
         { stat: "UK", label: "Advanced Training" },
-        { stat: "<5%", label: "Complication Rate" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );

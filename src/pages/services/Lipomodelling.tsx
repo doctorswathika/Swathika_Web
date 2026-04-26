@@ -28,16 +28,11 @@ export default function Lipomodelling() {
         { step: "Processing & Injection", description: "The harvested fat is processed to concentrate viable fat cells, then precisely injected into the breast in small aliquots to ensure uniform take and natural-looking results." },
         { step: "Recovery & Results", description: "Recovery is typically 1–2 weeks. Some swelling and bruising is normal. Approximately 60–80% of transferred fat survives permanently, with final results visible at 3–6 months." },
       ]}
-      faqs={[
-        { q: "How much volume can be added with lipomodelling?", a: "Completely depends on the donor site availability and patient requirements. This requires detailed assessment prior to planning." },
-        { q: "Is the fat transfer permanent?", a: "Approximately 60–80% of transferred fat integrates permanently. About 20–40% will be lost." },
-        { q: "What if I don't have enough fat to transfer?", a: "A minimum amount of donor fat is required. During consultation, Dr. Swathika will assess whether you have sufficient donor tissue. Alternative options will be discussed if needed." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
         { stat: "UK", label: "Specialist Training" },
-        { stat: "95%", label: "Fat Survival Rate" },
-        { stat: "GMC", label: "Registered" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );

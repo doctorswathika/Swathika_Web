@@ -29,15 +29,10 @@ export default function AxillaryNode() {
         { step: "The Surgery", description: "Axillary node surgery is performed under general anaesthesia, typically alongside the breast procedure. The sentinel node technique uses a tracer to identify and remove the key nodes for assessment with minimal disruption." },
         { step: "Post-operative Care & Monitoring", description: "Recovery is closely monitored. Patients receive guidance on arm exercises, lymphoedema prevention, and wound care. Histology results guide any further oncological treatment such as chemotherapy or radiotherapy." },
       ]}
-      faqs={[
-        { q: "Can axillary node surgery be performed at the same time as breast surgery?", a: "Yes, in most cases axillary node surgery is performed simultaneously with the breast procedure (mastectomy or breast-conserving surgery) during the same operation." },
-        { q: "How will I know if my lymph nodes have cancer?", a: "Pre-operative imaging and biopsies can help detect cancer in the lymph nodes. A sentinel node biopsy during surgery further determines nodal involvement." },
-        { q: "Will axillary surgery cause lymphoedema?", a: "Lymphoedema (arm swelling) is a potential side effect of axillary surgery, particularly with more extensive dissection. Dr. Swathika uses careful techniques to minimise this risk and provides expert guidance on prevention and management." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Breast Procedures" },
         { stat: "MCh", label: "UK Qualification" },
-        { stat: "GMC", label: "Registered" },
         { stat: "ABS", label: "Member" },
       ]}
     />

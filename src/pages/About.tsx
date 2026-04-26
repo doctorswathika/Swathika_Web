@@ -10,17 +10,15 @@ import {
   MapPin,
   ArrowLeft,
   Heart,
-  Stethoscope,
   Globe,
   Quote,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const stats = [
-  { number: "700+", label: "Successful Surgeries", icon: Heart },
+  { number: "700+", label: "Surgeries Performed", icon: Heart },
   { number: "MCh", label: "UK Trained (NHS)", icon: GraduationCap },
-  { number: "GMC", label: "Registered (UK)", icon: Shield },
-  { number: "10+", label: "Years of Experience", icon: Stethoscope },
+  { number: "UK", label: "Certified Professional", icon: Shield },
 ];
 
 const timeline = [
@@ -68,7 +66,7 @@ const expertise = [
 ];
 
 const licences = [
-  { name: "GMC — General Medical Council (United Kingdom)", icon: Globe },
+  { name: "UK Certified Professional", icon: Globe },
   { name: "TNMC — Tamil Nadu Medical Council", icon: Shield },
 ];
 
@@ -131,7 +129,7 @@ export default function About() {
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
                   Having performed over 700 breast surgeries — from complex oncological reconstructions to cosmetic
-                  enhancements — I believe every patient deserves care that not only treats disease but restores
+                  enhancements — my focus is care that not only treats disease but also restores
                   confidence and dignity.
                 </p>
 
@@ -169,7 +167,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-1 rounded-2xl overflow-hidden shadow-xl"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-1 rounded-2xl overflow-hidden shadow-xl"
             >
               {stats.map((s, i) => {
                 const Icon = s.icon;

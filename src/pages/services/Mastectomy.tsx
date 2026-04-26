@@ -27,14 +27,11 @@ export default function Mastectomy() {
         { step: "The Procedure", description: "The surgery is performed under general anaesthesia. Depending on the type of mastectomy, the procedure typically takes 1–3 hours. Drains may be placed to prevent fluid collection." },
         { step: "Recovery & Follow-up", description: "Hospital stay is usually between 1–3 days. You will receive detailed aftercare instructions, wound care guidance, and scheduled follow-up appointments to monitor healing and discuss further treatment if needed." },
       ]}
-      faqs={[
-        { q: "Will I need chemotherapy or radiation after surgery?", a: "This depends on the FINAL pathology results and is decided by the multidisciplinary team. Dr. Swathika coordinates closely with oncologists to ensure seamless care." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
         { stat: "UK", label: "Trained & Certified" },
-        { stat: "GMC", label: "Registered" },
-        { stat: "99%", label: "Patient Satisfaction" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );

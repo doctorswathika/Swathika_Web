@@ -30,17 +30,11 @@ export default function BreastReductionAugmentation() {
         { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 2–3 hours. Dr. Swathika uses proven techniques to achieve symmetrical, natural-looking results with minimal scarring." },
         { step: "Recovery", description: "Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months as swelling settles and scars mature." },
       ]}
-      faqs={[
-        { q: "Will my symptoms and posture improve after breast reduction?", a: "Yes, most patients experience significant relief from symptoms such as back, neck, and shoulder pain as the excess weight on the chest is reduced." },
-        { q: "What are the options for breast augmentation?", a: "Breast augmentation can be performed using silicone implants or fat transfer techniques. The most suitable option depends on your anatomy, preferences, and desired outcome." },
-        { q: "How long do the results last?", a: "Breast reduction results are long-lasting, although ageing and weight changes can influence breast shape over time. Augmentation implants typically last around 10–15 years, provided there are no implant-related complications." },
-        { q: "Can cosmetic procedures affect breastfeeding?", a: "It depends on the type of procedure performed, as some techniques may impact breastfeeding. This is best discussed during your consultation based on your individual surgical plan." },
-      ]}
+      faqs={[]}
       proofOfWork={[
         { stat: "700+", label: "Total Procedures" },
         { stat: "UK", label: "Trained Surgeon" },
-        { stat: "98%", label: "Satisfaction Rate" },
-        { stat: "10+", label: "Years Experience" },
+        { stat: "MCh", label: "UK Qualification" },
       ]}
     />
   );
