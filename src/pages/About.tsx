@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhyChooseMeSection from "@/components/WhyChooseMeSection";
 import {
   Award,
   GraduationCap,
