@@ -24,5 +24,7 @@ jobs:
           public_base_path: /
           build_path: ./dist
         env:
-          VITE_SUPABASE_URL: https://uhifhoivfqcizuwbctft.supabase.co
-          VITE_SUPABASE_PUBLISHABLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoaWZob2l2ZnFjaXp1d2JjdGZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1MTY0NjUsImV4cCI6MjA5MjA5MjQ2NX0.t1B5tIU7zWff1kxYlBr48qzpl5001lVHozh7_JRtDYc
+          VITE_SUPABASE_URL: https://pciuhptokthbbyyjbnaf.supabase.co
+          VITE_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjaXVocHRva3RoYmJ5eWpibmFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMTY1MTAsImV4cCI6MjA4Njg5MjUxMH0.Xf4D3RZKX4uNrFCAGQkGz63pPi0YssvAIB3uvTaXCBI
+          VITE_SUPABASE_PUBLISHABLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjaXVocHRva3RoYmJ5eWpibmFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMTY1MTAsImV4cCI6MjA4Njg5MjUxMH0.Xf4D3RZKX4uNrFCAGQkGz63pPi0YssvAIB3uvTaXCBI
+          VITE_SUPABASE_PROJECT_ID: pciuhptokthbbyyjbnaf
