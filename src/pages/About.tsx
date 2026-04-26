@@ -248,80 +248,21 @@ export default function About() {
           </div>
         </section>
 
-        {/* ─── SURGICAL EXPERTISE ─── */}
-        <section className="py-20 lg:py-28 bg-background">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-              <p className="text-2xl lg:text-3xl tracking-[0.3em] uppercase text-gradient-rose font-sans-body font-bold mb-3">MY</p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
-                Surgical <span className="text-gradient-rose italic">Expertise</span>
-              </h2>
-              <div className="divider-rose w-24 mx-auto mt-6" />
-            </motion.div>
+        {/* ─── WHY CHOOSE ME ─── */}
+        <WhyChooseMeSection />
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {expertise.map((e, i) => (
-                <motion.div
-                  key={e.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="glass rounded-xl p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                    <Award className="w-4 h-4 text-primary" />
-                  </div>
-                  <h3 className="font-serif-display text-lg font-semibold text-foreground mb-1">{e.name}</h3>
-                  <p className="text-xs text-muted-foreground font-sans-body leading-relaxed">{e.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── MEMBERSHIPS & PUBLICATIONS ─── */}
+        {/* ─── PROFESSIONAL MEMBERSHIPS ─── */}
         <section className="py-20 lg:py-28 bg-card/40">
-          <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-            {/* Licences to Practise */}
+          <div className="max-w-3xl mx-auto px-6">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="space-y-8">
-              <div>
-                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
-                  Registrations
-                </p>
-                <h2 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground">
-                  Licences to Practise
-                </h2>
-                <div className="divider-rose w-16 mt-4" />
-              </div>
-              <ul className="space-y-4">
-                {licences.map((m) => {
-                  const Icon = m.icon;
-                  return (
-                    <li
-                      key={m.name}
-                      className="glass rounded-xl p-4 flex items-center gap-4 hover:shadow-md transition-shadow"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-sm text-foreground font-sans-body font-medium">{m.name}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </motion.div>
-
-            {/* Professional Memberships */}
-            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }} className="space-y-8">
-              <div>
+              <div className="text-center">
                 <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
                   Credentials
                 </p>
                 <h2 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground">
                   Professional Memberships
                 </h2>
-                <div className="divider-rose w-16 mt-4" />
+                <div className="divider-rose w-16 mx-auto mt-4" />
               </div>
               <ul className="space-y-4">
                 {memberships.map((m) => {
