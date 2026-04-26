@@ -17,10 +17,9 @@ import {
 import { Link } from "react-router-dom";
 
 const stats = [
-  { number: "700+", label: "Successful Surgeries", icon: Heart },
+  { number: "700+", label: "Surgeries Performed", icon: Heart },
   { number: "MCh", label: "UK Trained (NHS)", icon: GraduationCap },
-  { number: "GMC", label: "Registered (UK)", icon: Shield },
-  { number: "10+", label: "Years of Experience", icon: Stethoscope },
+  { number: "UK", label: "Certified Professional", icon: Shield },
 ];
 
 const timeline = [
@@ -68,7 +67,7 @@ const expertise = [
 ];
 
 const licences = [
-  { name: "GMC — General Medical Council (United Kingdom)", icon: Globe },
+  { name: "UK Certified Professional", icon: Globe },
   { name: "TNMC — Tamil Nadu Medical Council", icon: Shield },
 ];
 
