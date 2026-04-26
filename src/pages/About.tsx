@@ -55,22 +55,6 @@ const timeline = [
   },
 ];
 
-const expertise = [
-  { name: "Mastectomy", desc: "Complete breast tissue removal with precision" },
-  { name: "Breast Conserving & Oncoplastic Surgery", desc: "Removing cancer while preserving the breast with cosmetic techniques" },
-  { name: "Sentinel Node Biopsy", desc: "Minimally invasive lymph node excision" },
-  { name: "Axillary Node Surgery", desc: "Targeted lymph node management for staging and treatment" },
-  { name: "Breast Reduction & Augmentation", desc: "Aesthetic reshaping and enhancement" },
-  { name: "Lipomodelling", desc: "Fat transfer for natural breast enhancement" },
-  { name: "Implant Reconstruction", desc: "Restoring form after mastectomy" },
-  { name: "Gynaecomastia Correction", desc: "Male breast tissue reduction" },
-];
-
-const licences = [
-  { name: "UK Certified Professional", icon: Globe },
-  { name: "TNMC — Tamil Nadu Medical Council", icon: Shield },
-];
-
 const memberships = [
   { name: "Member — Association of Breast Surgeons (ABS)", icon: Shield },
   { name: "Member — Association of Breast Surgeons of India (ABSI)", icon: Shield },
