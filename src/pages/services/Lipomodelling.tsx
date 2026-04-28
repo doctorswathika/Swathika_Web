@@ -11,7 +11,7 @@ export default function Lipomodelling() {
       category="Cosmetic"
       metaDescription="Lipomodelling (fat transfer) breast surgery by Dr. Swathika Rajendran in Chennai. Natural breast refinement using autologous fat transfer by a UK-trained specialist."
       overview={[
-        "What is Lipomodelling? Lipomodelling, also known as autologous fat transfer, involves harvesting fat from certain areas of your body preferably abdomen or thighs through gentle liposuction, followed by careful injection into the breast to improve shape, volume, and contour.",
+        "Lipomodelling, also known as autologous fat transfer, involves harvesting fat from certain areas of your body preferably abdomen or thighs through gentle liposuction, followed by careful injection into the breast to improve shape, volume, and contour.",
         "This technique is particularly valuable for correcting asymmetries, filling contour defects after breast cancer surgery, or providing subtle volume enhancement by using your own body fat to provide natural results.",
         "Dr. Swathika's training in the UK included extensive experience with lipomodelling as part of breast reconstruction and cosmetic enhancement, making her one of the few surgeons in Chennai with dedicated expertise in this refined technique.",
       ]}
