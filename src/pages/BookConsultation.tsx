@@ -17,7 +17,7 @@ const bookingSchema = z.object({
 });
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
+  { icon: Phone, label: "Phone", value: "+91 99408 08876", href: "tel:+919940808876" },
   { icon: Mail, label: "Email", value: "doctorswathika@gmail.com", href: "mailto:doctorswathika@gmail.com" },
   { icon: MapPin, label: "Location", value: "Chennai, Tamil Nadu, India", href: undefined },
   { icon: Clock, label: "Availability", value: "Mon – Sat, 9 AM – 6 PM", href: undefined },
