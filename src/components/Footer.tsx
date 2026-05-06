@@ -10,8 +10,7 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "Services", href: "#services" },
   { label: "Awareness", href: "#awareness" },
   { label: "Blog", href: "#blog" },
-  { label: "Instagram", href: "#instagram" },
-  { label: "YouTube", href: "#youtube" },
+  { label: "Social Media", href: "#social-media" },
   { label: "FAQ", href: "#faq" },
   { label: "Book Consultation", href: "/book-consultation", isRoute: true },
 ];
