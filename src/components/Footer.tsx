@@ -24,7 +24,7 @@ export default function Footer() {
 
   const brandDesc = getText("footer_brand_description", "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.");
   const address = getText("footer_address", "Chennai, Tamil Nadu, India");
-  const whatsappNumber = "919080328082";
+  const whatsappNumber = "919940808876";
   const email = getText("footer_email", "contact@drswathika.com");
   const disclaimer = getText("footer_disclaimer", "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.");
 

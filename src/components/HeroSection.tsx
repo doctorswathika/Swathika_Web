@@ -5,7 +5,7 @@ import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
-const WHATSAPP_NUMBER = "919080328082";
+const WHATSAPP_NUMBER = "919940808876";
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
