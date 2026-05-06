@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Youtube, Instagram, Linkedin, ArrowRight } from "lucide-react";
-import doctorImage from "@/assets/dr-swathika-about-home.png";
+import doctorImage from "@/assets/dr-swathika-social.png";
 
 const SOCIAL_LINKS = [
   {
@@ -99,15 +99,15 @@ export default function SocialMediaSection() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex justify-center lg:justify-start"
               >
-                <a
-                  href={SOCIAL_LINKS[0].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity shadow-elegant"
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-wide opacity-60 cursor-not-allowed shadow-elegant"
                 >
                   Do Follow and support my journey
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
               </motion.div>
             </div>
           </div>
