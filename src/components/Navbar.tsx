@@ -33,12 +33,19 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    let lastY = window.scrollY;
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-      // Hide navbar once the visitor scrolls past the first viewport (hero/first section)
-      setHidden(window.scrollY > window.innerHeight * 0.9);
+      const y = window.scrollY;
+      setScrolled(y > 50);
+      // Show immediately when scrolling up or near top; hide only when scrolling down past hero
+      if (y < window.innerHeight * 0.9 || y < lastY) {
+        setHidden(false);
+      } else if (y > lastY && y > window.innerHeight * 0.9) {
+        setHidden(true);
+      }
+      lastY = y;
       const total = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
+      setProgress(total > 0 ? (y / total) * 100 : 0);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -77,7 +84,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: hidden && !menuOpen ? -140 : 0, opacity: hidden && !menuOpen ? 0 : 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         style={{ pointerEvents: hidden && !menuOpen ? "none" : "auto" }}
         className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
           scrolled && !menuOpen
