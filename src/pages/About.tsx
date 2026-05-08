@@ -107,14 +107,16 @@ export default function About() {
                   UK-trained Breast Oncoplastic & Reconstructive Surgeon
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  I am committed to providing comprehensive, patient-centred breast care. My journey across India and
-                  the United Kingdom has shaped a surgical philosophy rooted in clinical precision, aesthetic
-                  excellence, and genuine compassion.
+                  I'm Dr. Swathika Rajendran, a UK-trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
+                  providing complete and patient-centred breast care. My journey across India and the United Kingdom has
+                  shaped the way I practice today — with a balance of clinical precision, aesthetic sensitivity, and
+                  genuine compassion for every woman who walks into my clinic.
                 </p>
                 <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  Having performed over 700 breast surgeries — from complex oncological reconstructions to cosmetic
-                  enhancements — my focus is care that not only treats disease but also restores
-                  confidence and dignity.
+                  Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
+                  have seen how treatment is about much more than just removing the disease. My focus is to help women
+                  feel safe, informed, and respected, and to offer care that not only treats the condition, but also
+                  helps restore their confidence and sense of dignity.
                 </p>
 
                 <Link
