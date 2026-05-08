@@ -16,6 +16,7 @@ const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -34,6 +35,8 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
+      // Hide navbar once the visitor scrolls past the first viewport (hero/first section)
+      setHidden(window.scrollY > window.innerHeight * 0.9);
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
     };
