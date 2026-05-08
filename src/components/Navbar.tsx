@@ -76,8 +76,9 @@ export default function Navbar() {
 
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ y: hidden && !menuOpen ? -140 : 0, opacity: hidden && !menuOpen ? 0 : 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        style={{ pointerEvents: hidden && !menuOpen ? "none" : "auto" }}
         className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
           scrolled && !menuOpen
             ? "bg-background/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.4),0_12px_40px_-20px_hsl(258_40%_30%/0.12)] py-3"
