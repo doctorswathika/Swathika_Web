@@ -244,29 +244,29 @@ export default function GoogleReviewsSection() {
                         <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(260_55%_60%/0.18)] blur-3xl pointer-events-none" />
 
                         <Quote
-                          className="absolute top-6 right-6 w-10 h-10 lg:w-14 lg:h-14 text-background/10"
+                          className="absolute top-4 right-4 w-8 h-8 lg:w-10 lg:h-10 text-background/10"
                           strokeWidth={1.2}
                         />
 
-                        <header className="flex items-center justify-center gap-4 mb-8">
+                        <header className="flex items-center justify-center gap-3 mb-4 sm:mb-5">
                           {review.profile_photo_url ? (
                             <img
                               src={review.profile_photo_url}
                               alt={review.author_name}
-                              className="w-14 h-14 rounded-full object-cover ring-2 ring-background/30"
+                              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover ring-2 ring-background/30"
                             />
                           ) : (
-                            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[hsl(340_70%_55%)] to-[hsl(15_80%_60%)] ring-2 ring-background/30 flex items-center justify-center">
-                              <span className="font-serif-display text-xl text-background">
+                            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[hsl(280_60%_55%)] to-[hsl(260_55%_60%)] ring-2 ring-background/30 flex items-center justify-center">
+                              <span className="font-serif-display text-lg text-background">
                                 {review.author_name.charAt(0)}
                               </span>
                             </div>
                           )}
-                          <div className="text-center sm:text-left">
-                            <p className="font-serif-display text-xl lg:text-2xl text-background tracking-tight">
+                          <div className="text-left">
+                            <p className="font-serif-display text-base sm:text-lg lg:text-xl text-background tracking-tight leading-tight">
                               {review.author_name}
                             </p>
-                            <p className="font-sans-body text-[10px] tracking-[0.35em] uppercase text-background/55 mt-1">
+                            <p className="font-sans-body text-[9px] tracking-[0.32em] uppercase text-background/55 mt-1">
                               {review.relative_time}
                             </p>
                           </div>
@@ -280,23 +280,23 @@ export default function GoogleReviewsSection() {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.6, ease: EASE }}
-                              className="relative font-serif-display text-center text-[1.25rem] sm:text-[1.5rem] lg:text-[1.75rem] leading-[1.55] text-background/90 font-light italic max-w-3xl mx-auto"
+                              className="relative font-serif-display text-center text-base sm:text-lg lg:text-xl leading-[1.5] text-background/90 font-light italic max-w-2xl mx-auto line-clamp-5 sm:line-clamp-6"
                             >
                               &ldquo;{review.text}&rdquo;
                             </motion.p>
                           ) : (
-                            <p className="font-serif-display text-center text-[1.25rem] sm:text-[1.5rem] lg:text-[1.75rem] leading-[1.55] text-background/90 font-light italic max-w-3xl mx-auto line-clamp-4">
+                            <p className="font-serif-display text-center text-base sm:text-lg lg:text-xl leading-[1.5] text-background/90 font-light italic max-w-2xl mx-auto line-clamp-4">
                               &ldquo;{review.text}&rdquo;
                             </p>
                           )}
                         </AnimatePresence>
 
-                        <footer className="mt-10 flex flex-col items-center gap-5">
-                          <div className="flex items-center gap-1.5">
+                        <footer className="mt-5 sm:mt-6 flex flex-col items-center gap-3">
+                          <div className="flex items-center gap-1">
                             {[...Array(5)].map((_, idx) => (
                               <Star
                                 key={idx}
-                                className={`w-5 h-5 lg:w-6 lg:h-6 ${
+                                className={`w-4 h-4 lg:w-5 lg:h-5 ${
                                   idx < review.rating
                                     ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
                                     : "text-background/20"
