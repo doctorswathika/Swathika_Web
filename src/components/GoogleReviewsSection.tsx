@@ -88,7 +88,7 @@ export default function GoogleReviewsSection() {
   const lastRemoteSyncRef = useRef(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", duration: 35 },
+    { loop: true, align: "center", duration: 35, containScroll: false, skipSnaps: false, dragFree: false },
     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
@@ -214,7 +214,7 @@ export default function GoogleReviewsSection() {
           <EmptyState />
         ) : (
           <div className="relative" style={{ perspective: "1800px" }}>
-            <div className="overflow-hidden px-2 sm:px-8" ref={emblaRef}>
+            <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {reviews.map((review, i) => {
                   const isActive = i === selectedIndex;
@@ -222,7 +222,7 @@ export default function GoogleReviewsSection() {
                   return (
                     <div
                       key={review.id}
-                      className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_85%] lg:flex-[0_0_70%] px-3 sm:px-5"
+                      className="flex-[0_0_92%] min-w-0 sm:flex-[0_0_82%] lg:flex-[0_0_68%] px-3 sm:px-5"
                       style={{ perspective: "1800px" }}
                     >
                       <motion.article
