@@ -81,7 +81,7 @@ export default function AwarenessSection() {
     <section
       id="awareness"
       ref={ref}
-      className="relative py-28 lg:py-40 overflow-hidden bg-background"
+      className="relative py-32 lg:py-48 overflow-hidden bg-background"
     >
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
@@ -91,24 +91,24 @@ export default function AwarenessSection() {
       </div>
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 max-w-[80rem] mx-auto px-6 lg:px-12">
         {/* ── Editorial header ─────────────────────────────────────── */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-24 lg:mb-32 items-end">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-32 lg:mb-44 items-end">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: EASE }}
-            className="lg:col-span-5"
+            className="lg:col-span-6"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-foreground/40" />
+            <div className="flex items-center gap-4 mb-8">
+              <span className="h-px w-12 bg-foreground/40" />
               <p
-                className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body"
+                className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body"
                 dangerouslySetInnerHTML={{ __html: subtitle }}
               />
             </div>
             <h2
-              className="font-serif-display text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.05] text-foreground"
+              className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground"
               dangerouslySetInnerHTML={{ __html: title }}
             />
           </motion.div>
@@ -116,11 +116,11 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-            className="lg:col-span-6 lg:col-start-7"
+            className="lg:col-span-5 lg:col-start-8"
           >
-            <div className="border-l border-border/70 pl-6 lg:pl-8">
+            <div className="border-l border-border/70 pl-7 lg:pl-9">
               <p
-                className="text-base lg:text-lg text-muted-foreground font-sans-body leading-[1.85] font-light"
+                className="text-[15px] lg:text-[17px] text-muted-foreground font-sans-body leading-[1.9] font-light tracking-[0.005em]"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>
@@ -128,36 +128,36 @@ export default function AwarenessSection() {
         </div>
 
         {/* ── Editorial pillars ─ horizontal numbered rows ─────────── */}
-        <div className="mb-24 lg:mb-32">
-          <div className="flex items-baseline justify-between mb-10 lg:mb-14">
-            <h3 className="font-serif-display text-2xl lg:text-3xl font-light text-foreground italic">
+        <div className="mb-32 lg:mb-44">
+          <div className="flex items-baseline justify-between mb-12 lg:mb-16 pb-6 border-b border-border/60">
+            <h3 className="font-serif-display text-[1.75rem] lg:text-4xl font-light text-foreground italic tracking-[-0.01em]">
               The four truths
             </h3>
-            <span className="text-[11px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
               I — IV
             </span>
           </div>
-          <div className="divide-y divide-border/60 border-y border-border/60">
+          <div className="divide-y divide-border/60">
             {motivation.map((item, i) => (
               <motion.article
                 key={item.number}
                 initial={{ opacity: 0, y: 18 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: EASE }}
-                className="group grid grid-cols-12 gap-6 lg:gap-10 py-8 lg:py-10 transition-colors duration-500 hover:bg-foreground/[0.015]"
+                className="group grid grid-cols-12 gap-6 lg:gap-12 py-12 lg:py-16 transition-colors duration-500 hover:bg-foreground/[0.015]"
               >
                 <div className="col-span-2 lg:col-span-1">
-                  <span className="font-serif-display text-3xl lg:text-4xl font-light text-[hsl(var(--rose-gold))] tabular-nums">
+                  <span className="font-serif-display text-3xl lg:text-[2.5rem] font-light text-[hsl(var(--rose-gold))] tabular-nums leading-none">
                     {item.number}
                   </span>
                 </div>
                 <div className="col-span-10 lg:col-span-4">
-                  <h4 className="font-serif-display text-2xl lg:text-3xl font-medium text-foreground leading-tight">
+                  <h4 className="font-serif-display text-[1.6rem] lg:text-[2rem] font-medium text-foreground leading-[1.15] tracking-[-0.015em]">
                     {item.title}
                   </h4>
                 </div>
                 <div className="col-span-12 lg:col-span-7">
-                  <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body leading-[1.85] font-light max-w-2xl">
+                  <p className="text-[15px] lg:text-[16.5px] text-muted-foreground font-sans-body leading-[1.9] font-light max-w-2xl tracking-[0.005em]">
                     {item.text}
                   </p>
                 </div>
@@ -171,21 +171,21 @@ export default function AwarenessSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-          className="relative mb-24 lg:mb-28"
+          className="relative mb-32 lg:mb-44"
         >
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
-              <div className="sticky top-28">
-                <div className="flex items-center gap-2 mb-4">
-                  <AlertTriangle className="w-4 h-4 text-destructive" />
-                  <span className="text-[11px] tracking-[0.35em] uppercase text-destructive/80 font-sans-body">
+              <div className="sticky top-32">
+                <div className="flex items-center gap-2.5 mb-6">
+                  <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
+                  <span className="text-[10px] tracking-[0.45em] uppercase text-destructive/80 font-sans-body">
                     Warning Signs
                   </span>
                 </div>
-                <h3 className="font-serif-display text-3xl lg:text-4xl font-light text-foreground leading-tight mb-5">
+                <h3 className="font-serif-display text-[2rem] lg:text-[2.75rem] font-light text-foreground leading-[1.1] tracking-[-0.015em] mb-7">
                   Don't <em className="text-gradient-rose">ignore</em> these.
                 </h3>
-                <p className="text-sm text-muted-foreground font-sans-body italic leading-relaxed font-light">
+                <p className="text-sm text-muted-foreground font-sans-body italic leading-[1.85] font-light tracking-[0.005em]">
                   If you notice any of these, please consult a specialist promptly. Early evaluation is always
                   better than waiting.
                 </p>
@@ -199,12 +199,12 @@ export default function AwarenessSection() {
                     initial={{ opacity: 0, x: -12 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
-                    className="group flex items-baseline gap-6 py-5 border-b border-border/60 last:border-b-0"
+                    className="group flex items-baseline gap-7 py-7 lg:py-8 border-b border-border/60 first:border-t first:border-border/60"
                   >
                     <span className="font-serif-display text-sm text-muted-foreground/80 tabular-nums w-8 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-base lg:text-lg text-foreground/85 font-sans-body font-light leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                    <span className="text-[16px] lg:text-[18px] text-foreground/85 font-sans-body font-light leading-[1.55] tracking-[0.005em] group-hover:text-foreground transition-colors duration-300">
                       {s}
                     </span>
                   </motion.li>
@@ -221,30 +221,30 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-            className="bg-card p-10 lg:p-14"
+            className="bg-card p-12 lg:p-20"
           >
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
-                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                <span className="font-serif-display text-[10px] tracking-[0.45em] uppercase text-muted-foreground">
                   Practice
                 </span>
               </div>
               <CheckCircle className="w-5 h-5 text-primary/80" />
             </div>
-            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+            <h3 className="font-serif-display text-[2.5rem] lg:text-[3.25rem] font-light text-foreground leading-[1.05] tracking-[-0.02em] mb-12">
               The <em className="text-gradient-rose">Do's</em>
             </h3>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {dos.map((d, i) => (
                 <motion.li
                   key={d}
                   initial={{ opacity: 0, y: 8 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
-                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
+                  className="flex items-start gap-5 pb-6 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                  <span className="text-[15.5px] lg:text-base text-foreground/85 font-sans-body font-light leading-[1.75] tracking-[0.005em]">
                     {d}
                   </span>
                 </motion.li>
@@ -257,30 +257,30 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-            className="bg-card p-10 lg:p-14"
+            className="bg-card p-12 lg:p-20"
           >
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
-                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                <span className="font-serif-display text-[10px] tracking-[0.45em] uppercase text-muted-foreground">
                   Avoid
                 </span>
               </div>
               <XCircle className="w-5 h-5 text-destructive/80" />
             </div>
-            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+            <h3 className="font-serif-display text-[2.5rem] lg:text-[3.25rem] font-light text-foreground leading-[1.05] tracking-[-0.02em] mb-12">
               The <em className="text-gradient-rose">Don'ts</em>
             </h3>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {donts.map((d, i) => (
                 <motion.li
                   key={d}
                   initial={{ opacity: 0, y: 8 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
-                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
+                  className="flex items-start gap-5 pb-6 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-destructive/70 flex-shrink-0" />
-                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                  <span className="text-[15.5px] lg:text-base text-foreground/85 font-sans-body font-light leading-[1.75] tracking-[0.005em]">
                     {d}
                   </span>
                 </motion.li>
