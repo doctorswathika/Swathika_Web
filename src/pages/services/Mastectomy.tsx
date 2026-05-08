@@ -13,7 +13,7 @@ export default function Mastectomy() {
       overview={[
         "Mastectomy is a surgical procedure to remove one or both breasts completely. It is most commonly performed as a treatment for breast cancer when breast conservation is not possible, but may also be done as a preventive measure for women at high risk of developing the disease.",
         "Dr. Swathika Rajendran brings her UK-trained expertise to every mastectomy procedure, ensuring meticulous surgical technique that prioritises complete cancer removal at the same time offering immediate breast reconstruction.",
-        "Modern mastectomy techniques have evolved significantly. Skin-sparing and nipple-sparing approaches, when oncologically safe, allow for superior reconstructive outcomes. Dr. Swathika evaluates each patient individually to determine the most appropriate technique.",
+        "Modern mastectomy techniques have evolved significantly. Skin-sparing and nipple-sparing approaches, when oncologically safe, allow for superior reconstructive outcomes. Each patient is evaluated individually to determine the most appropriate technique.",
       ]}
       benefits={[
         "Complete removal of cancerous tissue and breast tissues",
