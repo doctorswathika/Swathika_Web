@@ -250,7 +250,7 @@ export default function About() {
         </section>
 
         {/* ─── WHY CHOOSE ME ─── */}
-        <WhyChooseMeSection />
+        <WhyChooseMeSection variant="stacked" />
 
         {/* ─── PROFESSIONAL MEMBERSHIPS ─── */}
         <section className="py-20 lg:py-28 bg-card/40">
