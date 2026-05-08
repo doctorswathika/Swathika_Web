@@ -43,6 +43,7 @@ export default function AdminGoogleReviews() {
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [previewReview, setPreviewReview] = useState<GoogleReview | null>(null);
   const { toast } = useToast();
 
   const fetchReviews = async () => {
