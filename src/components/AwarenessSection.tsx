@@ -171,21 +171,21 @@ export default function AwarenessSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-          className="relative mb-24 lg:mb-28"
+          className="relative mb-32 lg:mb-44"
         >
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
-              <div className="sticky top-28">
-                <div className="flex items-center gap-2 mb-4">
-                  <AlertTriangle className="w-4 h-4 text-destructive" />
-                  <span className="text-[11px] tracking-[0.35em] uppercase text-destructive/80 font-sans-body">
+              <div className="sticky top-32">
+                <div className="flex items-center gap-2.5 mb-6">
+                  <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
+                  <span className="text-[10px] tracking-[0.45em] uppercase text-destructive/80 font-sans-body">
                     Warning Signs
                   </span>
                 </div>
-                <h3 className="font-serif-display text-3xl lg:text-4xl font-light text-foreground leading-tight mb-5">
+                <h3 className="font-serif-display text-[2rem] lg:text-[2.75rem] font-light text-foreground leading-[1.1] tracking-[-0.015em] mb-7">
                   Don't <em className="text-gradient-rose">ignore</em> these.
                 </h3>
-                <p className="text-sm text-muted-foreground font-sans-body italic leading-relaxed font-light">
+                <p className="text-sm text-muted-foreground font-sans-body italic leading-[1.85] font-light tracking-[0.005em]">
                   If you notice any of these, please consult a specialist promptly. Early evaluation is always
                   better than waiting.
                 </p>
@@ -199,12 +199,12 @@ export default function AwarenessSection() {
                     initial={{ opacity: 0, x: -12 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
-                    className="group flex items-baseline gap-6 py-5 border-b border-border/60 last:border-b-0"
+                    className="group flex items-baseline gap-7 py-7 lg:py-8 border-b border-border/60 first:border-t first:border-border/60"
                   >
                     <span className="font-serif-display text-sm text-muted-foreground/80 tabular-nums w-8 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-base lg:text-lg text-foreground/85 font-sans-body font-light leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                    <span className="text-[16px] lg:text-[18px] text-foreground/85 font-sans-body font-light leading-[1.55] tracking-[0.005em] group-hover:text-foreground transition-colors duration-300">
                       {s}
                     </span>
                   </motion.li>
