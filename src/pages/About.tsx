@@ -190,7 +190,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
-                    className="bg-card px-5 py-6 text-center sm:px-6 sm:py-8"
+                    className="bg-card px-5 py-6 text-center sm:px-6 sm:py-8 transition-colors duration-500 hover:bg-accent/40"
                   >
                     <Icon className="mx-auto h-5 w-5 text-primary" />
                     <p className="mt-3 font-serif-display text-[2rem] font-semibold leading-none text-foreground sm:text-[2.4rem]">
@@ -263,7 +263,7 @@ export default function About() {
                         </div>
                       </div>
 
-                      <div className="glass-premium rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
+                      <div className="glass-premium lift rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                           <h3 className="font-serif-display text-[1.5rem] font-semibold leading-tight text-foreground sm:text-[1.7rem] lg:text-[2rem]">
                             {item.title}
@@ -302,7 +302,7 @@ export default function About() {
                   return (
                     <li
                       key={membership.name}
-                      className="glass-premium flex min-h-[148px] items-start gap-4 rounded-[22px] px-5 py-5 shadow-elegant"
+                      className="glass-premium lift flex min-h-[148px] items-start gap-4 rounded-[22px] px-5 py-5 shadow-elegant"
                     >
                       <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Icon className="h-4 w-4 text-primary" />
