@@ -117,80 +117,100 @@ export default function ServicePageLayout({
       <Navbar />
       <main className="pt-24">
 
-        {/* ── Hero ── */}
-        <section className="py-16 lg:py-24 bg-background relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blush/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        {/* ── Editorial Hero ── */}
+        <section className="relative py-20 lg:py-32 bg-background overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-40 right-[-10%] w-[560px] h-[560px] rounded-full bg-[hsl(340_60%_92%/0.4)] blur-3xl" />
+            <div className="absolute bottom-[-20%] left-[-10%] w-[440px] h-[440px] rounded-full bg-[hsl(268_60%_92%/0.3)] blur-3xl" />
+          </div>
 
-          <div className="max-w-5xl mx-auto px-6">
+          <div className="relative max-w-[88rem] mx-auto px-6 lg:px-10">
             <button
               onClick={() => handleNav("#services")}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-sans-body mb-8"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors font-sans-body mb-12 lg:mb-16 group"
             >
-              <ArrowLeft className="w-4 h-4" /> Back to Services
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              Back to Services
             </button>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-4"
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:col-span-7 space-y-8"
               >
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/15 text-xs font-sans-body text-foreground tracking-widest uppercase">
-                  {category}
-                </span>
-                <h1 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground leading-tight">
+                <div className="flex items-center gap-4">
+                  <span className="h-px w-12 bg-foreground/40" />
+                  <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                    {category}
+                  </p>
+                </div>
+                <h1 className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[4.25rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground">
                   {title}
                 </h1>
-                <p className={`text-lg text-muted-foreground font-sans-body leading-relaxed ${contentPrefix ? getAlign("subtitle") : ""}`}>
+                <p
+                  className={`text-[15.5px] lg:text-[17px] text-muted-foreground font-sans-body font-light leading-[1.9] max-w-2xl ${
+                    contentPrefix ? getAlign("subtitle") : ""
+                  }`}
+                >
                   {displaySubtitle}
                 </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.15 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:col-span-5 relative"
               >
-                <div className="relative">
-                  <div className="absolute -inset-3 rounded-2xl gradient-rose-gold opacity-20 blur-xl" />
+                <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(15_80%_88%/0.5)] to-[hsl(268_60%_90%/0.4)] blur-xl pointer-events-none" />
+                <div className="relative overflow-hidden rounded-[20px] aspect-[4/5] shadow-luxe">
                   <img
                     src={heroImage}
                     alt={title}
-                    className="relative rounded-2xl w-full aspect-square object-cover shadow-xl"
+                    className="w-full h-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-
         {/* ── Overview ── */}
-        <section className="py-16 lg:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-6">
+        <section className="py-20 lg:py-32 bg-background">
+          <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="mb-12"
             >
-              <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Overview</p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground mb-8">
-                What is <span className="text-gradient-rose italic">{title}</span>?
+              <div className="flex items-center gap-4 mb-7">
+                <span className="h-px w-12 bg-foreground/40" />
+                <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                  Overview
+                </p>
+              </div>
+              <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-12">
+                What is <em className="text-gradient-rose">{title}</em>?
               </h2>
-              <div className="space-y-5">
+              <div className="space-y-7 max-w-3xl">
                 {displayOverview.map((para, i) => (
-                  <p
+                  <motion.p
                     key={i}
-                    className={`text-muted-foreground font-sans-body leading-relaxed text-base lg:text-lg ${
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className={`text-[15.5px] lg:text-[17px] text-muted-foreground font-sans-body font-light leading-[1.9] ${
                       contentPrefix ? getAlign(`overview_${i + 1}`) : ""
                     }`}
                   >
                     {para}
-                  </p>
+                  </motion.p>
                 ))}
               </div>
             </motion.div>
@@ -199,67 +219,85 @@ export default function ServicePageLayout({
 
         {/* ── Benefits ── */}
         {displayBenefits.length > 0 && (
-        <section className="py-16 lg:py-24 bg-card/50">
-          <div className="max-w-4xl mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Benefits</p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground mb-8">
-                Why Choose This <span className="text-gradient-rose italic">Procedure</span>?
-              </h2>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {displayBenefits.map((benefit, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
-                    className="flex items-start gap-3 glass rounded-xl p-4"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-sm font-sans-body text-foreground">{benefit}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+          <section className="py-20 lg:py-32 bg-card/40">
+            <div className="max-w-5xl mx-auto px-6 lg:px-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="flex items-center gap-4 mb-7">
+                  <span className="h-px w-12 bg-foreground/40" />
+                  <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                    Benefits
+                  </p>
+                </div>
+                <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-12">
+                  Why Choose This <em className="text-gradient-rose">Procedure</em>?
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-0 border-t border-border/60">
+                  {displayBenefits.map((benefit, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 14 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                      className="flex items-start gap-5 py-6 border-b border-border/60"
+                    >
+                      <span className="font-serif-display text-2xl italic font-light text-primary/70 leading-none flex-shrink-0 pt-1">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="text-[14.5px] lg:text-[15.5px] font-sans-body font-light text-foreground/85 leading-[1.75]">
+                        {benefit}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </section>
         )}
 
         {/* ── Process ── */}
-        <section className="py-16 lg:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-6">
+        <section className="py-20 lg:py-32 bg-background">
+          <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">The Process</p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground mb-10">
-                Your <span className="text-gradient-rose italic">Journey</span>
+              <div className="flex items-center gap-4 mb-7">
+                <span className="h-px w-12 bg-foreground/40" />
+                <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                  The Process
+                </p>
+              </div>
+              <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-14">
+                Your <em className="text-gradient-rose">Journey</em>
               </h2>
-              <div className="space-y-8">
+              <div className="space-y-0 border-t border-border/60">
                 {displayProcess.map((step, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="flex gap-6"
+                    transition={{ duration: 0.8, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className="grid grid-cols-[auto_1fr] gap-6 lg:gap-12 py-8 lg:py-10 border-b border-border/60 items-baseline"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full gradient-rose-gold flex items-center justify-center">
-                      <span className="font-sans-body text-sm font-bold text-foreground">{i + 1}</span>
-                    </div>
+                    <span className="font-serif-display text-3xl lg:text-[2.5rem] italic font-light text-primary/70 leading-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <div>
-                      <h3 className="font-serif-display text-xl font-semibold text-foreground mb-2">{step.step}</h3>
-                      <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{step.description}</p>
+                      <h3 className="font-serif-display text-[1.3rem] lg:text-[1.6rem] font-light text-foreground leading-tight tracking-[-0.005em] mb-3">
+                        {step.step}
+                      </h3>
+                      <p className="text-[14.5px] lg:text-[15.5px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-2xl">
+                        {step.description}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -269,68 +307,80 @@ export default function ServicePageLayout({
         </section>
 
         {/* ── CTA ── */}
-        <section className="py-16 lg:py-20 bg-background">
-          <div className="max-w-3xl mx-auto px-6 text-center">
+        <section className="py-20 lg:py-28 bg-background">
+          <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-8"
             >
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
-                Ready to Begin Your <span className="text-gradient-rose italic">Journey</span>?
+              <h2 className="font-serif-display text-[2rem] sm:text-4xl lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground">
+                Ready to Begin Your <em className="text-gradient-rose">Journey</em>?
               </h2>
-              <p className="text-muted-foreground font-sans-body">
+              <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body font-light leading-[1.85] max-w-xl mx-auto">
                 Book a private consultation with Dr. Swathika Rajendran to discuss your personalised treatment plan.
               </p>
-              <Link
-                to="/book-consultation"
-                className="inline-block px-8 py-3 rounded-full gradient-rose-gold text-foreground font-sans-body font-medium tracking-wide hover:opacity-90 transition-opacity"
-              >
-                Book Consultation
-              </Link>
+              <div className="pt-2">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold text-foreground font-sans-body font-semibold text-[14px] tracking-[0.05em] hover:scale-[1.02] transition-all duration-500 shadow-elegant"
+                >
+                  Book Consultation
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
 
         {/* ── FAQs ── */}
         {displayFaqs.length > 0 && (
-        <section className="py-16 lg:py-24 bg-card/50">
-          <div className="max-w-4xl mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">FAQ</p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground mb-10">
-                Frequently Asked <span className="text-gradient-rose italic">Questions</span>
-              </h2>
-              <div className="space-y-4">
-                {displayFaqs.map((faq, i) => (
-                  <motion.details
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
-                    className="glass rounded-xl p-5 group cursor-pointer"
-                  >
-                    <summary className="font-sans-body font-medium text-foreground list-none flex items-center justify-between">
-                      {faq.q}
-                      <span className="text-primary ml-2 group-open:rotate-45 transition-transform text-xl">+</span>
-                    </summary>
-                    <p className="text-sm text-muted-foreground font-sans-body leading-relaxed mt-3 pt-3 border-t border-border">
-                      {faq.a}
-                    </p>
-                  </motion.details>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+          <section className="py-20 lg:py-32 bg-card/40">
+            <div className="max-w-5xl mx-auto px-6 lg:px-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="flex items-center gap-4 mb-7">
+                  <span className="h-px w-12 bg-foreground/40" />
+                  <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                    FAQ
+                  </p>
+                </div>
+                <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-12">
+                  Frequently Asked <em className="text-gradient-rose">Questions</em>
+                </h2>
+                <div className="border-t border-border/60">
+                  {displayFaqs.map((faq, i) => (
+                    <motion.details
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                      className="group border-b border-border/60 py-7 cursor-pointer"
+                    >
+                      <summary className="font-serif-display text-[1.1rem] lg:text-[1.3rem] font-light text-foreground list-none flex items-baseline gap-5 lg:gap-7 hover:text-primary/90 transition-colors duration-500 tracking-[-0.005em] leading-[1.3]">
+                        <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-medium pt-1.5">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="flex-1">{faq.q}</span>
+                        <span className="text-foreground/50 ml-2 group-open:rotate-45 transition-transform duration-500 text-2xl font-light">
+                          +
+                        </span>
+                      </summary>
+                      <p className="text-[14.5px] lg:text-[15.5px] text-muted-foreground font-sans-body font-light leading-[1.9] mt-5 pl-[3.5rem] lg:pl-[5rem] max-w-3xl">
+                        {faq.a}
+                      </p>
+                    </motion.details>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </section>
         )}
 
       </main>
