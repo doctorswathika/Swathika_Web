@@ -154,7 +154,6 @@ export default function About() {
                       alt="Dr. Swathika Rajendran"
                       className="h-full max-h-[42rem] w-full object-cover"
                       loading="eager"
-                      fetchPriority="high"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
                   </div>
