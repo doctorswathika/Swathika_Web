@@ -237,39 +237,8 @@ export default function GoogleReviewsSection() {
                         style={{ transformStyle: "preserve-3d" }}
                         className="relative mx-auto rounded-[2rem] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-background/[0.10] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_40px_100px_-25px_rgba(0,0,0,0.65)] overflow-hidden"
                       >
-                        {/* Animated royal gold shimmer border on active */}
-                        {isActive && (
-                          <>
-                            <motion.div
-                              aria-hidden
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ duration: 1.2, ease: EASE }}
-                              className="absolute inset-0 rounded-[2rem] pointer-events-none"
-                              style={{
-                                background:
-                                  "linear-gradient(120deg, transparent 30%, hsl(43 85% 65% / 0.45) 50%, transparent 70%)",
-                                WebkitMask:
-                                  "linear-gradient(#000,#000) content-box, linear-gradient(#000,#000)",
-                                WebkitMaskComposite: "xor",
-                                maskComposite: "exclude",
-                                padding: "1px",
-                              }}
-                            />
-                            <motion.div
-                              aria-hidden
-                              animate={{ x: ["-120%", "220%"] }}
-                              transition={{ duration: 3.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.6 }}
-                              className="absolute top-0 left-0 h-full w-1/3 pointer-events-none"
-                              style={{
-                                background:
-                                  "linear-gradient(100deg, transparent 0%, hsl(43 85% 70% / 0.18) 50%, transparent 100%)",
-                              }}
-                            />
-                          </>
-                        )}
-                        <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.14)] blur-3xl pointer-events-none" />
-                        <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.16)] blur-3xl pointer-events-none" />
+                        <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(280_60%_55%/0.18)] blur-3xl pointer-events-none" />
+                        <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(260_55%_60%/0.18)] blur-3xl pointer-events-none" />
 
                         <Quote
                           className="absolute top-6 right-6 w-10 h-10 lg:w-14 lg:h-14 text-background/10"
