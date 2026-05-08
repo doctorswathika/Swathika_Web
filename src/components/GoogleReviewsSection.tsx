@@ -214,7 +214,7 @@ export default function GoogleReviewsSection() {
           <EmptyState />
         ) : (
           <div className="relative" style={{ perspective: "1800px" }}>
-            <div className="overflow-hidden px-2 sm:px-8" ref={emblaRef}>
+            <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {reviews.map((review, i) => {
                   const isActive = i === selectedIndex;
