@@ -186,9 +186,9 @@ export default function GoogleReviewsSection() {
 
   return (
     <section className="relative py-28 lg:py-44 overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(258_25%_12%)] via-[hsl(258_30%_10%)] to-[hsl(280_30%_12%)]" />
-      <div className="absolute top-0 left-1/3 w-[520px] h-[520px] rounded-full bg-[hsl(340_70%_50%/0.18)] blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[480px] h-[480px] rounded-full bg-[hsl(15_80%_60%/0.14)] blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270_45%_18%)] via-[hsl(265_50%_14%)] to-[hsl(280_55%_20%)]" />
+      <div className="absolute top-0 left-1/3 w-[520px] h-[520px] rounded-full bg-[hsl(280_60%_55%/0.22)] blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[480px] h-[480px] rounded-full bg-[hsl(260_55%_60%/0.20)] blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
         <motion.div
