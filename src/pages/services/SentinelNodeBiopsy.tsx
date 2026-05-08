@@ -6,7 +6,7 @@ export default function SentinelNodeBiopsy() {
     <ServicePageLayout
       contentPrefix="svc_sentinel"
       title="Sentinel Node Biopsy"
-      subtitle="A minimally invasive technique to accurately stage the spread of breast cancer to the axillary lymph nodes."
+      subtitle="A minimally invasive technique to accurately check if breast cancer has spread to the lymph nodes under the arm."
       heroImage={heroImg}
       category="Clinical"
       metaDescription="Sentinel node biopsy for breast cancer staging by Dr. Swathika Rajendran in Chennai. Minimally invasive lymph node assessment by a UK-trained specialist."
