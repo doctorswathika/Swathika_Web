@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Sparkles, Scissors, Microscope, Stamp, ShieldCheck } from "lucide-react";
 
+type WhyChooseMeVariant = "grid" | "stacked";
+
 const points = [
   {
     icon: Microscope,
