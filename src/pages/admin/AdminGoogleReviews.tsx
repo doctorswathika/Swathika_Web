@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  Star, Eye, EyeOff, Loader2, AlertCircle, Plus, Trash2, Pencil,
+  Star, Eye, EyeOff, Loader2, AlertCircle, Plus, Trash2, Pencil, Quote,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
