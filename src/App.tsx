@@ -39,7 +39,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <InitialLoader />
+          
           <PageTransition>
           <Routes>
             <Route path="/" element={<Index />} />
