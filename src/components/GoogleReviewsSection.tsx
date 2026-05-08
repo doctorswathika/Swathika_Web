@@ -88,7 +88,7 @@ export default function GoogleReviewsSection() {
   const lastRemoteSyncRef = useRef(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", duration: 35 },
+    { loop: true, align: "center", duration: 35, containScroll: false, skipSnaps: false, dragFree: false },
     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
