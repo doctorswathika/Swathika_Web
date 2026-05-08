@@ -92,15 +92,10 @@ export default function Navbar() {
             aria-label="Go to home"
           >
             <span
-              className="inline-flex max-w-full items-baseline gap-1 sm:gap-1.5 whitespace-nowrap leading-none text-foreground"
-              style={{ fontSize: "clamp(0.76rem, 3.75vw, 1.65rem)" }}
+              className="block font-serif-display font-medium uppercase whitespace-nowrap leading-none text-foreground tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em]"
+              style={{ fontSize: "clamp(0.82rem, 3.6vw, 1.6rem)" }}
             >
-              <span className="shrink-0 font-sans-body font-semibold tracking-[0.12em] sm:tracking-[0.18em] text-foreground/85">
-                Dr.
-              </span>
-              <span className="font-serif-display font-semibold tracking-[0.015em] sm:tracking-[0.04em] text-foreground">
-                Swathika Rajendran
-              </span>
+              Dr. Swathika Rajendran
             </span>
           </button>
 
