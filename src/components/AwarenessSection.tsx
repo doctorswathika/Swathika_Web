@@ -81,7 +81,7 @@ export default function AwarenessSection() {
     <section
       id="awareness"
       ref={ref}
-      className="relative py-32 lg:py-48 overflow-hidden bg-background"
+      className="relative py-20 lg:py-28 overflow-hidden bg-background"
     >
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
@@ -93,7 +93,7 @@ export default function AwarenessSection() {
 
       <div className="relative z-10 max-w-[80rem] mx-auto px-6 lg:px-12">
         {/* ── Editorial header ─────────────────────────────────────── */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-32 lg:mb-44 items-end">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-20 lg:mb-28 items-end">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -128,7 +128,7 @@ export default function AwarenessSection() {
         </div>
 
         {/* ── Editorial pillars ─ horizontal numbered rows ─────────── */}
-        <div className="mb-32 lg:mb-44">
+        <div className="mb-20 lg:mb-28">
           <div className="flex items-baseline justify-between mb-12 lg:mb-16 pb-6 border-b border-border/60">
             <h3 className="font-serif-display text-[1.75rem] lg:text-4xl font-light text-foreground italic tracking-[-0.01em]">
               The four truths
@@ -144,7 +144,7 @@ export default function AwarenessSection() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: EASE }}
-                className="group grid grid-cols-12 gap-6 lg:gap-12 py-12 lg:py-16 transition-colors duration-500 hover:bg-foreground/[0.015]"
+                className="group grid grid-cols-12 gap-6 lg:gap-12 py-8 lg:py-10 transition-colors duration-500 hover:bg-foreground/[0.015]"
               >
                 <div className="col-span-2 lg:col-span-1">
                   <span className="font-serif-display text-3xl lg:text-[2.5rem] font-light text-[hsl(var(--rose-gold))] tabular-nums leading-none">
@@ -171,7 +171,7 @@ export default function AwarenessSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-          className="relative mb-32 lg:mb-44"
+          className="relative mb-20 lg:mb-28"
         >
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
@@ -221,7 +221,7 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-            className="bg-card p-12 lg:p-20"
+            className="bg-card p-10 lg:p-14"
           >
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
@@ -257,7 +257,7 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-            className="bg-card p-12 lg:p-20"
+            className="bg-card p-10 lg:p-14"
           >
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
