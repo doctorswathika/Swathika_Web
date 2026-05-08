@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Star, ChevronLeft, ChevronRight, Quote, MessageSquareQuote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, MessageSquareQuote, BadgeCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
