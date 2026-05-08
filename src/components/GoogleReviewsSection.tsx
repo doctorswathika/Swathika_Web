@@ -319,17 +319,42 @@ export default function GoogleReviewsSection() {
                           )}
                         </AnimatePresence>
 
-                        <footer className="flex items-center justify-center gap-1.5 mt-10">
-                          {[...Array(5)].map((_, idx) => (
-                            <Star
-                              key={idx}
-                              className={`w-5 h-5 lg:w-6 lg:h-6 ${
-                                idx < review.rating
-                                  ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
-                                  : "text-background/20"
-                              }`}
-                            />
-                          ))}
+                        <footer className="mt-10 flex flex-col items-center gap-5">
+                          <div className="flex items-center gap-1.5">
+                            {[...Array(5)].map((_, idx) => (
+                              <Star
+                                key={idx}
+                                className={`w-5 h-5 lg:w-6 lg:h-6 ${
+                                  idx < review.rating
+                                    ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
+                                    : "text-background/20"
+                                }`}
+                              />
+                            ))}
+                          </div>
+
+                          {/* Royal trust badges row */}
+                          <div className="flex flex-wrap items-center justify-center gap-2.5">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/[0.06] border border-[hsl(43_85%_60%/0.30)] backdrop-blur">
+                              <BadgeCheck className="w-3.5 h-3.5 text-[hsl(43_85%_65%)]" strokeWidth={2} />
+                              <span className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-background/75">
+                                Verified Google Reviewer
+                              </span>
+                            </span>
+                            {review.relative_time && (
+                              <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-background/[0.04] border border-background/15 backdrop-blur">
+                                <span className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-background/65">
+                                  {review.relative_time}
+                                </span>
+                              </span>
+                            )}
+                            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-[hsl(340_70%_55%/0.18)] to-[hsl(43_85%_60%/0.18)] border border-background/15 backdrop-blur">
+                              <Star className="w-3 h-3 fill-[hsl(43_85%_65%)] text-[hsl(43_85%_65%)]" />
+                              <span className="font-sans-body text-[10px] tracking-[0.28em] uppercase text-background/80">
+                                {review.rating.toFixed(1)} / 5
+                              </span>
+                            </span>
+                          </div>
                         </footer>
                       </motion.article>
                     </div>
