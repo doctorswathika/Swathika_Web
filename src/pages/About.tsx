@@ -107,15 +107,9 @@ export default function About() {
                 </p>
 
                 <div className="space-y-6">
-                  <h1 className="font-serif-display text-[3.25rem] font-light leading-[0.98] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl lg:text-[6rem] animate-fade-in">
-                    <span className="text-gradient-rose">Dr. Swathika</span>
-                    <br />
-                    <span className="italic font-light text-foreground/95">Rajendran</span>
+                  <h1 className="font-serif-display text-[2.25rem] font-light leading-[1.05] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] whitespace-nowrap animate-fade-in">
+                    Dr. Swathika Rajendran
                   </h1>
-                  <p className="font-serif-display text-xl italic font-light text-foreground/70 leading-snug sm:text-2xl lg:text-[1.7rem] animate-fade-in">
-                    Breast care, with the calm of{" "}
-                    <span className="text-gradient-rose">experience.</span>
-                  </p>
                   <p className="max-w-2xl font-sans-body text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/65 sm:text-xs">
                     UK-trained Breast Oncoplastic & Reconstructive Surgeon
                   </p>
