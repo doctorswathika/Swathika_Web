@@ -255,17 +255,12 @@ export default function About() {
                         </div>
                       </div>
 
-                      <div className="glass-premium rounded-[24px] px-6 py-6 shadow-elegant lg:px-8 lg:py-7">
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                          <div className="space-y-2">
-                            <p className="font-sans-body text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/55">
-                              {String(index + 1).padStart(2, "0")}
-                            </p>
-                            <h3 className="font-serif-display text-[1.8rem] font-semibold leading-tight text-foreground lg:text-[2.2rem]">
-                              {item.title}
-                            </h3>
-                          </div>
-                          <p className="max-w-sm font-sans-body text-sm leading-relaxed text-foreground/68 sm:text-right">
+                      <div className="glass-premium rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                          <h3 className="font-serif-display text-[1.5rem] font-semibold leading-tight text-foreground sm:text-[1.7rem] lg:text-[2rem]">
+                            {item.title}
+                          </h3>
+                          <p className="max-w-sm font-sans-body text-[13px] leading-relaxed text-gradient-rose sm:text-right sm:text-sm">
                             {item.institution}
                           </p>
                         </div>
