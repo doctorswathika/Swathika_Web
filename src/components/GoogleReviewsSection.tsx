@@ -222,7 +222,7 @@ export default function GoogleReviewsSection() {
                   return (
                     <div
                       key={review.id}
-                      className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_85%] lg:flex-[0_0_70%] px-3 sm:px-5"
+                      className="flex-[0_0_92%] min-w-0 sm:flex-[0_0_82%] lg:flex-[0_0_68%] px-3 sm:px-5"
                       style={{ perspective: "1800px" }}
                     >
                       <motion.article
