@@ -102,17 +102,22 @@ export default function About() {
                 transition={{ duration: 0.9, ease: EASE }}
                 className="space-y-8 lg:col-span-7"
               >
-                <p className="font-sans-body text-[11px] font-medium uppercase tracking-[0.32em] text-foreground/60 sm:text-xs">
-                  Dr. Swathika Rajendran
+                <p className="font-sans-body text-[11px] font-medium uppercase tracking-[0.32em] text-foreground/60 sm:text-xs animate-fade-in">
+                  About Me
                 </p>
 
-                <div className="space-y-5">
-                  <h1 className="font-serif-display text-[2.6rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl lg:text-[4.75rem]">
-                    Breast care, with the calm of{" "}
-                    <span className="text-gradient-rose italic font-light">experience.</span>
+                <div className="space-y-6">
+                  <h1 className="font-serif-display text-[3.25rem] font-light leading-[0.98] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl lg:text-[6rem] animate-fade-in">
+                    <span className="text-gradient-rose">Dr. Swathika</span>
+                    <br />
+                    <span className="italic font-light text-foreground/95">Rajendran</span>
                   </h1>
-                  <p className="max-w-2xl font-sans-body text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
-                    <span className="text-gradient-rose">UK-trained Breast Oncoplastic & Reconstructive Surgeon</span>
+                  <p className="font-serif-display text-xl italic font-light text-foreground/70 leading-snug sm:text-2xl lg:text-[1.7rem] animate-fade-in">
+                    Breast care, with the calm of{" "}
+                    <span className="text-gradient-rose">experience.</span>
+                  </p>
+                  <p className="max-w-2xl font-sans-body text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/65 sm:text-xs">
+                    UK-trained Breast Oncoplastic & Reconstructive Surgeon
                   </p>
                 </div>
 
@@ -185,7 +190,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
-                    className="bg-card px-5 py-6 text-center sm:px-6 sm:py-8"
+                    className="bg-card px-5 py-6 text-center sm:px-6 sm:py-8 transition-colors duration-500 hover:bg-accent/40"
                   >
                     <Icon className="mx-auto h-5 w-5 text-primary" />
                     <p className="mt-3 font-serif-display text-[2rem] font-semibold leading-none text-foreground sm:text-[2.4rem]">
@@ -258,7 +263,7 @@ export default function About() {
                         </div>
                       </div>
 
-                      <div className="glass-premium rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
+                      <div className="glass-premium lift rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                           <h3 className="font-serif-display text-[1.5rem] font-semibold leading-tight text-foreground sm:text-[1.7rem] lg:text-[2rem]">
                             {item.title}
@@ -297,7 +302,7 @@ export default function About() {
                   return (
                     <li
                       key={membership.name}
-                      className="glass-premium flex min-h-[148px] items-start gap-4 rounded-[22px] px-5 py-5 shadow-elegant"
+                      className="glass-premium lift flex min-h-[148px] items-start gap-4 rounded-[22px] px-5 py-5 shadow-elegant"
                     >
                       <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Icon className="h-4 w-4 text-primary" />
