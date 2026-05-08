@@ -86,12 +86,12 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-center relative">
           <button
             onClick={() => { setMenuOpen(false); handleNavClick("#hero"); }}
-            className="group relative font-serif-display font-light text-foreground hover:opacity-90 transition-opacity z-[61] flex flex-col items-center"
+            className="group relative font-serif-display text-foreground hover:opacity-90 transition-opacity z-[61] flex flex-col items-center"
           >
-            <span className="text-[9px] tracking-[0.5em] uppercase text-muted-foreground font-sans-body mb-1">
+            <span className="text-[10px] tracking-[0.55em] uppercase text-foreground/80 font-sans-body font-medium mb-1.5">
               Dr.
             </span>
-            <span className="text-base sm:text-xl md:text-[1.65rem] font-light tracking-[0.18em] uppercase leading-none">
+            <span className="whitespace-nowrap text-[15px] sm:text-xl md:text-[1.7rem] font-medium tracking-[0.16em] uppercase leading-none text-foreground">
               Swathika Rajendran
             </span>
           </button>

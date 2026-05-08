@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Clock, MessageCircle, Send, Trash2 } from "lucide-react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { ArrowLeft, Calendar, Clock, MessageCircle, Send, Trash2, ArrowRight, Sparkles } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -10,8 +10,18 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import type { User } from "@supabase/supabase-js";
+
+function ReadingProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
+  return (
+    <motion.div
+      style={{ scaleX, transformOrigin: "0% 50%" }}
+      className="fixed top-0 left-0 right-0 h-[2px] z-[80] gradient-rose-gold"
+    />
+  );
+}
 
 interface BlogPostData {
   id: string;
@@ -146,41 +156,94 @@ export default function BlogPostPage() {
         <link rel="canonical" href={`https://drswathika.com/blog/${post.slug}`} />
       </Helmet>
       <Navbar />
-      <main className="pt-24 pb-16 min-h-screen bg-background">
-        <article className="max-w-3xl mx-auto px-6">
-          {/* Back */}
+      <ReadingProgress />
+      <main className="pt-28 pb-20 min-h-screen bg-background">
+        <header className="max-w-3xl mx-auto px-6">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <Button variant="ghost" onClick={() => navigate("/blog")} className="mb-8 gap-2 text-muted-foreground">
-              <ArrowLeft className="w-4 h-4" /> Back to Blog
+            <Button variant="ghost" onClick={() => navigate("/blog")} className="mb-10 gap-2 text-muted-foreground -ml-3">
+              <ArrowLeft className="w-4 h-4" /> Back to Journal
             </Button>
           </motion.div>
 
-          {/* Header */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <Badge variant="secondary" className="mb-4">{post.category}</Badge>
-            <h1 className="font-serif-display text-3xl lg:text-5xl font-semibold text-foreground mb-4">{post.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground font-sans-body mb-8">
-              <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{new Date(post.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{post.read_time}</span>
-              <span>By {post.author}</span>
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="h-px w-10 bg-foreground/40" />
+              <p className="text-[11px] tracking-[0.5em] uppercase text-foreground/70 font-sans-body font-medium">
+                {post.category}
+              </p>
+            </div>
+            <h1 className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-8">
+              {post.title}
+            </h1>
+            {post.excerpt && (
+              <p className="font-serif-display italic text-xl lg:text-2xl text-foreground/75 leading-[1.5] font-light border-l-2 border-[hsl(var(--rose-gold))] pl-6 mb-10">
+                {post.excerpt}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-foreground/65 font-sans-body pb-8 border-b border-border/60">
+              <span className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" />{new Date(post.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+              {post.read_time && <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5" />{post.read_time}</span>}
+              <span className="tracking-[0.15em] uppercase text-[11px] text-foreground/55">By {post.author}</span>
             </div>
           </motion.div>
+        </header>
 
-          {/* Cover image */}
-          {post.image_url && (
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="rounded-2xl overflow-hidden mb-10">
-              <img src={post.image_url} alt={post.title} className="w-full aspect-video object-cover" />
-            </motion.div>
-          )}
-
-          {/* Content */}
+        {post.image_url && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="prose prose-lg max-w-none font-sans-body text-foreground leading-relaxed mb-16 [&_h1]:font-serif-display [&_h2]:font-serif-display [&_h3]:font-serif-display [&_a]:text-primary [&_blockquote]:border-l-primary/50 [&_img]:rounded-xl"
+            transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-5xl mx-auto px-6 mt-12 mb-14"
+          >
+            <div className="rounded-[20px] overflow-hidden shadow-luxe">
+              <img src={post.image_url} alt={post.title} className="w-full aspect-[16/9] object-cover" />
+            </div>
+          </motion.div>
+        )}
+
+        <article className="max-w-2xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="prose prose-lg max-w-none font-sans-body text-foreground/90 leading-[1.85] [&_p]:text-[17px] [&_p]:font-light [&_h1]:font-serif-display [&_h2]:font-serif-display [&_h2]:font-light [&_h2]:text-3xl [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-serif-display [&_h3]:font-light [&_a]:text-primary [&_a]:no-underline [&_a]:border-b [&_a]:border-primary/40 hover:[&_a]:border-primary [&_blockquote]:border-l-2 [&_blockquote]:border-[hsl(var(--rose-gold))] [&_blockquote]:font-serif-display [&_blockquote]:italic [&_blockquote]:text-foreground/80 [&_blockquote]:text-xl [&_img]:rounded-[14px] [&_img]:my-8"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <motion.aside
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-20 mb-16 relative overflow-hidden rounded-[22px] border border-border/60 bg-gradient-to-br from-[hsl(340_70%_96%/0.6)] via-background to-[hsl(20_60%_95%/0.5)] p-8 lg:p-10"
+          >
+            <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-[hsl(340_70%_90%/0.5)] blur-3xl pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row gap-6 items-start">
+              <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-background shadow-elegant">
+                <img src="/images/dr-swathika-about.jpeg" alt="Dr. Swathika Rajendran" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <p className="text-[10px] tracking-[0.5em] uppercase text-foreground/65 font-sans-body font-medium mb-2">
+                  Written by
+                </p>
+                <h3 className="font-serif-display text-2xl lg:text-[1.75rem] font-light text-foreground tracking-[-0.01em] mb-3">
+                  Dr. Swathika Rajendran
+                </h3>
+                <p className="text-[14.5px] text-foreground/75 font-sans-body font-light leading-[1.75] mb-5 max-w-xl">
+                  UK-trained Breast Oncoplastic & Reconstructive Surgeon. Over 700 procedures, blending oncology precision with aesthetic sensibility.
+                </p>
+                <Link
+                  to="/book-consultation"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full gradient-rose-gold font-sans-body font-semibold text-[13px] tracking-[0.05em] text-foreground hover:scale-[1.02] transition-all duration-500 shadow-elegant"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Schedule a Private Consultation
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </motion.aside>
 
           {/* Comments Section */}
           <motion.section
