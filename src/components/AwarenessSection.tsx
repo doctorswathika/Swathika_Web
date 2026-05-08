@@ -93,7 +93,7 @@ export default function AwarenessSection() {
 
       <div className="relative z-10 max-w-[80rem] mx-auto px-6 lg:px-12">
         {/* ── Editorial header ─────────────────────────────────────── */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-32 lg:mb-44 items-end">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-20 lg:mb-28 items-end">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
