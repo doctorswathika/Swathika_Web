@@ -55,8 +55,8 @@ export default function AboutSection() {
           className="mb-16 lg:mb-24 flex items-center gap-4"
         >
           <span className="h-px w-12 bg-foreground/40" />
-          <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-            About — Chapter 01
+          <p className="text-[11px] tracking-[0.5em] uppercase text-foreground/70 font-sans-body font-medium">
+            About
           </p>
         </motion.div>
 

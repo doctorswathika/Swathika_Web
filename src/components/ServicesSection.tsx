@@ -139,9 +139,6 @@ export default function ServicesSection() {
             transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
             className="flex items-baseline gap-6 mb-10 pb-6 border-b border-border/60"
           >
-            <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-              I.
-            </p>
             <h3
               className={`font-serif-display text-3xl lg:text-[2.5rem] font-light text-foreground leading-tight tracking-[-0.015em] ${getAlignClass(
                 "services_clinical_heading",
@@ -164,9 +161,6 @@ export default function ServicesSection() {
             transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
             className="flex items-baseline gap-6 mb-10 pb-6 border-b border-border/60"
           >
-            <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-              II.
-            </p>
             <h3
               className={`font-serif-display text-3xl lg:text-[2.5rem] font-light text-foreground leading-tight tracking-[-0.015em] ${getAlignClass(
                 "services_cosmetic_heading",
