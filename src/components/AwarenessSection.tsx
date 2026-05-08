@@ -81,7 +81,7 @@ export default function AwarenessSection() {
     <section
       id="awareness"
       ref={ref}
-      className="relative py-32 lg:py-48 overflow-hidden bg-background"
+      className="relative py-20 lg:py-28 overflow-hidden bg-background"
     >
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
