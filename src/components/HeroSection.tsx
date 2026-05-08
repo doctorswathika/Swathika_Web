@@ -111,6 +111,8 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative order-first"
           style={{
+            y: portraitY,
+            willChange: "transform",
             maskImage: isMobile
               ? "linear-gradient(to bottom, black 60%, transparent 100%)"
               : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
