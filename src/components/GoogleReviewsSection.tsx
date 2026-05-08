@@ -63,8 +63,8 @@ function EmptyState() {
       transition={{ duration: 0.8, ease: EASE }}
       className="relative max-w-2xl mx-auto rounded-[2rem] p-12 lg:p-16 text-center bg-gradient-to-br from-background/[0.06] via-background/[0.04] to-background/[0.02] backdrop-blur-2xl border border-background/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
     >
-      <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.10)] blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.12)] blur-3xl pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(280_60%_55%/0.14)] blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(260_55%_60%/0.14)] blur-3xl pointer-events-none" />
       <div className="relative">
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-background/10 border border-background/20 flex items-center justify-center">
           <MessageSquareQuote className="w-7 h-7 text-background/70" strokeWidth={1.4} />
