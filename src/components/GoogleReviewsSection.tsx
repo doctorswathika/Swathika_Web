@@ -238,7 +238,7 @@ export default function GoogleReviewsSection() {
                         }}
                         transition={{ duration: 0.95, ease: EASE }}
                         style={{ transformStyle: "preserve-3d" }}
-                        className="relative mx-auto rounded-[2rem] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-background/[0.10] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_40px_100px_-25px_rgba(0,0,0,0.65)] overflow-hidden"
+                        className="relative mx-auto rounded-[2rem] p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-background/[0.10] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_40px_100px_-25px_rgba(0,0,0,0.65)] overflow-hidden"
                       >
                         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(280_60%_55%/0.18)] blur-3xl pointer-events-none" />
                         <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(260_55%_60%/0.18)] blur-3xl pointer-events-none" />
