@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/accordion";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 const DEFAULT_FAQS = [
   {
     q: "What types of breast surgery does Dr. Swathika perform?",
@@ -55,48 +57,72 @@ export default function FAQSection() {
   }
 
   return (
-    <section id="faq" className="py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
-      <div className="absolute top-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl translate-x-1/2" />
+    <section
+      id="faq"
+      className="relative py-28 lg:py-44 bg-background overflow-hidden"
+      ref={ref}
+    >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-[-10%] w-[480px] h-[480px] rounded-full bg-[hsl(268_70%_92%/0.35)] blur-3xl" />
+        <div className="absolute bottom-0 right-[-10%] w-[420px] h-[420px] rounded-full bg-[hsl(340_60%_92%/0.3)] blur-3xl" />
+      </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
-        >
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">
-            FAQ
-          </p>
-          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground">
-            Frequently Asked <span className="text-gradient-rose italic">Questions</span>
-          </h2>
-          <div className="divider-rose w-24 mx-auto mt-6" />
-        </motion.div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+          {/* Sticky editorial header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, ease: EASE }}
+            className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <span className="h-px w-12 bg-foreground/40" />
+              <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                FAQ
+              </p>
+            </div>
+            <h2 className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground">
+              Frequently Asked <em className="text-gradient-rose">Questions</em>
+            </h2>
+            <p className="mt-7 text-[15px] lg:text-base text-muted-foreground font-sans-body font-light leading-[1.9] max-w-md">
+              Considered, honest answers to the questions patients ask most often — drawn from years in the
+              consultation room.
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="glass rounded-2xl px-6 border-none"
-              >
-                <AccordionTrigger className="font-serif-display text-base lg:text-lg font-semibold text-foreground text-left py-5 hover:no-underline">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground font-sans-body leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+          {/* Accordion */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2, ease: EASE }}
+            className="lg:col-span-7"
+          >
+            <Accordion type="single" collapsible className="space-y-0">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="border-b border-border/60 border-t-0 first:border-t first:border-t-border/60"
+                >
+                  <AccordionTrigger className="group font-serif-display text-[1.1rem] lg:text-[1.3rem] font-light text-foreground text-left py-7 lg:py-8 hover:no-underline tracking-[-0.005em] leading-[1.3]">
+                    <span className="flex items-baseline gap-5 lg:gap-7 pr-4">
+                      <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-medium pt-1">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex-1 group-hover:text-primary/90 transition-colors duration-500">
+                        {faq.q}
+                      </span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.9] pb-8 pl-[3.5rem] lg:pl-[5rem] pr-4 max-w-2xl">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,21 +1,26 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Youtube, Instagram, Linkedin, ArrowRight } from "lucide-react";
+import { Youtube, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import doctorImage from "@/assets/dr-swathika-social.png";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const SOCIAL_LINKS = [
   {
     label: "YouTube",
+    handle: "@drswathikarajendran",
     href: "https://youtube.com/@drswathikarajendran?si=k-QxdGM-SqWfJuUQ",
     Icon: Youtube,
   },
   {
     label: "Instagram",
+    handle: "@drswathikarajendran",
     href: "https://www.instagram.com/drswathikarajendran?igsh=MTFzYzIzMTgyd2IzZQ==",
     Icon: Instagram,
   },
   {
     label: "LinkedIn",
+    handle: "Swathika Rajendran",
     href: "https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     Icon: Linkedin,
   },
@@ -27,91 +32,86 @@ export default function SocialMediaSection() {
   return (
     <section
       id="social-media"
-      className="py-24 lg:py-32 bg-card/50 relative overflow-hidden"
+      className="relative py-28 lg:py-44 bg-background overflow-hidden"
       ref={ref}
     >
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blush/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-[-10%] w-[460px] h-[460px] rounded-full bg-[hsl(340_60%_92%/0.3)] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-[-10%] w-[420px] h-[420px] rounded-full bg-[hsl(268_60%_92%/0.25)] blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="rounded-3xl border border-border bg-background/60 backdrop-blur-sm shadow-elegant p-8 lg:p-14"
-        >
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="relative max-w-sm w-full mx-auto lg:mx-0"
-            >
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-blush/30 to-primary/10">
+      <div className="relative max-w-[88rem] mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          {/* Image — editorial */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1.1, ease: EASE }}
+            className="lg:col-span-5 relative"
+          >
+            <div className="relative max-w-md mx-auto lg:mx-0">
+              <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(340_70%_88%/0.5)] to-[hsl(15_70%_88%/0.4)] blur-xl pointer-events-none" />
+              <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-luxe">
                 <img
                   src={doctorImage}
                   alt="Dr. Swathika Rajendran"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
               </div>
+            </div>
+          </motion.div>
+
+          {/* Content */}
+          <div className="lg:col-span-7 space-y-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, ease: EASE, delay: 0.15 }}
+              className="space-y-7"
+            >
+              <div className="flex items-center gap-4">
+                <span className="h-px w-12 bg-foreground/40" />
+                <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+                  Awareness
+                </p>
+              </div>
+              <h2 className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground">
+                On a mission to spread awareness on{" "}
+                <em className="text-gradient-rose">women&apos;s health</em>.
+              </h2>
             </motion.div>
 
-            {/* Content */}
-            <div className="space-y-8 text-center lg:text-left">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-serif-display text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-tight"
-              >
-                On a mission to spread awareness on{" "}
-                <span className="text-gradient-rose italic">women&apos;s health</span> !!
-              </motion.h2>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="space-y-3 max-w-md mx-auto lg:mx-0"
-              >
-                {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-4 px-5 py-3.5 rounded-full border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
-                  >
-                    <Icon className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="flex-1 text-left text-sm font-sans-body font-medium text-foreground">
-                      {label}
-                    </span>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                  </a>
-                ))}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex justify-center lg:justify-start"
-              >
-                <button
-                  type="button"
-                  disabled
-                  aria-disabled="true"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-wide opacity-60 cursor-not-allowed shadow-elegant"
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, ease: EASE, delay: 0.3 }}
+              className="space-y-0 border-t border-border/60"
+            >
+              {SOCIAL_LINKS.map(({ label, handle, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-6 py-6 lg:py-7 border-b border-border/60 transition-all duration-500 hover:pl-3"
                 >
-                  Do Follow and support my journey
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </motion.div>
-            </div>
+                  <div className="flex items-center gap-5 lg:gap-7 min-w-0 flex-1">
+                    <Icon className="w-5 h-5 text-foreground/70 group-hover:text-primary transition-colors duration-500 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <p className="font-serif-display text-xl lg:text-2xl font-light text-foreground leading-tight group-hover:text-primary/90 transition-colors duration-500">
+                        {label}
+                      </p>
+                      <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground font-sans-body mt-1.5 truncate">
+                        {handle}
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 text-foreground/50 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500 flex-shrink-0" />
+                </a>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

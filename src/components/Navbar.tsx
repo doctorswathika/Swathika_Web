@@ -76,19 +76,24 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
           scrolled && !menuOpen
-            ? "bg-background/75 backdrop-blur-xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.5),0_8px_24px_-12px_hsl(258_40%_30%/0.08)]"
-            : "bg-background border-b border-border/50"
+            ? "bg-background/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.4),0_12px_40px_-20px_hsl(258_40%_30%/0.12)] py-3"
+            : "bg-background/95 border-b border-border/30 py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-center relative">
           <button
             onClick={() => { setMenuOpen(false); handleNavClick("#hero"); }}
-            className="font-serif-display text-base sm:text-xl md:text-2xl font-semibold tracking-[0.1em] sm:tracking-[0.15em] text-foreground hover:opacity-80 transition-opacity z-[61] uppercase"
+            className="group relative font-serif-display font-light text-foreground hover:opacity-90 transition-opacity z-[61] flex flex-col items-center"
           >
-            DR. SWATHIKA RAJENDRAN
+            <span className="text-[9px] tracking-[0.5em] uppercase text-muted-foreground font-sans-body mb-1">
+              Dr.
+            </span>
+            <span className="text-base sm:text-xl md:text-[1.65rem] font-light tracking-[0.18em] uppercase leading-none">
+              Swathika Rajendran
+            </span>
           </button>
 
           {/* Menu toggle icon - absolute right */}
@@ -104,9 +109,9 @@ export default function Navbar() {
                   initial={{ rotate: -90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -114,9 +119,9 @@ export default function Navbar() {
                   initial={{ rotate: 90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-5 h-5" />
                 </motion.div>
               )}
             </AnimatePresence>

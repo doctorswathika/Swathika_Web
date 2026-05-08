@@ -4,96 +4,93 @@ import { Calendar, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function BookConsultationCTA() {
   const { ref, isVisible } = useScrollAnimation();
   const navigate = useNavigate();
-  const { getText, getAlignClass } = useSiteContent();
+  const { getText } = useSiteContent();
 
-  const ctaTitle = getText("consultation_title", 'Your Health Deserves<br/><em class="text-gradient-rose" style="font-style:italic">Expert Hands.</em>');
+  const ctaTitle = getText(
+    "consultation_title",
+    'Your Health Deserves<br/><em class="text-gradient-rose" style="font-style:italic">Expert Hands.</em>',
+  );
   const ctaDesc = getText("consultation_description", "Take the first step towards expert care.");
 
   return (
-    <section ref={ref} className="relative py-24 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270_50%_92%/0.6)] via-[hsl(258_60%_88%/0.4)] to-[hsl(280_40%_90%/0.5)]" />
-
-      {/* Decorative bokeh orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[
-          { size: 300, x: -8,  y: -20, opacity: 0.18 },
-          { size: 200, x: 85,  y: 60,  opacity: 0.15 },
-          { size: 150, x: 50,  y: 80,  opacity: 0.12 },
-        ].map((orb, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: orb.size,
-              height: orb.size,
-              left: `${orb.x}%`,
-              top: `${orb.y}%`,
-              background: `radial-gradient(circle at 35% 35%, white, hsl(var(--blush) / ${orb.opacity}))`,
-              filter: `blur(${orb.size * 0.3}px)`,
-            }}
-          />
-        ))}
+    <section ref={ref} className="relative py-28 lg:py-40 overflow-hidden bg-background">
+      {/* Layered ambient gradient */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(340_60%_94%/0.5)] via-[hsl(20_60%_94%/0.4)] to-[hsl(268_50%_94%/0.45)]" />
+        <div className="absolute -top-40 left-1/4 w-[520px] h-[520px] rounded-full bg-[hsl(340_70%_88%/0.3)] blur-3xl" />
+        <div className="absolute -bottom-40 right-1/4 w-[480px] h-[480px] rounded-full bg-[hsl(268_70%_88%/0.25)] blur-3xl" />
       </div>
 
-      {/* Subtle top border */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-[hsl(var(--rose-gold))] to-transparent" />
+      {/* Hairline frame top */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-8"
+          transition={{ duration: 1.1, ease: EASE }}
+          className="text-center space-y-10"
         >
-
-          {/* Headline */}
-          <div className="space-y-4">
-            <h2 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] text-center"
-              dangerouslySetInnerHTML={{ __html: ctaTitle }} />
-            <p className="text-lg sm:text-xl text-muted-foreground font-sans-body max-w-2xl mx-auto leading-relaxed text-center"
-              dangerouslySetInnerHTML={{ __html: ctaDesc }} />
+          <div className="inline-flex items-center gap-4">
+            <span className="h-px w-12 bg-foreground/40" />
+            <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
+              Begin
+            </p>
+            <span className="h-px w-12 bg-foreground/40" />
           </div>
 
-          {/* Trust strip */}
+          <h2
+            className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.5rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground max-w-3xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: ctaTitle }}
+          />
+
+          <p
+            className="text-base lg:text-lg text-muted-foreground font-sans-body font-light leading-[1.85] max-w-xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: ctaDesc }}
+          />
+
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-muted-foreground font-sans-body"
+            initial={{ opacity: 0, y: 16 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.9, ease: EASE }}
+            className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[13px] text-muted-foreground font-sans-body font-light pt-2"
           >
-            {["Confidential Consultation", "Personalised Care Plan", "UK Certified Professional", "700+ Surgeries Performed"].map((item) => (
-              <span key={item} className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block" />
+            {[
+              "Confidential Consultation",
+              "Personalised Care Plan",
+              "UK Certified Professional",
+              "700+ Surgeries Performed",
+            ].map((item, i, arr) => (
+              <span key={item} className="flex items-center gap-3">
                 <span className="text-[hsl(350_50%_60%)]">{item}</span>
+                {i < arr.length - 1 && <span className="text-muted-foreground/40">·</span>}
               </span>
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2"
+            transition={{ delay: 0.55, duration: 0.9, ease: EASE }}
+            className="flex justify-center pt-4"
           >
             <button
               onClick={() => navigate("/book-consultation")}
-              className="group flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-semibold font-sans-body text-base text-foreground hover:scale-105 transition-all duration-300 shadow-lg"
+              className="group inline-flex items-center gap-3 px-10 py-5 rounded-full gradient-rose-gold font-sans-body font-semibold text-[15px] tracking-[0.05em] text-foreground hover:scale-[1.02] transition-all duration-500 shadow-luxe"
             >
-              <Calendar className="w-5 h-5" />
+              <Calendar className="w-4 h-4" />
               Book a Consultation
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Subtle bottom border */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-[hsl(var(--rose-gold))] to-transparent" />
     </section>
   );
 }
