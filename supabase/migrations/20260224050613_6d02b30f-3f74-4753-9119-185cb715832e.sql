@@ -24,8 +24,8 @@ CREATE POLICY "Anyone can view displayed reviews"
 -- Admin can manage all reviews
 CREATE POLICY "Admin can manage google reviews"
   ON public.google_reviews FOR ALL
-  USING ((auth.jwt() ->> 'email'::text) = 'bbm.genai@gmail.com'::text)
-  WITH CHECK ((auth.jwt() ->> 'email'::text) = 'bbm.genai@gmail.com'::text);
+  USING ((auth.jwt() ->> 'email'::text) = 'doctorswathika@gmail.com'::text)
+  WITH CHECK ((auth.jwt() ->> 'email'::text) = 'doctorswathika@gmail.com'::text);
 
 -- Add Google API settings
 INSERT INTO public.site_settings (key, value, label) VALUES
