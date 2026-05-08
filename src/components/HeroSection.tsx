@@ -160,7 +160,7 @@ export default function HeroSection() {
               <div className="flex items-center justify-center gap-4">
                 <span className="h-px w-10 bg-foreground/50" />
                 <p className="text-[11px] tracking-[0.5em] uppercase text-foreground/75 font-sans-body font-medium">
-                  Breast Surgery · Chennai
+                  Breast Surgeon · Chennai
                 </p>
                 <span className="h-px w-10 bg-foreground/50" />
               </div>
