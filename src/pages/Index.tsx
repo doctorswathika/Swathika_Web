@@ -32,20 +32,20 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Dr. Swathika Rajendran — UK Trained Breast Oncoplastic Surgeon </title>
+        <title>Best Breast Surgeon in Chennai | Dr. Swathika Rajendran — UK Trained Oncoplastic Surgeon</title>
         <meta
           name="description"
-          content="Dr. Swathika Rajendran is a UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai with 700+ procedures. Expert in breast cancer surgery, reconstruction, and aesthetic breast surgery."
+          content="Best Breast Surgeon in Chennai — Dr. Swathika Rajendran, UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ surgeries. Expert in breast cancer surgery, reconstruction, and aesthetic breast surgery."
         />
         <meta
           name="keywords"
-          content="Best Breast Surgeon in Chennai, UK Trained Oncoplastic Surgeon India, Breast Reconstruction Specialist Chennai, Breast Cancer Surgeon Chennai, Oncoplastic Breast Surgery"
+          content="Best Breast Surgeon in Chennai, Top Breast Surgeon Chennai, Breast Cancer Surgeon Chennai, UK Trained Oncoplastic Surgeon India, Breast Reconstruction Specialist Chennai, Oncoplastic Breast Surgery Chennai, Female Breast Surgeon Chennai, Dr Swathika Rajendran"
         />
         <link rel="canonical" href="https://drswathika.com" />
-        <meta property="og:title" content="Dr. Swathika Rajendran — UK Trained Breast Oncoplastic Surgeon" />
+        <meta property="og:title" content="Best Breast Surgeon in Chennai | Dr. Swathika Rajendran" />
         <meta
           property="og:description"
-          content="Advanced Breast Surgery with Precision & Compassion. 700+ Procedures. UK Trained."
+          content="Best Breast Surgeon in Chennai. UK-trained Breast Oncoplastic & Reconstructive Surgeon. 700+ Procedures. Precision, compassion & world-class care."
         />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
