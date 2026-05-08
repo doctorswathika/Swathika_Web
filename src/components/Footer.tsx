@@ -89,7 +89,7 @@ export default function Footer() {
                 {email}
               </a>
               <a
-                href="https://www.linkedin.com/in/swathika-rajendran-38253b165/"
+                href="https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground font-sans-body hover:text-foreground transition-colors group"
