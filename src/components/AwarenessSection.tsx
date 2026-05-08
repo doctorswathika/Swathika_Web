@@ -221,30 +221,30 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-            className="bg-card p-10 lg:p-14"
+            className="bg-card p-12 lg:p-20"
           >
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
-                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                <span className="font-serif-display text-[10px] tracking-[0.45em] uppercase text-muted-foreground">
                   Practice
                 </span>
               </div>
               <CheckCircle className="w-5 h-5 text-primary/80" />
             </div>
-            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+            <h3 className="font-serif-display text-[2.5rem] lg:text-[3.25rem] font-light text-foreground leading-[1.05] tracking-[-0.02em] mb-12">
               The <em className="text-gradient-rose">Do's</em>
             </h3>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {dos.map((d, i) => (
                 <motion.li
                   key={d}
                   initial={{ opacity: 0, y: 8 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
-                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
+                  className="flex items-start gap-5 pb-6 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                  <span className="text-[15.5px] lg:text-base text-foreground/85 font-sans-body font-light leading-[1.75] tracking-[0.005em]">
                     {d}
                   </span>
                 </motion.li>
@@ -257,30 +257,30 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-            className="bg-card p-10 lg:p-14"
+            className="bg-card p-12 lg:p-20"
           >
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-10">
               <div className="flex items-center gap-3">
-                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                <span className="font-serif-display text-[10px] tracking-[0.45em] uppercase text-muted-foreground">
                   Avoid
                 </span>
               </div>
               <XCircle className="w-5 h-5 text-destructive/80" />
             </div>
-            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+            <h3 className="font-serif-display text-[2.5rem] lg:text-[3.25rem] font-light text-foreground leading-[1.05] tracking-[-0.02em] mb-12">
               The <em className="text-gradient-rose">Don'ts</em>
             </h3>
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {donts.map((d, i) => (
                 <motion.li
                   key={d}
                   initial={{ opacity: 0, y: 8 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
-                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
+                  className="flex items-start gap-5 pb-6 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-destructive/70 flex-shrink-0" />
-                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                  <span className="text-[15.5px] lg:text-base text-foreground/85 font-sans-body font-light leading-[1.75] tracking-[0.005em]">
                     {d}
                   </span>
                 </motion.li>
