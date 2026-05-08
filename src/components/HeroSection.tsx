@@ -17,6 +17,20 @@ export default function HeroSection() {
   const portraitY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 80]);
   const bgY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 40]);
   const textY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : -30]);
+
+  // Defer non-critical ambient/decorative effects (orbs, blurs) until idle
+  const [ambientReady, setAmbientReady] = useState(false);
+  useEffect(() => {
+    if (reduceMotion) return;
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
+    let id: number;
+    if (w.requestIdleCallback) {
+      id = w.requestIdleCallback(() => setAmbientReady(true), { timeout: 1500 });
+    } else {
+      id = window.setTimeout(() => setAmbientReady(true), 800);
+    }
+    return () => clearTimeout(id);
+  }, [reduceMotion]);
   const heroOpacity = useTransform(scrollY, [0, 500], [1, reduceMotion ? 1 : 0.6]);
 
   const headline = getText(
