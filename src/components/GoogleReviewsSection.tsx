@@ -185,25 +185,28 @@ export default function GoogleReviewsSection() {
   const hasReviews = reviews.length > 0;
 
   return (
-    <section className="relative py-28 lg:py-44 overflow-hidden" ref={ref}>
+    <section
+      className="relative min-h-[100svh] flex flex-col justify-center py-12 sm:py-16 lg:py-20 overflow-hidden"
+      ref={ref}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270_45%_18%)] via-[hsl(265_50%_14%)] to-[hsl(280_55%_20%)]" />
       <div className="absolute top-0 left-1/3 w-[520px] h-[520px] rounded-full bg-[hsl(280_60%_55%/0.22)] blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[480px] h-[480px] rounded-full bg-[hsl(260_55%_60%/0.20)] blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: EASE }}
-          className="text-center mb-14 lg:mb-20"
+          className="text-center mb-6 sm:mb-8 lg:mb-12"
         >
-          <div className="inline-flex items-center gap-3 mb-7 px-5 py-2 rounded-full bg-background/10 backdrop-blur border border-background/15">
+          <div className="inline-flex items-center gap-3 mb-4 sm:mb-5 px-4 py-1.5 rounded-full bg-background/10 backdrop-blur border border-background/15">
             <GoogleLogo className="w-4 h-4" />
             <p className="text-[10px] tracking-[0.45em] uppercase text-background/80 font-sans-body">
               Google Reviews
             </p>
           </div>
-          <h2 className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4rem] font-light leading-[1.02] tracking-[-0.02em] text-background">
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.05] tracking-[-0.02em] text-background">
             What Patients <em className="opacity-80">Say</em>
           </h2>
         </motion.div>
@@ -235,35 +238,35 @@ export default function GoogleReviewsSection() {
                         }}
                         transition={{ duration: 0.95, ease: EASE }}
                         style={{ transformStyle: "preserve-3d" }}
-                        className="relative mx-auto rounded-[2rem] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-background/[0.10] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_40px_100px_-25px_rgba(0,0,0,0.65)] overflow-hidden"
+                        className="relative mx-auto rounded-[2rem] p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-background/[0.10] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_40px_100px_-25px_rgba(0,0,0,0.65)] overflow-hidden"
                       >
                         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(280_60%_55%/0.18)] blur-3xl pointer-events-none" />
                         <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(260_55%_60%/0.18)] blur-3xl pointer-events-none" />
 
                         <Quote
-                          className="absolute top-6 right-6 w-10 h-10 lg:w-14 lg:h-14 text-background/10"
+                          className="absolute top-4 right-4 w-8 h-8 lg:w-10 lg:h-10 text-background/10"
                           strokeWidth={1.2}
                         />
 
-                        <header className="flex items-center justify-center gap-4 mb-8">
+                        <header className="flex items-center justify-center gap-3 mb-4 sm:mb-5">
                           {review.profile_photo_url ? (
                             <img
                               src={review.profile_photo_url}
                               alt={review.author_name}
-                              className="w-14 h-14 rounded-full object-cover ring-2 ring-background/30"
+                              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover ring-2 ring-background/30"
                             />
                           ) : (
-                            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[hsl(340_70%_55%)] to-[hsl(15_80%_60%)] ring-2 ring-background/30 flex items-center justify-center">
-                              <span className="font-serif-display text-xl text-background">
+                            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[hsl(280_60%_55%)] to-[hsl(260_55%_60%)] ring-2 ring-background/30 flex items-center justify-center">
+                              <span className="font-serif-display text-lg text-background">
                                 {review.author_name.charAt(0)}
                               </span>
                             </div>
                           )}
-                          <div className="text-center sm:text-left">
-                            <p className="font-serif-display text-xl lg:text-2xl text-background tracking-tight">
+                          <div className="text-left">
+                            <p className="font-serif-display text-base sm:text-lg lg:text-xl text-background tracking-tight leading-tight">
                               {review.author_name}
                             </p>
-                            <p className="font-sans-body text-[10px] tracking-[0.35em] uppercase text-background/55 mt-1">
+                            <p className="font-sans-body text-[9px] tracking-[0.32em] uppercase text-background/55 mt-1">
                               {review.relative_time}
                             </p>
                           </div>
@@ -277,23 +280,23 @@ export default function GoogleReviewsSection() {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.6, ease: EASE }}
-                              className="relative font-serif-display text-center text-[1.25rem] sm:text-[1.5rem] lg:text-[1.75rem] leading-[1.55] text-background/90 font-light italic max-w-3xl mx-auto"
+                              className="relative font-serif-display text-center text-base sm:text-lg lg:text-xl leading-[1.5] text-background/90 font-light italic max-w-2xl mx-auto line-clamp-5 sm:line-clamp-6"
                             >
                               &ldquo;{review.text}&rdquo;
                             </motion.p>
                           ) : (
-                            <p className="font-serif-display text-center text-[1.25rem] sm:text-[1.5rem] lg:text-[1.75rem] leading-[1.55] text-background/90 font-light italic max-w-3xl mx-auto line-clamp-4">
+                            <p className="font-serif-display text-center text-base sm:text-lg lg:text-xl leading-[1.5] text-background/90 font-light italic max-w-2xl mx-auto line-clamp-4">
                               &ldquo;{review.text}&rdquo;
                             </p>
                           )}
                         </AnimatePresence>
 
-                        <footer className="mt-10 flex flex-col items-center gap-5">
-                          <div className="flex items-center gap-1.5">
+                        <footer className="mt-5 sm:mt-6 flex flex-col items-center gap-3">
+                          <div className="flex items-center gap-1">
                             {[...Array(5)].map((_, idx) => (
                               <Star
                                 key={idx}
-                                className={`w-5 h-5 lg:w-6 lg:h-6 ${
+                                className={`w-4 h-4 lg:w-5 lg:h-5 ${
                                   idx < review.rating
                                     ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
                                     : "text-background/20"
