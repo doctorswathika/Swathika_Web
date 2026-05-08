@@ -259,7 +259,7 @@ export default function About() {
 
                       <div className="glass-premium lift rounded-[24px] px-5 py-6 shadow-elegant sm:px-6 lg:px-8 lg:py-7">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-                          <h3 className="font-serif-display text-[1.5rem] font-semibold leading-tight text-foreground sm:text-[1.7rem] lg:text-[2rem]">
+                          <h3 className="font-serif-display text-[1.5rem] font-light leading-[1.1] tracking-[-0.02em] text-foreground sm:text-[1.7rem] lg:text-[2rem]">
                             {item.title}
                           </h3>
                           <p className="max-w-sm font-sans-body text-[13px] leading-relaxed text-gradient-rose sm:text-right sm:text-sm">
@@ -284,7 +284,7 @@ export default function About() {
             <motion.div {...fadeUp} transition={{ duration: 0.8, ease: EASE }} className="space-y-8">
               <div className="text-center">
                 <p className="eyebrow">Credentials</p>
-                <h2 className="mt-5 font-serif-display text-3xl font-semibold text-foreground lg:text-4xl">
+                <h2 className="mt-5 font-serif-display text-3xl font-light leading-[1.05] tracking-[-0.025em] text-foreground lg:text-4xl">
                   Professional Memberships
                 </h2>
               </div>
@@ -324,8 +324,8 @@ export default function About() {
               className="glass-premium rounded-[32px] px-8 py-12 text-center shadow-luxe lg:px-14 lg:py-16"
             >
               <p className="eyebrow">Take the First Step</p>
-              <h2 className="mt-6 font-serif-display text-4xl font-semibold leading-tight text-foreground lg:text-5xl">
-                Ready to Discuss Your <span className="text-gradient-rose italic">Care?</span>
+              <h2 className="mt-6 font-serif-display text-4xl font-light leading-[1.05] tracking-[-0.025em] text-foreground lg:text-5xl">
+                Ready to Discuss Your Care?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-sans-body text-base leading-[1.9] text-foreground/78 lg:text-[17px]">
                 Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm
