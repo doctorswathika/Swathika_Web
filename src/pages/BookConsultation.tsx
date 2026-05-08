@@ -271,21 +271,6 @@ export default function BookConsultation() {
                       </li>
                     ))}
                   </ul>
-
-                  <div className="pt-6 border-t border-border/60">
-                    <p className="text-[11px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body mb-3">
-                      Prefer to message?
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleWhatsAppPrimary}
-                      className="group inline-flex items-center gap-2.5 text-sm font-sans-body text-foreground hover:text-primary transition-colors"
-                    >
-                      <MessageCircle className="w-4 h-4 text-[hsl(142_70%_45%)]" />
-                      Continue on WhatsApp
-                      <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform" />
-                    </button>
-                  </div>
                 </motion.div>
               </aside>
 
