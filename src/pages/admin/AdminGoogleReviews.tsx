@@ -121,7 +121,7 @@ export default function AdminGoogleReviews() {
         ...payload,
         review_id: `manual_${Date.now()}`,
         review_time: Math.floor(Date.now() / 1000),
-        is_displayed: false,
+        is_displayed: true,
       });
       if (error) {
         toast({ title: "Error", description: error.message, variant: "destructive" });
