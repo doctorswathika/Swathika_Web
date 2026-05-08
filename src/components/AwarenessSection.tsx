@@ -133,9 +133,6 @@ export default function AwarenessSection() {
             <h3 className="font-serif-display text-[1.75rem] lg:text-4xl font-light text-foreground italic tracking-[-0.01em]">
               The four truths
             </h3>
-            <span className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-              I — IV
-            </span>
           </div>
           <div className="divide-y divide-border/60">
             {motivation.map((item, i) => (
