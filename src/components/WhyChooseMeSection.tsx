@@ -6,27 +6,27 @@ const points = [
   {
     icon: Microscope,
     title: "Latest Technology Training",
-    text: "Trained on advanced surgical techniques and current oncoplastic protocols from the UK.",
+    text: "UK-trained specialist in advanced breast oncoplastic and reconstructive techniques, offering modern, evidence-based breast care.",
   },
   {
     icon: Sparkles,
     title: "Cosmetic Precision with Safe Cancer Removal",
-    text: "Every operation balances thorough cancer clearance with careful aesthetic reshaping.",
+    text: "Focused on safe cancer clearance while preserving or restoring the breast, supporting both long-term health and self-confidence.",
   },
   {
     icon: Scissors,
     title: "Minimally Invasive Techniques",
-    text: "Smaller incisions, gentler approaches and faster recovery — wherever clinically appropriate.",
+    text: "Where possible, gentle, breast-conserving approaches are used to reduce pain and help women in early recovery after surgery.",
   },
   {
     icon: Stamp,
     title: "Minimal Scar Planning",
-    text: "Incisions are placed and designed thoughtfully to keep scars discreet and well-hidden.",
+    text: "Incisions follow natural breast lines and curves, keeping scars as soft, subtle, and discreet as possible.",
   },
   {
     icon: ShieldCheck,
     title: "Complete Cancer Care",
-    text: "From diagnosis to surgery, reconstruction and follow-up — coordinated under one roof.",
+    text: "Supporting you at every step — from first consultation and diagnosis to surgery, reconstruction guidance, and long-term follow-up.",
   },
 ];
 
