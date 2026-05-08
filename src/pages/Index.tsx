@@ -25,7 +25,7 @@ const jsonLd = {
     addressCountry: "IN",
   },
   url: "https://drswathika.com",
-  sameAs: ["https://www.linkedin.com/in/swathika-rajendran-38253b165/"],
+  sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android"],
 };
 
 const Index = () => {
