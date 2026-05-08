@@ -1,12 +1,14 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, MessageSquareQuote } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const POLL_INTERVAL_MS = 60_000; // refetch displayed reviews every 60s
+const REMOTE_SYNC_INTERVAL_MS = 10 * 60_000; // trigger Google Places sync every 10 min
 
 interface Review {
   id: string;
@@ -15,6 +17,7 @@ interface Review {
   text: string;
   profile_photo_url: string | null;
   relative_time: string;
+  review_time: number | null;
 }
 
 const GoogleLogo = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -26,41 +29,154 @@ const GoogleLogo = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
+function ReviewSkeleton() {
+  return (
+    <div className="mx-auto rounded-[2rem] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-background/[0.06] via-background/[0.04] to-background/[0.02] backdrop-blur-2xl border border-background/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden relative">
+      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2.2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-background/[0.06] to-transparent pointer-events-none" />
+      <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="w-14 h-14 rounded-full bg-background/10" />
+        <div className="space-y-2">
+          <div className="h-4 w-40 rounded bg-background/10" />
+          <div className="h-2 w-24 rounded bg-background/10" />
+        </div>
+      </div>
+      <div className="max-w-3xl mx-auto space-y-3">
+        <div className="h-4 rounded bg-background/10 w-[92%] mx-auto" />
+        <div className="h-4 rounded bg-background/10 w-[86%] mx-auto" />
+        <div className="h-4 rounded bg-background/10 w-[78%] mx-auto" />
+        <div className="h-4 rounded bg-background/10 w-[60%] mx-auto" />
+      </div>
+      <div className="flex items-center justify-center gap-1.5 mt-10">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="w-5 h-5 rounded bg-background/10" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: EASE }}
+      className="relative max-w-2xl mx-auto rounded-[2rem] p-12 lg:p-16 text-center bg-gradient-to-br from-background/[0.06] via-background/[0.04] to-background/[0.02] backdrop-blur-2xl border border-background/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+    >
+      <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.10)] blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.12)] blur-3xl pointer-events-none" />
+      <div className="relative">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-background/10 border border-background/20 flex items-center justify-center">
+          <MessageSquareQuote className="w-7 h-7 text-background/70" strokeWidth={1.4} />
+        </div>
+        <h3 className="font-serif-display text-2xl lg:text-3xl text-background font-light tracking-tight mb-3">
+          Patient stories, coming soon
+        </h3>
+        <p className="font-sans-body text-background/65 text-[14px] leading-relaxed max-w-md mx-auto">
+          We are gathering thoughtful reflections from those who have walked this journey. Their words will appear here shortly.
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function GoogleReviewsSection() {
   const { ref, isVisible } = useScrollAnimation();
   const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const lastRemoteSyncRef = useRef(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "center", duration: 35 },
     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
-  useEffect(() => {
-    async function fetchDisplayedReviews() {
-      const { data } = await supabase
-        .from("google_reviews")
-        .select("id, author_name, rating, text, profile_photo_url, relative_time, review_time")
-        .eq("is_displayed", true)
-        .order("review_time", { ascending: false })
-        .limit(10);
+  const fetchDisplayedReviews = useCallback(async () => {
+    // 5★ first, then 4★, etc.; within rating, newest first
+    const { data } = await supabase
+      .from("google_reviews")
+      .select("id, author_name, rating, text, profile_photo_url, relative_time, review_time")
+      .eq("is_displayed", true)
+      .order("rating", { ascending: false })
+      .order("review_time", { ascending: false, nullsFirst: false })
+      .limit(10);
 
-      if (data && data.length > 0) {
-        setReviews(data as Review[]);
-      }
+    if (data) {
+      setReviews((prev) => {
+        const next = data as Review[];
+        // shallow-compare ids+text to avoid unnecessary re-renders
+        const sameLength = prev.length === next.length;
+        const sameOrder = sameLength && prev.every((r, i) => r.id === next[i].id && r.text === next[i].text);
+        return sameOrder ? prev : next;
+      });
     }
-    fetchDisplayedReviews();
+    setLoading(false);
   }, []);
+
+  const triggerRemoteSync = useCallback(async () => {
+    const now = Date.now();
+    if (now - lastRemoteSyncRef.current < REMOTE_SYNC_INTERVAL_MS) return;
+    lastRemoteSyncRef.current = now;
+    try {
+      // Fire-and-forget; the edge function upserts new Google Places reviews into the DB
+      await supabase.functions.invoke("google-reviews");
+      await fetchDisplayedReviews();
+    } catch {
+      /* silent — local DB rows still serve the carousel */
+    }
+  }, [fetchDisplayedReviews]);
+
+  // Initial load + periodic poll + remote sync trigger
+  useEffect(() => {
+    fetchDisplayedReviews();
+    triggerRemoteSync();
+
+    const pollId = setInterval(fetchDisplayedReviews, POLL_INTERVAL_MS);
+    const syncId = setInterval(triggerRemoteSync, REMOTE_SYNC_INTERVAL_MS);
+
+    const onVisible = () => {
+      if (document.visibilityState === "visible") {
+        fetchDisplayedReviews();
+        triggerRemoteSync();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      clearInterval(pollId);
+      clearInterval(syncId);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [fetchDisplayedReviews, triggerRemoteSync]);
+
+  // Realtime: react instantly to admin toggling visibility / inserts
+  useEffect(() => {
+    const channel = supabase
+      .channel("google_reviews_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "google_reviews" },
+        () => fetchDisplayedReviews()
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [fetchDisplayedReviews]);
 
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
     emblaApi.on("select", onSelect);
     onSelect();
+    // re-init when reviews length changes so loop & snaps update
+    emblaApi.reInit();
     return () => {
       emblaApi.off("select", onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, reviews.length]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -92,9 +208,12 @@ export default function GoogleReviewsSection() {
           </h2>
         </motion.div>
 
-        {hasReviews ? (
+        {loading ? (
+          <ReviewSkeleton />
+        ) : !hasReviews ? (
+          <EmptyState />
+        ) : (
           <div className="relative">
-            {/* Carousel viewport */}
             <div className="overflow-hidden px-2 sm:px-8" ref={emblaRef}>
               <div className="flex">
                 {reviews.map((review, i) => {
@@ -112,7 +231,6 @@ export default function GoogleReviewsSection() {
                         transition={{ duration: 0.7, ease: EASE }}
                         className="relative mx-auto rounded-[2rem] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-background/[0.08] via-background/[0.05] to-background/[0.02] backdrop-blur-2xl border border-background/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
                       >
-                        {/* Royal gold accent corner */}
                         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.10)] blur-3xl pointer-events-none" />
                         <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.12)] blur-3xl pointer-events-none" />
 
@@ -121,7 +239,6 @@ export default function GoogleReviewsSection() {
                           strokeWidth={1.2}
                         />
 
-                        {/* Author header */}
                         <header className="flex items-center justify-center gap-4 mb-8">
                           {review.profile_photo_url ? (
                             <img
@@ -146,9 +263,8 @@ export default function GoogleReviewsSection() {
                           </div>
                         </header>
 
-                        {/* Quote text — center */}
                         <AnimatePresence mode="wait">
-                          {isActive && (
+                          {isActive ? (
                             <motion.p
                               key={review.id}
                               initial={{ opacity: 0, y: 10 }}
@@ -159,15 +275,13 @@ export default function GoogleReviewsSection() {
                             >
                               &ldquo;{review.text}&rdquo;
                             </motion.p>
-                          )}
-                          {!isActive && (
+                          ) : (
                             <p className="font-serif-display text-center text-[1.25rem] sm:text-[1.5rem] lg:text-[1.75rem] leading-[1.55] text-background/90 font-light italic max-w-3xl mx-auto line-clamp-4">
                               &ldquo;{review.text}&rdquo;
                             </p>
                           )}
                         </AnimatePresence>
 
-                        {/* Stars — bottom */}
                         <footer className="flex items-center justify-center gap-1.5 mt-10">
                           {[...Array(5)].map((_, idx) => (
                             <Star
@@ -187,7 +301,6 @@ export default function GoogleReviewsSection() {
               </div>
             </div>
 
-            {/* Arrows */}
             {reviews.length > 1 && (
               <>
                 <button
@@ -207,7 +320,6 @@ export default function GoogleReviewsSection() {
               </>
             )}
 
-            {/* Dots */}
             {reviews.length > 1 && (
               <div className="flex items-center justify-center gap-2 mt-10">
                 {reviews.map((_, i) => (
@@ -224,10 +336,6 @@ export default function GoogleReviewsSection() {
                 ))}
               </div>
             )}
-          </div>
-        ) : (
-          <div className="text-center text-background/60 font-sans-body font-light py-12">
-            Reviews will appear here once configured from the admin panel.
           </div>
         )}
       </div>
