@@ -40,7 +40,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative pt-24 lg:pt-32 pb-10 bg-background overflow-hidden"
+      className="relative pt-16 lg:pt-20 pb-10 bg-background overflow-hidden"
       ref={ref}
     >
       {/* Soft top wash */}
@@ -54,16 +54,16 @@ export default function Footer() {
         className="relative max-w-[88rem] mx-auto px-6 lg:px-10"
       >
         {/* Editorial mark */}
-        <div className="text-center mb-16 lg:mb-20">
-          <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body mb-5">
+        <div className="text-center mb-10 lg:mb-12">
+          <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body mb-3">
             Dr. Swathika Rajendran
           </p>
-          <h3 className="font-serif-display text-[2rem] sm:text-4xl lg:text-[3rem] font-light text-foreground leading-[1.05] tracking-[-0.02em] max-w-3xl mx-auto">
+          <h3 className="font-serif-display text-xl sm:text-2xl lg:text-[1.75rem] font-light text-foreground leading-[1.2] tracking-[-0.01em] max-w-3xl mx-auto">
             Breast care, with the calm of <em className="text-gradient-rose">experience</em>.
           </h3>
         </div>
 
-        <div className="hairline mb-16 lg:mb-20" />
+        <div className="hairline mb-12 lg:mb-14" />
 
         <div className="grid md:grid-cols-12 gap-12 lg:gap-16 mb-16">
           {/* Brand */}
