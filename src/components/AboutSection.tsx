@@ -66,7 +66,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.1, ease: EASE, delay: 0.1 }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative lg:order-2"
           >
             <div className="relative">
               <div className="absolute -inset-4 lg:-inset-6 rounded-[28px] bg-gradient-to-br from-[hsl(15_80%_88%/0.5)] to-[hsl(268_60%_90%/0.4)] blur-xl pointer-events-none" />
@@ -83,7 +83,7 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Text — editorial typography */}
-          <div className="lg:col-span-7 space-y-10">
+          <div className="lg:col-span-7 space-y-10 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}

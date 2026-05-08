@@ -118,7 +118,7 @@ export default function ServicePageLayout({
       <main className="pt-24">
 
         {/* ── Editorial Hero ── */}
-        <section className="relative py-20 lg:py-32 bg-background overflow-hidden">
+        <section className="relative py-14 lg:py-20 bg-background overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute -top-40 right-[-10%] w-[560px] h-[560px] rounded-full bg-[hsl(340_60%_92%/0.4)] blur-3xl" />
             <div className="absolute bottom-[-20%] left-[-10%] w-[440px] h-[440px] rounded-full bg-[hsl(268_60%_92%/0.3)] blur-3xl" />
@@ -179,7 +179,7 @@ export default function ServicePageLayout({
         </section>
 
         {/* ── Overview ── */}
-        <section className="py-20 lg:py-32 bg-background">
+        <section className="py-14 lg:py-20 bg-background">
           <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -219,7 +219,7 @@ export default function ServicePageLayout({
 
         {/* ── Benefits ── */}
         {displayBenefits.length > 0 && (
-          <section className="py-20 lg:py-32 bg-card/40">
+          <section className="py-14 lg:py-20 bg-card/40">
             <div className="max-w-5xl mx-auto px-6 lg:px-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -261,7 +261,7 @@ export default function ServicePageLayout({
         )}
 
         {/* ── Process ── */}
-        <section className="py-20 lg:py-32 bg-background">
+        <section className="py-14 lg:py-20 bg-background">
           <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -307,7 +307,7 @@ export default function ServicePageLayout({
         </section>
 
         {/* ── CTA ── */}
-        <section className="py-20 lg:py-28 bg-background">
+        <section className="py-14 lg:py-20 bg-background">
           <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -336,7 +336,7 @@ export default function ServicePageLayout({
 
         {/* ── FAQs ── */}
         {displayFaqs.length > 0 && (
-          <section className="py-20 lg:py-32 bg-card/40">
+          <section className="py-14 lg:py-20 bg-card/40">
             <div className="max-w-5xl mx-auto px-6 lg:px-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -67,7 +67,7 @@ function ServiceCard({
           </div>
           {/* Title overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
-            <h3 className="font-serif-display text-[1.15rem] lg:text-[1.35rem] font-light leading-[1.15] text-background tracking-[-0.005em]">
+            <h3 className="font-serif-display text-[1.2rem] lg:text-[1.4rem] font-medium leading-[1.15] text-white tracking-[-0.005em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
               {title}
             </h3>
             <span className="block mt-3 h-px w-8 bg-background/70 group-hover:w-16 transition-all duration-500" />
