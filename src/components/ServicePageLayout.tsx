@@ -334,54 +334,7 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* ── FAQs ── */}
-        {displayFaqs.length > 0 && (
-          <section className="py-14 lg:py-20 bg-card/40">
-            <div className="max-w-5xl mx-auto px-6 lg:px-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="flex items-center gap-4 mb-7">
-                  <span className="h-px w-12 bg-foreground/40" />
-                  <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-                    FAQ
-                  </p>
-                </div>
-                <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-12">
-                  Frequently Asked <em className="text-gradient-rose">Questions</em>
-                </h2>
-                <div className="border-t border-border/60">
-                  {displayFaqs.map((faq, i) => (
-                    <motion.details
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                      className="group border-b border-border/60 py-7 cursor-pointer"
-                    >
-                      <summary className="font-serif-display text-[1.1rem] lg:text-[1.3rem] font-light text-foreground list-none flex items-baseline gap-5 lg:gap-7 hover:text-primary/90 transition-colors duration-500 tracking-[-0.005em] leading-[1.3]">
-                        <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-medium pt-1.5">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="flex-1">{faq.q}</span>
-                        <span className="text-foreground/50 ml-2 group-open:rotate-45 transition-transform duration-500 text-2xl font-light">
-                          +
-                        </span>
-                      </summary>
-                      <p className="text-[14.5px] lg:text-[15.5px] text-muted-foreground font-sans-body font-light leading-[1.9] mt-5 pl-[3.5rem] lg:pl-[5rem] max-w-3xl">
-                        {faq.a}
-                      </p>
-                    </motion.details>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </section>
-        )}
+        {/* FAQs removed — single common FAQ lives on homepage */}
 
       </main>
       <Footer />
