@@ -10,16 +10,13 @@ import {
   Clock,
   Send,
   Loader2,
-  MessageCircle,
   CheckCircle2,
   ShieldCheck,
-  ArrowRight,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
-const WHATSAPP_NUMBER = "919940808876";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Please share your name").max(100),
@@ -78,29 +75,7 @@ export default function BookConsultation() {
     [formData.service],
   );
 
-  const buildWhatsAppMessage = (data: typeof formData) => {
-    const lines = [
-      "Hello Dr. Swathika,",
-      "",
-      "I'd like to schedule a private consultation.",
-      "",
-      data.name && `• Name: ${data.name}`,
-      data.email && `• Email: ${data.email}`,
-      data.phone && `• Phone: ${data.phone}`,
-      serviceLabel && data.service && `• Area of interest: ${serviceLabel}`,
-      data.message && `\n${data.message}`,
-    ].filter(Boolean);
-    return lines.join("\n");
-  };
-
-  const openWhatsApp = (data: typeof formData) => {
-    const text = encodeURIComponent(buildWhatsAppMessage(data));
-    window.open(
-      `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${text}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
-  };
+const EASE = [0.22, 1, 0.36, 1] as const;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,18 +106,6 @@ export default function BookConsultation() {
       return;
     }
     setConfirmed(true);
-  };
-
-  const handleWhatsAppPrimary = () => {
-    const result = bookingSchema.pick({ name: true, phone: true }).safeParse(formData);
-    if (!result.success) {
-      toast({
-        title: "Add your name and number first",
-        description: "We'll prefill the message so the team recognises you.",
-      });
-      return;
-    }
-    openWhatsApp(formData);
   };
 
   const handleChange = (
@@ -272,21 +235,6 @@ export default function BookConsultation() {
                       </li>
                     ))}
                   </ul>
-
-                  <div className="pt-6 border-t border-border/60">
-                    <p className="text-[11px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body mb-3">
-                      Prefer to message?
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleWhatsAppPrimary}
-                      className="group inline-flex items-center gap-2.5 text-sm font-sans-body text-foreground hover:text-primary transition-colors"
-                    >
-                      <MessageCircle className="w-4 h-4 text-[hsl(142_70%_45%)]" />
-                      Continue on WhatsApp
-                      <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 transition-transform" />
-                    </button>
-                  </div>
                 </motion.div>
               </aside>
 
@@ -399,7 +347,7 @@ export default function BookConsultation() {
                           </div>
                         </div>
 
-                        <div className="pt-4 flex flex-col sm:flex-row gap-3 sm:items-center">
+                        <div className="pt-4">
                           <button
                             type="submit"
                             disabled={submitting}
@@ -411,14 +359,6 @@ export default function BookConsultation() {
                               <Send className="w-4 h-4" />
                             )}
                             {submitting ? "Sending…" : "Send Request"}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleWhatsAppPrimary}
-                            className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full border border-border/70 bg-background text-foreground font-sans-body font-medium text-[15px] hover:border-[hsl(142_70%_45%)/0.5] hover:bg-[hsl(142_70%_45%/0.04)] transition-all"
-                          >
-                            <MessageCircle className="w-4 h-4 text-[hsl(142_70%_45%)]" />
-                            Continue on WhatsApp
                           </button>
                         </div>
                         <p className="text-[12px] text-muted-foreground/80 font-sans-body italic">
@@ -452,18 +392,9 @@ export default function BookConsultation() {
                       </h3>
                       <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body leading-[1.85] font-light max-w-xl mx-auto mb-10">
                         Your request is with Dr. Swathika's team. You'll receive a personal reply within 24 hours.
-                        For anything urgent, you can continue the conversation on WhatsApp now.
                       </p>
 
-                      <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-                        <button
-                          type="button"
-                          onClick={() => openWhatsApp(formData)}
-                          className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[hsl(142_70%_45%)] text-background font-sans-body font-semibold text-[15px] hover:scale-[1.02] transition-all duration-300 shadow-[0_8px_30px_-4px_hsl(142_70%_45%/0.4)]"
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                          Continue on WhatsApp
-                        </button>
+                      <div className="flex justify-center mb-10">
                         <button
                           type="button"
                           onClick={resetForm}
