@@ -240,25 +240,55 @@ export default function AdminGoogleReviews() {
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <Switch
-                    checked={review.is_displayed}
-                    onCheckedChange={() => toggleDisplay(review)}
-                    disabled={toggling === review.id}
-                  />
-                  <span className="text-[10px] text-muted-foreground font-sans-body">
-                    {review.is_displayed ? "Visible" : "Hidden"}
+                <div className="flex flex-col items-end gap-2 shrink-0 min-w-[140px]">
+                  <span className={`text-[10px] font-sans-body uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                    review.is_displayed
+                      ? "bg-primary/15 text-primary"
+                      : "bg-muted text-muted-foreground"
+                  }`}>
+                    {review.is_displayed ? "On site" : "Hidden"}
                   </span>
-                  <div className="flex gap-1 mt-1">
-                    <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(review)}>
+
+                  <div className="flex flex-wrap items-center justify-end gap-1.5 mt-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="h-8 gap-1.5 text-xs"
+                      onClick={() => setPreviewReview(review)}
+                    >
+                      <Quote className="w-3.5 h-3.5" /> Preview
+                    </Button>
+                    <Button
+                      variant={review.is_displayed ? "secondary" : "default"}
+                      size="sm"
+                      className="h-8 gap-1.5 text-xs"
+                      onClick={() => toggleDisplay(review)}
+                      disabled={toggling === review.id}
+                    >
+                      {toggling === review.id ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : review.is_displayed ? (
+                        <><EyeOff className="w-3.5 h-3.5" /> Hide</>
+                      ) : (
+                        <><Eye className="w-3.5 h-3.5" /> Show</>
+                      )}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8"
+                      onClick={() => openEdit(review)}
+                      title="Edit"
+                    >
                       <Pencil className="w-3.5 h-3.5" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-7 text-destructive hover:text-destructive"
+                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
                       onClick={() => handleDelete(review.id)}
                       disabled={deleting === review.id}
+                      title="Delete"
                     >
                       {deleting === review.id ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
                     </Button>
