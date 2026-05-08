@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
@@ -11,6 +11,12 @@ export default function HeroSection() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { getText, getAlignClass } = useSiteContent();
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const portraitY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 80]);
+  const bgY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 40]);
+  const textY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : -30]);
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, reduceMotion ? 1 : 0.6]);
 
   const headline = getText(
     "hero_headline",
@@ -33,8 +39,21 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden">
-      {/* Warm blush base background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(350_60%_90%)] to-[hsl(20_60%_90%)]" />
+      {/* Warm blush base background with subtle parallax + ambient drift */}
+      <motion.div
+        style={{ y: bgY, opacity: heroOpacity, willChange: "transform" }}
+        className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(350_60%_90%)] to-[hsl(20_60%_90%)]"
+      />
+      {!reduceMotion && (
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none ambient-float opacity-70"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 30% 20%, hsl(340 80% 92% / 0.55), transparent 60%), radial-gradient(50% 40% at 80% 70%, hsl(20 80% 90% / 0.45), transparent 60%)",
+          }}
+        />
+      )}
 
       {/* Bokeh floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -92,6 +111,8 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 self-end lg:self-stretch flex items-end relative order-first"
           style={{
+            y: portraitY,
+            willChange: "transform",
             maskImage: isMobile
               ? "linear-gradient(to bottom, black 60%, transparent 100%)"
               : "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
@@ -118,6 +139,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="flex-1 flex items-center justify-center px-6 lg:px-12 py-12 lg:py-0 self-center"
+          style={{ y: textY, willChange: "transform" }}
         >
           <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">

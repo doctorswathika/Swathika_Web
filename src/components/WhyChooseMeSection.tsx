@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Sparkles, Scissors, Microscope, Stamp, ShieldCheck } from "lucide-react";
 
+type WhyChooseMeVariant = "grid" | "stacked";
+
 const points = [
   {
     icon: Microscope,
@@ -30,8 +32,9 @@ const points = [
   },
 ];
 
-export default function WhyChooseMeSection() {
+export default function WhyChooseMeSection({ variant = "grid" }: { variant?: WhyChooseMeVariant } = {}) {
   const { ref, isVisible } = useScrollAnimation();
+  const isStacked = variant === "stacked";
 
   return (
     <section id="why-choose-me" className="py-24 lg:py-32 bg-card/40 relative overflow-hidden" ref={ref}>
@@ -42,7 +45,7 @@ export default function WhyChooseMeSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-14 max-w-2xl mx-auto"
         >
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3">Why Choose Me</p>
@@ -55,24 +58,50 @@ export default function WhyChooseMeSection() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {points.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 25 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-              className="glass rounded-2xl p-7 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-500 group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-                <p.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="font-serif-display text-lg font-semibold text-foreground mb-2 leading-snug">{p.title}</h3>
-              <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{p.text}</p>
-            </motion.div>
-          ))}
-        </div>
+        {isStacked ? (
+          <div className="max-w-3xl mx-auto flex flex-col gap-5">
+            {points.map((p, i) => (
+              <motion.article
+                key={p.title}
+                initial={{ opacity: 0, y: 28, filter: "blur(6px)" }}
+                animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative w-full rounded-2xl glass-premium px-7 py-6 lg:px-9 lg:py-7 lift overflow-hidden"
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full bg-gradient-to-b from-[hsl(var(--primary)/0.6)] via-[hsl(var(--blush)/0.7)] to-[hsl(var(--rose-gold)/0.6)]"
+                />
+                <h3 className="font-serif-display text-2xl lg:text-[1.7rem] font-semibold text-foreground leading-snug mb-2 tracking-tight">
+                  {p.title}
+                </h3>
+                <p className="text-base text-muted-foreground font-sans-body leading-relaxed max-w-2xl">
+                  {p.text}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {points.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 25 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="glass rounded-2xl p-7 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-500 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
+                  <p.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-serif-display text-lg font-semibold text-foreground mb-2 leading-snug">{p.title}</h3>
+                <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{p.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
+
