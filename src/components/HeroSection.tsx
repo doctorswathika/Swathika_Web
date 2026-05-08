@@ -11,6 +11,12 @@ export default function HeroSection() {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { getText, getAlignClass } = useSiteContent();
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const portraitY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 80]);
+  const bgY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 40]);
+  const textY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : -30]);
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, reduceMotion ? 1 : 0.6]);
 
   const headline = getText(
     "hero_headline",
