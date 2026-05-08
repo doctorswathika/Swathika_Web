@@ -102,11 +102,14 @@ export default function About() {
                 transition={{ duration: 0.9, ease: EASE }}
                 className="space-y-8 lg:col-span-7"
               >
-                <p className="eyebrow eyebrow-left">About Me</p>
+                <p className="font-sans-body text-[11px] font-medium uppercase tracking-[0.32em] text-foreground/60 sm:text-xs">
+                  Dr. Swathika Rajendran
+                </p>
 
                 <div className="space-y-5">
-                  <h1 className="font-serif-display text-[2.6rem] font-semibold leading-[1.02] text-foreground sm:text-5xl md:text-6xl lg:text-[4.75rem]">
-                    Dr. Swathika Rajendran
+                  <h1 className="font-serif-display text-[2.6rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl md:text-6xl lg:text-[4.75rem]">
+                    Breast care, with the calm of{" "}
+                    <span className="text-gradient-rose italic font-light">experience.</span>
                   </h1>
                   <p className="max-w-2xl font-sans-body text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
                     <span className="text-gradient-rose">UK-trained Breast Oncoplastic & Reconstructive Surgeon</span>
