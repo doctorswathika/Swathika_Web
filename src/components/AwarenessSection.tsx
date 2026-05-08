@@ -128,36 +128,36 @@ export default function AwarenessSection() {
         </div>
 
         {/* ── Editorial pillars ─ horizontal numbered rows ─────────── */}
-        <div className="mb-24 lg:mb-32">
-          <div className="flex items-baseline justify-between mb-10 lg:mb-14">
-            <h3 className="font-serif-display text-2xl lg:text-3xl font-light text-foreground italic">
+        <div className="mb-32 lg:mb-44">
+          <div className="flex items-baseline justify-between mb-12 lg:mb-16 pb-6 border-b border-border/60">
+            <h3 className="font-serif-display text-[1.75rem] lg:text-4xl font-light text-foreground italic tracking-[-0.01em]">
               The four truths
             </h3>
-            <span className="text-[11px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
               I — IV
             </span>
           </div>
-          <div className="divide-y divide-border/60 border-y border-border/60">
+          <div className="divide-y divide-border/60">
             {motivation.map((item, i) => (
               <motion.article
                 key={item.number}
                 initial={{ opacity: 0, y: 18 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: EASE }}
-                className="group grid grid-cols-12 gap-6 lg:gap-10 py-8 lg:py-10 transition-colors duration-500 hover:bg-foreground/[0.015]"
+                className="group grid grid-cols-12 gap-6 lg:gap-12 py-12 lg:py-16 transition-colors duration-500 hover:bg-foreground/[0.015]"
               >
                 <div className="col-span-2 lg:col-span-1">
-                  <span className="font-serif-display text-3xl lg:text-4xl font-light text-[hsl(var(--rose-gold))] tabular-nums">
+                  <span className="font-serif-display text-3xl lg:text-[2.5rem] font-light text-[hsl(var(--rose-gold))] tabular-nums leading-none">
                     {item.number}
                   </span>
                 </div>
                 <div className="col-span-10 lg:col-span-4">
-                  <h4 className="font-serif-display text-2xl lg:text-3xl font-medium text-foreground leading-tight">
+                  <h4 className="font-serif-display text-[1.6rem] lg:text-[2rem] font-medium text-foreground leading-[1.15] tracking-[-0.015em]">
                     {item.title}
                   </h4>
                 </div>
                 <div className="col-span-12 lg:col-span-7">
-                  <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body leading-[1.85] font-light max-w-2xl">
+                  <p className="text-[15px] lg:text-[16.5px] text-muted-foreground font-sans-body leading-[1.9] font-light max-w-2xl tracking-[0.005em]">
                     {item.text}
                   </p>
                 </div>
