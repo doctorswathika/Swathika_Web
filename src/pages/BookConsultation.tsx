@@ -77,29 +77,7 @@ export default function BookConsultation() {
     [formData.service],
   );
 
-  const buildWhatsAppMessage = (data: typeof formData) => {
-    const lines = [
-      "Hello Dr. Swathika,",
-      "",
-      "I'd like to schedule a private consultation.",
-      "",
-      data.name && `• Name: ${data.name}`,
-      data.email && `• Email: ${data.email}`,
-      data.phone && `• Phone: ${data.phone}`,
-      serviceLabel && data.service && `• Area of interest: ${serviceLabel}`,
-      data.message && `\n${data.message}`,
-    ].filter(Boolean);
-    return lines.join("\n");
-  };
-
-  const openWhatsApp = (data: typeof formData) => {
-    const text = encodeURIComponent(buildWhatsAppMessage(data));
-    window.open(
-      `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${text}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
-  };
+const EASE = [0.22, 1, 0.36, 1] as const;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
