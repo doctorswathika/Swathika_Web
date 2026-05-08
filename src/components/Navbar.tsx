@@ -92,7 +92,7 @@ export default function Navbar() {
             aria-label="Go to home"
           >
             <span
-              className="block font-serif-display font-medium uppercase whitespace-nowrap leading-none text-foreground tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em]"
+              className="brand-wordmark block font-serif-display font-medium uppercase whitespace-nowrap leading-none tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em]"
               style={{ fontSize: "clamp(0.82rem, 3.6vw, 1.6rem)" }}
             >
               Dr. Swathika Rajendran
@@ -168,7 +168,7 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
                 onClick={() => handleNavClick("/book-consultation", true)}
-                className="mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+                className="cta-luxe mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase"
               >
                 Book Consultation
               </motion.button>
