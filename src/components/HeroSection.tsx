@@ -70,9 +70,9 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Bokeh floating orbs */}
+      {/* Bokeh floating orbs — deferred until idle to keep LCP fast */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[
+        {ambientReady && !reduceMotion && [
           { size: 130, x: 50, y: 2, dur: 10, delay: 0 },
           { size: 90, x: 68, y: 8, dur: 12, delay: 1 },
           { size: 160, x: 82, y: 3, dur: 14, delay: 0.5 },
