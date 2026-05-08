@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
