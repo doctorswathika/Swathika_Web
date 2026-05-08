@@ -76,9 +76,11 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 bg-background border-b border-border/50 ${
-          scrolled && !menuOpen ? "shadow-sm" : ""
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
+          scrolled && !menuOpen
+            ? "bg-background/75 backdrop-blur-xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.5),0_8px_24px_-12px_hsl(258_40%_30%/0.08)]"
+            : "bg-background border-b border-border/50"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
