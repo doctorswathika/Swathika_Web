@@ -59,10 +59,10 @@ export default function HeroSection() {
         style={{ y: bgY, opacity: heroOpacity, willChange: "transform" }}
         className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(350_60%_90%)] to-[hsl(20_60%_90%)]"
       />
-      {!reduceMotion && (
+      {!reduceMotion && ambientReady && (
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none ambient-float opacity-70"
+          className="absolute inset-0 pointer-events-none ambient-float opacity-70 motion-safe:animate-fade-in"
           style={{
             background:
               "radial-gradient(60% 50% at 30% 20%, hsl(340 80% 92% / 0.55), transparent 60%), radial-gradient(50% 40% at 80% 70%, hsl(20 80% 90% / 0.45), transparent 60%)",
