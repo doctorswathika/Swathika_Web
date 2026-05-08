@@ -25,14 +25,16 @@ const jsonLd = {
     addressCountry: "IN",
   },
   url: "https://drswathika.com",
-  sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android"],
+  sameAs: [
+    "https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  ],
 };
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Best Breast Surgeon in Chennai | Dr. Swathika Rajendran — UK Trained Oncoplastic Surgeon</title>
+        <title>Dr. Swathika Rajendran — UK Trained Oncoplastic Surgeon | Best Breast Surgeon in Chennai</title>
         <meta
           name="description"
           content="Best Breast Surgeon in Chennai — Dr. Swathika Rajendran, UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ surgeries. Expert in breast cancer surgery, reconstruction, and aesthetic breast surgery."
