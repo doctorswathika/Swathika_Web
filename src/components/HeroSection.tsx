@@ -157,14 +157,6 @@ export default function HeroSection() {
         >
           <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">
-              <div className="flex items-center justify-center gap-4">
-                <span className="h-px w-10 bg-foreground/50" />
-                <p className="text-[11px] tracking-[0.5em] uppercase text-foreground/75 font-sans-body font-medium">
-                  Breast Surgeon · Chennai
-                </p>
-                <span className="h-px w-10 bg-foreground/50" />
-              </div>
-
               <h1
                 className={`font-serif-display text-[2.5rem] sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground ${getAlignClass("hero_headline")}`}
                 dangerouslySetInnerHTML={{ __html: headline }}
