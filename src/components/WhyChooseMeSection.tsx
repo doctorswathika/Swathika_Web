@@ -72,7 +72,7 @@ export default function WhyChooseMeSection({ variant = "grid" }: { variant?: Why
                   aria-hidden
                   className="absolute left-0 top-6 bottom-6 w-[3px] rounded-r-full bg-gradient-to-b from-[hsl(var(--primary)/0.6)] via-[hsl(var(--blush)/0.7)] to-[hsl(var(--rose-gold)/0.6)]"
                 />
-                <h3 className="font-serif-display text-2xl lg:text-[1.7rem] font-light text-foreground leading-[1.1] mb-2 tracking-[-0.02em]">
+                <h3 className="font-serif-display text-2xl lg:text-[1.7rem] font-semibold text-foreground leading-[1.1] mb-2 tracking-[-0.02em]">
                   {p.title}
                 </h3>
                 <p className="text-base text-muted-foreground font-sans-body leading-relaxed max-w-2xl">
