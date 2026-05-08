@@ -185,25 +185,28 @@ export default function GoogleReviewsSection() {
   const hasReviews = reviews.length > 0;
 
   return (
-    <section className="relative py-28 lg:py-44 overflow-hidden" ref={ref}>
+    <section
+      className="relative min-h-[100svh] flex flex-col justify-center py-12 sm:py-16 lg:py-20 overflow-hidden"
+      ref={ref}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(270_45%_18%)] via-[hsl(265_50%_14%)] to-[hsl(280_55%_20%)]" />
       <div className="absolute top-0 left-1/3 w-[520px] h-[520px] rounded-full bg-[hsl(280_60%_55%/0.22)] blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[480px] h-[480px] rounded-full bg-[hsl(260_55%_60%/0.20)] blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: EASE }}
-          className="text-center mb-14 lg:mb-20"
+          className="text-center mb-6 sm:mb-8 lg:mb-12"
         >
-          <div className="inline-flex items-center gap-3 mb-7 px-5 py-2 rounded-full bg-background/10 backdrop-blur border border-background/15">
+          <div className="inline-flex items-center gap-3 mb-4 sm:mb-5 px-4 py-1.5 rounded-full bg-background/10 backdrop-blur border border-background/15">
             <GoogleLogo className="w-4 h-4" />
             <p className="text-[10px] tracking-[0.45em] uppercase text-background/80 font-sans-body">
               Google Reviews
             </p>
           </div>
-          <h2 className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4rem] font-light leading-[1.02] tracking-[-0.02em] text-background">
+          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.05] tracking-[-0.02em] text-background">
             What Patients <em className="opacity-80">Say</em>
           </h2>
         </motion.div>
