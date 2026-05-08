@@ -42,7 +42,6 @@ function ServiceCard({
   index: number;
   isVisible: boolean;
 }) {
-  const numeral = String(index + 1).padStart(2, "0");
   return (
     <Link to={`/services/${slug}`} onClick={() => window.scrollTo(0, 0)} className="group block">
       <motion.div
@@ -62,9 +61,8 @@ function ServiceCard({
             transition={{ duration: 1.4, ease: EASE }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
-          {/* Top corner numeral */}
-          <div className="absolute top-4 left-4 right-4 flex items-start justify-between text-background/85 font-sans-body text-[10px] tracking-[0.4em] uppercase">
-            <span>— {numeral}</span>
+          {/* Top corner arrow */}
+          <div className="absolute top-4 right-4 text-background/85">
             <ArrowUpRight className="w-4 h-4 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500" />
           </div>
           {/* Title overlay */}

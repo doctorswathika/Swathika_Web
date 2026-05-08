@@ -79,20 +79,6 @@ export default function AboutSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent pointer-events-none" />
               </div>
-              {/* Signature credential card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
-                className="hidden lg:block absolute -bottom-10 -right-10 glass-premium rounded-2xl px-7 py-5 max-w-[230px]"
-              >
-                <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body mb-1">
-                  Trained in
-                </p>
-                <p className="font-serif-display text-2xl font-medium text-foreground leading-tight">
-                  India · United Kingdom
-                </p>
-              </motion.div>
             </div>
           </motion.div>
 
