@@ -229,8 +229,8 @@ export default function About() {
               className="space-y-5 lg:sticky lg:top-32 lg:self-start"
             >
               <p className="eyebrow eyebrow-left">My Journey</p>
-              <h2 className="font-serif-display text-4xl font-semibold leading-tight text-foreground lg:text-5xl">
-                Education & <span className="text-gradient-rose italic">Career</span>
+              <h2 className="font-serif-display text-4xl font-light leading-[1.05] tracking-[-0.025em] text-foreground lg:text-5xl">
+                Education & Career
               </h2>
               <p className="font-sans-body text-sm uppercase tracking-[0.24em] text-foreground/60">Timeline</p>
             </motion.div>
