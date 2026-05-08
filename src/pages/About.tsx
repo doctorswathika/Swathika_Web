@@ -105,24 +105,24 @@ export default function About() {
                 <p className="eyebrow eyebrow-left">About Me</p>
 
                 <div className="space-y-5">
-                  <h1 className="font-serif-display text-5xl font-semibold leading-[0.98] text-foreground sm:text-6xl lg:text-[5.25rem]">
+                  <h1 className="font-serif-display text-[2.6rem] font-semibold leading-[1.02] text-foreground sm:text-5xl md:text-6xl lg:text-[4.75rem]">
                     Dr. Swathika Rajendran
                   </h1>
-                  <p className="max-w-2xl font-sans-body text-sm font-semibold uppercase tracking-[0.28em] text-foreground/80 sm:text-base">
-                    UK-trained Breast Oncoplastic & Reconstructive Surgeon
+                  <p className="max-w-2xl font-sans-body text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
+                    <span className="text-gradient-rose">UK-trained Breast Oncoplastic & Reconstructive Surgeon</span>
                   </p>
                 </div>
 
                 <div className="hairline max-w-2xl" />
 
-                <div className="max-w-2xl space-y-6">
-                  <p className="font-sans-body text-base leading-[1.95] text-foreground/80 lg:text-[17px]">
+                <div className="max-w-2xl space-y-5">
+                  <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
                     I'm Dr. Swathika Rajendran, a UK-trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
                     providing complete and patient-centred breast care. My journey across India and the United Kingdom has
                     shaped the way I practice today — with a balance of clinical precision, aesthetic sensitivity, and
                     genuine compassion for every woman who walks into my clinic.
                   </p>
-                  <p className="font-sans-body text-base leading-[1.95] text-foreground/80 lg:text-[17px]">
+                  <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
                     Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
                     have seen how treatment is about much more than just removing the disease. My focus is to help women
                     feel safe, informed, and respected, and to offer care that not only treats the condition, but also
@@ -133,7 +133,7 @@ export default function About() {
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
                     to="/book-consultation"
-                    className="cta-luxe inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground"
+                    className="cta-luxe inline-flex items-center justify-center rounded-full gradient-rose-gold px-7 py-3 font-sans-body text-xs font-medium uppercase tracking-[0.26em] text-foreground sm:px-8 sm:text-sm sm:tracking-[0.28em]"
                   >
                     Book a Consultation
                   </Link>
@@ -148,41 +148,53 @@ export default function About() {
               >
                 <div className="relative">
                   <div className="pointer-events-none absolute -inset-5 rounded-[2rem] gradient-rose-gold opacity-30 blur-3xl" />
-                  <div className="relative overflow-hidden rounded-[28px] border border-border/60 bg-card/70 shadow-luxe">
+                  <div className="relative overflow-hidden rounded-[24px] border border-border/60 bg-card/70 shadow-luxe">
                     <img
                       src="/images/dr-swathika-about.jpeg"
                       alt="Dr. Swathika Rajendran"
-                      className="h-full max-h-[42rem] w-full object-cover"
+                      className="h-full max-h-[38rem] w-full object-cover"
                       loading="eager"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
                   </div>
                 </div>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                  {stats.map((stat, index) => {
-                    const Icon = stat.icon;
-                    return (
-                      <motion.div
-                        key={stat.label}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 + index * 0.08, ease: EASE }}
-                        className="glass-premium rounded-2xl px-5 py-5 text-center shadow-elegant"
-                      >
-                        <Icon className="mx-auto mb-3 h-5 w-5 text-primary" />
-                        <p className="font-serif-display text-3xl font-semibold leading-none text-foreground">
-                          {stat.number}
-                        </p>
-                        <p className="mt-2 font-sans-body text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/65">
-                          {stat.label}
-                        </p>
-                      </motion.div>
-                    );
-                  })}
-                </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* ─── STATS BAR (separate, like before) ─── */}
+        <section className="relative z-10 -mt-6 sm:-mt-10">
+          <div className="mx-auto max-w-5xl px-6 lg:px-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-border/60 shadow-luxe sm:grid-cols-3"
+            >
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
+                    className="bg-card px-5 py-6 text-center sm:px-6 sm:py-8"
+                  >
+                    <Icon className="mx-auto h-5 w-5 text-primary" />
+                    <p className="mt-3 font-serif-display text-[2rem] font-semibold leading-none text-foreground sm:text-[2.4rem]">
+                      {stat.number}
+                    </p>
+                    <p className="mt-2 font-sans-body text-[10.5px] font-medium uppercase tracking-[0.26em] text-gradient-rose sm:text-[11px]">
+                      {stat.label}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </section>
 
