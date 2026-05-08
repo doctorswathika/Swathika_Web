@@ -33,22 +33,27 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    let lastY = window.scrollY;
+    const isHome = () => window.location.pathname === "/";
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 50);
-      // Show immediately when scrolling up or near top; hide only when scrolling down past hero
-      if (y < window.innerHeight * 0.9 || y < lastY) {
+      // On the home page, navbar is visible only while inside the hero section.
+      // On other routes, navbar stays visible always.
+      if (isHome()) {
+        setHidden(y > window.innerHeight * 0.9);
+      } else {
         setHidden(false);
-      } else if (y > lastY && y > window.innerHeight * 0.9) {
-        setHidden(true);
       }
-      lastY = y;
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(total > 0 ? (y / total) * 100 : 0);
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("popstate", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("popstate", onScroll);
+    };
   }, []);
 
   // Lock body scroll when menu is open
