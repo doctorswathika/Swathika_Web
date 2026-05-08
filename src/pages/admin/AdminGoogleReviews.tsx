@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  Star, Eye, EyeOff, Loader2, AlertCircle, Plus, Trash2, Pencil,
+  Star, Eye, EyeOff, Loader2, AlertCircle, Plus, Trash2, Pencil, Quote,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -43,6 +43,7 @@ export default function AdminGoogleReviews() {
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [previewReview, setPreviewReview] = useState<GoogleReview | null>(null);
   const { toast } = useToast();
 
   const fetchReviews = async () => {
@@ -239,25 +240,55 @@ export default function AdminGoogleReviews() {
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <Switch
-                    checked={review.is_displayed}
-                    onCheckedChange={() => toggleDisplay(review)}
-                    disabled={toggling === review.id}
-                  />
-                  <span className="text-[10px] text-muted-foreground font-sans-body">
-                    {review.is_displayed ? "Visible" : "Hidden"}
+                <div className="flex flex-col items-end gap-2 shrink-0 min-w-[140px]">
+                  <span className={`text-[10px] font-sans-body uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                    review.is_displayed
+                      ? "bg-primary/15 text-primary"
+                      : "bg-muted text-muted-foreground"
+                  }`}>
+                    {review.is_displayed ? "On site" : "Hidden"}
                   </span>
-                  <div className="flex gap-1 mt-1">
-                    <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(review)}>
+
+                  <div className="flex flex-wrap items-center justify-end gap-1.5 mt-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="h-8 gap-1.5 text-xs"
+                      onClick={() => setPreviewReview(review)}
+                    >
+                      <Quote className="w-3.5 h-3.5" /> Preview
+                    </Button>
+                    <Button
+                      variant={review.is_displayed ? "secondary" : "default"}
+                      size="sm"
+                      className="h-8 gap-1.5 text-xs"
+                      onClick={() => toggleDisplay(review)}
+                      disabled={toggling === review.id}
+                    >
+                      {toggling === review.id ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : review.is_displayed ? (
+                        <><EyeOff className="w-3.5 h-3.5" /> Hide</>
+                      ) : (
+                        <><Eye className="w-3.5 h-3.5" /> Show</>
+                      )}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8"
+                      onClick={() => openEdit(review)}
+                      title="Edit"
+                    >
                       <Pencil className="w-3.5 h-3.5" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-7 text-destructive hover:text-destructive"
+                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
                       onClick={() => handleDelete(review.id)}
                       disabled={deleting === review.id}
+                      title="Delete"
                     >
                       {deleting === review.id ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
                     </Button>
@@ -329,6 +360,92 @@ export default function AdminGoogleReviews() {
               {editingId ? "Update" : "Add"}
             </Button>
           </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Preview Dialog — matches the live carousel card */}
+      <Dialog open={!!previewReview} onOpenChange={(o) => !o && setPreviewReview(null)}>
+        <DialogContent className="sm:max-w-2xl border-none bg-gradient-to-br from-[hsl(258_25%_12%)] via-[hsl(258_30%_10%)] to-[hsl(280_30%_12%)] p-0 overflow-hidden">
+          <div className="relative p-8 sm:p-12">
+            <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.10)] blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.12)] blur-3xl pointer-events-none" />
+
+            <DialogHeader className="relative mb-2">
+              <DialogTitle className="text-[10px] tracking-[0.45em] uppercase text-white/60 font-sans-body font-normal text-center">
+                Live Preview
+              </DialogTitle>
+            </DialogHeader>
+
+            {previewReview && (
+              <div className="relative">
+                <Quote className="absolute top-0 right-0 w-10 h-10 text-white/10" strokeWidth={1.2} />
+
+                <header className="flex items-center justify-center gap-4 mb-6 mt-4">
+                  {previewReview.profile_photo_url ? (
+                    <img
+                      src={previewReview.profile_photo_url}
+                      alt={previewReview.author_name}
+                      className="w-12 h-12 rounded-full object-cover ring-2 ring-white/30"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[hsl(340_70%_55%)] to-[hsl(15_80%_60%)] ring-2 ring-white/30 flex items-center justify-center">
+                      <span className="font-serif-display text-lg text-white">
+                        {previewReview.author_name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  <div className="text-left">
+                    <p className="font-serif-display text-lg text-white tracking-tight">
+                      {previewReview.author_name}
+                    </p>
+                    {previewReview.relative_time && (
+                      <p className="font-sans-body text-[10px] tracking-[0.35em] uppercase text-white/55 mt-0.5">
+                        {previewReview.relative_time}
+                      </p>
+                    )}
+                  </div>
+                </header>
+
+                <p className="font-serif-display text-center text-[1.1rem] sm:text-[1.25rem] leading-[1.6] text-white/90 font-light italic max-w-xl mx-auto">
+                  &ldquo;{previewReview.text}&rdquo;
+                </p>
+
+                <footer className="flex items-center justify-center gap-1.5 mt-8">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star
+                      key={idx}
+                      className={`w-5 h-5 ${
+                        idx < previewReview.rating
+                          ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
+                          : "text-white/20"
+                      }`}
+                    />
+                  ))}
+                </footer>
+
+                <div className="flex items-center justify-center gap-2 mt-8 pt-6 border-t border-white/10">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="gap-1.5"
+                    onClick={() => {
+                      toggleDisplay(previewReview);
+                      setPreviewReview({ ...previewReview, is_displayed: !previewReview.is_displayed });
+                    }}
+                  >
+                    {previewReview.is_displayed ? (
+                      <><EyeOff className="w-3.5 h-3.5" /> Hide from site</>
+                    ) : (
+                      <><Eye className="w-3.5 h-3.5" /> Show on site</>
+                    )}
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setPreviewReview(null)}>
+                    Close
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
         </DialogContent>
       </Dialog>
     </div>
