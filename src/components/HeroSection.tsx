@@ -139,6 +139,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="flex-1 flex items-center justify-center px-6 lg:px-12 py-12 lg:py-0 self-center"
+          style={{ y: textY, willChange: "transform" }}
         >
           <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">
