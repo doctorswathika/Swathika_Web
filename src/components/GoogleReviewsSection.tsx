@@ -64,8 +64,7 @@ export default function GoogleReviewsSection() {
               Google Reviews
             </p>
           </div>
-          <h2 className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4rem] font-light leading-[1.02] tracking-[-0.02em] text-background flex items-center justify-center gap-4 flex-wrap">
-            <GoogleLogo className="w-9 h-9 lg:w-12 lg:h-12" />
+          <h2 className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4rem] font-light leading-[1.02] tracking-[-0.02em] text-background">
             What Patients <em className="opacity-80">Say</em>
           </h2>
         </motion.div>
