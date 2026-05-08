@@ -325,7 +325,7 @@ export default function ServicePageLayout({
               <div className="pt-2">
                 <Link
                   to="/book-consultation"
-                  className="inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold text-foreground font-sans-body font-semibold text-[14px] tracking-[0.05em] hover:scale-[1.02] transition-all duration-500 shadow-elegant"
+                  className="cta-luxe inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold text-foreground font-sans-body font-semibold text-[14px] tracking-[0.05em] shadow-elegant"
                 >
                   Book Consultation
                 </Link>

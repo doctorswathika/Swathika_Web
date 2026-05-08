@@ -192,7 +192,7 @@ export default function AboutSection() {
               <Link
                 to="/about"
                 onClick={() => window.scrollTo(0, 0)}
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-[14px] tracking-[0.05em] text-foreground hover:scale-[1.02] transition-all duration-500 shadow-elegant"
+                className="cta-luxe group inline-flex items-center gap-3 px-8 py-4 rounded-full gradient-rose-gold font-sans-body font-semibold text-[14px] tracking-[0.05em] text-foreground shadow-elegant"
               >
                 Learn More About My Journey
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

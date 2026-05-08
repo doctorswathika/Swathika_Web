@@ -133,7 +133,7 @@ export default function About() {
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
                     to="/book-consultation"
-                    className="inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground transition-opacity hover:opacity-90"
+                    className="cta-luxe inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground"
                   >
                     Book a Consultation
                   </Link>
@@ -325,7 +325,7 @@ export default function About() {
               <div className="mt-8 flex items-center justify-center">
                 <Link
                   to="/book-consultation"
-                  className="inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground transition-opacity hover:opacity-90"
+                  className="cta-luxe inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground"
                 >
                   Book a Consultation
                 </Link>
