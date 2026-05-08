@@ -362,6 +362,92 @@ export default function AdminGoogleReviews() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Preview Dialog — matches the live carousel card */}
+      <Dialog open={!!previewReview} onOpenChange={(o) => !o && setPreviewReview(null)}>
+        <DialogContent className="sm:max-w-2xl border-none bg-gradient-to-br from-[hsl(258_25%_12%)] via-[hsl(258_30%_10%)] to-[hsl(280_30%_12%)] p-0 overflow-hidden">
+          <div className="relative p-8 sm:p-12">
+            <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[hsl(43_85%_60%/0.10)] blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[hsl(340_70%_55%/0.12)] blur-3xl pointer-events-none" />
+
+            <DialogHeader className="relative mb-2">
+              <DialogTitle className="text-[10px] tracking-[0.45em] uppercase text-white/60 font-sans-body font-normal text-center">
+                Live Preview
+              </DialogTitle>
+            </DialogHeader>
+
+            {previewReview && (
+              <div className="relative">
+                <Quote className="absolute top-0 right-0 w-10 h-10 text-white/10" strokeWidth={1.2} />
+
+                <header className="flex items-center justify-center gap-4 mb-6 mt-4">
+                  {previewReview.profile_photo_url ? (
+                    <img
+                      src={previewReview.profile_photo_url}
+                      alt={previewReview.author_name}
+                      className="w-12 h-12 rounded-full object-cover ring-2 ring-white/30"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[hsl(340_70%_55%)] to-[hsl(15_80%_60%)] ring-2 ring-white/30 flex items-center justify-center">
+                      <span className="font-serif-display text-lg text-white">
+                        {previewReview.author_name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  <div className="text-left">
+                    <p className="font-serif-display text-lg text-white tracking-tight">
+                      {previewReview.author_name}
+                    </p>
+                    {previewReview.relative_time && (
+                      <p className="font-sans-body text-[10px] tracking-[0.35em] uppercase text-white/55 mt-0.5">
+                        {previewReview.relative_time}
+                      </p>
+                    )}
+                  </div>
+                </header>
+
+                <p className="font-serif-display text-center text-[1.1rem] sm:text-[1.25rem] leading-[1.6] text-white/90 font-light italic max-w-xl mx-auto">
+                  &ldquo;{previewReview.text}&rdquo;
+                </p>
+
+                <footer className="flex items-center justify-center gap-1.5 mt-8">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star
+                      key={idx}
+                      className={`w-5 h-5 ${
+                        idx < previewReview.rating
+                          ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
+                          : "text-white/20"
+                      }`}
+                    />
+                  ))}
+                </footer>
+
+                <div className="flex items-center justify-center gap-2 mt-8 pt-6 border-t border-white/10">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="gap-1.5"
+                    onClick={() => {
+                      toggleDisplay(previewReview);
+                      setPreviewReview({ ...previewReview, is_displayed: !previewReview.is_displayed });
+                    }}
+                  >
+                    {previewReview.is_displayed ? (
+                      <><EyeOff className="w-3.5 h-3.5" /> Hide from site</>
+                    ) : (
+                      <><Eye className="w-3.5 h-3.5" /> Show on site</>
+                    )}
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setPreviewReview(null)}>
+                    Close
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
