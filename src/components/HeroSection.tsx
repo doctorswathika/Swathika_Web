@@ -143,7 +143,6 @@ export default function HeroSection() {
             alt="Dr. Swathika Rajendran — Breast Surgeon"
             className="w-full h-auto lg:h-full object-cover object-[10%_top] max-h-[60vh] lg:max-h-none"
             loading="eager"
-            fetchPriority="high"
             decoding="sync"
           />
         </motion.div>

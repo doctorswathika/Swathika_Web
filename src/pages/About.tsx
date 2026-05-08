@@ -66,6 +66,8 @@ const fadeUp = {
   viewport: { once: true },
 };
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function About() {
   return (
     <>
@@ -77,206 +79,222 @@ export default function About() {
         />
       </Helmet>
       <Navbar />
-      <main className="pt-24">
-        {/* ─── CINEMATIC HERO ─── */}
-        <section className="relative overflow-hidden bg-background">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blush/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+      <main className="bg-background pt-24">
+        <section className="relative overflow-hidden border-b border-border/60 bg-background">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 gradient-hero opacity-70" />
+            <div className="absolute -top-24 right-[-10%] h-[30rem] w-[30rem] rounded-full bg-primary/10 blur-[130px] ambient-float" />
+            <div className="absolute bottom-[-18%] left-[-12%] h-[24rem] w-[24rem] rounded-full bg-blush/20 blur-[120px] ambient-float" />
+          </div>
 
-          <div className="max-w-6xl mx-auto px-6 py-16 lg:py-24">
+          <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-sans-body mb-10"
+              className="mb-10 inline-flex items-center gap-2 font-sans-body text-sm text-foreground/70 transition-colors hover:text-foreground"
             >
-              <ArrowLeft className="w-4 h-4" /> Back to Home
+              <ArrowLeft className="h-4 w-4" /> Back to Home
             </Link>
 
-            <div className="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-center">
-              {/* Text */}
+            <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-12">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: EASE }}
+                className="space-y-8 lg:col-span-7"
+              >
+                <p className="eyebrow eyebrow-left">About Me</p>
+
+                <div className="space-y-5">
+                  <h1 className="font-serif-display text-5xl font-semibold leading-[0.98] text-foreground sm:text-6xl lg:text-[5.25rem]">
+                    Dr. Swathika Rajendran
+                  </h1>
+                  <p className="max-w-2xl font-sans-body text-sm font-semibold uppercase tracking-[0.28em] text-foreground/80 sm:text-base">
+                    UK-trained Breast Oncoplastic & Reconstructive Surgeon
+                  </p>
+                </div>
+
+                <div className="hairline max-w-2xl" />
+
+                <div className="max-w-2xl space-y-6">
+                  <p className="font-sans-body text-base leading-[1.95] text-foreground/80 lg:text-[17px]">
+                    I'm Dr. Swathika Rajendran, a UK-trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
+                    providing complete and patient-centred breast care. My journey across India and the United Kingdom has
+                    shaped the way I practice today — with a balance of clinical precision, aesthetic sensitivity, and
+                    genuine compassion for every woman who walks into my clinic.
+                  </p>
+                  <p className="font-sans-body text-base leading-[1.95] text-foreground/80 lg:text-[17px]">
+                    Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
+                    have seen how treatment is about much more than just removing the disease. My focus is to help women
+                    feel safe, informed, and respected, and to offer care that not only treats the condition, but also
+                    helps restore their confidence and sense of dignity.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <Link
+                    to="/book-consultation"
+                    className="inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground transition-opacity hover:opacity-90"
+                  >
+                    Book a Consultation
+                  </Link>
+                </div>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="space-y-6 order-2 lg:order-1"
+                transition={{ duration: 1, delay: 0.12, ease: EASE }}
+                className="lg:col-span-5"
               >
-                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium">About Me</p>
-                <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1]">
-                  Dr. Swathika <span className="text-foreground">Rajendran</span>
-                </h1>
-                <p className="font-sans-body text-base lg:text-lg font-semibold text-foreground">
-                  UK-trained Breast Oncoplastic & Reconstructive Surgeon
-                </p>
-                <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  I'm Dr. Swathika Rajendran, a UK-trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
-                  providing complete and patient-centred breast care. My journey across India and the United Kingdom has
-                  shaped the way I practice today — with a balance of clinical precision, aesthetic sensitivity, and
-                  genuine compassion for every woman who walks into my clinic.
-                </p>
-                <p className="text-muted-foreground font-sans-body leading-relaxed text-base max-w-xl">
-                  Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
-                  have seen how treatment is about much more than just removing the disease. My focus is to help women
-                  feel safe, informed, and respected, and to offer care that not only treats the condition, but also
-                  helps restore their confidence and sense of dignity.
-                </p>
+                <div className="relative">
+                  <div className="pointer-events-none absolute -inset-5 rounded-[2rem] gradient-rose-gold opacity-30 blur-3xl" />
+                  <div className="relative overflow-hidden rounded-[28px] border border-border/60 bg-card/70 shadow-luxe">
+                    <img
+                      src="/images/dr-swathika-about.jpeg"
+                      alt="Dr. Swathika Rajendran"
+                      className="h-full max-h-[42rem] w-full object-cover"
+                      loading="eager"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
+                  </div>
+                </div>
 
-                <Link
-                  to="/book-consultation"
-                  className="inline-block mt-2 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
-                >
-                  Book a Consultation
-                </Link>
-              </motion.div>
-
-              {/* Portrait */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.15 }}
-                className="relative order-1 lg:order-2"
-              >
-                <div className="absolute -inset-4 rounded-3xl gradient-rose-gold opacity-15 blur-2xl" />
-                <img
-                  src="/images/dr-swathika-about.jpeg"
-                  alt="Dr. Swathika Rajendran"
-                  className="relative rounded-2xl w-full object-cover shadow-2xl max-h-[550px]"
-                />
+                <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                  {stats.map((stat, index) => {
+                    const Icon = stat.icon;
+                    return (
+                      <motion.div
+                        key={stat.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 + index * 0.08, ease: EASE }}
+                        className="glass-premium rounded-2xl px-5 py-5 text-center shadow-elegant"
+                      >
+                        <Icon className="mx-auto mb-3 h-5 w-5 text-primary" />
+                        <p className="font-serif-display text-3xl font-semibold leading-none text-foreground">
+                          {stat.number}
+                        </p>
+                        <p className="mt-2 font-sans-body text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/65">
+                          {stat.label}
+                        </p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* ─── STATS BAR ─── */}
-        <section className="relative z-10">
-          <div className="max-w-5xl mx-auto px-6 -mt-1">
+        <section className="relative overflow-hidden py-20 lg:py-28">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-card/40 via-background to-background" />
+          <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-1 rounded-2xl overflow-hidden shadow-xl"
+              {...fadeUp}
+              transition={{ duration: 0.9, ease: EASE }}
+              className="glass-premium rounded-[28px] px-8 py-12 text-center shadow-luxe lg:px-14 lg:py-16"
             >
-              {stats.map((s, i) => {
-                const Icon = s.icon;
-                return (
-                  <motion.div
-                    key={s.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="bg-card p-6 lg:p-8 text-center space-y-2"
-                  >
-                    <Icon className="w-5 h-5 text-primary mx-auto" />
-                    <p className="font-serif-display text-3xl lg:text-4xl font-bold text-foreground">{s.number}</p>
-                    <p className="text-xs font-sans-body text-muted-foreground tracking-wider uppercase">{s.label}</p>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ─── PHILOSOPHY QUOTE ─── */}
-        <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-card/30 to-transparent" />
-          <div className="max-w-3xl mx-auto px-6 relative">
-            <motion.div {...fadeUp} transition={{ duration: 0.7 }} className="text-center space-y-6">
-              <Quote className="w-10 h-10 text-blush/40 mx-auto" />
-              <blockquote className="font-serif-display text-2xl sm:text-3xl lg:text-4xl italic text-foreground leading-snug">
+              <Quote className="mx-auto h-10 w-10 text-primary/45" />
+              <blockquote className="mx-auto mt-6 max-w-4xl font-serif-display text-3xl font-medium italic leading-[1.18] text-foreground sm:text-4xl lg:text-[3.35rem]">
                 "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as
                 much as your health."
               </blockquote>
-              <div className="divider-rose w-16 mx-auto" />
-              <p className="font-sans-body text-sm text-muted-foreground tracking-widest uppercase">
+              <div className="editorial-rule mt-8" />
+              <p className="mt-5 font-sans-body text-sm font-medium uppercase tracking-[0.3em] text-foreground/65">
                 Dr. Swathika Rajendran
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* ─── EDUCATION & CAREER TIMELINE ─── */}
-        <section className="py-20 lg:py-28 bg-card/40">
-          <div className="max-w-5xl mx-auto px-6">
-            <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-16">
-              <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
-                My Journey
-              </p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
+        <section className="bg-card/40 py-20 lg:py-28">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-16 lg:px-10">
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="space-y-5 lg:sticky lg:top-32 lg:self-start"
+            >
+              <p className="eyebrow eyebrow-left">My Journey</p>
+              <h2 className="font-serif-display text-4xl font-semibold leading-tight text-foreground lg:text-5xl">
                 Education & <span className="text-gradient-rose italic">Career</span>
               </h2>
-              <div className="divider-rose w-24 mx-auto mt-6" />
+              <p className="font-sans-body text-sm uppercase tracking-[0.24em] text-foreground/60">Timeline</p>
             </motion.div>
 
-            <div className="relative">
-              {/* Timeline spine */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
+            <div className="relative pl-7 sm:pl-10 lg:pl-14">
+              <div className="absolute left-0 top-2 bottom-2 w-px bg-border sm:left-2 lg:left-5" />
 
-              {timeline.map((item, i) => {
-                const Icon = item.icon;
-                const isLeft = i % 2 === 0;
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className={`relative flex items-start mb-14 md:mb-20 ${
-                      isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
-                  >
-                    {/* Node */}
-                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 mt-1 z-10">
-                      <div className="w-10 h-10 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center shadow-md">
-                        <Icon className="w-4 h-4 text-primary" />
-                      </div>
-                    </div>
+              <div className="space-y-6 lg:space-y-7">
+                {timeline.map((item, index) => {
+                  const Icon = item.icon;
 
-                    {/* Card */}
-                    <div className={`ml-20 md:ml-0 md:w-[43%] ${isLeft ? "md:pr-14 md:text-right" : "md:pl-14"}`}>
-                      <div className="glass rounded-xl p-5 space-y-2 hover:shadow-lg transition-shadow duration-300">
-                        <h3 className="font-serif-display text-xl font-semibold text-foreground leading-snug">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground font-sans-body">{item.institution}</p>
-                        <p className="text-xs text-muted-foreground/70 font-sans-body italic">{item.detail}</p>
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 26 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.75, delay: index * 0.06, ease: EASE }}
+                      className="relative"
+                    >
+                      <div className="absolute -left-[2.15rem] top-6 sm:-left-[2.6rem] lg:-left-[3.15rem]">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 bg-background shadow-elegant">
+                          <Icon className="h-4 w-4 text-primary" />
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+
+                      <div className="glass-premium rounded-[24px] px-6 py-6 shadow-elegant lg:px-8 lg:py-7">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                          <div className="space-y-2">
+                            <p className="font-sans-body text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/55">
+                              {String(index + 1).padStart(2, "0")}
+                            </p>
+                            <h3 className="font-serif-display text-[1.8rem] font-semibold leading-tight text-foreground lg:text-[2.2rem]">
+                              {item.title}
+                            </h3>
+                          </div>
+                          <p className="max-w-sm font-sans-body text-sm leading-relaxed text-foreground/68 sm:text-right">
+                            {item.institution}
+                          </p>
+                        </div>
+                        <div className="hairline my-5" />
+                        <p className="font-sans-body text-[15px] leading-[1.85] text-foreground/78 italic">{item.detail}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ─── WHY CHOOSE ME ─── */}
         <WhyChooseMeSection variant="stacked" />
 
-        {/* ─── PROFESSIONAL MEMBERSHIPS ─── */}
-        <section className="py-20 lg:py-28 bg-card/40">
-          <div className="max-w-3xl mx-auto px-6">
-            <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="space-y-8">
+        <section className="bg-card/30 py-20 lg:py-24">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <motion.div {...fadeUp} transition={{ duration: 0.8, ease: EASE }} className="space-y-8">
               <div className="text-center">
-                <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium mb-3">
-                  Credentials
-                </p>
-                <h2 className="font-serif-display text-2xl lg:text-3xl font-semibold text-foreground">
+                <p className="eyebrow">Credentials</p>
+                <h2 className="mt-5 font-serif-display text-3xl font-semibold text-foreground lg:text-4xl">
                   Professional Memberships
                 </h2>
-                <div className="divider-rose w-16 mx-auto mt-4" />
               </div>
-              <ul className="space-y-4">
-                {memberships.map((m) => {
-                  const Icon = m.icon;
+
+              <ul className="grid gap-4 md:grid-cols-3">
+                {memberships.map((membership) => {
+                  const Icon = membership.icon;
+
                   return (
                     <li
-                      key={m.name}
-                      className="glass rounded-xl p-4 flex items-center gap-4 hover:shadow-md transition-shadow"
+                      key={membership.name}
+                      className="glass-premium flex min-h-[148px] items-start gap-4 rounded-[22px] px-5 py-5 shadow-elegant"
                     >
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-4 h-4 text-primary" />
+                      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                        <Icon className="h-4 w-4 text-primary" />
                       </div>
-                      <span className="text-sm text-foreground font-sans-body font-medium">{m.name}</span>
+                      <span className="font-sans-body text-sm font-medium leading-relaxed text-foreground/82">
+                        {membership.name}
+                      </span>
                     </li>
                   );
                 })}
@@ -285,27 +303,29 @@ export default function About() {
           </div>
         </section>
 
-        {/* ─── CTA SECTION ─── */}
-        <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
+        <section className="relative overflow-hidden py-20 lg:py-28">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/6 blur-[150px]" />
           </div>
-          <div className="max-w-3xl mx-auto px-6 relative text-center">
-            <motion.div {...fadeUp} transition={{ duration: 0.7 }} className="space-y-6">
-              <p className="text-sm tracking-[0.3em] uppercase text-primary font-sans-body font-medium">
-                Take the First Step
-              </p>
-              <h2 className="font-serif-display text-3xl lg:text-4xl font-semibold text-foreground">
+
+          <div className="relative mx-auto max-w-4xl px-6 lg:px-10">
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.85, ease: EASE }}
+              className="glass-premium rounded-[32px] px-8 py-12 text-center shadow-luxe lg:px-14 lg:py-16"
+            >
+              <p className="eyebrow">Take the First Step</p>
+              <h2 className="mt-6 font-serif-display text-4xl font-semibold leading-tight text-foreground lg:text-5xl">
                 Ready to Discuss Your <span className="text-gradient-rose italic">Care?</span>
               </h2>
-              <p className="text-muted-foreground font-sans-body leading-relaxed max-w-lg mx-auto">
+              <p className="mx-auto mt-6 max-w-2xl font-sans-body text-base leading-[1.9] text-foreground/78 lg:text-[17px]">
                 Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm
                 here to guide you with precision, compassion, and world-class expertise.
               </p>
-              <div className="flex items-center justify-center pt-4">
+              <div className="mt-8 flex items-center justify-center">
                 <Link
                   to="/book-consultation"
-                  className="px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center justify-center rounded-full gradient-rose-gold px-8 py-3 font-sans-body text-sm font-medium uppercase tracking-[0.28em] text-foreground transition-opacity hover:opacity-90"
                 >
                   Book a Consultation
                 </Link>
