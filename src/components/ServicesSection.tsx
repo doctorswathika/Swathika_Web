@@ -60,17 +60,17 @@ function ServiceCard({
             whileHover={{ scale: 1.06 }}
             transition={{ duration: 1.4, ease: EASE }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/55 via-foreground/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
           {/* Top corner arrow */}
-          <div className="absolute top-4 right-4 text-background/85">
-            <ArrowUpRight className="w-4 h-4 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500" />
+          <div className="absolute top-4 right-4 text-white">
+            <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500" />
           </div>
           {/* Title overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
-            <h3 className="font-serif-display text-[1.2rem] lg:text-[1.4rem] font-medium leading-[1.15] text-white tracking-[-0.005em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+            <h3 className="font-serif-display text-[1.25rem] lg:text-[1.5rem] font-semibold leading-[1.15] text-white tracking-[-0.005em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
               {title}
             </h3>
-            <span className="block mt-3 h-px w-8 bg-background/70 group-hover:w-16 transition-all duration-500" />
+            <span className="block mt-3 h-px w-8 bg-white/80 group-hover:w-16 transition-all duration-500" />
           </div>
         </div>
       </motion.div>
