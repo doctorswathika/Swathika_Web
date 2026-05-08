@@ -16,6 +16,7 @@ const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -34,6 +35,8 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
+      // Hide navbar once the visitor scrolls past the first viewport (hero/first section)
+      setHidden(window.scrollY > window.innerHeight * 0.9);
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
     };
@@ -73,8 +76,9 @@ export default function Navbar() {
 
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ y: hidden && !menuOpen ? -140 : 0, opacity: hidden && !menuOpen ? 0 : 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        style={{ pointerEvents: hidden && !menuOpen ? "none" : "auto" }}
         className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
           scrolled && !menuOpen
             ? "bg-background/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.4),0_12px_40px_-20px_hsl(258_40%_30%/0.12)] py-3"
