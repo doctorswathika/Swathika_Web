@@ -158,8 +158,16 @@ export default function HeroSection() {
         >
           <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
             <div className="space-y-6">
+              <div className="flex items-center justify-center gap-4">
+                <span className="h-px w-10 bg-foreground/50" />
+                <p className="text-[11px] tracking-[0.5em] uppercase text-foreground/75 font-sans-body font-medium">
+                  Breast Surgery · Chennai
+                </p>
+                <span className="h-px w-10 bg-foreground/50" />
+              </div>
+
               <h1
-                className={`font-serif-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-foreground ${getAlignClass("hero_headline")}`}
+                className={`font-serif-display text-[2.5rem] sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground ${getAlignClass("hero_headline")}`}
                 dangerouslySetInnerHTML={{ __html: headline }}
               />
 
@@ -167,22 +175,21 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className={`text-base sm:text-lg text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("hero_description")}`}
+                className={`text-[16px] sm:text-lg text-foreground/80 font-sans-body font-light leading-[1.75] ${getAlignClass("hero_description")}`}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
 
-              {/* Trust indicators */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className={`space-y-2 text-xs sm:text-sm md:text-base font-sans-body font-medium text-muted-foreground ${getAlignClass("hero_trust_indicators")}`}
+                className={`pt-2 text-xs sm:text-sm md:text-[15px] font-sans-body font-medium ${getAlignClass("hero_trust_indicators")}`}
               >
-                <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-1 sm:flex-nowrap">
+                <div className="flex flex-wrap justify-center gap-x-5 sm:gap-x-7 gap-y-2 sm:flex-nowrap">
                   {trustItems.map((item) => (
-                    <span key={item} className="flex items-center gap-1.5 whitespace-nowrap">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_80%_55%)] inline-block flex-shrink-0" />
-                      <span className="text-[hsl(350_50%_60%)]">{item}</span>
+                    <span key={item} className="flex items-center gap-2 whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[hsl(43_85%_55%)] inline-block flex-shrink-0" />
+                      <span className="text-[hsl(350_55%_45%)] font-medium tracking-wide">{item}</span>
                     </span>
                   ))}
                 </div>
