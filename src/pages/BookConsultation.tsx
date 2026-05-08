@@ -17,8 +17,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
-const WHATSAPP_NUMBER = "919940808876";
-
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Please share your name").max(100),
