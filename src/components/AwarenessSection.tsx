@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Heart, Search, Sparkles, ShieldCheck, CheckCircle, XCircle, AlertTriangle, Lightbulb } from "lucide-react";
+import { CheckCircle, XCircle, AlertTriangle } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const motivation = [
   {
-    icon: Lightbulb,
+    number: "01",
     title: "Knowledge Is Power",
     text: "Early detection can significantly improve breast cancer outcomes. Awareness isn't just information — it's a lifeline. The more you know, the better you protect yourself and your loved ones.",
   },
   {
-    icon: Heart,
+    number: "02",
     title: "You Are Not Alone",
     text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path — and thrived. Modern oncoplastic surgery restores not just the breast, but confidence, identity, and hope.",
   },
   {
-    icon: Sparkles,
+    number: "03",
     title: "Healing Beyond Surgery",
     text: "Recovery is physical, emotional, and deeply personal. With the right surgeon, every step — from diagnosis to treatment — becomes a journey towards reclaiming yourself, not just surviving.",
   },
   {
-    icon: ShieldCheck,
+    number: "04",
     title: "Your Body, Your Choice",
     text: "Whether it's breast conservation, reconstruction, or aesthetic surgery — the decision is yours. An experienced oncoplastic surgeon ensures you have the information and options to choose what's right for you.",
   },
@@ -52,125 +52,201 @@ const defaultDonts = [
   "Don't let stigma prevent you from seeking care",
 ];
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function AwarenessSection() {
   const { ref, isVisible } = useScrollAnimation();
   const { getText, getAlignClass } = useSiteContent();
 
   const subtitle = getText("awareness_subtitle", "Breast Health Awareness");
-  const title = getText("awareness_title", "What Every Woman <span class=\"text-gradient-rose italic\">Should Know</span>");
-  const description = getText("awareness_description", "Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.");
-  
+  const title = getText(
+    "awareness_title",
+    "What Every Woman <span class=\"text-gradient-rose italic\">Should Know</span>",
+  );
+  const description = getText(
+    "awareness_description",
+    "Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.",
+  );
+
   const symptomsRaw = getText("awareness_symptoms", "");
   const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
   const dosRaw = getText("awareness_dos", "");
-  const dos = dosRaw ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item)) : defaultDos;
+  const dos = dosRaw
+    ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item))
+    : defaultDos;
   const dontsRaw = getText("awareness_donts", "");
   const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
   return (
-    <section id="awareness" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
-      {/* Soft parallax bg */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/50 via-primary/8 to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(268_80%_84%_/_0.15),transparent_70%)]" />
+    <section
+      id="awareness"
+      ref={ref}
+      className="relative py-28 lg:py-40 overflow-hidden bg-background"
+    >
+      {/* Editorial backdrop — soft, layered, not flashy */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/30 to-background" />
+        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[hsl(340_70%_88%/0.35)] blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 w-[560px] h-[560px] rounded-full bg-[hsl(268_80%_86%/0.3)] blur-3xl" />
+      </div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className={`mb-16 max-w-2xl mx-auto ${getAlignClass("awareness_title")}`}
-        >
-          <p className={`text-sm tracking-[0.3em] uppercase text-muted-foreground font-sans-body mb-3 ${getAlignClass("awareness_subtitle")}`}
-            dangerouslySetInnerHTML={{ __html: subtitle }} />
-          <h2 className="font-serif-display text-4xl lg:text-5xl font-semibold text-foreground mb-6"
-            dangerouslySetInnerHTML={{ __html: title }} />
-          <div className="divider-rose w-24 mx-auto mb-6" />
-          <p className={`text-muted-foreground font-sans-body leading-relaxed ${getAlignClass("awareness_description")}`}
-            dangerouslySetInnerHTML={{ __html: description }} />
-        </motion.div>
-
-        {/* Motivation cards */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          {motivation.map((t, i) => (
-            <motion.div
-              key={t.title}
-              initial={{ opacity: 0, y: 25 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.12 }}
-              className="glass rounded-2xl p-8 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-500 group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-                <t.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <h3 className="font-serif-display text-xl font-semibold text-foreground mb-3">{t.title}</h3>
-              <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{t.text}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Symptoms */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="glass rounded-2xl p-8 lg:p-10 mb-10"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center">
-              <AlertTriangle className="w-5 h-5 text-destructive" />
-            </div>
-            <h3 className="font-serif-display text-2xl font-semibold text-foreground">
-              Warning Signs — <span className="text-gradient-rose italic">Don't Ignore These</span>
-            </h3>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {symptoms.map((s, i) => (
-              <motion.div
-                key={s}
-                initial={{ opacity: 0, x: -10 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.5 + i * 0.06 }}
-                className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
-              >
-                <AlertTriangle className="w-4 h-4 mt-0.5 text-destructive/70 flex-shrink-0" />
-                {s}
-              </motion.div>
-            ))}
-          </div>
-          <p className="mt-5 text-xs text-muted-foreground font-sans-body italic">
-            If you notice any of these symptoms, please consult a specialist promptly. Early evaluation is always better than waiting.
-          </p>
-        </motion.div>
-
-        {/* Do's and Don'ts */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {/* Do's */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+        {/* ── Editorial header ─────────────────────────────────────── */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-24 lg:mb-32 items-end">
           <motion.div
-            initial={{ opacity: 0, x: -25 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="glass rounded-2xl p-8 lg:p-10"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="lg:col-span-5"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-serif-display text-2xl font-semibold text-foreground">
-                The <span className="text-gradient-rose italic">Do's</span>
-              </h3>
+              <span className="h-px w-10 bg-foreground/40" />
+              <p
+                className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body"
+                dangerouslySetInnerHTML={{ __html: subtitle }}
+              />
             </div>
-            <ul className="space-y-3">
+            <h2
+              className="font-serif-display text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.05] text-foreground"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
+            className="lg:col-span-6 lg:col-start-7"
+          >
+            <div className="border-l border-border/70 pl-6 lg:pl-8">
+              <p
+                className="text-base lg:text-lg text-muted-foreground font-sans-body leading-[1.85] font-light"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── Editorial pillars ─ horizontal numbered rows ─────────── */}
+        <div className="mb-24 lg:mb-32">
+          <div className="flex items-baseline justify-between mb-10 lg:mb-14">
+            <h3 className="font-serif-display text-2xl lg:text-3xl font-light text-foreground italic">
+              The four truths
+            </h3>
+            <span className="text-[11px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body">
+              I — IV
+            </span>
+          </div>
+          <div className="divide-y divide-border/60 border-y border-border/60">
+            {motivation.map((item, i) => (
+              <motion.article
+                key={item.number}
+                initial={{ opacity: 0, y: 18 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: EASE }}
+                className="group grid grid-cols-12 gap-6 lg:gap-10 py-8 lg:py-10 transition-colors duration-500 hover:bg-foreground/[0.015]"
+              >
+                <div className="col-span-2 lg:col-span-1">
+                  <span className="font-serif-display text-3xl lg:text-4xl font-light text-[hsl(var(--rose-gold))] tabular-nums">
+                    {item.number}
+                  </span>
+                </div>
+                <div className="col-span-10 lg:col-span-4">
+                  <h4 className="font-serif-display text-2xl lg:text-3xl font-medium text-foreground leading-tight">
+                    {item.title}
+                  </h4>
+                </div>
+                <div className="col-span-12 lg:col-span-7">
+                  <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body leading-[1.85] font-light max-w-2xl">
+                    {item.text}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Warning signs — editorial spread ─────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+          className="relative mb-24 lg:mb-28"
+        >
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-4">
+              <div className="sticky top-28">
+                <div className="flex items-center gap-2 mb-4">
+                  <AlertTriangle className="w-4 h-4 text-destructive" />
+                  <span className="text-[11px] tracking-[0.35em] uppercase text-destructive/80 font-sans-body">
+                    Warning Signs
+                  </span>
+                </div>
+                <h3 className="font-serif-display text-3xl lg:text-4xl font-light text-foreground leading-tight mb-5">
+                  Don't <em className="text-gradient-rose">ignore</em> these.
+                </h3>
+                <p className="text-sm text-muted-foreground font-sans-body italic leading-relaxed font-light">
+                  If you notice any of these, please consult a specialist promptly. Early evaluation is always
+                  better than waiting.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-8">
+              <ol className="space-y-0">
+                {symptoms.map((s, i) => (
+                  <motion.li
+                    key={s}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
+                    className="group flex items-baseline gap-6 py-5 border-b border-border/60 last:border-b-0"
+                  >
+                    <span className="font-serif-display text-sm text-muted-foreground/80 tabular-nums w-8 flex-shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base lg:text-lg text-foreground/85 font-sans-body font-light leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                      {s}
+                    </span>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── Do's & Don'ts — split editorial spread ───────────────── */}
+        <div className="grid md:grid-cols-2 gap-px bg-border/60 rounded-2xl overflow-hidden border border-border/60 shadow-[0_30px_80px_-40px_hsl(258_40%_30%/0.18)]">
+          {/* Do's */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
+            className="bg-card p-10 lg:p-14"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                  Practice
+                </span>
+              </div>
+              <CheckCircle className="w-5 h-5 text-primary/80" />
+            </div>
+            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+              The <em className="text-gradient-rose">Do's</em>
+            </h3>
+            <ul className="space-y-5">
               {dos.map((d, i) => (
                 <motion.li
                   key={d}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.6 + i * 0.06 }}
-                  className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
+                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
-                  <CheckCircle className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                  {d}
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                    {d}
+                  </span>
                 </motion.li>
               ))}
             </ul>
@@ -178,30 +254,35 @@ export default function AwarenessSection() {
 
           {/* Don'ts */}
           <motion.div
-            initial={{ opacity: 0, x: 25 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="glass rounded-2xl p-8 lg:p-10"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+            className="bg-card p-10 lg:p-14"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center">
-                <XCircle className="w-5 h-5 text-destructive" />
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <span className="font-serif-display text-xs tracking-[0.4em] uppercase text-muted-foreground">
+                  Avoid
+                </span>
               </div>
-              <h3 className="font-serif-display text-2xl font-semibold text-foreground">
-                The <span className="text-gradient-rose italic">Don'ts</span>
-              </h3>
+              <XCircle className="w-5 h-5 text-destructive/80" />
             </div>
-            <ul className="space-y-3">
+            <h3 className="font-serif-display text-4xl lg:text-5xl font-light text-foreground mb-10">
+              The <em className="text-gradient-rose">Don'ts</em>
+            </h3>
+            <ul className="space-y-5">
               {donts.map((d, i) => (
                 <motion.li
                   key={d}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.6 + i * 0.06 }}
-                  className="flex items-start gap-2.5 text-sm text-muted-foreground font-sans-body"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: EASE }}
+                  className="flex items-start gap-4 pb-5 border-b border-border/50 last:border-b-0 last:pb-0"
                 >
-                  <XCircle className="w-4 h-4 mt-0.5 text-destructive/70 flex-shrink-0" />
-                  {d}
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-destructive/70 flex-shrink-0" />
+                  <span className="text-base text-foreground/85 font-sans-body font-light leading-relaxed">
+                    {d}
+                  </span>
                 </motion.li>
               ))}
             </ul>

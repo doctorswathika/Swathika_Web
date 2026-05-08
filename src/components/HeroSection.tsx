@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSiteContent } from "@/hooks/useSiteContent";
@@ -16,6 +17,20 @@ export default function HeroSection() {
   const portraitY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 80]);
   const bgY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : 40]);
   const textY = useTransform(scrollY, [0, 600], [0, reduceMotion ? 0 : -30]);
+
+  // Defer non-critical ambient/decorative effects (orbs, blurs) until idle
+  const [ambientReady, setAmbientReady] = useState(false);
+  useEffect(() => {
+    if (reduceMotion) return;
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
+    let id: number;
+    if (w.requestIdleCallback) {
+      id = w.requestIdleCallback(() => setAmbientReady(true), { timeout: 1500 });
+    } else {
+      id = window.setTimeout(() => setAmbientReady(true), 800);
+    }
+    return () => clearTimeout(id);
+  }, [reduceMotion]);
   const heroOpacity = useTransform(scrollY, [0, 500], [1, reduceMotion ? 1 : 0.6]);
 
   const headline = getText(
@@ -44,10 +59,10 @@ export default function HeroSection() {
         style={{ y: bgY, opacity: heroOpacity, willChange: "transform" }}
         className="absolute inset-0 bg-gradient-to-br from-[hsl(340_70%_92%)] via-[hsl(350_60%_90%)] to-[hsl(20_60%_90%)]"
       />
-      {!reduceMotion && (
+      {!reduceMotion && ambientReady && (
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none ambient-float opacity-70"
+          className="absolute inset-0 pointer-events-none ambient-float opacity-70 motion-safe:animate-fade-in"
           style={{
             background:
               "radial-gradient(60% 50% at 30% 20%, hsl(340 80% 92% / 0.55), transparent 60%), radial-gradient(50% 40% at 80% 70%, hsl(20 80% 90% / 0.45), transparent 60%)",
@@ -55,9 +70,9 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Bokeh floating orbs */}
+      {/* Bokeh floating orbs — deferred until idle to keep LCP fast */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[
+        {ambientReady && !reduceMotion && [
           { size: 130, x: 50, y: 2, dur: 10, delay: 0 },
           { size: 90, x: 68, y: 8, dur: 12, delay: 1 },
           { size: 160, x: 82, y: 3, dur: 14, delay: 0.5 },
