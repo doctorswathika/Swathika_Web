@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogIn, LogOut, ShieldCheck } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Menu, X, LogIn, LogOut } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -21,7 +20,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const handleNav = useHashNavigation();
-  const location = useLocation();
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -83,23 +81,29 @@ export default function Navbar() {
             : "bg-background/95 border-b border-border/30 py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-center relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center relative">
           <button
             onClick={() => { setMenuOpen(false); handleNavClick("#hero"); }}
-            className="group relative font-serif-display text-foreground hover:opacity-90 transition-opacity z-[61] flex flex-col items-center max-w-[calc(100vw-7rem)]"
+            className="group relative z-[61] max-w-[calc(100vw-4.5rem)] sm:max-w-[calc(100vw-6.5rem)] text-foreground hover:opacity-95 transition-opacity"
+            aria-label="Go to home"
           >
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.4em] sm:tracking-[0.5em] uppercase text-foreground/80 font-sans-body font-medium mb-1 leading-none">
-              Dr.
-            </span>
-            <span className="whitespace-nowrap text-[13px] xs:text-[14px] sm:text-[17px] md:text-[1.4rem] lg:text-[1.65rem] font-medium tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.16em] uppercase leading-none text-foreground">
-              Swathika Rajendran
+            <span
+              className="inline-flex max-w-full items-baseline gap-1 sm:gap-1.5 whitespace-nowrap leading-none text-foreground"
+              style={{ fontSize: "clamp(0.76rem, 3.75vw, 1.65rem)" }}
+            >
+              <span className="shrink-0 font-sans-body font-semibold tracking-[0.12em] sm:tracking-[0.18em] text-foreground/85">
+                Dr.
+              </span>
+              <span className="font-serif-display font-semibold tracking-[0.015em] sm:tracking-[0.04em] text-foreground">
+                Swathika Rajendran
+              </span>
             </span>
           </button>
 
           {/* Menu toggle icon - absolute right */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="absolute right-6 z-[61] p-2 text-foreground hover:opacity-80 transition-opacity"
+            className="absolute right-4 sm:right-6 z-[61] p-2 text-foreground hover:opacity-80 transition-opacity"
             aria-label="Toggle menu"
           >
             <AnimatePresence mode="wait">
