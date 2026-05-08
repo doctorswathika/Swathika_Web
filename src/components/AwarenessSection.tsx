@@ -81,7 +81,7 @@ export default function AwarenessSection() {
     <section
       id="awareness"
       ref={ref}
-      className="relative py-28 lg:py-40 overflow-hidden bg-background"
+      className="relative py-32 lg:py-48 overflow-hidden bg-background"
     >
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
@@ -91,24 +91,24 @@ export default function AwarenessSection() {
       </div>
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative z-10 max-w-[80rem] mx-auto px-6 lg:px-12">
         {/* ── Editorial header ─────────────────────────────────────── */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-24 lg:mb-32 items-end">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-32 lg:mb-44 items-end">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, ease: EASE }}
-            className="lg:col-span-5"
+            className="lg:col-span-6"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-foreground/40" />
+            <div className="flex items-center gap-4 mb-8">
+              <span className="h-px w-12 bg-foreground/40" />
               <p
-                className="text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body"
+                className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body"
                 dangerouslySetInnerHTML={{ __html: subtitle }}
               />
             </div>
             <h2
-              className="font-serif-display text-5xl lg:text-6xl xl:text-7xl font-light leading-[1.05] text-foreground"
+              className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.25rem] xl:text-[5rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground"
               dangerouslySetInnerHTML={{ __html: title }}
             />
           </motion.div>
@@ -116,11 +116,11 @@ export default function AwarenessSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-            className="lg:col-span-6 lg:col-start-7"
+            className="lg:col-span-5 lg:col-start-8"
           >
-            <div className="border-l border-border/70 pl-6 lg:pl-8">
+            <div className="border-l border-border/70 pl-7 lg:pl-9">
               <p
-                className="text-base lg:text-lg text-muted-foreground font-sans-body leading-[1.85] font-light"
+                className="text-[15px] lg:text-[17px] text-muted-foreground font-sans-body leading-[1.9] font-light tracking-[0.005em]"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>
