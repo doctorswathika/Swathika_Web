@@ -308,13 +308,13 @@
     transform: scaleX(1);
   }
 
-  /* Premium reveal */
+  /* Premium reveal — calmer, no blur for medical brand */
   @keyframes reveal-up {
-    0% { opacity: 0; transform: translateY(28px); filter: blur(6px); }
-    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    0% { opacity: 0; transform: translateY(18px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
   .reveal-up {
-    animation: reveal-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: reveal-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   /* Slow ambient float for decorative blurs */
@@ -327,9 +327,7 @@
   }
 
   /* Subtle grain overlay */
-  .grain {
-    position: relative;
-  }
+  .grain { position: relative; }
   .grain::after {
     content: '';
     position: absolute;
@@ -344,6 +342,45 @@
   .hairline {
     height: 1px;
     background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  }
+
+  /* Editorial eyebrow / kicker label */
+  .eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .eyebrow::before,
+  .eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: hsl(var(--foreground) / 0.35);
+  }
+  .eyebrow-left::after { display: none; }
+
+  /* Serif numeral for editorial lists */
+  .serif-numeral {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: hsl(var(--primary) / 0.7);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  /* Section rule — refined editorial divider */
+  .editorial-rule {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, hsl(var(--foreground) / 0.45), transparent);
+    margin: 0 auto;
   }
 
   /* Text selection */
