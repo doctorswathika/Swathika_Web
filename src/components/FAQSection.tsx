@@ -59,7 +59,7 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative py-28 lg:py-44 bg-background overflow-hidden"
+      className="relative py-20 lg:py-28 bg-background overflow-hidden"
       ref={ref}
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -68,24 +68,24 @@ export default function FAQSection() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Sticky editorial header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, ease: EASE }}
+            transition={{ duration: 0.9, ease: EASE }}
             className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start"
           >
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-5">
               <span className="h-px w-12 bg-foreground/40" />
               <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
                 FAQ
               </p>
             </div>
-            <h2 className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground">
+            <h2 className="font-serif-display text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-light leading-[1.02] tracking-[-0.025em] text-foreground">
               Frequently Asked <em className="text-gradient-rose">Questions</em>
             </h2>
-            <p className="mt-7 text-[15px] lg:text-base text-muted-foreground font-sans-body font-light leading-[1.9] max-w-md">
+            <p className="mt-5 text-[14.5px] lg:text-[15px] text-muted-foreground font-sans-body font-light leading-[1.8] max-w-md">
               Considered, honest answers to the questions patients ask most often — drawn from years in the
               consultation room.
             </p>
@@ -95,7 +95,7 @@ export default function FAQSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2, ease: EASE }}
+            transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
             className="lg:col-span-7"
           >
             <Accordion type="single" collapsible className="space-y-0">
@@ -103,19 +103,23 @@ export default function FAQSection() {
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="border-b border-border/60 border-t-0 first:border-t first:border-t-border/60"
+                  className="border-b border-border/60 border-t-0 first:border-t first:border-t-border/60 group/item transition-colors duration-500 data-[state=open]:bg-foreground/[0.015]"
                 >
-                  <AccordionTrigger className="group font-serif-display text-[1.1rem] lg:text-[1.3rem] font-light text-foreground text-left py-7 lg:py-8 hover:no-underline tracking-[-0.005em] leading-[1.3]">
-                    <span className="flex items-baseline gap-5 lg:gap-7 pr-4">
-                      <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-medium pt-1">
+                  <AccordionTrigger className="group font-serif-display text-[1.05rem] lg:text-[1.2rem] font-normal text-foreground text-left py-5 lg:py-6 hover:no-underline tracking-[-0.01em] leading-[1.35] [&>svg]:hidden">
+                    <span className="flex items-baseline gap-4 lg:gap-6 pr-4 w-full">
+                      <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-semibold pt-1">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="flex-1 group-hover:text-primary/90 transition-colors duration-500">
+                      <span className="flex-1 group-hover:text-primary transition-colors duration-500">
                         {faq.q}
+                      </span>
+                      <span className="relative ml-2 mt-1 w-4 h-4 flex-shrink-0">
+                        <span className="absolute inset-x-0 top-1/2 h-px bg-foreground/60 -translate-y-1/2" />
+                        <span className="absolute inset-y-0 left-1/2 w-px bg-foreground/60 -translate-x-1/2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[state=open]:rotate-90 group-data-[state=open]:opacity-0" />
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.9] pb-8 pl-[3.5rem] lg:pl-[5rem] pr-4 max-w-2xl">
+                  <AccordionContent className="text-[14.5px] lg:text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] pb-6 pl-[3rem] lg:pl-[4.25rem] pr-4 max-w-2xl">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
