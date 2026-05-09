@@ -33,17 +33,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const isHome = () => window.location.pathname === "/";
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 50);
-      // On the home page, navbar is visible only while inside the hero section.
-      // On other routes, navbar stays visible always.
-      if (isHome()) {
-        setHidden(y > window.innerHeight * 0.9);
-      } else {
-        setHidden(false);
-      }
+      // Navbar is always visible across all routes.
+      setHidden(false);
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(total > 0 ? (y / total) * 100 : 0);
     };
@@ -93,8 +87,8 @@ export default function Navbar() {
         style={{ pointerEvents: hidden && !menuOpen ? "none" : "auto" }}
         className={`fixed top-0 left-0 w-full z-[60] transition-all duration-700 ${
           scrolled && !menuOpen
-            ? "bg-background/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.4),0_12px_40px_-20px_hsl(258_40%_30%/0.12)] py-3"
-            : "bg-background/95 border-b border-border/30 py-5"
+            ? "bg-background/80 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/40 shadow-[0_1px_0_0_hsl(var(--border)/0.4),0_12px_40px_-20px_hsl(258_40%_30%/0.12)] py-2"
+            : "bg-background/95 border-b border-border/30 py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center relative">
@@ -104,8 +98,8 @@ export default function Navbar() {
             aria-label="Go to home"
           >
             <span
-              className="brand-wordmark block font-serif-display font-medium uppercase whitespace-nowrap leading-none tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em]"
-              style={{ fontSize: "clamp(0.82rem, 3.6vw, 1.6rem)" }}
+              className="brand-wordmark block font-serif-display font-medium uppercase whitespace-nowrap leading-none tracking-[0.16em] sm:tracking-[0.20em] md:tracking-[0.24em]"
+              style={{ fontSize: "clamp(0.7rem, 2.8vw, 1.2rem)" }}
             >
               Dr. Swathika Rajendran
             </span>
