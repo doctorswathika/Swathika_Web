@@ -33,17 +33,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const isHome = () => window.location.pathname === "/";
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 50);
-      // On the home page, navbar is visible only while inside the hero section.
-      // On other routes, navbar stays visible always.
-      if (isHome()) {
-        setHidden(y > window.innerHeight * 0.9);
-      } else {
-        setHidden(false);
-      }
+      // Navbar is always visible across all routes.
+      setHidden(false);
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(total > 0 ? (y / total) * 100 : 0);
     };
