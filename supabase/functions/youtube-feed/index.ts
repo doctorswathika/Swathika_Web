@@ -45,8 +45,8 @@ serve(async (req) => {
     const allVideoIds = (videosData.items || []).map((item: any) => item.id.videoId).filter(Boolean);
 
     // Step 3: Get video details to distinguish shorts from regular videos
-    let videos: any[] = [];
-    let shorts: any[] = [];
+    const videos: any[] = [];
+    const shorts: any[] = [];
 
     if (allVideoIds.length > 0) {
       const detailsRes = await fetch(
