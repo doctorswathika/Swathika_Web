@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, MessageCircle, Mail, Linkedin } from "lucide-react";
+import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
-import { useSiteContent } from "@/hooks/useSiteContent";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -19,19 +18,14 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
 export default function Footer() {
   const { ref, isVisible } = useScrollAnimation();
   const handleNav = useHashNavigation();
-  const { getText, getAlignClass } = useSiteContent();
 
-  const brandDesc = getText(
-    "footer_brand_description",
-    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.",
-  );
-  const address = getText("footer_address", "Chennai, Tamil Nadu, India");
+  const brandDesc =
+    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.";
+  const address = "Chennai, Tamil Nadu, India";
   const whatsappNumber = "919940808876";
-  const email = getText("footer_email", "doctorswathika@gmail.com");
-  const disclaimer = getText(
-    "footer_disclaimer",
-    "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.",
-  );
+  const email = "doctorswathika@gmail.com";
+  const disclaimer =
+    "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.";
 
   const handleNavClick = (href: string, isRoute?: boolean) => {
     handleNav(href, isRoute);
@@ -71,12 +65,9 @@ export default function Footer() {
             <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">
               Practice
             </p>
-            <p
-              className={`text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-md ${getAlignClass(
-                "footer_brand_description",
-              )}`}
-              dangerouslySetInnerHTML={{ __html: brandDesc }}
-            />
+            <p className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-md">
+              {brandDesc}
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -103,13 +94,9 @@ export default function Footer() {
               In touch
             </p>
             <div className="space-y-4">
-              <p
-                className={`flex items-start gap-3 text-[14px] text-foreground/75 font-sans-body font-light leading-[1.7] ${getAlignClass(
-                  "footer_address",
-                )}`}
-              >
+              <p className="flex items-start gap-3 text-[14px] text-foreground/75 font-sans-body font-light leading-[1.7]">
                 <MapPin className="w-4 h-4 mt-0.5 text-[hsl(var(--rose-gold))] flex-shrink-0" />
-                <span dangerouslySetInnerHTML={{ __html: address }} />
+                {address}
               </p>
               <a
                 href={`https://api.whatsapp.com/send?phone=${whatsappNumber}`}
@@ -127,15 +114,6 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[hsl(var(--rose-gold))] group-hover:scale-110 transition-transform" />
                 {email}
               </a>
-              <a
-                href="https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[14px] text-foreground/75 font-sans-body font-light hover:text-foreground transition-colors group"
-              >
-                <Linkedin className="w-4 h-4 text-[hsl(var(--rose-gold))] group-hover:scale-110 transition-transform" />
-                LinkedIn Profile
-              </a>
             </div>
           </div>
         </div>
@@ -143,12 +121,9 @@ export default function Footer() {
         <div className="hairline mb-8" />
 
         <div className="flex flex-col gap-4 text-center md:text-left md:flex-row md:items-start md:justify-between">
-          <p
-            className={`text-[11.5px] text-muted-foreground/85 font-sans-body font-light leading-[1.75] max-w-3xl ${getAlignClass(
-              "footer_disclaimer",
-            )}`}
-            dangerouslySetInnerHTML={{ __html: disclaimer }}
-          />
+          <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light leading-[1.75] max-w-3xl">
+            {disclaimer}
+          </p>
           <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light flex-shrink-0">
             © {new Date().getFullYear()} Dr. Swathika Rajendran
           </p>
