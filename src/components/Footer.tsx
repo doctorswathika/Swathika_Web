@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, MessageCircle, Mail, Linkedin } from "lucide-react";
+import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
