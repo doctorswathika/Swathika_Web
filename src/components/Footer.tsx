@@ -94,13 +94,9 @@ export default function Footer() {
               In touch
             </p>
             <div className="space-y-4">
-              <p
-                className={`flex items-start gap-3 text-[14px] text-foreground/75 font-sans-body font-light leading-[1.7] ${getAlignClass(
-                  "footer_address",
-                )}`}
-              >
+              <p className="flex items-start gap-3 text-[14px] text-foreground/75 font-sans-body font-light leading-[1.7]">
                 <MapPin className="w-4 h-4 mt-0.5 text-[hsl(var(--rose-gold))] flex-shrink-0" />
-                <span dangerouslySetInnerHTML={{ __html: address }} />
+                {address}
               </p>
               <a
                 href={`https://api.whatsapp.com/send?phone=${whatsappNumber}`}
