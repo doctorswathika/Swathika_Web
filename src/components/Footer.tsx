@@ -65,12 +65,9 @@ export default function Footer() {
             <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">
               Practice
             </p>
-            <p
-              className={`text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-md ${getAlignClass(
-                "footer_brand_description",
-              )}`}
-              dangerouslySetInnerHTML={{ __html: brandDesc }}
-            />
+            <p className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-md">
+              {brandDesc}
+            </p>
           </div>
 
           {/* Quick Links */}
