@@ -23,18 +23,6 @@ interface ServicePageLayoutProps {
   contentPrefix?: string;
 }
 
-interface DbContent {
-  section_key: string;
-  content: string;
-  alignment: string;
-}
-
-function alignClass(a: string) {
-  if (a === "center") return "text-center";
-  if (a === "right") return "text-right";
-  return "text-left";
-}
-
 export default function ServicePageLayout({
   title,
   subtitle,
