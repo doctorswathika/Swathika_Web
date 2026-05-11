@@ -130,12 +130,9 @@ export default function Footer() {
         <div className="hairline mb-8" />
 
         <div className="flex flex-col gap-4 text-center md:text-left md:flex-row md:items-start md:justify-between">
-          <p
-            className={`text-[11.5px] text-muted-foreground/85 font-sans-body font-light leading-[1.75] max-w-3xl ${getAlignClass(
-              "footer_disclaimer",
-            )}`}
-            dangerouslySetInnerHTML={{ __html: disclaimer }}
-          />
+          <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light leading-[1.75] max-w-3xl">
+            {disclaimer}
+          </p>
           <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light flex-shrink-0">
             © {new Date().getFullYear()} Dr. Swathika Rajendran
           </p>
