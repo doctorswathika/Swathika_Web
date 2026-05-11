@@ -123,8 +123,9 @@ const signInWithRetry = async (email: string, password: string) => {
   }
 };
 
+const ADMIN_EMAIL = "doctorswathika@gmail.com";
+
 export default function Auth() {
-  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
