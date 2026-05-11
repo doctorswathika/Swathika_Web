@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
@@ -6,7 +5,7 @@ import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
-import { supabase } from "@/integrations/supabase/client";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 interface ServicePageLayoutProps {
   title: string;
@@ -24,18 +23,6 @@ interface ServicePageLayoutProps {
   contentPrefix?: string;
 }
 
-interface DbContent {
-  section_key: string;
-  content: string;
-  alignment: string;
-}
-
-function alignClass(a: string) {
-  if (a === "center") return "text-center";
-  if (a === "right") return "text-right";
-  return "text-left";
-}
-
 export default function ServicePageLayout({
   title,
   subtitle,
@@ -50,24 +37,9 @@ export default function ServicePageLayout({
   contentPrefix,
 }: ServicePageLayoutProps) {
   const handleNav = useHashNavigation();
-  const [dbContent, setDbContent] = useState<Record<string, DbContent>>({});
+  const { content: dbContent } = useSiteContent();
 
-  useEffect(() => {
-    if (!contentPrefix) return;
-    supabase
-      .from("site_content")
-      .select("section_key, content, alignment")
-      .like("section_key", `${contentPrefix}_%`)
-      .then(({ data }) => {
-        if (data) {
-          const map: Record<string, DbContent> = {};
-          data.forEach((row) => { map[row.section_key] = row as DbContent; });
-          setDbContent(map);
-        }
-      });
-  }, [contentPrefix]);
-
-  /** Get content for a key — DB wins over prop fallback */
+  /** Get content for a key — inlined CMS wins over prop fallback */
   const get = (suffix: string, fallback: string) => {
     const key = `${contentPrefix}_${suffix}`;
     return dbContent[key]?.content ?? fallback;
@@ -76,7 +48,8 @@ export default function ServicePageLayout({
   /** Get alignment class for a key */
   const getAlign = (suffix: string) => {
     const key = `${contentPrefix}_${suffix}`;
-    return alignClass(dbContent[key]?.alignment ?? "left");
+    const a = dbContent[key]?.alignment ?? "left";
+    return a === "center" ? "text-center" : a === "right" ? "text-right" : "text-left";
   };
 
   const displaySubtitle = contentPrefix ? get("subtitle", subtitle) : subtitle;
