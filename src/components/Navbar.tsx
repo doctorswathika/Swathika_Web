@@ -180,7 +180,7 @@ export default function Navbar() {
               </motion.button>
 
               {/* Admin Portal - visible only to admin */}
-              {user?.id === "6c699a7c-d104-41fb-b26f-b93ee25245e3" && (
+              {user?.email?.toLowerCase() === "doctorswathika@gmail.com" && (
                 <motion.button
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
