@@ -172,33 +172,6 @@ export type Database = {
         }
         Relationships: []
       }
-      site_content: {
-        Row: {
-          alignment: string
-          content: string
-          id: string
-          section_key: string
-          section_label: string
-          updated_at: string
-        }
-        Insert: {
-          alignment?: string
-          content?: string
-          id?: string
-          section_key: string
-          section_label: string
-          updated_at?: string
-        }
-        Update: {
-          alignment?: string
-          content?: string
-          id?: string
-          section_key?: string
-          section_label?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       site_settings: {
         Row: {
           key: string
@@ -217,39 +190,6 @@ export type Database = {
           label?: string
           updated_at?: string
           value?: string
-        }
-        Relationships: []
-      }
-      testimonials: {
-        Row: {
-          created_at: string
-          display_order: number
-          id: string
-          is_active: boolean
-          name: string
-          rating: number
-          text: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          display_order?: number
-          id?: string
-          is_active?: boolean
-          name: string
-          rating?: number
-          text: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          display_order?: number
-          id?: string
-          is_active?: boolean
-          name?: string
-          rating?: number
-          text?: string
-          updated_at?: string
         }
         Relationships: []
       }
