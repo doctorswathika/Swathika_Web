@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter,
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription
 } from "@/components/ui/dialog";
 
 interface GoogleReview {
@@ -307,6 +307,9 @@ export default function AdminGoogleReviews() {
             <DialogTitle className="font-serif-display">
               {editingId ? "Edit Review" : "Add Review"}
             </DialogTitle>
+            <DialogDescription className="sr-only">
+              {editingId ? "Edit an existing review" : "Add a new review"}
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-2">
             <div>
@@ -374,6 +377,9 @@ export default function AdminGoogleReviews() {
               <DialogTitle className="text-[10px] tracking-[0.45em] uppercase text-white/60 font-sans-body font-normal text-center">
                 Live Preview
               </DialogTitle>
+              <DialogDescription className="sr-only">
+                Live preview of the google review
+              </DialogDescription>
             </DialogHeader>
 
             {previewReview && (

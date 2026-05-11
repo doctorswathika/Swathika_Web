@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import RichTextEditor from "@/components/RichTextEditor";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 
 interface BlogPost {
@@ -227,6 +227,9 @@ export default function AdminBlog() {
             <DialogTitle className="font-serif-display text-2xl">
               {editing ? "Edit Post" : "New Post"}
             </DialogTitle>
+            <DialogDescription className="sr-only">
+              {editing ? "Edit an existing blog post" : "Create a new blog post"}
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-5 mt-4">
             <div className="space-y-2">
