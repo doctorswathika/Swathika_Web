@@ -198,7 +198,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: (navLinks.length + (user?.id === "6c699a7c-d104-41fb-b26f-b93ee25245e3" ? 2 : 1)) * 0.08, duration: 0.5 }}
+                transition={{ delay: (navLinks.length + (user?.email?.toLowerCase() === "doctorswathika@gmail.com" ? 2 : 1)) * 0.08, duration: 0.5 }}
                 onClick={async () => {
                   if (user) {
                     await supabase.auth.signOut();
