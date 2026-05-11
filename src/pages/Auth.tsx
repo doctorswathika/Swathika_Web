@@ -150,39 +150,27 @@ export default function Auth() {
     const normalizedEmail = email.trim().toLowerCase();
     if (!normalizedEmail || !password) return;
 
+    if (normalizedEmail !== ADMIN_EMAIL) {
+      toast({
+        title: "Access denied",
+        description: "This portal is restricted to authorised administrators only.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
-      if (isLogin) {
-        await signInWithRetry(normalizedEmail, password);
-
-        toast({ title: "Welcome back!", description: "You have signed in successfully." });
-        navigate("/");
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email: normalizedEmail,
-          password,
-          options: { emailRedirectTo: window.location.origin },
-        });
-
-        if (error) throw error;
-
-        toast({
-          title: "Check your email",
-          description: "We've sent you a verification link to confirm your account.",
-        });
-
-        setPassword("");
-      }
+      await signInWithRetry(normalizedEmail, password);
+      toast({ title: "Welcome back!", description: "You have signed in successfully." });
+      navigate("/admin");
     } catch (error: unknown) {
-      if (isLogin && isNetworkError(error)) {
-        const {
-          data: { session },
-        } = await supabase.auth.getSession();
-
+      if (isNetworkError(error)) {
+        const { data: { session } } = await supabase.auth.getSession();
         if (session) {
           toast({ title: "Welcome back!", description: "You have signed in successfully." });
-          navigate("/");
+          navigate("/admin");
           return;
         }
       }
@@ -192,15 +180,12 @@ export default function Auth() {
         ? "Network issue while connecting to authentication. Please refresh and try again."
         : rawMessage;
 
-      toast({
-        title: "Error",
-        description: message,
-        variant: "destructive",
-      });
+      toast({ title: "Sign-in failed", description: message, variant: "destructive" });
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <>
