@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, MessageCircle, Mail, Linkedin } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
-import { useSiteContent } from "@/hooks/useSiteContent";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -19,19 +18,14 @@ const quickLinks: { label: string; href: string; isRoute?: boolean }[] = [
 export default function Footer() {
   const { ref, isVisible } = useScrollAnimation();
   const handleNav = useHashNavigation();
-  const { getText, getAlignClass } = useSiteContent();
 
-  const brandDesc = getText(
-    "footer_brand_description",
-    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.",
-  );
-  const address = getText("footer_address", "Chennai, Tamil Nadu, India");
+  const brandDesc =
+    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.";
+  const address = "Chennai, Tamil Nadu, India";
   const whatsappNumber = "919940808876";
-  const email = getText("footer_email", "doctorswathika@gmail.com");
-  const disclaimer = getText(
-    "footer_disclaimer",
-    "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.",
-  );
+  const email = "doctorswathika@gmail.com";
+  const disclaimer =
+    "Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.";
 
   const handleNavClick = (href: string, isRoute?: boolean) => {
     handleNav(href, isRoute);
