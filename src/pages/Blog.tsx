@@ -51,12 +51,25 @@ export default function Blog() {
   return (
     <>
       <Helmet>
-        <title>Blog — Dr. Swathika Rajendran</title>
+        <title>Breast Health Journal | Dr. Swathika Rajendran — Breast Surgeon Chennai</title>
         <meta
           name="description"
-          content="Read articles on breast health, oncoplastic surgery, and patient recovery by Dr. Swathika Rajendran."
+          content="Expert insights on breast cancer, oncoplastic surgery, reconstruction and recovery — by Dr. Swathika Rajendran, UK-trained Breast Oncoplastic Surgeon in Chennai."
         />
+        <meta name="keywords" content="breast cancer blog, oncoplastic surgery, breast reconstruction, breast health Chennai, Dr Swathika Rajendran" />
         <link rel="canonical" href="https://drswathika.com/blog" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Breast Health Journal | Dr. Swathika Rajendran" />
+        <meta property="og:url" content="https://drswathika.com/blog" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Dr. Swathika Rajendran — Breast Health Journal",
+          "url": "https://drswathika.com/blog",
+          "author": { "@type": "Person", "name": "Dr. Swathika Rajendran" },
+          "inLanguage": "en"
+        })}</script>
       </Helmet>
       <Navbar />
       <main className="pt-28 lg:pt-36 pb-24 min-h-screen bg-background">
