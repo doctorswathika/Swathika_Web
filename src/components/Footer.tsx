@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, MessageCircle, Mail, Linkedin } from "lucide-react";
+import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -113,15 +113,6 @@ export default function Footer() {
               >
                 <Mail className="w-4 h-4 text-[hsl(var(--rose-gold))] group-hover:scale-110 transition-transform" />
                 {email}
-              </a>
-              <a
-                href="https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[14px] text-foreground/75 font-sans-body font-light hover:text-foreground transition-colors group"
-              >
-                <Linkedin className="w-4 h-4 text-[hsl(var(--rose-gold))] group-hover:scale-110 transition-transform" />
-                LinkedIn Profile
               </a>
             </div>
           </div>
