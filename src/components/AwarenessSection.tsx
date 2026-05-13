@@ -30,21 +30,20 @@ const defaultSymptoms = [
   "A new lump or thickening in the breast or underarm",
   "Sudden change in breast size, shape, or symmetry",
   "Skin dimpling, puckering, or redness on the breast",
-  "Nipple discharge (especially if bloody), retraction, or inversion",
+  "Nipple discharge (especially if bloody) and nipple retraction or inversion",
   "Persistent breast pain not linked to your menstrual cycle",
-  "Swelling or warmth in one part of the breast",
+  "Warmth or swelling in a specific part of the breast",
 ];
 
 const defaultDos = [
-  "Perform monthly breast self-examinations",
-  "Schedule regular mammograms above the age of 40 as recommended by your doctor",
-  "Don't ignore a lump — especially if it's painless",
+  "Perform monthly breast self-examinations after age of 20",
+  "Get annual clinical breast checkups from age 40",
 ];
 
-const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters"]);
+const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters", "Don't ignore a lump — especially if it's painless"]);
 
 const defaultDonts = [
-  "Don't ignore a lump — even if it's painless",
+  "Don’t ignore a lump, especially if painless.",
   "Don't delay a doctor's visit out of fear",
   "Don't rely on self-diagnosis from the internet",
   "Don't assume young women can't get breast cancer",
