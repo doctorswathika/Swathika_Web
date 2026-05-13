@@ -87,8 +87,6 @@ export default function ServicesSection() {
     "services_title",
     'Signature <span class="text-gradient-rose italic">Treatments</span>',
   );
-  const clinicalHeading = getText("services_clinical_heading", "Clinical");
-  const cosmeticHeading = getText("services_cosmetic_heading", "Cosmetic");
 
   return (
     <section
