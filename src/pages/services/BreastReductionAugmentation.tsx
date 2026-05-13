@@ -13,8 +13,7 @@ export default function BreastReductionAugmentation() {
       overview={[
         "Breast reduction surgery is performed to remove excess breast tissue, fat, and skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back and neck pain, bra strap indentations, and recurrent skin infections, while improving posture and overall comfort.",
         "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques.",
-        "With UK-trained oncoplastic expertise, Dr. Swathika combines a detailed understanding of breast anatomy with advanced surgical techniques to achieve natural, balanced results.",
-        "Each treatment plan is individualised, focusing on both functional improvement and aesthetically realistic outcomes.",
+        "Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
       ]}
       benefits={[
         "Relief from back, neck, and shoulder pain (reduction)",
