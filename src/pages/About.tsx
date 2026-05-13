@@ -263,8 +263,6 @@ export default function About() {
                             {item.institution}
                           </p>
                         </div>
-                        <div className="hairline my-5" />
-                        <p className="font-sans-body text-[15px] leading-[1.85] text-foreground/78 italic">{item.detail}</p>
                       </div>
                     </motion.div>
                   );
