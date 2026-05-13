@@ -52,34 +52,11 @@ export default function ServicePageLayout({
     return a === "center" ? "text-center" : a === "right" ? "text-right" : "text-left";
   };
 
-  const displaySubtitle = contentPrefix ? get("subtitle", subtitle) : subtitle;
-  const displayOverview = contentPrefix
-    ? overview.map((p, i) => get(`overview_${i + 1}`, p))
-    : overview;
-
-  const displayBenefits = (() => {
-    if (!contentPrefix) return benefits;
-    const key = `${contentPrefix}_benefits`;
-    const raw = dbContent[key]?.content;
-    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
-    return benefits;
-  })();
-
-  const displayProcess = (() => {
-    if (!contentPrefix) return process;
-    const key = `${contentPrefix}_process`;
-    const raw = dbContent[key]?.content;
-    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
-    return process;
-  })();
-
-  const displayFaqs = (() => {
-    if (!contentPrefix) return faqs;
-    const key = `${contentPrefix}_faqs`;
-    const raw = dbContent[key]?.content;
-    if (raw) { try { const parsed = JSON.parse(raw); if (Array.isArray(parsed) && parsed.length > 0) return parsed; } catch {} }
-    return faqs;
-  })();
+  const displaySubtitle = subtitle;
+  const displayOverview = overview;
+  const displayBenefits = benefits;
+  const displayProcess = process;
+  const displayFaqs = faqs;
 
   return (
     <>
