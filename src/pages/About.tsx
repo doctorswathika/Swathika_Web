@@ -126,9 +126,7 @@ export default function About() {
                   </p>
                   <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
                     Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
-                    have seen how treatment is about much more than just about removing the disease. My focus is to help women
-                    feel safe, informed, and respected, and to offer care that not only treats the condition, but also
-                    helps restore their confidence and sense of dignity.
+                    have seen how treatment is about much more than just about removing the disease.
                   </p>
                 </div>
 
