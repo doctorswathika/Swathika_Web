@@ -43,7 +43,7 @@ export default function HeroSection() {
   );
   const trustRaw = getText(
     "hero_trust_indicators",
-    "MCh (UK) Trained,UK Certified Professional,700+ Surgeries,Oncology + Aesthetics",
+    "MCh (UK) Trained & Certified Professional,700+ Surgeries,Oncology + Aesthetics",
   );
   // Filter out any legacy GMC entries that may still live in the CMS
   const removedTrustItems = new Set(["GMC Registered"]);
