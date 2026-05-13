@@ -18,7 +18,7 @@ export default function AboutSection() {
   );
   const p1 = getText(
     "about_paragraph_1",
-    "With over 700 successful procedures and training from both India and the UK, I've seen first-hand the fear, frustration and uncertainty that my patients go through when facing breast health concerns.",
+    "With over 700 successful procedures and training from both India and the UK, I've seen the fear, frustration, and uncertainty many patients experience while facing breast health concerns.",
   );
   const p2 = getText(
     "about_paragraph_2",
@@ -27,11 +27,11 @@ export default function AboutSection() {
   const subheading = getText("about_subheading", "But I'm here to help.");
   const p3 = getText(
     "about_paragraph_3",
-    "Many people think that as a Breast Specialist Surgeon, I just do surgery. But that's far from the truth.",
+    "Many people think that as a Breast Surgeon, I perform only surgery. But that's far from the truth.",
   );
   const p4 = getText(
     "about_paragraph_4",
-    "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as much as your health.",
+    "My approach combines oncology precision along with aesthetic sensibility — because your confidence matters as much as your health.",
   );
 
   return (
