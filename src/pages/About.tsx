@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { number: "700+", label: "Surgeries Performed", icon: Heart },
-  { number: "MCh", label: "UK Trained (NHS)", icon: GraduationCap },
+  { number: "Oncology & cosmetic expert", label: "UK Trained (NHS)", icon: GraduationCap },
   { number: "UK", label: "Certified Professional", icon: Shield },
 ];
 
@@ -48,7 +48,7 @@ const timeline = [
   },
   {
     title: "Consultant Breast Oncoplastic & Reconstructive Surgeon",
-    institution: "Multiple leading centres across Chennai",
+    institution: "Currently practicing in Chennai, India",
     icon: MapPin,
     detail: "Bringing UK-standard care to patients in India with a compassionate, personalised approach.",
   },
@@ -126,9 +126,7 @@ export default function About() {
                   </p>
                   <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
                     Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
-                    have seen how treatment is about much more than just removing the disease. My focus is to help women
-                    feel safe, informed, and respected, and to offer care that not only treats the condition, but also
-                    helps restore their confidence and sense of dignity.
+                    have seen how treatment is about much more than just about removing the disease.
                   </p>
                 </div>
 
@@ -232,7 +230,6 @@ export default function About() {
               <h2 className="font-serif-display text-4xl font-light leading-[1.05] tracking-[-0.025em] text-foreground lg:text-5xl">
                 Education & Career
               </h2>
-              <p className="font-sans-body text-sm uppercase tracking-[0.24em] text-foreground/60">Timeline</p>
             </motion.div>
 
             <div className="relative pl-7 sm:pl-10 lg:pl-14">
@@ -266,8 +263,6 @@ export default function About() {
                             {item.institution}
                           </p>
                         </div>
-                        <div className="hairline my-5" />
-                        <p className="font-sans-body text-[15px] leading-[1.85] text-foreground/78 italic">{item.detail}</p>
                       </div>
                     </motion.div>
                   );

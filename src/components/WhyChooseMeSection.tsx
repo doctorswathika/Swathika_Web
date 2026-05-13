@@ -8,7 +8,7 @@ const points = [
   {
     icon: Microscope,
     title: "Latest Technology Training",
-    text: "UK-trained specialist in advanced breast oncoplastic and reconstructive techniques, offering modern, evidence-based breast care.",
+    text: "Trained with advanced technology in breast oncoplastic and reconstructive surgery.",
   },
   {
     icon: Sparkles,

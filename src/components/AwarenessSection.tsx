@@ -30,21 +30,20 @@ const defaultSymptoms = [
   "A new lump or thickening in the breast or underarm",
   "Sudden change in breast size, shape, or symmetry",
   "Skin dimpling, puckering, or redness on the breast",
-  "Nipple discharge (especially if bloody), retraction, or inversion",
+  "Nipple discharge (especially if bloody) and nipple retraction or inversion",
   "Persistent breast pain not linked to your menstrual cycle",
-  "Swelling or warmth in one part of the breast",
+  "Warmth or swelling in a specific part of the breast",
 ];
 
 const defaultDos = [
-  "Perform monthly breast self-examinations",
-  "Schedule regular mammograms above the age of 40 as recommended by your doctor",
-  "Don't ignore a lump — especially if it's painless",
+  "Perform monthly breast self-examinations after age of 20",
+  "Get annual clinical breast checkups from age 40",
 ];
 
-const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters"]);
+const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters", "Don't ignore a lump — especially if it's painless"]);
 
 const defaultDonts = [
-  "Don't ignore a lump — even if it's painless",
+  "Don’t ignore a lump, especially if painless.",
   "Don't delay a doctor's visit out of fear",
   "Don't rely on self-diagnosis from the internet",
   "Don't assume young women can't get breast cancer",
@@ -61,7 +60,7 @@ export default function AwarenessSection() {
   const subtitle = getText("awareness_subtitle", "Breast Health Awareness");
   const title = getText(
     "awareness_title",
-    "What Every Woman <span class=\"text-gradient-rose italic\">Should Know</span>",
+    'What Every Woman <span class="text-gradient-rose italic">Should Know</span>',
   );
   const description = getText(
     "awareness_description",
@@ -71,18 +70,12 @@ export default function AwarenessSection() {
   const symptomsRaw = getText("awareness_symptoms", "");
   const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
   const dosRaw = getText("awareness_dos", "");
-  const dos = dosRaw
-    ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item))
-    : defaultDos;
+  const dos = dosRaw ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item)) : defaultDos;
   const dontsRaw = getText("awareness_donts", "");
   const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
   return (
-    <section
-      id="awareness"
-      ref={ref}
-      className="relative py-20 lg:py-28 overflow-hidden bg-background"
-    >
+    <section id="awareness" ref={ref} className="relative py-20 lg:py-28 overflow-hidden bg-background">
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/30 to-background" />
@@ -183,8 +176,7 @@ export default function AwarenessSection() {
                   Don't <em className="text-gradient-rose">ignore</em> these.
                 </h3>
                 <p className="text-sm text-muted-foreground font-sans-body italic leading-[1.85] font-light tracking-[0.005em]">
-                  If you notice any of these, please consult a specialist promptly. Early evaluation is always
-                  better than waiting.
+                  If you notice any of these, please consult a specialist promptly. Early evaluation is always better.
                 </p>
               </div>
             </div>
