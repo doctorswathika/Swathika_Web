@@ -61,7 +61,7 @@ export default function AwarenessSection() {
   const subtitle = getText("awareness_subtitle", "Breast Health Awareness");
   const title = getText(
     "awareness_title",
-    "What Every Woman <span class=\"text-gradient-rose italic\">Should Know</span>",
+    'What Every Woman <span class="text-gradient-rose italic">Should Know</span>',
   );
   const description = getText(
     "awareness_description",
@@ -71,18 +71,12 @@ export default function AwarenessSection() {
   const symptomsRaw = getText("awareness_symptoms", "");
   const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
   const dosRaw = getText("awareness_dos", "");
-  const dos = dosRaw
-    ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item))
-    : defaultDos;
+  const dos = dosRaw ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item)) : defaultDos;
   const dontsRaw = getText("awareness_donts", "");
   const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
   return (
-    <section
-      id="awareness"
-      ref={ref}
-      className="relative py-20 lg:py-28 overflow-hidden bg-background"
-    >
+    <section id="awareness" ref={ref} className="relative py-20 lg:py-28 overflow-hidden bg-background">
       {/* Editorial backdrop — soft, layered, not flashy */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/30 to-background" />
@@ -183,8 +177,7 @@ export default function AwarenessSection() {
                   Don't <em className="text-gradient-rose">ignore</em> these.
                 </h3>
                 <p className="text-sm text-muted-foreground font-sans-body italic leading-[1.85] font-light tracking-[0.005em]">
-                  If you notice any of these, please consult a specialist promptly. Early evaluation is always
-                  better than waiting.
+                  If you notice any of these, please consult a specialist promptly. Early evaluation is always better.
                 </p>
               </div>
             </div>
