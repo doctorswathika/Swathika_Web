@@ -139,7 +139,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "hero_trust_indicators": {
-    "content": "MCh (UK) Trained,UK Certified Professional,700+ Surgeries,Oncology + Aesthetics",
+    "content": "MCh (UK) Trained & certified Professional,700+ Surgeries,Oncology + Aesthetics",
     "alignment": "left"
   },
   "hero_headline": {
