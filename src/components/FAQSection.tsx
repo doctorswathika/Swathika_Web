@@ -25,15 +25,19 @@ const DEFAULT_FAQS = [
   },
   {
     q: "What is oncoplastic surgery?",
-    a: "Oncoplastic surgery combines cancer surgery with plastic surgery reshaping techniques. It allows removal of tumours while actively reshaping the breast to maintain a natural, symmetrical appearance — giving the best oncological and cosmetic outcomes together.",
+    a: "Oncoplastic surgery combines cancer surgery with plastic surgery techniques. It allows removal of tumours while actively reshaping the breast to achieve a natural, symmetrical appearance — giving the best oncological and cosmetic outcomes together.",
   },
   {
     q: "Am I a candidate for breast conserving surgery?",
-    a: "Suitability depends on tumour size relative to breast size, tumour location, and whether clear margins can be achieved. Studies show that breast conserving surgery combined with radiation provides survival outcomes equivalent to mastectomy for appropriately selected patients.",
+    a: "This depends on tumour size in relation to breast size, tumour location, and if clear margins can be achieved.",
   },
   {
     q: "What is the risk of lymphoedema after sentinel node biopsy?",
-    a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance. This minimally invasive technique preserves arm function while providing accurate cancer staging.",
+    a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance. This minimally invasive technique preserves arm function while providing relatively accurate cancer staging.",
+  },
+  {
+    q: "Is mastectomy best for breast cancer in terms of survival?",
+    a: "Studies show that breast conserving surgery combined with radiation provides survival outcomes equivalent to mastectomy for appropriately selected patients.",
   },
 ];
 
