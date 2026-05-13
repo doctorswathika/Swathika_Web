@@ -155,7 +155,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_bco_overview_1": {
-    "content": "Breast Conserving Surgery (BCS), also known as lumpectomy or wide local excision, involves removing the cancerous tumour along with a margin of healthy tissue while preserving the rest of the breast.",
+    "content": "Breast Conserving Surgery (BCS), also known as lumpectomy or wide local excision, involves removing the tumour along with a margin of healthy tissue while preserving the rest of the breast.",
     "alignment": "left"
   },
   "svc_bco_overview_2": {
@@ -175,11 +175,11 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_sentinel_overview_2": {
-    "content": "By examining only the sentinel node(s), we can accurately stage the cancer while avoiding the complications associated with full axillary lymph node dissection, such as lymphoedema.",
+    "content": "By examining only the sentinel node(s), we can appropriately stage breast cancer with the aim to avoid full axillary lymph node dissection complications associated with, such as lymphoedema.",
     "alignment": "left"
   },
   "svc_sentinel_overview_3": {
-    "content": "Dr. Swathika performs this procedure using radio-isotope and/or blue dye mapping techniques, in line with international guidelines and NHS protocols from her UK training.",
+    "content": "Dr. Swathika performs this procedure using radio-isotope and/or blue dye mapping techniques, in line with international guidelines.",
     "alignment": "left"
   },
   "svc_axillary_subtitle": {
@@ -199,7 +199,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_reduction_subtitle": {
-    "content": "Expertly reshaping the breast for comfort, symmetry, and confidence — with outcomes that complement your natural form.",
+    "content": "Aesthetic enhancement of breast for comfort, symmetry, and confidence — with outcomes that complement your natural form.",
     "alignment": "left"
   },
   "svc_reduction_overview_1": {
@@ -211,7 +211,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_reduction_overview_3": {
-    "content": "Dr. Swathika's oncoplastic training ensures that every cosmetic procedure is performed with the highest standards of surgical precision and aesthetic sensitivity.",
+    "content": "Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
     "alignment": "left"
   },
   "svc_lipo_subtitle": {
@@ -247,7 +247,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_gynae_subtitle": {
-    "content": "Effective and precise correction of enlarged male breast tissue — restoring a natural masculine chest contour with minimal downtime.",
+    "content": "Effective and precise correction of male breast enlargement — restoring a natural masculine chest contour with minimal downtime.",
     "alignment": "left"
   },
   "svc_gynae_overview_1": {
@@ -279,11 +279,11 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_bco_benefits": {
-    "content": "[\"Preserves the natural breast with minimal scarring\",\"Equivalent survival outcomes to mastectomy when combined with radiation\",\"Superior cosmetic results compared to standard breast surgery\",\"Allows removal of larger tumours while conserving the breast\",\"Bilateral symmetry can be achieved in a single operation\",\"Shorter recovery time compared to mastectomy\",\"World-class oncoplastic technique by a UK-trained specialist\"]",
+    "content": "[\"Aim to Preserve the natural breast with minimal scarring\",\"Equivalent survival outcomes to mastectomy when combined with radiation\",\"Superior cosmetic results compared to standard breast surgery\",\"Allows removal of larger tumours while conserving the breast\",\"Shorter recovery time compared to mastectomy\",\"World-class oncoplastic technique by a UK-trained specialist\"]",
     "alignment": "left"
   },
   "svc_bco_process": {
-    "content": "[{\"step\":\"Diagnostic Assessment\",\"description\":\"Comprehensive evaluation of tumour size, location, and breast size to determine suitability for breast conserving surgery.\"},{\"step\":\"Technique Selection\",\"description\":\"Dr. Swathika plans the most appropriate oncoplastic approach — ranging from simple tissue rearrangement to complex reshaping.\"},{\"step\":\"The Surgery\",\"description\":\"Performed under general anaesthesia, typically taking 1–3 hours. The tumour is removed with a surrounding margin of healthy tissue, and the breast is actively reshaped.\"},{\"step\":\"Post-operative Care\",\"description\":\"Most patients go home the same day or the next day. Radiation therapy is typically recommended afterwards.\"}]",
+    "content": "[{\"step\":\"Diagnostic Assessment\",\"description\":\"Comprehensive evaluation of tumour size, location and breast size to determine appropriate breast conserving surgery.\"},{\"step\":\"Technique Selection\",\"description\":\"Dr. Swathika plans the most appropriate oncoplastic approach — ranging from simple tissue rearrangement to complex reshaping.\"},{\"step\":\"The Surgery\",\"description\":\"Performed under general anaesthesia, typically taking 1–3 hours. The tumour is removed with a surrounding margin of healthy tissue, and the breast is actively reshaped.\"},{\"step\":\"Post-operative Care\",\"description\":\"Most patients go home the same day or the next day. Radiation therapy is typically recommended afterwards.\"}]",
     "alignment": "left"
   },
   "svc_bco_faqs": {
@@ -291,15 +291,15 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_sentinel_benefits": {
-    "content": "[\"Accurate cancer staging with minimal invasiveness\",\"Significantly lower risk of lymphoedema compared to full axillary clearance\",\"Faster recovery and less post-operative discomfort\",\"Preserves arm function and mobility\",\"Guides personalised treatment planning\",\"Performed as part of breast cancer surgery — no separate procedure needed\"]",
+    "content": "[\"Accurate cancer staging with minimal invasiveness\",\"Significantly lower risk of lymphoedema compared to full axillary clearance\",\"Faster recovery and less post-operative discomfort\",\"Preserves arm function and mobility\"]",
     "alignment": "left"
   },
   "svc_implant_benefits": {
-    "content": "[\"Restores breast shape and body symmetry after mastectomy\",\"Can be performed immediately — reducing the number of operations\",\"Wide range of implant options for personalised results\",\"Shorter surgery compared to autologous (flap) reconstruction\",\"Improved psychological well-being and body confidence\",\"Expert performed by a UK-trained reconstructive specialist\"]",
+    "content": "[\"Restores breast shape and body symmetry after mastectomy\",\"Can be performed in a single session.\",\"Wide range of implant options for personalised results\",\"Helps avoid donor-site related complications compared to autologous (flap) reconstruction.\",\"Improved psychological well-being and body confidence\"]",
     "alignment": "left"
   },
   "svc_sentinel_process": {
-    "content": "[{\"step\":\"Pre-operative Mapping\",\"description\":\"A small amount of radioactive tracer and/or blue dye is injected near the tumour to identify the sentinel lymph node(s).\"},{\"step\":\"Identification & Removal\",\"description\":\"During surgery, Dr. Swathika uses a specialised probe to locate the sentinel node(s), which are then carefully removed through a small incision.\"},{\"step\":\"Pathological Analysis\",\"description\":\"The removed nodes are sent for detailed pathological examination to check for the presence of cancer cells.\"},{\"step\":\"Follow-up\",\"description\":\"If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed.\"}]",
+    "content": "[{\"step\":\"Pre-operative Mapping\",\"description\":\"A small amount of radioactive tracer and/or blue dye is injected near the tumour to identify the sentinel lymph node(s).\"},{\"step\":\"Identification & Removal\",\"description\":\"During surgery, Dr. Swathika uses a specialised technique to locate the sentinel node(s), which are then carefully removed through a small incision.\"},{\"step\":\"Pathological Analysis\",\"description\":\"The removed nodes are sent for detailed pathological examination to check for the presence of cancer cells.\"},{\"step\":\"Follow-up\",\"description\":\"Based on the sentinel node biopsy reports, the required further treatment options are discussed.\"}]",
     "alignment": "left"
   },
   "svc_sentinel_faqs": {
@@ -319,11 +319,11 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_reduction_benefits": {
-    "content": "[\"Relief from back, neck, and shoulder pain (reduction)\",\"Improved body proportions and clothing fit\",\"Enhanced confidence and self-image\",\"Natural-looking results with expert technique\",\"Scarring minimised through careful incision placement\",\"Combined oncoplastic expertise for superior outcomes\"]",
+    "content": "[\"Relief from back, neck, and shoulder pain (reduction)\",\"Improved body proportions and clothing fit\",\"Enhanced confidence and self-image\",\"Natural-looking results with expert technique\",\"Minimise Scars through careful incision placement\",\"Combined oncoplastic expertise for superior outcomes\"]",
     "alignment": "left"
   },
   "svc_reduction_process": {
-    "content": "[{\"step\":\"Personal Consultation\",\"description\":\"A confidential discussion about your goals, concerns, and expectations. Dr. Swathika will examine your breast anatomy and recommend the most suitable approach.\"},{\"step\":\"Customised Planning\",\"description\":\"Detailed surgical planning including incision patterns, implant selection (for augmentation), or tissue removal volume (for reduction).\"},{\"step\":\"The Surgery\",\"description\":\"Performed under general anaesthesia, typically taking 2–3 hours. Dr. Swathika uses proven techniques to achieve symmetrical, natural-looking results.\"},{\"step\":\"Recovery\",\"description\":\"Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months.\"}]",
+    "content": "[{\"step\":\"Personal Consultation\",\"description\":\"Dr. Swathika will perform a thorough examination along with a discussion about your goals, concerns, and expectations to recommend suitable options.\"},{\"step\":\"Customised Planning\",\"description\":\"Detailed surgical planning including incision patterns, implant selection (for augmentation) or volume of tissue removal (for reduction).\"},{\"step\":\"The Surgery\",\"description\":\"Performed under general anaesthesia, typically taking 2–3 hours.\"},{\"step\":\"Recovery\",\"description\":\"Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months.\"}]",
     "alignment": "left"
   },
   "svc_reduction_faqs": {
@@ -331,7 +331,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_lipo_benefits": {
-    "content": "[\"Completely natural results using your own tissue\",\"No foreign materials or implants required\",\"Dual benefit — slimming the donor site while enhancing the breast\",\"Ideal for correcting post-surgical contour irregularities\",\"Minimal scarring — only tiny puncture marks\",\"Can be repeated for incremental improvements\"]",
+    "content": "[\"Completely natural results using your own tissue\",\"No foreign materials required\",\"Ideal for correcting post-surgical contour irregularities\",\"Can be repeated for incremental improvements\"]",
     "alignment": "left"
   },
   "svc_lipo_process": {
@@ -343,7 +343,7 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_implant_process": {
-    "content": "[{\"step\":\"Reconstruction Planning\",\"description\":\"Detailed discussion about reconstruction options, timing, implant choices, and expected outcomes.\"},{\"step\":\"Tissue Expansion (if needed)\",\"description\":\"In some cases, a tissue expander is placed first to gradually stretch the skin and muscle before the permanent implant.\"},{\"step\":\"Implant Placement\",\"description\":\"The permanent implant is placed in the optimal position — above or below the pectoral muscle — to achieve the most natural shape.\"},{\"step\":\"Refinement & Follow-up\",\"description\":\"Secondary procedures such as nipple reconstruction or fat grafting for contour refinement may be performed.\"}]",
+    "content": "[{\"step\":\"Reconstruction Planning\",\"description\":\"Detailed discussion about reconstruction options, timing, implant choices, and expected outcomes.\"},{\"step\":\"Tissue Expansion (if needed)\",\"description\":\"In some cases, a tissue expander is placed first to gradually stretch the skin and muscle before the permanent implant.\"},{\"step\":\"Implant Placement\",\"description\":\"The implant is placed in the optimal position — above or below the pectoral muscle — to achieve the most natural shape.\"},{\"step\":\"Refinement & Follow-up\",\"description\":\"Secondary procedures such as nipple reconstruction or fat grafting for contour refinement may be required.\"}]",
     "alignment": "left"
   },
   "svc_implant_faqs": {
@@ -351,11 +351,11 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "svc_gynae_benefits": {
-    "content": "[\"Flatter, more masculine chest appearance\",\"Relief from physical discomfort and tenderness\",\"Significant boost in self-confidence and body image\",\"Minimally invasive options for mild cases\",\"Permanent results when combined with healthy lifestyle\",\"Performed by a specialist breast surgeon for optimal outcomes\"]",
+    "content": "[\"Flatter, more masculine chest appearance\",\"Relief from physical discomfort and tenderness\",\"Significant boost in self-confidence and body image\",\"Minimally invasive option.\",\"Permanent results when combined with healthy lifestyle\",\"Performed by a specialist breast surgeon for optimal outcomes\"]",
     "alignment": "left"
   },
   "svc_gynae_process": {
-    "content": "[{\"step\":\"Confidential Consultation\",\"description\":\"A private, empathetic discussion about your concerns. Dr. Swathika will examine the extent of breast enlargement and rule out underlying causes.\"},{\"step\":\"Treatment Planning\",\"description\":\"Based on the assessment, the most appropriate surgical technique is selected — liposuction, direct excision, or a combination.\"},{\"step\":\"The Procedure\",\"description\":\"Performed under general anaesthesia, typically taking 1–2 hours. Excess tissue is removed through carefully placed incisions.\"},{\"step\":\"Recovery\",\"description\":\"A compression garment is worn for 4–6 weeks. Most patients return to work within 1 week and full activities within 4–6 weeks.\"}]",
+    "content": "[{\"step\":\"Confidential Consultation\",\"description\":\"Dr. Swathika will have a private and empathetic consultation about your concerns, along with an examination to assess the extent of breast enlargement.\"},{\"step\":\"Treatment Planning\",\"description\":\"Based on the assessment, the most appropriate surgical technique is selected — liposuction, direct excision, or a combination.\"},{\"step\":\"The Procedure\",\"description\":\"Performed under general anaesthesia, typically taking 1–2 hours. Excess tissue is removed through carefully placed incisions.\"},{\"step\":\"Recovery\",\"description\":\"A compression garment is worn for 4–6 weeks. Most patients return to work within 1 week and full activities within 4–6 weeks.\"}]",
     "alignment": "left"
   },
   "svc_gynae_faqs": {
