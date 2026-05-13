@@ -79,15 +79,15 @@ const SITE_CONTENT: SiteContentMap = {
     "alignment": "left"
   },
   "awareness_symptoms": {
-    "content": "A new lump or thickening in the breast or underarm\nChange in breast size, shape, or symmetry\nSkin dimpling, puckering, or redness on the breast\nNipple discharge (especially if bloody), retraction, or inversion\nPersistent breast pain not linked to your menstrual cycle\nSwelling or warmth in part of the breast",
+    "content": "A new lump or thickening in the breast or underarm\nSudden change in breast size, shape, or symmetry\nSkin dimpling, puckering, or redness on the breast\nNipple discharge (especially if bloody) and nipple retraction or inversion\nPersistent breast pain not linked to your menstrual cycle\nWarmth or swelling in a specific part of the breast",
     "alignment": "left"
   },
   "awareness_dos": {
-    "content": "Perform monthly breast self-examinations after age 20\nGet annual clinical breast exams from age 30+\nSchedule regular mammograms as recommended by your doctor\nMaintain a healthy weight and stay physically active\nDiscuss your family history with your surgeon\nSeek a second opinion — it's your right and it matters",
+    "content": "Perform monthly breast self-examinations after age of 20\nGet annual clinical breast checkups from age 40",
     "alignment": "left"
   },
   "awareness_donts": {
-    "content": "Don't ignore a lump — even if it's painless\nDon't delay a doctor's visit out of fear\nDon't rely on self-diagnosis from the internet\nDon't assume young women can't get breast cancer\nDon't skip follow-up appointments after treatment\nDon't let stigma prevent you from seeking care",
+    "content": "Don’t ignore a lump, especially if painless.\nDon't delay a doctor's visit out of fear\nDon't rely on self-diagnosis from the internet\nDon't assume young women can't get breast cancer\nDon't skip follow-up appointments after treatment\nDon't let stigma prevent you from seeking care",
     "alignment": "left"
   },
   "testimonials_subtitle": {
