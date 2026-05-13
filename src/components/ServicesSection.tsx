@@ -87,8 +87,6 @@ export default function ServicesSection() {
     "services_title",
     'Signature <span class="text-gradient-rose italic">Treatments</span>',
   );
-  const clinicalHeading = getText("services_clinical_heading", "Clinical");
-  const cosmeticHeading = getText("services_cosmetic_heading", "Cosmetic");
 
   return (
     <section
@@ -102,48 +100,27 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: EASE }}
-          className="grid lg:grid-cols-12 gap-10 mb-20 lg:mb-28 items-end"
+          className="mb-20 lg:mb-28"
         >
-          <div className="lg:col-span-7">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="h-px w-12 bg-foreground/40" />
-              <p
-                className={`text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body ${getAlignClass(
-                  "services_subtitle",
-                )}`}
-                dangerouslySetInnerHTML={{ __html: subtitle }}
-              />
-            </div>
-            <h2
-              className={`font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.25rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground ${getAlignClass(
-                "services_title",
+          <div className="flex items-center gap-4 mb-6">
+            <span className="h-px w-12 bg-foreground/40" />
+            <p
+              className={`text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body ${getAlignClass(
+                "services_subtitle",
               )}`}
-              dangerouslySetInnerHTML={{ __html: title }}
+              dangerouslySetInnerHTML={{ __html: subtitle }}
             />
           </div>
-          <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-border/60 lg:pb-3">
-            <p className="text-[15px] lg:text-base text-muted-foreground font-sans-body font-light leading-[1.9]">
-              A considered range of clinical and cosmetic procedures — each shaped around the woman in the room,
-              not the diagnosis on the chart.
-            </p>
-          </div>
+          <h2
+            className={`font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.25rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground ${getAlignClass(
+              "services_title",
+            )}`}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         </motion.div>
 
         {/* Clinical */}
-        <div className="mb-24 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
-            className="flex items-baseline gap-6 mb-10 pb-6 border-b border-border/60"
-          >
-            <h3
-              className={`font-serif-display text-3xl lg:text-[2.5rem] font-light text-foreground leading-tight tracking-[-0.015em] ${getAlignClass(
-                "services_clinical_heading",
-              )}`}
-              dangerouslySetInnerHTML={{ __html: clinicalHeading }}
-            />
-          </motion.div>
+        <div className="mb-12 lg:mb-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {clinicalServices.map((s, i) => (
               <ServiceCard key={s.title} {...s} index={i} isVisible={isVisible} />
@@ -153,19 +130,6 @@ export default function ServicesSection() {
 
         {/* Cosmetic */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-            className="flex items-baseline gap-6 mb-10 pb-6 border-b border-border/60"
-          >
-            <h3
-              className={`font-serif-display text-3xl lg:text-[2.5rem] font-light text-foreground leading-tight tracking-[-0.015em] ${getAlignClass(
-                "services_cosmetic_heading",
-              )}`}
-              dangerouslySetInnerHTML={{ __html: cosmeticHeading }}
-            />
-          </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {cosmeticServices.map((s, i) => (
               <ServiceCard key={s.title} {...s} index={i + 4} isVisible={isVisible} />
