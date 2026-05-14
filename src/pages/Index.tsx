@@ -83,22 +83,24 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Dr. Swathika Rajendran — UK Trained Oncoplastic Surgeon | Best Breast Surgeon in Chennai</title>
+        <title>Best Breast Surgeon in Chennai | Dr. Swathika Rajendran</title>
         <meta
           name="description"
-          content="Best Breast Surgeon in Chennai — Dr. Swathika Rajendran, UK-trained Breast Oncoplastic & Reconstructive Surgeon with 700+ surgeries. Expert in breast cancer surgery, reconstruction, and aesthetic breast surgery."
+          content="Dr. Swathika Rajendran — UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. 700+ surgeries in cancer, reconstruction & aesthetic breast surgery."
         />
         <meta
           name="keywords"
           content="Best Breast Surgeon in Chennai, Top Breast Surgeon Chennai, Breast Cancer Surgeon Chennai, UK Trained Oncoplastic Surgeon India, Breast Reconstruction Specialist Chennai, Oncoplastic Breast Surgery Chennai, Female Breast Surgeon Chennai, Dr Swathika Rajendran"
         />
-        <link rel="canonical" href="https://drswathika.com" />
+        <link rel="canonical" href="https://drswathika.com/" />
         <meta property="og:title" content="Best Breast Surgeon in Chennai | Dr. Swathika Rajendran" />
         <meta
           property="og:description"
-          content="Best Breast Surgeon in Chennai. UK-trained Breast Oncoplastic & Reconstructive Surgeon. 700+ Procedures. Precision, compassion & world-class care."
+          content="UK-trained Breast Oncoplastic & Reconstructive Surgeon. 700+ Procedures. Precision, compassion & world-class care."
         />
+        <meta property="og:url" content="https://drswathika.com/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://drswathika.com/images/dr-swathika.jpeg" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
       <Navbar />
