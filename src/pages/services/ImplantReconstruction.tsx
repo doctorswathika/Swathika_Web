@@ -23,16 +23,25 @@ export default function ImplantReconstruction() {
       ]}
       process={[
         {
-          step: "Reconstruction",
+          step: "Reconstruction Planning",
+          description:
+            "Detailed discussion about reconstruction options, timing, implant choices, and expected outcomes. Dr. Swathika uses her expertise to recommend the best approach for your situation.",
+        },
+        {
+          step: "Tissue Expansion (if needed)",
+          description:
+            "In some cases, a tissue expander is placed first to gradually stretch the skin and muscle. This is filled over several weeks before being replaced with the permanent implant.",
+        },
+        {
+          step: "Implant Placement",
           description:
             "The  implant is placed in the optimal position — above or below the pectoral muscle — to achieve the most natural shape. ",
         },
         {
-          step: "Refinement",
+          step: "Refinement & Follow-up",
           description:
-            "Secondary procedures such as nipple reconstruction or fat grafting for contour refinement may be required.",
+            "Secondary procedures such as nipple reconstruction or fat grafting for contour refinement may be required.. Regular follow-up ensures long-term satisfaction.",
         },
-        { step: "Follow-up", description: "Regular follow-up ensures long-term satisfaction." },
       ]}
       faqs={[]}
       proofOfWork={[
