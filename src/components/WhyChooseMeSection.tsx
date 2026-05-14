@@ -18,7 +18,7 @@ const points = [
   {
     icon: Scissors,
     title: "Minimally Invasive Techniques",
-    text: "Where possible, gentle, breast-conserving approaches are used to reduce pain and help women in early recovery after surgery.",
+    text: "Thoughtfully planned breast-conserving procedures improve patient outcomes and support early recovery after surgery.",
   },
   {
     icon: Stamp,
@@ -75,9 +75,7 @@ export default function WhyChooseMeSection({ variant = "grid" }: { variant?: Why
                 <h3 className="font-serif-display text-2xl lg:text-[1.7rem] font-semibold text-foreground leading-[1.1] mb-2 tracking-[-0.02em]">
                   {p.title}
                 </h3>
-                <p className="text-base text-muted-foreground font-sans-body leading-relaxed max-w-2xl">
-                  {p.text}
-                </p>
+                <p className="text-base text-muted-foreground font-sans-body leading-relaxed max-w-2xl">{p.text}</p>
               </motion.article>
             ))}
           </div>
@@ -94,7 +92,9 @@ export default function WhyChooseMeSection({ variant = "grid" }: { variant?: Why
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
                   <p.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="font-serif-display text-lg font-light tracking-[-0.02em] text-foreground mb-2 leading-snug">{p.title}</h3>
+                <h3 className="font-serif-display text-lg font-light tracking-[-0.02em] text-foreground mb-2 leading-snug">
+                  {p.title}
+                </h3>
                 <p className="text-sm text-muted-foreground font-sans-body leading-relaxed">{p.text}</p>
               </motion.div>
             ))}
@@ -104,4 +104,3 @@ export default function WhyChooseMeSection({ variant = "grid" }: { variant?: Why
     </section>
   );
 }
-

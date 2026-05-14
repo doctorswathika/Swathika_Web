@@ -72,11 +72,49 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Dr. Swathika Rajendran — UK Trained Breast Oncoplastic Surgeon</title>
+        <title>Dr. Swathika Rajendran | UK-Trained Breast Surgeon</title>
         <meta
           name="description"
-          content="Learn about Dr. Swathika Rajendran's education, training, expertise, and journey as a UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
+          content="Learn about Dr. Swathika Rajendran's training, MCh credentials, and journey as a UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
         />
+        <link rel="canonical" href="https://drswathika.com/about" />
+        <meta property="og:title" content="Dr. Swathika Rajendran | UK-Trained Breast Surgeon" />
+        <meta
+          property="og:description"
+          content="UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient-first philosophy."
+        />
+        <meta property="og:url" content="https://drswathika.com/about" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:image" content="https://drswathika.com/images/dr-swathika.jpeg" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          mainEntity: {
+            "@type": "Physician",
+            name: "Dr. Swathika Rajendran",
+            jobTitle: "Breast Oncoplastic & Reconstructive Surgeon",
+            description:
+              "UK-trained (MCh) Breast Oncoplastic & Reconstructive Surgeon in Chennai with 700+ procedures.",
+            image: "https://drswathika.com/images/dr-swathika.jpeg",
+            url: "https://drswathika.com/about",
+            medicalSpecialty: ["Breast Surgery", "Oncoplastic Surgery", "Breast Reconstruction"],
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Chennai",
+              addressRegion: "Tamil Nadu",
+              addressCountry: "IN",
+            },
+            alumniOf: [
+              { "@type": "EducationalOrganization", name: "Sri Ramachandra Institute of Higher Education & Research, Chennai" },
+              { "@type": "EducationalOrganization", name: "MCh Breast Oncoplastic & Reconstructive Surgery, England, UK" },
+            ],
+            memberOf: [
+              { "@type": "Organization", name: "Association of Breast Surgeons (ABS)" },
+              { "@type": "Organization", name: "Association of Breast Surgeons of India (ABSI)" },
+              { "@type": "Organization", name: "Association of Surgeons of India (ASI)" },
+            ],
+          },
+        })}</script>
       </Helmet>
       <Navbar />
       <main className="bg-background pt-24">

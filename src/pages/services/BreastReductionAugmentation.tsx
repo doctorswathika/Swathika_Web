@@ -6,28 +6,39 @@ export default function BreastReductionAugmentation() {
     <ServicePageLayout
       contentPrefix="svc_reduction"
       title="Breast Reduction & Augmentation"
-      subtitle="Aesthetic and functional breast surgery for improved comfort, symmetry, and confidence — performed with surgical precision and artistic sensibility."
+      subtitle="Aesthetic enhancement of breast for comfort, symmetry, and confidence — with outcomes that complement your natural form."
       heroImage={heroImg}
       category="Cosmetic"
       metaDescription="Breast reduction and augmentation surgery by Dr. Swathika Rajendran in Chennai. UK-trained breast surgeon offering expert cosmetic breast procedures."
       overview={[
         "Breast reduction surgery is performed to remove excess breast tissue, fat, and skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back and neck pain, bra strap indentations, and recurrent skin infections, while improving posture and overall comfort.",
-        "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques.",
-        "Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
+        "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques. Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
       ]}
       benefits={[
         "Relief from back, neck, and shoulder pain (reduction)",
         "Improved body proportions and clothing fit",
         "Enhanced confidence and self-image",
         "Natural-looking results with expert technique",
-        "Scarring minimised through careful incision placement",
+        "Minimise Scares through careful incision placement ",
         "Combined oncoplastic expertise for superior outcomes",
       ]}
       process={[
-        { step: "Personal Consultation", description: "A confidential discussion to understand your goals, concerns, and expectations, followed by a detailed clinical examination and personalised recommendations tailored to your needs." },
-        { step: "Customised Planning", description: "Detailed surgical planning including incision patterns, implant selection (for augmentation), or tissue removal volume (for reduction). Pre-operative photographs and measurements guide the plan." },
-        { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 2–3 hours. Dr. Swathika uses proven techniques to achieve symmetrical, natural-looking results with minimal scarring." },
-        { step: "Recovery", description: "Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months as swelling settles and scars mature." },
+        {
+          step: "Personal Consultation",
+          description:
+            "Dr. Swathika will perform a thorough examination along with a discussion about your goals, concerns, and expectations to recommend suitable options. ",
+        },
+        {
+          step: "Customised Planning",
+          description:
+            "Detailed surgical planning including incision patterns, implant selection (for augmentation) or volume of tissue removal (for reduction).",
+        },
+        { step: "The Surgery", description: "Performed under general anaesthesia, typically taking 2–3 hours. " },
+        {
+          step: "Recovery",
+          description:
+            "Initial recovery takes 1–2 weeks. A surgical bra is worn for support. Final results become apparent over 3–6 months as swelling settles and scars mature.",
+        },
       ]}
       faqs={[]}
       proofOfWork={[

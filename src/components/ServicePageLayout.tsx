@@ -66,7 +66,6 @@ export default function ServicePageLayout({
       </Helmet>
       <Navbar />
       <main className="pt-24">
-
         {/* ── Editorial Hero ── */}
         <section className="relative py-14 lg:py-20 bg-background overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
@@ -116,11 +115,7 @@ export default function ServicePageLayout({
               >
                 <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(15_80%_88%/0.5)] to-[hsl(268_60%_90%/0.4)] blur-xl pointer-events-none" />
                 <div className="relative overflow-hidden rounded-[20px] aspect-[4/5] shadow-luxe">
-                  <img
-                    src={heroImage}
-                    alt={title}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={heroImage} alt={title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
                 </div>
               </motion.div>
@@ -140,9 +135,7 @@ export default function ServicePageLayout({
             >
               <div className="flex items-center gap-4 mb-7">
                 <span className="h-px w-12 bg-foreground/40" />
-                <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-                  Overview
-                </p>
+                <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">Overview</p>
               </div>
               <h2 className="font-serif-display text-[2rem] lg:text-[3rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground mb-12">
                 What is <em className="text-gradient-rose">{title}</em>?
@@ -285,7 +278,6 @@ export default function ServicePageLayout({
         </section>
 
         {/* FAQs removed — single common FAQ lives on homepage */}
-
       </main>
       <Footer />
     </>

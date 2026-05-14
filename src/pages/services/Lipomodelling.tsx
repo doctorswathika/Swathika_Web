@@ -17,16 +17,31 @@ export default function Lipomodelling() {
       ]}
       benefits={[
         "Completely natural results using your own tissue",
-        "No foreign materials or implants required",
-        "Dual benefit — slimming the donor site while enhancing the breast",
+        "No foreign materials required",
         "Ideal for correcting post-surgical contour irregularities",
-        "Minimal scarring — only tiny puncture marks",
+        "Minimal scarring",
       ]}
       process={[
-        { step: "Assessment & Planning", description: "Breast shape is carefully evaluated to identify areas requiring correction, and the most suitable donor site for fat harvesting is selected." },
-        { step: "Fat Harvesting", description: "Fat is gently harvested from the chosen donor site using specialised liposuction cannulas, minimising damage to the fat cells for optimal survival." },
-        { step: "Processing & Injection", description: "The harvested fat is processed to concentrate viable fat cells, then precisely injected into the breast in small aliquots to ensure uniform take and natural-looking results." },
-        { step: "Recovery & Results", description: "Recovery is typically 1–2 weeks. Some swelling and bruising is normal. Approximately 60–80% of transferred fat survives permanently, with final results visible at 3–6 months." },
+        {
+          step: "Assessment & Planning",
+          description:
+            "Breast shape is carefully evaluated to identify areas requiring correction, and the most suitable donor site for fat harvesting is selected.",
+        },
+        {
+          step: "Fat Harvesting",
+          description:
+            "Fat is gently harvested from the chosen donor site using specialised liposuction cannulas, minimising damage to the fat cells for optimal survival.",
+        },
+        {
+          step: "Processing & Injection",
+          description:
+            "The harvested fat is processed to concentrate viable fat cells, then precisely injected into the breast in small aliquots to ensure uniform take and natural-looking results.",
+        },
+        {
+          step: "Recovery & Results",
+          description:
+            "Recovery is typically 1–2 weeks. Some swelling and bruising is normal. Approximately 60–80% of transferred fat survives permanently, with final results visible at 3–6 months.",
+        },
       ]}
       faqs={[]}
       proofOfWork={[

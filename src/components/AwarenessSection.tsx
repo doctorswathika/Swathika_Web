@@ -7,7 +7,7 @@ const motivation = [
   {
     number: "01",
     title: "Knowledge Is Power",
-    text: "Early detection can significantly improve breast cancer outcomes. Awareness isn't just information — it's a lifeline. The more you know, the better you protect yourself and your loved ones.",
+    text: "Early detection can significantly improve breast cancer outcomes. Awareness isn’t just information — it’s a lifeline and the first step toward protecting yourself and your loved ones.",
   },
   {
     number: "02",
@@ -40,7 +40,10 @@ const defaultDos = [
   "Get annual clinical breast checkups from age 40",
 ];
 
-const removedDoItems = new Set(["Seek a second opinion — it's your right and it matters", "Don't ignore a lump — especially if it's painless"]);
+const removedDoItems = new Set([
+  "Seek a second opinion — it's your right and it matters",
+  "Don't ignore a lump — especially if it's painless",
+]);
 
 const defaultDonts = [
   "Don’t ignore a lump, especially if painless.",

@@ -17,6 +17,10 @@ export default function Mastectomy() {
       benefits={[
         "Complete removal of tumor.",
         "When breast recurrence is not feasible.",
+        "Option for immediate reconstruction in suitable cases.",
+        "Skin-sparing and nipple-sparing techniques when appropriate.",
+        "Performed by a UK-trained oncoplastic specialist.",
+        "Personalised surgical plan for every patient.",
       ]}
       process={[
         { step: "Pre-operative Planning", description: "Dr. Swathika works with the multidisciplinary team to finalise the treatment plan, including the role of chemotherapy and radiation." },
