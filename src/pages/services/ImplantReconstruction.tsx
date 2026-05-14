@@ -16,9 +16,9 @@ export default function ImplantReconstruction() {
       ]}
       benefits={[
         "Restores breast shape and body symmetry after mastectomy",
-        "Can be performed immediately — reducing the number of operations",
-        "No donor site complications as seen in autologous flap reconstruction",
+        "Can be performed in a single session",
         "Shorter surgery compared to autologous (flap) reconstruction",
+        "Helps avoid donor-site related complications compared to autologous (flap) reconstruction",
         "Improved psychological well-being and body confidence",
       ]}
       process={[
