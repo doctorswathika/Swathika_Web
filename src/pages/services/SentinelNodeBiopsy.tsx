@@ -12,8 +12,8 @@ export default function SentinelNodeBiopsy() {
       metaDescription="Sentinel node biopsy for breast cancer staging by Dr. Swathika Rajendran in Chennai. Minimally invasive lymph node assessment by a UK-trained specialist."
       overview={[
         "Sentinel Node Biopsy (SNB) is a minimally invasive procedure used to determine whether breast cancer has spread to the lymph nodes under the arm (axilla). The sentinel node is the first lymph node to which cancer cells are most likely to spread from the primary tumour.",
-        "By identifying and removing only the sentinel node in eligible patients, unnecessary extensive surgery can be avoided, thereby significantly reducing the risk of complications like lymphoedema.",
-        "This technique has revolutionised breast cancer surgery, allowing patients to receive precise staging information while preserving arm function and reducing morbidity, with proven efficacy and comparable outcomes.",
+        "By examining only the sentinel node(s), we can appropriately stage breast cancer with the aim to avoid full axillary lymph node dissection complications associated with, such as lymphoedema.",
+        "Dr. Swathika performs this procedure using radio-isotope and/or blue dye mapping techniques, in line with international guidelines.",
       ]}
       benefits={[
         "Accurate cancer staging with minimal invasiveness",
@@ -30,12 +30,12 @@ export default function SentinelNodeBiopsy() {
         {
           step: "Identification & Removal",
           description:
-            "The sentinel node(s) are identified during surgery and are then carefully removed through a small incision in the armpit.",
+            "During surgery, Dr. Swathika uses a specialised technique to locate the sentinel node(s), which are then carefully removed through a small incision.",
         },
         {
           step: "Follow-up",
           description:
-            "If the sentinel node is clear of cancer, no further axillary surgery is needed. If cancer is found, further treatment options are discussed with the multidisciplinary team.",
+            "Based on the sentinel node biopsy reports, the required further treatment options are discussed.",
         },
       ]}
       faqs={[]}
