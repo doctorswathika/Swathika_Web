@@ -88,6 +88,36 @@ export default function ServicePageLayout({
       <Helmet>
         <title>{title} — Dr. Swathika Rajendran | Chennai</title>
         <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`${title} — Dr. Swathika Rajendran`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={`https://drswathika.com${heroImage}`} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalProcedure",
+          name: title,
+          description: metaDescription,
+          url: canonicalUrl,
+          procedureType: category === "Clinical" ? "https://schema.org/SurgicalProcedure" : "https://schema.org/TherapeuticProcedure",
+          bodyLocation: "Breast",
+          performer: {
+            "@type": "Physician",
+            name: "Dr. Swathika Rajendran",
+            url: "https://drswathika.com/about",
+          },
+          ...(displayFaqs.length > 0 && {
+            mainEntityOfPage: {
+              "@type": "FAQPage",
+              mainEntity: displayFaqs.map((f: { q: string; a: string }) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          }),
+        })}</script>
       </Helmet>
       <Navbar />
       <main className="pt-24">
