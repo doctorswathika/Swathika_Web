@@ -39,7 +39,8 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   const handleNav = useHashNavigation();
   const { content: dbContent } = useSiteContent();
-
+  const location = useLocation();
+  const canonicalUrl = `https://drswathika.com${location.pathname}`;
   /** Get content for a key — inlined CMS wins over prop fallback */
   const get = (suffix: string, fallback: string) => {
     const key = `${contentPrefix}_${suffix}`;
