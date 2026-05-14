@@ -15,15 +15,24 @@ export default function ImplantReconstruction() {
         "Modern implant reconstruction offers a wide range of options including different implant types, sizes, and profiles to fit the patient’s needs.",
       ]}
       benefits={[
-        "Restores breast shape and body symmetry after mastectomy",
-        "Can be performed in a single session",
-        "Shorter surgery compared to autologous (flap) reconstruction",
-        "Helps avoid donor-site related complications compared to autologous (flap) reconstruction",
-        "Improved psychological well-being and body confidence",
+        "Restores breast shape and body symmetry after mastectomy.",
+        "Can be performed in a single session.",
+        "No donor site complications as seen in autologous flap reconstruction.",
+        "Helps avoid donor-site related complications compared to autologous (flap) reconstruction. ",
+        "Improved psychological well-being and body confidence.",
       ]}
       process={[
-        { step: "Reconstruction Planning", description: "Detailed discussion about reconstruction options, timing, implant choices, and expected outcomes. Dr. Swathika uses her expertise to recommend the best approach for your situation." },
-        { step: "Refinement & Follow-up", description: "Secondary procedures such as nipple reconstruction, fat grafting for contour refinement, or symmetry adjustments may be performed. Regular follow-up ensures long-term satisfaction." },
+        {
+          step: "Reconstruction",
+          description:
+            "The  implant is placed in the optimal position — above or below the pectoral muscle — to achieve the most natural shape. ",
+        },
+        {
+          step: "Refinement",
+          description:
+            "Secondary procedures such as nipple reconstruction or fat grafting for contour refinement may be required.",
+        },
+        { step: "Follow-up", description: "Regular follow-up ensures long-term satisfaction." },
       ]}
       faqs={[]}
       proofOfWork={[
