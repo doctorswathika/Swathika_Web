@@ -20,7 +20,6 @@ export default function SentinelNodeBiopsy() {
         "Significantly lower risk of lymphoedema compared to full axillary clearance",
         "Faster recovery and less post-operative discomfort",
         "Preserves arm function and mobility",
-        "Guides personalised treatment planning",
       ]}
       process={[
         {

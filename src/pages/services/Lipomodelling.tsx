@@ -17,10 +17,8 @@ export default function Lipomodelling() {
       ]}
       benefits={[
         "Completely natural results using your own tissue",
-        "No foreign materials or implants required",
-        "Dual benefit — slimming the donor site while enhancing the breast",
+        "No foreign materials required",
         "Ideal for correcting post-surgical contour irregularities",
-        "Minimal scarring — only tiny puncture marks",
       ]}
       process={[
         { step: "Assessment & Planning", description: "Breast shape is carefully evaluated to identify areas requiring correction, and the most suitable donor site for fat harvesting is selected." },

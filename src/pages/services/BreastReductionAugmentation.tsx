@@ -20,7 +20,7 @@ export default function BreastReductionAugmentation() {
         "Improved body proportions and clothing fit",
         "Enhanced confidence and self-image",
         "Natural-looking results with expert technique",
-        "Scarring minimised through careful incision placement",
+        "Minimise scars through careful incision placement",
         "Combined oncoplastic expertise for superior outcomes",
       ]}
       process={[

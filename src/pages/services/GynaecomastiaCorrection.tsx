@@ -16,8 +16,9 @@ export default function GynaecomastiaCorrection() {
       ]}
       benefits={[
         "Flatter, more masculine chest appearance",
+        "Relief from physical discomfort and tenderness",
         "Significant boost in self-confidence and body image",
-        "Minimally invasive options for mild cases",
+        "Minimally invasive option",
         "Permanent results when combined with healthy lifestyle",
         "Performed by a specialist breast surgeon for optimal outcomes",
       ]}
