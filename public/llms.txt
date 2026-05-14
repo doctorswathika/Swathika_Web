@@ -1,0 +1,24 @@
+# Dr. Swathika Rajendran — Breast Oncoplastic & Reconstructive Surgeon
+
+> UK-trained Breast Oncoplastic & Reconstructive Surgeon based in Chennai, India. 700+ procedures across breast cancer surgery, reconstruction, and aesthetic breast surgery.
+
+Dr. Swathika Rajendran (MCh, UK) provides advanced, compassionate breast surgery with precision and patient-first care. Services span clinical oncological procedures and cosmetic breast surgery.
+
+## Pages
+
+- [Home](/): Practice overview, expertise, reviews, and FAQs.
+- [About](/about): Education, training, MCh credentials, memberships, and clinical philosophy.
+- [Book Consultation](/book-consultation): Request a private consultation.
+- [Blog](/blog): Articles on breast health, cancer awareness, and surgery.
+
+## Services
+
+- [Mastectomy](/services/mastectomy): Complete removal of the breast with precise scar placement.
+- [Breast Conserving & Oncoplastic Surgery](/services/breast-conserving-oncoplastic): Tumour removal combined with aesthetic reshaping.
+- [Oncoplastic Surgery](/services/oncoplastic-surgery): Cancer surgery with plastic surgery techniques.
+- [Sentinel Node Biopsy](/services/sentinel-node-biopsy): Minimally invasive lymph node staging.
+- [Axillary Node Surgery](/services/axillary-node): Axillary lymph node clearance.
+- [Breast Reduction & Augmentation](/services/breast-reduction-augmentation): Aesthetic reshaping and resizing.
+- [Lipomodelling](/services/lipomodelling): Fat grafting for contour refinement.
+- [Implant Reconstruction](/services/implant-reconstruction): Implant-based breast reconstruction.
+- [Gynaecomastia Correction](/services/gynaecomastia-correction): Correction of male breast enlargement.
