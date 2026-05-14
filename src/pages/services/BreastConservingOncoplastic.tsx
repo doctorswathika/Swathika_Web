@@ -15,14 +15,17 @@ export default function BreastConservingOncoplastic() {
         "Studies consistently show that breast-conserving surgery (BCS) combined with radiation therapy provides survival outcomes equivalent to mastectomy in appropriately selected patients.",
       ]}
       benefits={[
-        "Superior cosmetic results compared to standard mastectomy",
-        "Avoid unnecessary removal of breast when feasible and preserve symmetry",
+        "Aim to preserve the natural breast with minimal scarring",
+        "Equivalent survival outcomes to mastectomy when combined with radiation",
+        "Superior cosmetic results compared to standard breast surgery",
+        "Allows removal of larger tumours while conserving the breast",
+        "World-class oncoplastic technique by a UK-trained specialist",
       ]}
       process={[
         {
-          step: "Diagnostic Assessment",
+          step: "Technique selection",
           description:
-            "Comprehensive evaluation of tumour size, location and breast size to determine appropriate breast conserving surgery.",
+            "Dr. Swathika plans the most appropriate oncoplastic approach – from simple tissue rearrangement to more complex reshaping – ensuring safe tumour removal with the best cosmetic outcome possible.",
         },
         {
           step: "The Surgery",
