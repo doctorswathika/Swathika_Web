@@ -7,29 +7,29 @@ const motivation = [
   {
     number: "01",
     title: "Knowledge Is Power",
-    text: "Early detection can significantly improve breast cancer outcomes. Awareness isn’t just information — it’s a lifeline and the first step toward protecting yourself and your loved ones.",
+    text: "Early detection can significantly improve breast cancer outcomes. Awareness isn’t just information it’s a lifeline and the first step toward protecting yourself and your loved ones.",
   },
   {
     number: "02",
     title: "You Are Not Alone",
-    text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path — and thrived. Modern oncoplastic surgery restores not just the breast, but confidence, identity, and hope.",
+    text: "A breast cancer diagnosis can feel isolating, but millions of women have walked this path and thrived. Modern oncoplastic surgery restores not just the breast, but confidence, identity and hope.",
   },
   {
     number: "03",
     title: "Healing Beyond Surgery",
-    text: "Recovery is physical, emotional, and deeply personal. With the right surgeon, every step — from diagnosis to treatment — becomes a journey towards reclaiming yourself, not just surviving.",
+    text: "Recovery is physical, emotional and deeply personal. With the right surgeon, every step from diagnosis to treatment becomes a journey towards reclaiming yourself, not just surviving.",
   },
   {
     number: "04",
     title: "Your Body, Your Choice",
-    text: "Whether it's breast conservation, reconstruction, or aesthetic surgery — the decision is yours. An experienced oncoplastic surgeon ensures you have the information and options to choose what's right for you.",
+    text: "Whether it's breast conservation, reconstruction or aesthetic surgery the decision is yours. An experienced oncoplastic surgeon ensures you have the information and options to choose what's right for you.",
   },
 ];
 
 const defaultSymptoms = [
   "A new lump or thickening in the breast or underarm",
-  "Sudden change in breast size, shape, or symmetry",
-  "Skin dimpling, puckering, or redness on the breast",
+  "Sudden change in breast size, shape or symmetry",
+  "Skin dimpling, puckering or redness on the breast",
   "Nipple discharge (especially if bloody) and nipple retraction or inversion",
   "Persistent breast pain not linked to your menstrual cycle",
   "Warmth or swelling in a specific part of the breast",
@@ -38,19 +38,17 @@ const defaultSymptoms = [
 const defaultDos = [
   "Perform monthly breast self-examinations after age of 20",
   "Get annual clinical breast checkups from age 40",
+  "Schedule regular mammograms as recommended by your doctor",
+  "Maintain a healthy weight and stay physically active",
+  "Discuss your family history with your surgeon",
 ];
-
-const removedDoItems = new Set([
-  "Seek a second opinion — it's your right and it matters",
-  "Don't ignore a lump — especially if it's painless",
-]);
 
 const defaultDonts = [
   "Don’t ignore a lump, especially if painless.",
   "Don't delay a doctor's visit out of fear",
-  "Don't rely on self-diagnosis from the internet",
+  "Don't rely on self diagnosis from the internet",
   "Don't assume young women can't get breast cancer",
-  "Don't skip follow-up appointments after treatment",
+  "Don't skip follow up appointments after treatment",
   "Don't let stigma prevent you from seeking care",
 ];
 
@@ -67,7 +65,7 @@ export default function AwarenessSection() {
   );
   const description = getText(
     "awareness_description",
-    "Awareness saves lives. Understanding the signs, knowing what to do, and taking timely action can make all the difference in your breast health journey.",
+    "Awareness saves lives. Understanding the signs, knowing what to do and taking timely action can make all the difference in your breast health journey.",
   );
 
   const symptomsRaw = getText("awareness_symptoms", "");
