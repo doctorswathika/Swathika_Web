@@ -63,16 +63,16 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>Dr. Swathika Rajendran | UK-Trained Breast Surgeon</title>
+        <title>Dr. Swathika Rajendran | UK Trained Breast Surgeon</title>
         <meta
           name="description"
           content="Learn about Dr. Swathika Rajendran's training, MCh credentials and journey as a UK trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
         />
         <link rel="canonical" href="https://drswathika.com/about" />
-        <meta property="og:title" content="Dr. Swathika Rajendran | UK-Trained Breast Surgeon" />
+        <meta property="og:title" content="Dr. Swathika Rajendran | UK Trained Breast Surgeon" />
         <meta
           property="og:description"
-          content="UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient first philosophy."
+          content="UK trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient first philosophy."
         />
         <meta property="og:url" content="https://drswathika.com/about" />
         <meta property="og:type" content="profile" />
