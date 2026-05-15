@@ -6,26 +6,26 @@ export default function Lipomodelling() {
     <ServicePageLayout
       contentPrefix="svc_lipo"
       title="Lipomodelling"
-      subtitle="Using your own body fat to refine breast shape, correct contour deformities, and enhance volume — a natural approach to breast refinement."
+      subtitle="Using your own body fat to refine breast shape, correct contour deformities and enhance volume a natural approach to breast refinement."
       heroImage={heroImg}
       category="Cosmetic"
-      metaDescription="Lipomodelling (fat transfer) breast surgery by Dr. Swathika Rajendran in Chennai. Natural breast refinement using autologous fat transfer by a UK-trained specialist."
+      metaDescription="Lipomodelling (fat transfer) breast surgery by Dr. Swathika Rajendran in Chennai. Natural breast refinement using autologous fat transfer by a UK trained specialist."
       overview={[
-        "Lipomodelling, also known as autologous fat transfer, involves harvesting fat from certain areas of your body preferably abdomen or thighs through gentle liposuction, followed by careful injection into the breast to improve shape, volume, and contour.",
-        "This technique is particularly valuable for correcting asymmetries, filling contour defects after breast cancer surgery, or providing subtle volume enhancement by using your own body fat to provide natural results.",
+        "Lipomodelling, also known as autologous fat transfer, involves harvesting fat from certain areas of your body preferably abdomen or thighs through gentle liposuction, followed by careful injection into the breast to improve shape, volume and contour.",
+        "This technique is particularly valuable for correcting asymmetries, filling contour defects after breast cancer surgery or providing subtle volume enhancement by using your own body fat to provide natural results.",
         "Dr. Swathika's training in the UK included extensive experience with lipomodelling as part of breast reconstruction and cosmetic enhancement, making her one of the few surgeons in Chennai with dedicated expertise in this refined technique.",
       ]}
       benefits={[
         "Completely natural results using your own tissue",
         "No foreign materials required",
-        "Ideal for correcting post-surgical contour irregularities",
+        "Ideal for correcting post surgical contour irregularities",
         "Minimal scarring",
       ]}
       process={[
         {
           step: "Assessment & Planning",
           description:
-            "Breast shape is carefully evaluated to identify areas requiring correction, and the most suitable donor site for fat harvesting is selected.",
+            "Breast shape is carefully evaluated to identify areas requiring correction and the most suitable donor site for fat harvesting is selected.",
         },
         {
           step: "Fat Harvesting",
