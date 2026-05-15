@@ -3,20 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  Loader2,
-  CheckCircle2,
-  ShieldCheck,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2, CheckCircle2, ShieldCheck } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
-
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Please share your name").max(100),
@@ -49,7 +39,7 @@ const contactInfo = [
 const reassurances = [
   "Reviewed personally by Dr. Swathika's team",
   "Replies within 24 hours, every working day",
-  "Strictly confidential — your details stay private",
+  "Strictly confidential your details stay private",
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -75,7 +65,7 @@ export default function BookConsultation() {
     [formData.service],
   );
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+  const EASE = [0.22, 1, 0.36, 1] as const;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,9 +98,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
     setConfirmed(true);
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -126,7 +114,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
   return (
     <>
       <Helmet>
-        <title>Schedule a Private Consultation — Dr. Swathika Rajendran | Chennai</title>
+        <title>Schedule a Private Consultation with Dr. Swathika Rajendran | Chennai</title>
         <meta
           name="description"
           content="Schedule a private, confidential consultation with Dr. Swathika Rajendran, UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
@@ -353,11 +341,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
                             disabled={submitting}
                             className="group inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full gradient-rose-gold text-foreground font-sans-body font-semibold text-[15px] tracking-wide hover:scale-[1.02] transition-all duration-300 shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.35)] disabled:opacity-60 disabled:hover:scale-100"
                           >
-                            {submitting ? (
-                              <Loader2 className="w-4 h-4 animate-spin" />
-                            ) : (
-                              <Send className="w-4 h-4" />
-                            )}
+                            {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                             {submitting ? "Sending…" : "Send Request"}
                           </button>
                         </div>
@@ -409,11 +393,19 @@ const EASE = [0.22, 1, 0.36, 1] as const;
                           Summary
                         </p>
                         <div className="text-sm font-sans-body text-foreground/80 space-y-1.5">
-                          <p><span className="text-muted-foreground">Name —</span> {formData.name}</p>
-                          <p><span className="text-muted-foreground">Email —</span> {formData.email}</p>
-                          <p><span className="text-muted-foreground">Phone —</span> {formData.phone}</p>
+                          <p>
+                            <span className="text-muted-foreground">Name —</span> {formData.name}
+                          </p>
+                          <p>
+                            <span className="text-muted-foreground">Email —</span> {formData.email}
+                          </p>
+                          <p>
+                            <span className="text-muted-foreground">Phone —</span> {formData.phone}
+                          </p>
                           {serviceLabel && (
-                            <p><span className="text-muted-foreground">Interest —</span> {serviceLabel}</p>
+                            <p>
+                              <span className="text-muted-foreground">Interest —</span> {serviceLabel}
+                            </p>
                           )}
                         </div>
                       </div>
