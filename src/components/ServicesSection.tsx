@@ -125,7 +125,7 @@ export default function ServicesSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: EASE }}
-            className="text-xs tracking-[0.3em] uppercase text-foreground/70 font-sans-body font-semibold mb-6"
+            className="text-sm tracking-[0.2em] uppercase text-foreground font-sans-body font-bold mb-8"
           >
             Clinical
           </motion.p>
@@ -142,7 +142,7 @@ export default function ServicesSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-            className="text-xs tracking-[0.3em] uppercase text-foreground/70 font-sans-body font-semibold mb-6"
+            className="text-sm tracking-[0.2em] uppercase text-foreground font-sans-body font-bold mb-8"
           >
             Cosmetic
           </motion.p>
