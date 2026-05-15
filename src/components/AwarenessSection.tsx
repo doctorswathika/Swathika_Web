@@ -71,7 +71,7 @@ export default function AwarenessSection() {
   const symptomsRaw = getText("awareness_symptoms", "");
   const symptoms = symptomsRaw ? symptomsRaw.split("\n").filter(Boolean) : defaultSymptoms;
   const dosRaw = getText("awareness_dos", "");
-  const dos = dosRaw ? dosRaw.split("\n").filter((item) => item && !removedDoItems.has(item)) : defaultDos;
+  const dos = dosRaw ? dosRaw.split("\n").filter(Boolean) : defaultDos;
   const dontsRaw = getText("awareness_donts", "");
   const donts = dontsRaw ? dontsRaw.split("\n").filter(Boolean) : defaultDonts;
 
