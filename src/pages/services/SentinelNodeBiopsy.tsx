@@ -9,16 +9,16 @@ export default function SentinelNodeBiopsy() {
       subtitle="A minimally invasive technique to accurately check if breast cancer has spread to the lymph nodes under the arm."
       heroImage={heroImg}
       category="Clinical"
-      metaDescription="Sentinel node biopsy for breast cancer staging by Dr. Swathika Rajendran in Chennai. Minimally invasive lymph node assessment by a UK-trained specialist."
+      metaDescription="Sentinel node biopsy for breast cancer staging by Dr. Swathika Rajendran in Chennai. Minimally invasive lymph node assessment by a UK trained specialist."
       overview={[
         "Sentinel Node Biopsy (SNB) is a minimally invasive procedure used to determine whether breast cancer has spread to the lymph nodes under the arm (axilla). The sentinel node is the first lymph node to which cancer cells are most likely to spread from the primary tumour.",
-        "By examining only the sentinel node(s), we can appropriately stage breast cancer with the aim to avoid full axillary lymph node dissection complications associated with, such as lymphoedema.",
+        "By examining only the sentinel node, we can appropriately stage breast cancer with the aim to avoid full axillary lymph node dissection complications associated with, such as lymphoedema.",
         "Dr. Swathika performs this procedure using radio-isotope and/or blue dye mapping techniques, in line with international guidelines.",
       ]}
       benefits={[
         "Accurate cancer staging with minimal invasiveness",
         "Significantly lower risk of lymphoedema compared to full axillary clearance",
-        "Faster recovery and less post-operative discomfort",
+        "Faster recovery and less post operative discomfort",
         "Preserves arm function and mobility",
       ]}
       process={[
