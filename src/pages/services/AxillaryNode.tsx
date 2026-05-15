@@ -25,7 +25,7 @@ export default function AxillaryNode() {
       ]}
       process={[
         {
-          step: "Pre-operative Assessment",
+          step: "Pre operative Assessment",
           description:
             "Ultrasound and biopsy of suspicious axillary nodes are performed to evaluate the extent of nodal involvement before surgery. This helps in deciding whether sentinel node biopsy or complete axillary dissection is appropriate.",
         },
@@ -40,7 +40,7 @@ export default function AxillaryNode() {
             "Axillary node surgery is performed under general anaesthesia, typically alongside the breast procedure. The sentinel node technique uses a tracer to identify and remove the key nodes for assessment with minimal disruption.",
         },
         {
-          step: "Post-operative Care & Monitoring",
+          step: "Post operative Care & Monitoring",
           description:
             "Recovery is closely monitored. Patients receive guidance on arm exercises, lymphoedema prevention and wound care. Histology results guide any further oncological treatment such as chemotherapy or radiotherapy.",
         },
