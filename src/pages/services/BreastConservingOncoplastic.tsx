@@ -32,7 +32,7 @@ export default function BreastConservingOncoplastic() {
             "Performed under general anaesthesia, typically taking 1–3 hours. The tumour is removed with a surrounding margin of healthy tissue and the breast is actively reshaped. Sentinel node biopsy or axillary dissection is often performed simultaneously.",
         },
         {
-          step: "Post-operative Care",
+          step: "Post operative Care",
           description:
             "Most patients go home the next day. Radiation therapy is typically recommended afterwards. Regular follow up ensures optimal healing, oncological safety and aesthetic satisfaction.",
         },
