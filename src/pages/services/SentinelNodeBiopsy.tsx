@@ -23,7 +23,7 @@ export default function SentinelNodeBiopsy() {
       ]}
       process={[
         {
-          step: "Pre-operative Mapping",
+          step: "Pre operative Mapping",
           description:
             "A small amount of radioactive tracer and/or blue dye is injected in the breast to identify the sentinel lymph node(s). This is done on the day of surgery.",
         },
@@ -33,7 +33,7 @@ export default function SentinelNodeBiopsy() {
             "During surgery, Dr. Swathika uses a specialised technique to locate the sentinel node(s), which are then carefully removed through a small incision.",
         },
         {
-          step: "Follow-up",
+          step: "Follow up",
           description:
             "Based on the sentinel node biopsy reports, the required further treatment options are discussed.",
         },
