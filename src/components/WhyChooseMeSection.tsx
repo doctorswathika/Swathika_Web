@@ -13,12 +13,12 @@ const points = [
   {
     icon: Sparkles,
     title: "Cosmetic Precision with Safe Cancer Removal",
-    text: "Focused on safe cancer clearance while preserving or restoring the breast, supporting both long-term health and self-confidence.",
+    text: "Focused on safe cancer clearance while preserving or restoring the breast, supporting both long term health and self confidence.",
   },
   {
     icon: Scissors,
     title: "Minimally Invasive Techniques",
-    text: "Thoughtfully planned breast-conserving procedures improve patient outcomes and support early recovery after surgery.",
+    text: "Thoughtfully planned breast conserving procedures improve patient outcomes and support early recovery after surgery.",
   },
   {
     icon: Stamp,
