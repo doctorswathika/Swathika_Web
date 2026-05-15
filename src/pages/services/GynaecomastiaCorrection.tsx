@@ -6,18 +6,18 @@ export default function GynaecomastiaCorrection() {
     <ServicePageLayout
       contentPrefix="svc_gynae"
       title="Gynaecomastia Correction"
-      subtitle="Effective and precise correction of male breast enlargement  — restoring a natural masculine chest contour with minimal downtime. "
+      subtitle="Effective and precise correction of male breast enlargement restoring a natural masculine chest contour with minimal downtime. "
       heroImage={heroImg}
       category="Cosmetic"
-      metaDescription="Gynaecomastia correction surgery by Dr. Swathika Rajendran in Chennai. Expert male breast reduction by a UK-trained breast specialist for a flatter, masculine chest."
+      metaDescription="Gynaecomastia correction surgery by Dr. Swathika Rajendran in Chennai. Expert male breast reduction by a UK trained breast specialist for a flatter, masculine chest."
       overview={[
-        "Gynaecomastia is a condition characterised by the enlargement of breast tissue in males. It usually affects both breasts and can cause physical and psychological discomfort and emotional distress.",
-        "Surgical correction involves removing the excess fat and breast tissue to create a flatter and more masculine chest.",
+        "Gynaecomastia is a condition characterised by the enlargement of breast tissue in males. It usually affects both breasts and can cause physical & psychological discomfort and emotional distress.",
+        "Surgical correction involves removing the excess fat & breast tissue to create a flatter and more masculine chest.",
       ]}
       benefits={[
-        "Flatter, more masculine chest appearance",
+        "Flatter & more masculine chest appearance",
         "Relief from physical discomfort and tenderness",
-        "Significant boost in self-confidence and body image",
+        "Significant boost in self confidence and body image",
         "Minimally invasive option",
         "Permanent results when combined with healthy lifestyle",
         "Performed by a specialist breast surgeon for optimal outcomes",
@@ -31,7 +31,7 @@ export default function GynaecomastiaCorrection() {
         {
           step: "Treatment Planning",
           description:
-            "Based on the assessment, the most appropriate surgical technique is selected — liposuction, direct excision, or a combination. The planned incisions are discussed.",
+            "Based on the assessment, the most appropriate surgical technique is selected liposuction, direct excision or a combination. The planned incisions are discussed.",
         },
         {
           step: "The Procedure",

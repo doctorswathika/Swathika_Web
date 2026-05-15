@@ -23,12 +23,12 @@ const points = [
   {
     icon: Stamp,
     title: "Minimal Scar Planning",
-    text: "Incisions follow natural breast lines and curves, keeping scars as soft, subtle, and discreet as possible.",
+    text: "Incisions follow natural breast lines & curves, keeping scars as soft, subtle and discreet as possible.",
   },
   {
     icon: ShieldCheck,
     title: "Complete Cancer Care",
-    text: "Supporting you at every step — from first consultation and diagnosis to surgery, reconstruction guidance, and long-term follow-up.",
+    text: "Supporting you at every step from first consultation and diagnosis to surgery, reconstruction guidance and long term follow up.",
   },
 ];
 

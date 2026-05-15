@@ -12,13 +12,34 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
 const faqs = [
-  { q: "What types of breast surgery does Dr. Swathika perform?", a: "Dr. Swathika offers a comprehensive range of breast procedures including mastectomy, breast conserving & oncoplastic surgery, sentinel node biopsy, axillary node surgery, breast reduction & augmentation, lipomodelling, implant reconstruction, and gynaecomastia correction." },
-  { q: "Can I have breast reconstruction at the same time as mastectomy?", a: "Yes, immediate reconstruction is often possible and is one of Dr. Swathika's specialities. This is discussed during your initial consultation based on your clinical situation and cancer treatment plan." },
-  { q: "How long does recovery take after breast surgery?", a: "Recovery varies by procedure. Most patients recover within 4–6 weeks. You can typically return to light activities within 2 weeks, but heavy lifting should be avoided for 6 weeks. Dr. Swathika provides personalised recovery guidance for every patient." },
-  { q: "What is oncoplastic surgery?", a: "Oncoplastic surgery combines cancer surgery with plastic surgery techniques. It allows removal of tumours while actively reshaping the breast to achieve a natural, symmetrical appearance — giving the best oncological and cosmetic outcomes together." },
-  { q: "Am I a candidate for breast conserving surgery?", a: "This depends on tumour size in relation to breast size, tumour location, and if clear margins can be achieved." },
-  { q: "What is the risk of lymphoedema after sentinel node biopsy?", a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance. This minimally invasive technique preserves arm function while providing relatively accurate cancer staging." },
-  { q: "Is mastectomy best for breast cancer in terms of survival?", a: "Studies show that breast conserving surgery combined with radiation provides survival outcomes equivalent to mastectomy for appropriately selected patients." },
+  {
+    q: "What types of breast surgery does Dr. Swathika perform?",
+    a: "Dr. Swathika offers a comprehensive range of breast procedures including mastectomy, breast conserving & oncoplastic surgery, sentinel node biopsy, axillary node surgery, breast reduction & augmentation, lipomodelling, implant reconstruction, and gynaecomastia correction.",
+  },
+  {
+    q: "Can I have breast reconstruction at the same time as mastectomy?",
+    a: "Yes, immediate reconstruction is often possible and is one of Dr. Swathika's specialities. This is discussed during your initial consultation based on your clinical situation and cancer treatment plan.",
+  },
+  {
+    q: "How long does recovery take after breast surgery?",
+    a: "Recovery varies by procedure. Most patients recover within 4–6 weeks. You can typically return to light activities within 2 weeks, but heavy lifting should be avoided for 6 weeks. Dr. Swathika provides personalised recovery guidance for every patient.",
+  },
+  {
+    q: "What is oncoplastic surgery?",
+    a: "Oncoplastic surgery combines cancer surgery with plastic surgery techniques. It allows removal of tumours while actively reshaping the breast to achieve a natural, symmetrical appearance — giving the best oncological and cosmetic outcomes together.",
+  },
+  {
+    q: "Am I a candidate for breast conserving surgery?",
+    a: "This depends on tumour size in relation to breast size, tumour location, and if clear margins can be achieved.",
+  },
+  {
+    q: "What is the risk of lymphoedema after sentinel node biopsy?",
+    a: "The risk of lymphoedema after sentinel node biopsy is approximately 5–7%, much lower than the 20–30% risk associated with full axillary clearance. This minimally invasive technique preserves arm function while providing relatively accurate cancer staging.",
+  },
+  {
+    q: "Is mastectomy best for breast cancer in terms of survival?",
+    a: "Studies show that breast conserving surgery combined with radiation provides survival outcomes equivalent to mastectomy for appropriately selected patients.",
+  },
 ];
 
 const jsonLd = {
@@ -51,9 +72,7 @@ const jsonLd = {
         "Implant Reconstruction",
       ],
       url: "https://drswathika.com",
-      sameAs: [
-        "https://www.linkedin.com/in/swathika-rajendran-2861aa364",
-      ],
+      sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364"],
     },
     {
       "@type": "WebSite",
@@ -83,7 +102,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Best Breast Surgeon in Chennai | Dr. Swathika Rajendran</title>
+        <title>Dr. Swathika Rajendran | Best Breast Surgeon in Chennai </title>
         <meta
           name="description"
           content="Dr. Swathika Rajendran — UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. 700+ surgeries in cancer, reconstruction & aesthetic breast surgery."

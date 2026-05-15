@@ -46,11 +46,7 @@ export default function BlogSection() {
   }, [filter]);
 
   return (
-    <section
-      id="blog"
-      className="relative py-28 lg:py-44 bg-background overflow-hidden"
-      ref={ref}
-    >
+    <section id="blog" className="relative py-28 lg:py-44 bg-background overflow-hidden" ref={ref}>
       <div className="absolute top-0 right-[-10%] w-[460px] h-[460px] rounded-full bg-[hsl(268_60%_92%/0.3)] blur-3xl pointer-events-none" />
 
       <div className="relative max-w-[88rem] mx-auto px-6 lg:px-10">
@@ -64,9 +60,7 @@ export default function BlogSection() {
           <div className="lg:col-span-7">
             <div className="flex items-center gap-4 mb-6">
               <span className="h-px w-12 bg-foreground/40" />
-              <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-                Journal
-              </p>
+              <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">Journal</p>
             </div>
             <h2 className="font-serif-display text-[2.75rem] sm:text-5xl lg:text-[4.25rem] font-light leading-[1.02] tracking-[-0.02em] text-foreground">
               Insights & <em className="text-gradient-rose">Articles</em>
@@ -74,8 +68,8 @@ export default function BlogSection() {
           </div>
           <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-border/60 lg:pb-3">
             <p className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.9]">
-              Quiet, careful writing on breast health, recovery and the questions that matter most — for the
-              women who read between the lines.
+              Quiet, careful writing on breast health, recovery and the questions that matter most for the women who
+              read between the lines.
             </p>
           </div>
         </motion.div>
@@ -92,9 +86,7 @@ export default function BlogSection() {
               key={cat}
               onClick={() => setFilter(cat)}
               className={`relative text-[11px] font-sans-body tracking-[0.3em] uppercase transition-colors duration-500 pb-1 ${
-                filter === cat
-                  ? "text-foreground"
-                  : "text-muted-foreground/70 hover:text-foreground"
+                filter === cat ? "text-foreground" : "text-muted-foreground/70 hover:text-foreground"
               }`}
             >
               {cat}
@@ -108,9 +100,7 @@ export default function BlogSection() {
         </motion.div>
 
         {posts.length === 0 ? (
-          <p className="text-center text-muted-foreground font-sans-body font-light py-16">
-            No articles found.
-          </p>
+          <p className="text-center text-muted-foreground font-sans-body font-light py-16">No articles found.</p>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             {posts.map((post, i) => (
@@ -137,7 +127,8 @@ export default function BlogSection() {
                 )}
                 <div className="flex flex-col flex-1 space-y-3">
                   <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-sans-body">
-                    {post.category} · {new Date(post.created_at).toLocaleDateString("en-US", {
+                    {post.category} ·{" "}
+                    {new Date(post.created_at).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",

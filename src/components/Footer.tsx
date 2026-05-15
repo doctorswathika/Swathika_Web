@@ -20,7 +20,7 @@ export default function Footer() {
   const handleNav = useHashNavigation();
 
   const brandDesc =
-    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate, patient-centred care.";
+    "UK Trained Breast Oncoplastic & Reconstructive Surgeon. Combining global expertise with compassionate and patient centred care.";
   const address = "Chennai, Tamil Nadu, India";
   const whatsappNumber = "919940808876";
   const email = "doctorswathika@gmail.com";
@@ -32,11 +32,7 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      id="footer"
-      className="relative pt-16 lg:pt-20 pb-10 bg-background overflow-hidden"
-      ref={ref}
-    >
+    <footer id="footer" className="relative pt-16 lg:pt-20 pb-10 bg-background overflow-hidden" ref={ref}>
       {/* Soft top wash */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[hsl(340_60%_92%/0.25)] blur-3xl pointer-events-none" />
@@ -62,9 +58,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-12 gap-12 lg:gap-16 mb-16">
           {/* Brand */}
           <div className="md:col-span-5 space-y-5">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">
-              Practice
-            </p>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">Practice</p>
             <p className="text-[15px] text-muted-foreground font-sans-body font-light leading-[1.85] max-w-md">
               {brandDesc}
             </p>
@@ -72,9 +66,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="md:col-span-3 space-y-5">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">
-              Navigate
-            </p>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">Navigate</p>
             <div className="flex flex-col gap-3">
               {quickLinks.map((l) => (
                 <button
@@ -90,9 +82,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="md:col-span-4 space-y-5">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">
-              In touch
-            </p>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body">In touch</p>
             <div className="space-y-4">
               <p className="flex items-start gap-3 text-[14px] text-foreground/75 font-sans-body font-light leading-[1.7]">
                 <MapPin className="w-4 h-4 mt-0.5 text-[hsl(var(--rose-gold))] flex-shrink-0" />

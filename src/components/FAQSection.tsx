@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -13,7 +8,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const DEFAULT_FAQS = [
   {
     q: "What types of breast surgery does Dr. Swathika perform?",
-    a: "Dr. Swathika offers a comprehensive range of breast procedures including mastectomy, breast conserving & oncoplastic surgery, sentinel node biopsy, axillary node surgery, breast reduction & augmentation, lipomodelling, implant reconstruction, and gynaecomastia correction.",
+    a: "Dr. Swathika offers a comprehensive range of breast procedures including mastectomy, breast conserving & oncoplastic surgery, sentinel node biopsy, axillary node surgery, breast reduction & augmentation, lipomodelling, implant reconstruction and gynaecomastia correction.",
   },
   {
     q: "Can I have breast reconstruction at the same time as mastectomy?",
@@ -25,11 +20,11 @@ const DEFAULT_FAQS = [
   },
   {
     q: "What is oncoplastic surgery?",
-    a: "Oncoplastic surgery combines cancer surgery with plastic surgery techniques. It allows removal of tumours while actively reshaping the breast to achieve a natural, symmetrical appearance — giving the best oncological and cosmetic outcomes together.",
+    a: "Oncoplastic surgery combines cancer surgery with plastic surgery techniques. It allows removal of tumours while actively reshaping the breast to achieve a natural, symmetrical appearance  giving the best oncological and cosmetic outcomes together.",
   },
   {
     q: "Am I a candidate for breast conserving surgery?",
-    a: "This depends on tumour size in relation to breast size, tumour location, and if clear margins can be achieved.",
+    a: "This depends on tumour size in relation to breast size, tumour location and if clear margins can be achieved.",
   },
   {
     q: "What is the risk of lymphoedema after sentinel node biopsy?",
@@ -61,11 +56,7 @@ export default function FAQSection() {
   }
 
   return (
-    <section
-      id="faq"
-      className="relative py-20 lg:py-28 bg-background overflow-hidden"
-      ref={ref}
-    >
+    <section id="faq" className="relative py-20 lg:py-28 bg-background overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-[-10%] w-[480px] h-[480px] rounded-full bg-[hsl(268_70%_92%/0.35)] blur-3xl" />
         <div className="absolute bottom-0 right-[-10%] w-[420px] h-[420px] rounded-full bg-[hsl(340_60%_92%/0.3)] blur-3xl" />
@@ -82,16 +73,14 @@ export default function FAQSection() {
           >
             <div className="flex items-center gap-4 mb-5">
               <span className="h-px w-12 bg-foreground/40" />
-              <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">
-                FAQ
-              </p>
+              <p className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body">FAQ</p>
             </div>
             <h2 className="font-serif-display text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-light leading-[1.02] tracking-[-0.025em] text-foreground">
               Frequently Asked <em className="text-gradient-rose">Questions</em>
             </h2>
             <p className="mt-5 text-[14.5px] lg:text-[15px] text-muted-foreground font-sans-body font-light leading-[1.8] max-w-md">
-              Considered, honest answers to the questions patients ask most often — drawn from years in the
-              consultation room.
+              Considered, honest answers to the questions patients ask most often drawn from years in the consultation
+              room.
             </p>
           </motion.div>
 
@@ -114,9 +103,7 @@ export default function FAQSection() {
                       <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-semibold pt-1">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="flex-1 group-hover:text-primary transition-colors duration-500">
-                        {faq.q}
-                      </span>
+                      <span className="flex-1 group-hover:text-primary transition-colors duration-500">{faq.q}</span>
                       <span className="relative ml-2 mt-1 w-4 h-4 flex-shrink-0">
                         <span className="absolute inset-x-0 top-1/2 h-px bg-foreground/60 -translate-y-1/2" />
                         <span className="absolute inset-y-0 left-1/2 w-px bg-foreground/60 -translate-x-1/2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[state=open]:rotate-90 group-data-[state=open]:opacity-0" />
