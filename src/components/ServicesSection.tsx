@@ -138,6 +138,14 @@ export default function ServicesSection() {
 
         {/* Cosmetic */}
         <div>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+            className="text-[10px] tracking-[0.45em] uppercase text-muted-foreground font-sans-body mb-6"
+          >
+            Cosmetic
+          </motion.p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {cosmeticServices.map((s, i) => (
               <ServiceCard key={s.title} {...s} index={i + 4} isVisible={isVisible} />
