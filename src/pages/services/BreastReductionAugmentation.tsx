@@ -6,19 +6,19 @@ export default function BreastReductionAugmentation() {
     <ServicePageLayout
       contentPrefix="svc_reduction"
       title="Breast Reduction & Augmentation"
-      subtitle="Aesthetic enhancement of breast for comfort, symmetry, and confidence — with outcomes that complement your natural form."
+      subtitle="Aesthetic enhancement of breast for comfort, symmetry, and confidence with outcomes that complement your natural form."
       heroImage={heroImg}
       category="Cosmetic"
-      metaDescription="Breast reduction and augmentation surgery by Dr. Swathika Rajendran in Chennai. UK-trained breast surgeon offering expert cosmetic breast procedures."
+      metaDescription="Breast reduction and augmentation surgery by Dr. Swathika Rajendran in Chennai. UK trained breast surgeon offering expert cosmetic breast procedures."
       overview={[
-        "Breast reduction surgery is performed to remove excess breast tissue, fat, and skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back and neck pain, bra strap indentations, and recurrent skin infections, while improving posture and overall comfort.",
+        "Breast reduction surgery is performed to remove excess breast tissue, fat & skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back & neck pain, bra strap indentations and recurrent skin infections, while improving posture and overall comfort.",
         "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques. Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
       ]}
       benefits={[
         "Relief from back, neck, and shoulder pain (reduction)",
         "Improved body proportions and clothing fit",
-        "Enhanced confidence and self-image",
-        "Natural-looking results with expert technique",
+        "Enhanced confidence and self image",
+        "Natural looking results with expert technique",
         "Minimise Scares through careful incision placement ",
         "Combined oncoplastic expertise for superior outcomes",
       ]}
@@ -26,7 +26,7 @@ export default function BreastReductionAugmentation() {
         {
           step: "Personal Consultation",
           description:
-            "Dr. Swathika will perform a thorough examination along with a discussion about your goals, concerns, and expectations to recommend suitable options. ",
+            "Dr. Swathika will perform a thorough examination along with a discussion about your goals, concerns and expectations to recommend suitable options. ",
         },
         {
           step: "Customised Planning",
