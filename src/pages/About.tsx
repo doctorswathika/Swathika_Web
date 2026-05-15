@@ -361,7 +361,7 @@ export default function About() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-sans-body text-base leading-[1.9] text-foreground/78 lg:text-[17px]">
                 Whether you're facing a new diagnosis, exploring reconstruction options or seeking expert advice, I'm
-                here to guide you with precision, compassion and world-class expertise.
+                here to guide you with precision, compassion and world class expertise.
               </p>
               <div className="mt-8 flex items-center justify-center">
                 <Link
