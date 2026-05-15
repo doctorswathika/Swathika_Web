@@ -3,16 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhyChooseMeSection from "@/components/WhyChooseMeSection";
-import {
-  Award,
-  GraduationCap,
-  Briefcase,
-  Shield,
-  MapPin,
-  ArrowLeft,
-  Heart,
-  Quote,
-} from "lucide-react";
+import { Award, GraduationCap, Briefcase, Shield, MapPin, ArrowLeft, Heart, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const stats = [
@@ -75,46 +66,54 @@ export default function About() {
         <title>Dr. Swathika Rajendran | UK-Trained Breast Surgeon</title>
         <meta
           name="description"
-          content="Learn about Dr. Swathika Rajendran's training, MCh credentials, and journey as a UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
+          content="Learn about Dr. Swathika Rajendran's training, MCh credentials and journey as a UK trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
         />
         <link rel="canonical" href="https://drswathika.com/about" />
         <meta property="og:title" content="Dr. Swathika Rajendran | UK-Trained Breast Surgeon" />
         <meta
           property="og:description"
-          content="UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient-first philosophy."
+          content="UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient first philosophy."
         />
         <meta property="og:url" content="https://drswathika.com/about" />
         <meta property="og:type" content="profile" />
         <meta property="og:image" content="https://drswathika.com/images/dr-swathika.jpeg" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfilePage",
-          mainEntity: {
-            "@type": "Physician",
-            name: "Dr. Swathika Rajendran",
-            jobTitle: "Breast Oncoplastic & Reconstructive Surgeon",
-            description:
-              "UK-trained (MCh) Breast Oncoplastic & Reconstructive Surgeon in Chennai with 700+ procedures.",
-            image: "https://drswathika.com/images/dr-swathika.jpeg",
-            url: "https://drswathika.com/about",
-            medicalSpecialty: ["Breast Surgery", "Oncoplastic Surgery", "Breast Reconstruction"],
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Chennai",
-              addressRegion: "Tamil Nadu",
-              addressCountry: "IN",
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            mainEntity: {
+              "@type": "Physician",
+              name: "Dr. Swathika Rajendran",
+              jobTitle: "Breast Oncoplastic & Reconstructive Surgeon",
+              description:
+                "UK trained (MCh) Breast Oncoplastic & Reconstructive Surgeon in Chennai with 700+ procedures.",
+              image: "https://drswathika.com/images/dr-swathika.jpeg",
+              url: "https://drswathika.com/about",
+              medicalSpecialty: ["Breast Surgery", "Oncoplastic Surgery", "Breast Reconstruction"],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Chennai",
+                addressRegion: "Tamil Nadu",
+                addressCountry: "IN",
+              },
+              alumniOf: [
+                {
+                  "@type": "EducationalOrganization",
+                  name: "Sri Ramachandra Institute of Higher Education & Research, Chennai",
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  name: "MCh Breast Oncoplastic & Reconstructive Surgery, England, UK",
+                },
+              ],
+              memberOf: [
+                { "@type": "Organization", name: "Association of Breast Surgeons (ABS)" },
+                { "@type": "Organization", name: "Association of Breast Surgeons of India (ABSI)" },
+                { "@type": "Organization", name: "Association of Surgeons of India (ASI)" },
+              ],
             },
-            alumniOf: [
-              { "@type": "EducationalOrganization", name: "Sri Ramachandra Institute of Higher Education & Research, Chennai" },
-              { "@type": "EducationalOrganization", name: "MCh Breast Oncoplastic & Reconstructive Surgery, England, UK" },
-            ],
-            memberOf: [
-              { "@type": "Organization", name: "Association of Breast Surgeons (ABS)" },
-              { "@type": "Organization", name: "Association of Breast Surgeons of India (ABSI)" },
-              { "@type": "Organization", name: "Association of Surgeons of India (ASI)" },
-            ],
-          },
-        })}</script>
+          })}
+        </script>
       </Helmet>
       <Navbar />
       <main className="bg-background pt-24">
@@ -149,7 +148,7 @@ export default function About() {
                     Dr. Swathika Rajendran
                   </h1>
                   <p className="max-w-2xl font-sans-body text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/65 sm:text-xs">
-                    UK-trained Breast Oncoplastic & Reconstructive Surgeon
+                    UK trained Breast Oncoplastic & Reconstructive Surgeon
                   </p>
                 </div>
 
@@ -157,9 +156,9 @@ export default function About() {
 
                 <div className="max-w-2xl space-y-5">
                   <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
-                    I'm Dr. Swathika Rajendran, a UK-trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
-                    providing complete and patient-centred breast care. My journey across India and the United Kingdom has
-                    shaped the way I practice today — with a balance of clinical precision, aesthetic sensitivity, and
+                    I'm Dr. Swathika Rajendran, a UK trained Breast Oncoplastic & Reconstructive Surgeon, dedicated to
+                    providing complete and patient centred breast care. My journey across India and the United Kingdom
+                    has shaped the way I practice today with a balance of clinical precision, aesthetic sensitivity and
                     genuine compassion for every woman who walks into my clinic.
                   </p>
                   <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
@@ -246,7 +245,7 @@ export default function About() {
             >
               <Quote className="mx-auto h-10 w-10 text-primary/45" />
               <blockquote className="mx-auto mt-6 max-w-4xl font-serif-display text-3xl font-medium italic leading-[1.18] text-foreground sm:text-4xl lg:text-[3.35rem]">
-                "My approach combines oncology precision with aesthetic sensibility — because your confidence matters as
+                "My approach combines oncology precision with aesthetic sensibility because your confidence matters as
                 much as your health."
               </blockquote>
               <div className="editorial-rule mt-8" />
@@ -361,8 +360,8 @@ export default function About() {
                 Ready to Discuss Your Care?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-sans-body text-base leading-[1.9] text-foreground/78 lg:text-[17px]">
-                Whether you're facing a new diagnosis, exploring reconstruction options, or seeking expert advice — I'm
-                here to guide you with precision, compassion, and world-class expertise.
+                Whether you're facing a new diagnosis, exploring reconstruction options or seeking expert advice, I'm
+                here to guide you with precision, compassion and world-class expertise.
               </p>
               <div className="mt-8 flex items-center justify-center">
                 <Link
