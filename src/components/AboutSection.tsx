@@ -12,13 +12,10 @@ export default function AboutSection() {
 
   const greeting = getText("about_greeting", "Hi, I'm");
   const name = getText("about_name", "DR. SWATHIKA");
-  const tagline = getText(
-    "about_tagline",
-    "I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon.",
-  );
+  const tagline = getText("about_tagline", "I'm a UK-trained Breast Oncoplastic & Reconstructive Surgeon.");
   const p1 = getText(
     "about_paragraph_1",
-    "With over 700 successful procedures and training from both India and the UK, I've seen the fear, frustration, and uncertainty many patients experience while facing breast health concerns.",
+    "With over 700 successful procedures and training from both India and the UK, I've seen the fear, frustration and uncertainty many patients experience while facing breast health concerns.",
   );
   const p2 = getText(
     "about_paragraph_2",
@@ -31,15 +28,11 @@ export default function AboutSection() {
   );
   const p4 = getText(
     "about_paragraph_4",
-    "My approach combines oncology precision along with aesthetic sensibility — because your confidence matters as much as your health.",
+    "My approach combines oncology precision along with aesthetic sensibility, because your confidence matters as much as your health.",
   );
 
   return (
-    <section
-      id="about"
-      className="relative py-28 lg:py-44 bg-background overflow-hidden"
-      ref={ref}
-    >
+    <section id="about" className="relative py-28 lg:py-44 bg-background overflow-hidden" ref={ref}>
       {/* Soft ambient washes */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 right-[-10%] w-[640px] h-[640px] rounded-full bg-[hsl(340_70%_92%/0.45)] blur-3xl" />
@@ -55,9 +48,7 @@ export default function AboutSection() {
           className="mb-16 lg:mb-24 flex items-center gap-4"
         >
           <span className="h-px w-12 bg-foreground/40" />
-          <p className="text-[13px] tracking-[0.5em] uppercase text-foreground/70 font-sans-body font-medium">
-            About
-          </p>
+          <p className="text-[13px] tracking-[0.5em] uppercase text-foreground/70 font-sans-body font-medium">About</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
