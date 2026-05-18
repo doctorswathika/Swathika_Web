@@ -36,8 +36,8 @@ const defaultSymptoms = [
 ];
 
 const defaultDos = [
-  "Perform monthly breast self-examinations after age of 20",
-  "Get annual clinical breast checkups from age 40",
+  "Perform monthly breast self-examinations after the age of 20",
+  "Get annual clinical breast checkups from the age 40",
   "Schedule regular mammograms as recommended by your doctor",
   "Maintain a healthy weight and stay physically active",
   "Discuss your family history with your surgeon",
@@ -183,9 +183,9 @@ export default function AwarenessSection() {
             </div>
             <div className="lg:col-span-8">
               <ol className="space-y-0">
-                {symptoms.map((d, i) => (
+                {symptoms.map((s, i) => (
                   <motion.li
-                    key={d}
+                    key={s}
                     initial={{ opacity: 0, x: -12 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
