@@ -15,7 +15,7 @@ import axillaryNodeImg from "@/assets/services/axillary-node.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const clinicalServices = [
+const cancercareServices = [
   { title: "Mastectomy", img: mastectomyImg, slug: "mastectomy" },
   { title: "Breast Conserving & Oncoplastic Surgery", img: breastConservingImg, slug: "breast-conserving-oncoplastic" },
   { title: "Sentinel Node Biopsy", img: sentinelNodeImg, slug: "sentinel-node-biopsy" },
@@ -83,17 +83,10 @@ export default function ServicesSection() {
   const { getText, getAlignClass } = useSiteContent();
 
   const subtitle = getText("services_subtitle", "Our Services");
-  const title = getText(
-    "services_title",
-    'Signature <span class="text-gradient-rose italic">Treatments</span>',
-  );
+  const title = getText("services_title", 'Signature <span class="text-gradient-rose italic">Treatments</span>');
 
   return (
-    <section
-      id="services"
-      className="relative py-28 lg:py-44 bg-background overflow-hidden"
-      ref={ref}
-    >
+    <section id="services" className="relative py-28 lg:py-44 bg-background overflow-hidden" ref={ref}>
       <div className="max-w-[88rem] mx-auto px-6 lg:px-10">
         {/* Editorial header */}
         <motion.div
@@ -119,7 +112,7 @@ export default function ServicesSection() {
           />
         </motion.div>
 
-        {/* Clinical */}
+        {/* Cancer Care */}
         <div className="mb-12 lg:mb-16">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -127,7 +120,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.8, ease: EASE }}
             className="text-sm tracking-[0.2em] uppercase text-foreground font-sans-body font-bold mb-8"
           >
-            Clinical
+            Cancer Care
           </motion.p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {clinicalServices.map((s, i) => (
