@@ -11,7 +11,7 @@ interface ServicePageLayoutProps {
   title: string;
   subtitle: string;
   heroImage: string;
-  category: "Clinical" | "Cosmetic";
+  category: "Cancer Care" | "Cosmetic";
   metaDescription: string;
   overview: string[];
   benefits: string[];
