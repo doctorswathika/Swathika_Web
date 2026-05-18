@@ -52,15 +52,31 @@ export default function SocialMediaSection() {
             className="lg:col-span-5 relative"
           >
             <div className="relative max-w-md mx-auto lg:mx-0">
-              <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(340_70%_88%/0.5)] to-[hsl(15_70%_88%/0.4)] blur-xl pointer-events-none" />
-              <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden shadow-luxe">
-                <img
-                  src={doctorImage}
-                  alt="Dr. Swathika Rajendran"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
+              {/* Soft halo glow */}
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[hsl(268_70%_88%/0.55)] via-[hsl(340_70%_90%/0.45)] to-[hsl(15_70%_90%/0.4)] blur-2xl pointer-events-none" />
+              {/* Circular portrait — image fills when provided, blank premium placeholder otherwise */}
+              <div className="relative aspect-square rounded-full overflow-hidden shadow-luxe ring-1 ring-border/60 bg-gradient-to-br from-[hsl(340_40%_97%)] via-[hsl(0_0%_100%)] to-[hsl(268_40%_97%)]">
+                {DOCTOR_IMAGE_SRC ? (
+                  <img
+                    src={DOCTOR_IMAGE_SRC}
+                    alt="Dr. Swathika Rajendran"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-3 text-muted-foreground/60">
+                      <div className="w-16 h-16 rounded-full border border-border/70 flex items-center justify-center bg-background/40 backdrop-blur-sm">
+                        <ImageIcon className="w-6 h-6" strokeWidth={1.25} />
+                      </div>
+                      <span className="text-[10px] tracking-[0.4em] uppercase font-sans-body">
+                        Portrait
+                      </span>
+                    </div>
+                  </div>
+                )}
+                {/* Subtle gold ring accent */}
+                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[hsl(38_55%_70%/0.25)] pointer-events-none" />
               </div>
             </div>
           </motion.div>
