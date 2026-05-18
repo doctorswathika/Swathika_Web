@@ -185,7 +185,7 @@ export default function AwarenessSection() {
               <ol className="space-y-0">
                 {symptoms.map((d, i) => (
                   <motion.li
-                    key={s}
+                    key={d}
                     initial={{ opacity: 0, x: -12 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
