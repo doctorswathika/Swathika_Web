@@ -12,14 +12,14 @@ export default function BreastReductionAugmentation() {
       metaDescription="Breast reduction and augmentation surgery by Dr. Swathika Rajendran in Chennai. UK trained breast surgeon offering expert cosmetic breast procedures."
       overview={[
         "Breast reduction surgery is performed to remove excess breast tissue, fat & skin, achieving a breast size proportionate to the body. It helps relieve symptoms such as back & neck pain, bra strap indentations and recurrent skin infections, while improving posture and overall comfort.",
-        "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques. Each treatment plan is tailored to patient needs, focusing on both functional & aesthetical improvement.",
+        "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques. Each treatment plan is tailored to patient needs, focusing on both functional & aesthetic improvement.",
       ]}
       benefits={[
-        "Relief from back, neck, and shoulder pain (reduction)",
+        "Relief from back, neck, and shoulder pain (Breast)",
         "Improved body proportions and clothing fit",
         "Enhanced confidence and self image",
         "Natural looking results with expert technique",
-        "Minimise Scares through careful incision placement ",
+        "Minimise Scars through careful incision placement ",
         "Combined oncoplastic expertise for superior outcomes",
       ]}
       process={[

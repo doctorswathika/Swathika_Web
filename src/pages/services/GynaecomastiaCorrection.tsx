@@ -16,7 +16,6 @@ export default function GynaecomastiaCorrection() {
       ]}
       benefits={[
         "Flatter & more masculine chest appearance",
-        "Relief from physical discomfort and tenderness",
         "Significant boost in self confidence and body image",
         "Minimally invasive option",
         "Permanent results when combined with healthy lifestyle",
@@ -31,7 +30,7 @@ export default function GynaecomastiaCorrection() {
         {
           step: "Treatment Planning",
           description:
-            "Based on the assessment, the most appropriate surgical technique is selected liposuction, direct excision or a combination. The planned incisions are discussed.",
+            "Based on the assessment, the most appropriate surgical technique such as liposuction, direct excision or a combination is selected.",
         },
         {
           step: "The Procedure",
@@ -41,7 +40,7 @@ export default function GynaecomastiaCorrection() {
         {
           step: "Recovery",
           description:
-            "A compression garment is worn for 4–6 weeks. Most patients return to work within 1–2 weeks and full physical activities after 6 weeks. Results are immediately visible.",
+            "A compression garment is worn for 4–6 weeks. Most patients return to work within 1–2 weeks and full physical activities after 6 weeks.",
         },
       ]}
       faqs={[]}

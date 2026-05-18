@@ -12,7 +12,7 @@ export default function AxillaryNode() {
       metaDescription="Axillary node surgery by Dr. Swathika Rajendran in Chennai. UK trained breast surgeon specialising in axillary lymph node dissection and management as part of comprehensive breast cancer treatment."
       overview={[
         "The axillary lymph nodes located in the armpit, is the main drainage site for breast and plays a key role in breast cancer staging and treatment planning. Determining the  spread of cancer to these nodes is essential for effective treatment planning.",
-        "Axillary node surgery involves a sentinel lymph node biopsy a minimally invasive surgery or an axillary lymph node dissection (ALND) when a more extensive procedure is required.",
+        "Axillary node surgery involves a sentinel lymph node biopsy, a minimally invasive surgery or an axillary lymph node dissection (ALND) a more extensive procedure.",
         "Dr. Swathika Rajendran aims to give an evidence based, patient centred approach to minimising complications such as lymphoedema while ensuring thorough oncological safety.",
       ]}
       benefits={[
