@@ -191,11 +191,9 @@ export default function AwarenessSection() {
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.07, ease: EASE }}
                     className="group flex items-baseline gap-7 py-7 lg:py-8 border-b border-border/60 first:border-t first:border-border/60"
                   >
-                    <span className="font-serif-display text-sm text-muted-foreground/80 tabular-nums w-8 flex-shrink-0">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-[16px] lg:text-[18px] text-foreground/85 font-sans-body font-light leading-[1.55] tracking-[0.005em] group-hover:text-foreground transition-colors duration-300">
-                      {s}
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-destructive/70 flex-shrink-0" />
+                    <span className="text-[15.5px] lg:text-base text-foreground/85 font-sans-body font-light leading-[1.75] tracking-[0.005em]">
+                      {d}
                     </span>
                   </motion.li>
                 ))}
