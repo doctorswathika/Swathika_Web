@@ -163,7 +163,7 @@ export default function About() {
                   </p>
                   <p className="font-sans-body text-[15px] leading-[1.9] text-foreground/80 sm:text-base lg:text-[17px]">
                     Having performed over 700 breast surgeries, from complex cancer surgeries to aesthetic procedures, I
-                    have seen how treatment is about much more than just about removing the disease.
+                    have seen how treatment is much more than just removing the disease.
                   </p>
                 </div>
 
