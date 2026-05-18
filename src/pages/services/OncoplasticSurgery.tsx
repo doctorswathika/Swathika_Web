@@ -7,7 +7,7 @@ export default function OncoplasticSurgery() {
       title="Oncoplastic Surgery"
       subtitle="The gold standard in breast cancer surgery — combining complete cancer removal with expert breast reshaping for optimal oncological and aesthetic outcomes."
       heroImage={heroImg}
-      category="Clinical"
+      category="Cancer Care"
       metaDescription="Oncoplastic breast surgery by Dr. Swathika Rajendran in Chennai. UK-trained specialist combining cancer surgery with aesthetic breast reshaping for the best outcomes."
       overview={[
         "Oncoplastic surgery is an advanced surgical technique that combines oncological (cancer) surgery with plastic surgery principles. It allows surgeons to remove larger tumours while maintaining or improving the appearance of the breast.",
