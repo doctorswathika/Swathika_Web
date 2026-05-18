@@ -113,10 +113,23 @@ export default function ServicePageLayout({
                 transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="lg:col-span-5 relative"
               >
-                <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(15_80%_88%/0.5)] to-[hsl(268_60%_90%/0.4)] blur-xl pointer-events-none" />
+                {contentPrefix !== "svc_reduction" && (
+                  <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[hsl(15_80%_88%/0.5)] to-[hsl(268_60%_90%/0.4)] blur-xl pointer-events-none" />
+                )}
                 <div className="relative overflow-hidden rounded-[20px] aspect-[4/5] shadow-luxe">
-                  <img src={heroImage} alt={title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
+                  <img
+                    src={heroImage}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                    style={
+                      contentPrefix === "svc_reduction"
+                        ? { filter: "contrast(1.08) saturate(1.05)" }
+                        : undefined
+                    }
+                  />
+                  {contentPrefix !== "svc_reduction" && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
+                  )}
                 </div>
               </motion.div>
             </div>

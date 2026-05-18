@@ -100,9 +100,11 @@ export default function FAQSection() {
                 >
                   <AccordionTrigger className="group font-serif-display text-[1.05rem] lg:text-[1.2rem] font-normal text-foreground text-left py-5 lg:py-6 hover:no-underline tracking-[-0.01em] leading-[1.35] [&>svg]:hidden">
                     <span className="flex items-baseline gap-4 lg:gap-6 pr-4 w-full">
-                      <span className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-sans-body font-semibold pt-1">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                      <span
+                        className="inline-block w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                        style={{ backgroundColor: "hsl(268 70% 52%)" }}
+                        aria-hidden
+                      />
                       <span className="flex-1 group-hover:text-primary transition-colors duration-500">{faq.q}</span>
                       <span className="relative ml-2 mt-1 w-4 h-4 flex-shrink-0">
                         <span className="absolute inset-x-0 top-1/2 h-px bg-foreground/60 -translate-y-1/2" />

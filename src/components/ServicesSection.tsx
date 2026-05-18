@@ -42,6 +42,7 @@ function ServiceCard({
   index: number;
   isVisible: boolean;
 }) {
+  const isCrisp = slug === "breast-reduction-augmentation";
   return (
     <Link to={`/services/${slug}`} onClick={() => window.scrollTo(0, 0)} className="group block">
       <motion.div
@@ -59,8 +60,15 @@ function ServiceCard({
             initial={{ scale: 1.04 }}
             whileHover={{ scale: 1.06 }}
             transition={{ duration: 1.4, ease: EASE }}
+            style={isCrisp ? { filter: "contrast(1.08) saturate(1.05)" } : undefined}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
+          <div
+            className={
+              isCrisp
+                ? "absolute inset-0 bg-gradient-to-t from-foreground/55 via-transparent to-transparent"
+                : "absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent"
+            }
+          />
           {/* Top corner arrow */}
           <div className="absolute top-4 right-4 text-white">
             <ArrowUpRight className="w-4 h-4 opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500" />
