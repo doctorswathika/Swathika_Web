@@ -16,7 +16,7 @@ export default function Mastectomy() {
       ]}
       benefits={[
         "Complete removal of tumor.",
-        "When breast recurrence is not feasible.",
+        "When breast conservation is not feasible.",
         "Option for immediate reconstruction in suitable cases.",
         "Skin sparing and nipple sparing techniques when appropriate.",
         "Performed by a UK trained oncoplastic specialist.",
