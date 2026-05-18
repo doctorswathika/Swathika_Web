@@ -183,7 +183,7 @@ export default function AwarenessSection() {
             </div>
             <div className="lg:col-span-8">
               <ol className="space-y-0">
-                {symptoms.map((s, i) => (
+                {symptoms.map((d, i) => (
                   <motion.li
                     key={s}
                     initial={{ opacity: 0, x: -12 }}
