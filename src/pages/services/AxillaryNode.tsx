@@ -8,7 +8,7 @@ export default function AxillaryNode() {
       title="Axillary Node Surgery"
       subtitle="Precise assessment and management of axillary lymph nodes a critical step in staging and treating breast cancer with expert surgical care."
       heroImage={heroImg}
-      category="Clinical"
+      category="Cancer Care"
       metaDescription="Axillary node surgery by Dr. Swathika Rajendran in Chennai. UK trained breast surgeon specialising in axillary lymph node dissection and management as part of comprehensive breast cancer treatment."
       overview={[
         "The axillary lymph nodes located in the armpit, is the main drainage site for breast and plays a key role in breast cancer staging and treatment planning. Determining the  spread of cancer to these nodes is essential for effective treatment planning.",

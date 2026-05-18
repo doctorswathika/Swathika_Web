@@ -8,7 +8,7 @@ export default function Mastectomy() {
       title="Mastectomy"
       subtitle="Involves complete removal of the breast with precise and careful scar placement."
       heroImage={heroImg}
-      category="Clinical"
+      category="Cancer Care"
       metaDescription="Expert mastectomy surgery by Dr. Swathika Rajendran in Chennai. UK trained breast oncoplastic surgeon with 700+ procedures. Safe & precise breast removal for cancer treatment."
       overview={[
         "Mastectomy is a surgical procedure to remove one or both breasts completely. It is most commonly performed as a treatment for breast cancer when breast conservation is not possible, but may also be done as a preventive measure for women at high risk of developing the disease.",

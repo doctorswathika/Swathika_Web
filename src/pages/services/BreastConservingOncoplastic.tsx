@@ -8,7 +8,7 @@ export default function BreastConservingOncoplastic() {
       title="Breast Conserving & Oncoplastic Surgery"
       subtitle="Precise tumour removal combines oncological safety with cosmetic excellence, reshaping the breast for the best possible outcome."
       heroImage={heroImg}
-      category="Clinical"
+      category="Cancer Care"
       metaDescription="Breast conserving and oncoplastic surgery by Dr. Swathika Rajendran in Chennai. UK trained specialist combining lumpectomy with aesthetic reshaping for superior oncological and cosmetic results."
       overview={[
         "Breast Conserving Surgery (BCS), also known as lumpectomy or wide local excision, involves removing the tumour along with a margin of healthy tissue while preserving the rest of the breast. ",

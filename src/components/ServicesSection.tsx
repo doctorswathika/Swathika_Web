@@ -123,7 +123,7 @@ export default function ServicesSection() {
             Cancer Care
           </motion.p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {clinicalServices.map((s, i) => (
+            {cancercareServices.map((s, i) => (
               <ServiceCard key={s.title} {...s} index={i} isVisible={isVisible} />
             ))}
           </div>
