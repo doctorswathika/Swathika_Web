@@ -26,8 +26,8 @@ const timeline = [
     detail: "Mastered advanced surgical techniques and patient management.",
   },
   {
-    title: "Focused Training — Plastic & Aesthetic Surgery",
-    institution: "Specialised training in plastic and aesthetic surgical techniques",
+    title: "Focused Clinical Experience — Plastic & Aesthetic Surgery",
+    institution: "Specialised clinical experience in plastic and aesthetic surgical techniques",
     icon: Briefcase,
     detail: "Developed expertise in aesthetic principles applied to breast surgery.",
   },
