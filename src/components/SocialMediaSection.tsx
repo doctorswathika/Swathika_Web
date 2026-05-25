@@ -3,9 +3,11 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Youtube, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import { ImageIcon } from "lucide-react";
 
+import doctorImage from "@/assets/social/dr-swathika-social.jpg";
+
 // Placeholder for the upcoming social media portrait. Drop the image into
 // src/assets/dr-swathika-social.png and set DOCTOR_IMAGE_SRC below to render it.
-const DOCTOR_IMAGE_SRC: string | null = null;
+const DOCTOR_IMAGE_SRC: string | null = doctorImage;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 

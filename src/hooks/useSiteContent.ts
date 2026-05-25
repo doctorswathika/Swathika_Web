@@ -94,7 +94,7 @@ const SITE_CONTENT: SiteContentMap = {
   },
   awareness_dos: {
     content:
-      "Perform monthly breast self examinations after age of 20\nGet annual clinical breast checkups from age 40\nSchedule regular mammograms as recommended by your doctor\nMaintain a healthy weight and stay physically active\nDiscuss your family history with your surgeon",
+      "Perform monthly breast self-examinations after the age of 20\nGet annual clinical breast checkups from the age 40\nSchedule regular mammograms as recommended by your doctor\nMaintain a healthy weight and stay physically active\nDiscuss your family history with your surgeon",
     alignment: "left",
   },
   awareness_donts: {
@@ -383,7 +383,7 @@ const SITE_CONTENT: SiteContentMap = {
   },
   svc_reduction_benefits: {
     content:
-      '["Relief from back, neck and shoulder pain (reduction)","Improved body proportions and clothing fit","Enhanced confidence and self-image","Natural looking results with expert technique","Minimise Scars through careful incision placement","Combined oncoplastic expertise for superior outcomes"]',
+      '["Relief from back, neck, and shoulder pain (Breast)","Improved body proportions and clothing fit","Enhanced confidence and self image","Natural looking results with expert technique","Minimise Scars through careful incision placement ","Combined oncoplastic expertise for superior outcomes"]',
     alignment: "left",
   },
   svc_reduction_process: {
