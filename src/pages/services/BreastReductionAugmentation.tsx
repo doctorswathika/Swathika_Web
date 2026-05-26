@@ -15,7 +15,7 @@ export default function BreastReductionAugmentation() {
         "Breast augmentation is performed to enhance breast size and shape using implants or fat transfer techniques. Each treatment plan is tailored to patient needs, focusing on both functional & aesthetic improvement.",
       ]}
       benefits={[
-        "Relief from back, neck, and shoulder pain (Breast)",
+        "Relief from back, neck, and shoulder pain (Breast Reduction)",
         "Improved body proportions and clothing fit",
         "Enhanced confidence and self image",
         "Natural looking results with expert technique",
