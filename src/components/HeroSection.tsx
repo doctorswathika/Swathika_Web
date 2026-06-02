@@ -157,10 +157,10 @@ export default function HeroSection() {
           className="flex-1 flex items-center justify-center px-6 lg:px-12 py-12 lg:py-0 self-center"
           style={{ y: textY, willChange: "transform" }}
         >
-          <div className={`space-y-8 max-w-xl ${getAlignClass("hero_headline")}`}>
+          <div className="space-y-8 max-w-xl text-center">
             <div className="space-y-6">
               <h1
-                className={`font-serif-display text-[2.5rem] sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground ${getAlignClass("hero_headline")}`}
+                className="font-serif-display text-[2.5rem] sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-light leading-[1.05] tracking-[-0.02em] text-foreground text-center"
                 dangerouslySetInnerHTML={{ __html: headline }}
               />
 
@@ -168,7 +168,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className={`text-[16px] sm:text-lg text-foreground/80 font-sans-body font-light leading-[1.75] ${getAlignClass("hero_description")}`}
+                className="text-[16px] sm:text-lg text-foreground/80 font-sans-body font-light leading-[1.75] text-center"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
 
@@ -176,7 +176,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
-                className={`pt-2 text-xs sm:text-sm md:text-[15px] font-sans-body font-medium ${getAlignClass("hero_trust_indicators")}`}
+                className="pt-2 text-xs sm:text-sm md:text-[15px] font-sans-body font-medium text-center"
               >
                 <div className="flex flex-wrap justify-center gap-x-5 sm:gap-x-7 gap-y-2 sm:flex-nowrap">
                   {trustItems.map((item) => (
