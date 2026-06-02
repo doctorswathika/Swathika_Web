@@ -55,18 +55,18 @@ export default function SocialMediaSection() {
           >
             <div className="relative max-w-md mx-auto lg:mx-0">
               {/* Soft halo glow */}
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-[hsl(268_70%_88%/0.55)] via-[hsl(340_70%_90%/0.45)] to-[hsl(15_70%_90%/0.4)] blur-2xl pointer-events-none" />
-              {/* Illustration card */}
-              <div className="relative rounded-3xl overflow-hidden shadow-luxe ring-1 ring-border/40 bg-white">
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[hsl(268_70%_88%/0.55)] via-[hsl(340_70%_90%/0.45)] to-[hsl(15_70%_90%/0.4)] blur-2xl pointer-events-none" />
+              {/* Circular portrait */}
+              <div className="relative aspect-square rounded-full overflow-hidden shadow-luxe ring-1 ring-border/60 bg-white">
                 {DOCTOR_IMAGE_SRC ? (
                   <img
                     src={DOCTOR_IMAGE_SRC}
                     alt="Dr. Swathika Rajendran"
-                    className="w-full h-auto object-contain"
+                    className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
                 ) : (
-                  <div className="aspect-square flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex flex-col items-center gap-3 text-muted-foreground/60">
                       <div className="w-16 h-16 rounded-full border border-border/70 flex items-center justify-center bg-background/40 backdrop-blur-sm">
                         <ImageIcon className="w-6 h-6" strokeWidth={1.25} />
@@ -78,7 +78,7 @@ export default function SocialMediaSection() {
                   </div>
                 )}
                 {/* Subtle gold ring accent */}
-                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-[hsl(38_55%_70%/0.25)] pointer-events-none" />
+                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[hsl(38_55%_70%/0.25)] pointer-events-none" />
               </div>
             </div>
           </motion.div>
