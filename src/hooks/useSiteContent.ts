@@ -448,9 +448,7 @@ let fetchPromise: Promise<SiteContentMap> | null = null;
 
 async function fetchAllContent(): Promise<SiteContentMap> {
   // @ts-ignore - The site_content table might not be in generated types yet
-  const { data } = await supabase
-    .from("site_content")
-    .select("section_key, content, alignment");
+  const { data } = await supabase.from("site_content" as any).select("section_key, content, alignment");
   const map: SiteContentMap = {};
   if (data) {
     data.forEach((row: any) => {
