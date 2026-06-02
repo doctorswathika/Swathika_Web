@@ -155,8 +155,7 @@ export default function AdminGoogleReviews() {
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-serif-display text-3xl font-semibold text-foreground">Google Reviews</h1>
         <p className="text-muted-foreground font-sans-body mt-2">
-          Manage reviews and select which ones to display on your website. Use a 3rd party widget to embed the live Google review feed, and manually curate featured reviews here.
-        </p>
+          Manage reviews and select which ones to display on your website.
       </motion.div>
 
       {/* Actions bar */}
@@ -204,9 +203,8 @@ export default function AdminGoogleReviews() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className={`glass rounded-2xl p-5 transition-all ${
-                review.is_displayed ? "border-l-4 border-primary/50" : "opacity-70"
-              }`}
+              className={`glass rounded-2xl p-5 transition-all ${review.is_displayed ? "border-l-4 border-primary/50" : "opacity-70"
+                }`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 space-y-3">
@@ -228,9 +226,8 @@ export default function AdminGoogleReviews() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-3.5 h-3.5 ${
-                            i < review.rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
-                          }`}
+                          className={`w-3.5 h-3.5 ${i < review.rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
+                            }`}
                         />
                       ))}
                     </div>
@@ -241,11 +238,10 @@ export default function AdminGoogleReviews() {
                 </div>
 
                 <div className="flex flex-col items-end gap-2 shrink-0 min-w-[140px]">
-                  <span className={`text-[10px] font-sans-body uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                    review.is_displayed
+                  <span className={`text-[10px] font-sans-body uppercase tracking-wider px-2 py-0.5 rounded-full ${review.is_displayed
                       ? "bg-primary/15 text-primary"
                       : "bg-muted text-muted-foreground"
-                  }`}>
+                    }`}>
                     {review.is_displayed ? "On site" : "Hidden"}
                   </span>
 
@@ -420,11 +416,10 @@ export default function AdminGoogleReviews() {
                   {[...Array(5)].map((_, idx) => (
                     <Star
                       key={idx}
-                      className={`w-5 h-5 ${
-                        idx < previewReview.rating
+                      className={`w-5 h-5 ${idx < previewReview.rating
                           ? "fill-[hsl(43_85%_60%)] text-[hsl(43_85%_60%)]"
                           : "text-white/20"
-                      }`}
+                        }`}
                     />
                   ))}
                 </footer>
