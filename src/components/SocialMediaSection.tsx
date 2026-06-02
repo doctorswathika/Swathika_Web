@@ -53,16 +53,16 @@ export default function SocialMediaSection() {
             transition={{ duration: 1.1, ease: EASE }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative max-w-md mx-auto lg:mx-0">
+            <div className="relative max-w-md mx-auto lg:mx-0 isolate z-10">
               {/* Soft halo glow */}
-              <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[hsl(268_70%_88%/0.55)] via-[hsl(340_70%_90%/0.45)] to-[hsl(15_70%_90%/0.4)] blur-2xl pointer-events-none" />
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[hsl(268_70%_88%/0.55)] via-[hsl(340_70%_90%/0.45)] to-[hsl(15_70%_90%/0.4)] blur-2xl pointer-events-none -z-10" />
               {/* Circular portrait */}
-              <div className="relative aspect-square rounded-full overflow-hidden shadow-luxe ring-1 ring-border/60 bg-white">
+              <div className="relative aspect-square rounded-full overflow-hidden shadow-luxe ring-1 ring-border/60 bg-white z-10">
                 {DOCTOR_IMAGE_SRC ? (
                   <img
                     src={DOCTOR_IMAGE_SRC}
                     alt="Dr. Swathika Rajendran"
-                    className="w-full h-full object-cover object-top"
+                    className="absolute inset-0 w-full h-full object-cover object-[50%_10%]"
                     loading="lazy"
                   />
                 ) : (
@@ -78,7 +78,7 @@ export default function SocialMediaSection() {
                   </div>
                 )}
                 {/* Subtle gold ring accent */}
-                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[hsl(38_55%_70%/0.25)] pointer-events-none" />
+                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[hsl(38_55%_70%/0.25)] pointer-events-none z-20" />
               </div>
             </div>
           </motion.div>
