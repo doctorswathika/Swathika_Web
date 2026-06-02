@@ -245,8 +245,8 @@ export default function About() {
             >
               <Quote className="mx-auto h-10 w-10 text-primary/45" />
               <blockquote
-                className="mx-auto mt-6 max-w-4xl font-serif-display text-3xl font-medium italic leading-[5.5] text-foreground sm:text-4xl lg:text-[3.35rem]"
-                style={{ lineHeight: 5.5 }}
+                className="mx-auto mt-6 max-w-4xl font-serif-display text-3xl font-medium italic leading-[1.5] text-foreground sm:text-4xl lg:text-[3.35rem]"
+                style={{ lineHeight: 1.5 }}
               >
                 "My approach combines oncology precision with aesthetic sensibility because your confidence matters as
                 much as your health."
