@@ -38,7 +38,6 @@ const contactInfo = [
 
 const reassurances = [
   "Reviewed personally by Dr. Swathika's team",
-  "Replies within 24 hours, every working day",
   "Strictly confidential your details stay private",
 ];
 
