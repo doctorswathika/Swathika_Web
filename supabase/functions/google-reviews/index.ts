@@ -37,7 +37,7 @@ serve(async (req) => {
 
     // Fetch reviews from Google Places API
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=reviews&key=${apiKey}`
+      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=reviews&reviews_sort=newest&key=${apiKey}`
     );
     const data = await res.json();
 
