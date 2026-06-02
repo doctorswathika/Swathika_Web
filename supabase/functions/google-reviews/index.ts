@@ -58,7 +58,7 @@ serve(async (req) => {
       review_time: r.time,
     }));
 
-    // Upsert reviews into DB (don't change is_displayed)
+    // Upsert reviews into DB (don't change is_displayed for existing)
     for (const review of reviews) {
       const { data: existing } = await sb
         .from('google_reviews')
@@ -67,7 +67,7 @@ serve(async (req) => {
         .maybeSingle();
 
       if (!existing) {
-        await sb.from('google_reviews').insert(review);
+        await sb.from('google_reviews').insert({ ...review, is_displayed: true });
       } else {
         // Update text/rating/time but keep is_displayed
         await sb.from('google_reviews')
