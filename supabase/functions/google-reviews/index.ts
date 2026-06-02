@@ -57,7 +57,7 @@ serve(async (req: Request) => {
       review_id: `google_${r.time}`,
       author_name: r.author_name,
       rating: r.rating,
-      text: r.text,
+      text: r.text || "",
       profile_photo_url: r.profile_photo_url || null,
       relative_time: r.relative_time_description,
       review_time: r.time,
@@ -72,7 +72,8 @@ serve(async (req: Request) => {
         .maybeSingle();
 
       if (!existing) {
-        await sb.from('google_reviews').insert({ ...review, is_displayed: true });
+        const hasText = review.text && review.text.trim().length > 0;
+        await sb.from('google_reviews').insert({ ...review, is_displayed: hasText });
       } else {
         // Update text/rating/time but keep is_displayed
         await sb.from('google_reviews')

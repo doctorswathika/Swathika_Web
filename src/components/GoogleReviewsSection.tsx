@@ -98,6 +98,8 @@ export default function GoogleReviewsSection() {
       .from("google_reviews")
       .select("id, author_name, rating, text, profile_photo_url, relative_time, review_time")
       .eq("is_displayed", true)
+      .not("text", "is", null)
+      .neq("text", "")
       .order("rating", { ascending: false })
       .order("review_time", { ascending: false, nullsFirst: false })
       .limit(10);
