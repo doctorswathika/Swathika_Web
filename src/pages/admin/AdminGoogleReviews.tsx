@@ -156,6 +156,7 @@ export default function AdminGoogleReviews() {
         <h1 className="font-serif-display text-3xl font-semibold text-foreground">Google Reviews</h1>
         <p className="text-muted-foreground font-sans-body mt-2">
           Manage reviews and select which ones to display on your website.
+        </p>
       </motion.div>
 
       {/* Actions bar */}
