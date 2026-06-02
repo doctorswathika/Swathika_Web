@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+// Serving static site content directly to avoid database schema and loading latency issues
+
 
 /**
  * Static site content combined with dynamic fetch.
@@ -443,59 +443,12 @@ const SITE_CONTENT: SiteContentMap = {
   },
 };
 
-let cachedContent: SiteContentMap | null = null;
-let fetchPromise: Promise<SiteContentMap> | null = null;
-
-async function fetchAllContent(): Promise<SiteContentMap> {
-  // @ts-ignore - The site_content table might not be in generated types yet
-  const { data } = await supabase.from("site_content" as any).select("section_key, content, alignment");
-  const map: SiteContentMap = {};
-  if (data) {
-    data.forEach((row: any) => {
-      map[row.section_key] = { content: row.content, alignment: row.alignment };
-    });
-  }
-  return map;
-}
-
 export function useSiteContent() {
-  const [content, setContent] = useState<SiteContentMap>(
-    cachedContent ?? SITE_CONTENT,
-  );
-  const [loading, setLoading] = useState(!cachedContent);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    if (!fetchPromise) {
-      fetchPromise = fetchAllContent().finally(() => {
-        fetchPromise = null;
-      });
-    }
-
-    fetchPromise
-      .then((map) => {
-        const mergedContent = { ...SITE_CONTENT, ...map };
-        cachedContent = mergedContent;
-        if (isMounted) {
-          setContent(mergedContent);
-          setLoading(false);
-        }
-      })
-      .catch(() => {
-        if (isMounted) setLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   const getText = (key: string, fallback: string = ""): string =>
-    content[key]?.content || fallback;
+    SITE_CONTENT[key]?.content || fallback;
 
   const getAlignClass = (key: string): string => {
-    const a = content[key]?.alignment ?? "left";
+    const a = SITE_CONTENT[key]?.alignment ?? "left";
     return a === "center"
       ? "text-center"
       : a === "right"
@@ -503,5 +456,5 @@ export function useSiteContent() {
         : "text-left";
   };
 
-  return { content, loading, getText, getAlignClass };
+  return { content: SITE_CONTENT, loading: false, getText, getAlignClass };
 }
