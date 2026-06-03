@@ -47,13 +47,13 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Physician",
-      "@id": "https://drswathika.com/#physician",
+      "@id": "https://drswathikarajendran.com/#physician",
       name: "Dr. Swathika Rajendran",
       alternateName: "Dr Swathika Rajendran",
       description:
         "UK Trained Breast Oncoplastic & Reconstructive Surgeon based in Chennai, India. 700+ procedures in breast cancer surgery, reconstruction & aesthetic breast surgery.",
       medicalSpecialty: ["Breast Surgery", "Oncoplastic Surgery", "Breast Reconstruction", "Surgical Oncology"],
-      image: "https://drswathika.com/images/dr-swathika.jpeg",
+      image: "https://drswathikarajendran.com/images/dr-swathika.jpeg",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Chennai",
@@ -71,24 +71,24 @@ const jsonLd = {
         "Lipomodelling",
         "Implant Reconstruction",
       ],
-      url: "https://drswathika.com",
+      url: "https://drswathikarajendran.com",
       sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364"],
     },
     {
       "@type": "WebSite",
-      "@id": "https://drswathika.com/#website",
-      url: "https://drswathika.com",
+      "@id": "https://drswathikarajendran.com/#website",
+      url: "https://drswathikarajendran.com",
       name: "Dr. Swathika Rajendran — Best Breast Surgeon in Chennai",
       inLanguage: "en",
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://drswathika.com/blog?q={search_term_string}",
+        target: "https://drswathikarajendran.com/blog?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     },
     {
       "@type": "FAQPage",
-      "@id": "https://drswathika.com/#faq",
+      "@id": "https://drswathikarajendran.com/#faq",
       mainEntity: faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
@@ -111,15 +111,15 @@ const Index = () => {
           name="keywords"
           content="Best Breast Surgeon in Chennai, Top Breast Surgeon Chennai, Breast Cancer Surgeon Chennai, UK Trained Oncoplastic Surgeon India, Breast Reconstruction Specialist Chennai, Oncoplastic Breast Surgery Chennai, Female Breast Surgeon Chennai, Dr Swathika Rajendran"
         />
-        <link rel="canonical" href="https://drswathika.com/" />
+        <link rel="canonical" href="https://drswathikarajendran.com/" />
         <meta property="og:title" content="Best Breast Surgeon in Chennai | Dr. Swathika Rajendran" />
         <meta
           property="og:description"
           content="UK-trained Breast Oncoplastic & Reconstructive Surgeon. 700+ Procedures. Precision, compassion & world-class care."
         />
-        <meta property="og:url" content="https://drswathika.com/" />
+        <meta property="og:url" content="https://drswathikarajendran.com/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://drswathika.com/images/dr-swathika.jpeg" />
+        <meta property="og:image" content="https://drswathikarajendran.com/images/dr-swathika.jpeg" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
       <Navbar />

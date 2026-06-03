@@ -154,12 +154,12 @@ export default function BlogPostPage() {
         <title>{post.title} — Dr. Swathika Rajendran</title>
         <meta name="description" content={post.excerpt || post.title} />
         <meta name="keywords" content={`${post.category}, breast surgery, breast cancer, oncoplastic surgery, Dr Swathika Rajendran, breast surgeon Chennai`} />
-        <link rel="canonical" href={`https://drswathika.com/blog/${post.slug}`} />
+        <link rel="canonical" href={`https://drswathikarajendran.com/blog/${post.slug}`} />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt || post.title} />
-        <meta property="og:url" content={`https://drswathika.com/blog/${post.slug}`} />
+        <meta property="og:url" content={`https://drswathikarajendran.com/blog/${post.slug}`} />
         {post.image_url && <meta property="og:image" content={post.image_url} />}
         <meta property="article:published_time" content={new Date(post.created_at).toISOString()} />
         <meta property="article:author" content={post.author} />
@@ -176,13 +176,13 @@ export default function BlogPostPage() {
           "image": post.image_url ? [post.image_url] : undefined,
           "datePublished": new Date(post.created_at).toISOString(),
           "dateModified": new Date(post.created_at).toISOString(),
-          "author": { "@type": "Person", "name": post.author, "url": "https://drswathika.com/about" },
+          "author": { "@type": "Person", "name": post.author, "url": "https://drswathikarajendran.com/about" },
           "publisher": {
             "@type": "Organization",
             "name": "Dr. Swathika Rajendran",
-            "logo": { "@type": "ImageObject", "url": "https://drswathika.com/images/dr-swathika.jpeg" }
+            "logo": { "@type": "ImageObject", "url": "https://drswathikarajendran.com/images/dr-swathika.jpeg" }
           },
-          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://drswathika.com/blog/${post.slug}` },
+          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://drswathikarajendran.com/blog/${post.slug}` },
           "articleSection": post.category,
           "inLanguage": "en"
         })}</script>

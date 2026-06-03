@@ -2,7 +2,7 @@
 // Public endpoint — no auth required.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
-const SITE = "https://drswathika.com";
+const SITE = "https://drswathikarajendran.com";
 
 const STATIC_ROUTES: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },

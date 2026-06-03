@@ -60,17 +60,17 @@ export default function Blog() {
           name="keywords"
           content="breast cancer blog, oncoplastic surgery, breast reconstruction, breast health Chennai, Dr Swathika Rajendran"
         />
-        <link rel="canonical" href="https://drswathika.com/blog" />
+        <link rel="canonical" href="https://drswathikarajendran.com/blog" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Breast Health Journal | Dr. Swathika Rajendran" />
-        <meta property="og:url" content="https://drswathika.com/blog" />
+        <meta property="og:url" content="https://drswathikarajendran.com/blog" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "Dr. Swathika Rajendran, Breast Health Journal",
-            url: "https://drswathika.com/blog",
+            url: "https://drswathikarajendran.com/blog",
             author: { "@type": "Person", name: "Dr. Swathika Rajendran" },
             inLanguage: "en",
           })}

@@ -130,7 +130,7 @@ const SITE_CONTENT: SiteContentMap = {
     alignment: "left",
   },
   footer_email: {
-    content: "contact@drswathika.com",
+    content: "doctorswathika@gmail.com",
     alignment: "left",
   },
   footer_whatsapp: {

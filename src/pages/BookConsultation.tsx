@@ -118,7 +118,7 @@ export default function BookConsultation() {
           name="description"
           content="Schedule a private, confidential consultation with Dr. Swathika Rajendran, UK-trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
         />
-        <link rel="canonical" href="https://drswathika.com/book-consultation" />
+        <link rel="canonical" href="https://drswathikarajendran.com/book-consultation" />
       </Helmet>
       <Navbar />
       <main className="pt-24">

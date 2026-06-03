@@ -1,4 +1,4 @@
-# https://drswathika.com — Robots policy
+# https://drswathikarajendran.com — Robots policy
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -19,4 +19,4 @@ Allow: /
 Disallow: /admin
 Disallow: /auth
 
-Sitemap: https://drswathika.com/sitemap.xml
+Sitemap: https://drswathikarajendran.com/sitemap.xml

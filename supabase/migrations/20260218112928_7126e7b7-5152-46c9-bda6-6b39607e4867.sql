@@ -56,7 +56,7 @@ Don''t let stigma prevent you from seeking care'),
 ('footer_disclaimer', 'Footer — Medical Disclaimer', 'Medical Disclaimer: This website is for informational purposes only and does not constitute medical advice. Please consult a qualified healthcare professional for diagnosis and treatment.'),
 ('footer_address', 'Footer — Address', 'Chennai, Tamil Nadu, India'),
 ('footer_phone', 'Footer — Phone Number', '+91 98765 43210'),
-('footer_email', 'Footer — Email', 'contact@drswathika.com'),
+('footer_email', 'Footer — Email', 'doctorswathika@gmail.com'),
 ('footer_whatsapp', 'Footer — WhatsApp Number', '919876543210'),
 
 -- Consultation Modal

@@ -68,15 +68,15 @@ export default function About() {
           name="description"
           content="Learn about Dr. Swathika Rajendran's training, MCh credentials and journey as a UK trained Breast Oncoplastic & Reconstructive Surgeon in Chennai."
         />
-        <link rel="canonical" href="https://drswathika.com/about" />
+        <link rel="canonical" href="https://drswathikarajendran.com/about" />
         <meta property="og:title" content="Dr. Swathika Rajendran | UK Trained Breast Surgeon" />
         <meta
           property="og:description"
           content="UK trained Breast Oncoplastic & Reconstructive Surgeon in Chennai. Education, credentials, expertise and patient first philosophy."
         />
-        <meta property="og:url" content="https://drswathika.com/about" />
+        <meta property="og:url" content="https://drswathikarajendran.com/about" />
         <meta property="og:type" content="profile" />
-        <meta property="og:image" content="https://drswathika.com/images/dr-swathika.jpeg" />
+        <meta property="og:image" content="https://drswathikarajendran.com/images/dr-swathika.jpeg" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -87,8 +87,8 @@ export default function About() {
               jobTitle: "Breast Oncoplastic & Reconstructive Surgeon",
               description:
                 "UK trained (MCh) Breast Oncoplastic & Reconstructive Surgeon in Chennai with 700+ procedures.",
-              image: "https://drswathika.com/images/dr-swathika.jpeg",
-              url: "https://drswathika.com/about",
+              image: "https://drswathikarajendran.com/images/dr-swathika.jpeg",
+              url: "https://drswathikarajendran.com/about",
               medicalSpecialty: ["Breast Surgery", "Oncoplastic Surgery", "Breast Reconstruction"],
               address: {
                 "@type": "PostalAddress",
