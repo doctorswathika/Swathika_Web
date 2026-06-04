@@ -9,7 +9,6 @@ const STATIC_ROUTES = [
   { loc: "/book-consultation", changefreq: "monthly", priority: "0.8" },
   { loc: "/services/mastectomy", changefreq: "monthly", priority: "0.8" },
   { loc: "/services/breast-conserving-oncoplastic", changefreq: "monthly", priority: "0.8" },
-  { loc: "/services/oncoplastic-surgery", changefreq: "monthly", priority: "0.8" },
   { loc: "/services/sentinel-node-biopsy", changefreq: "monthly", priority: "0.7" },
   { loc: "/services/axillary-node", changefreq: "monthly", priority: "0.7" },
   { loc: "/services/breast-reduction-augmentation", changefreq: "monthly", priority: "0.8" },
