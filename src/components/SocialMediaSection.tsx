@@ -27,7 +27,7 @@ const SOCIAL_LINKS = [
   {
     label: "LinkedIn",
     handle: "Swathika Rajendran",
-    href: "https://www.linkedin.com/in/swathika-rajendran-2861aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    href: "https://www.linkedin.com/in/swathika-rajendran-2861aa364/",
     Icon: Linkedin,
   },
 ];

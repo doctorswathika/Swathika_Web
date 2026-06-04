@@ -72,7 +72,7 @@ const jsonLd = {
         "Implant Reconstruction",
       ],
       url: "https://drswathikarajendran.com",
-      sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364"],
+      sameAs: ["https://www.linkedin.com/in/swathika-rajendran-2861aa364/"],
     },
     {
       "@type": "WebSite",
