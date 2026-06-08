@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
+import { Link } from "react-router-dom";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -114,9 +115,26 @@ export default function Footer() {
           <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light leading-[1.75] max-w-3xl">
             {disclaimer}
           </p>
-          <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light flex-shrink-0">
-            © {new Date().getFullYear()} Dr. Swathika Rajendran
-          </p>
+          <div className="flex flex-col items-center gap-3 md:items-end flex-shrink-0">
+            <p className="text-[11.5px] text-muted-foreground/85 font-sans-body font-light">
+              © {new Date().getFullYear()} Dr. Swathika Rajendran
+            </p>
+            <nav aria-label="Legal links" className="flex items-center gap-5">
+              <Link
+                to="/privacy-policy"
+                className="text-[11px] text-muted-foreground/70 font-sans-body font-light hover:text-foreground hover:translate-x-0 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Privacy Policy
+              </Link>
+              <span className="text-muted-foreground/40 text-[11px]" aria-hidden="true">·</span>
+              <Link
+                to="/terms-and-conditions"
+                className="text-[11px] text-muted-foreground/70 font-sans-body font-light hover:text-foreground transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Terms &amp; Conditions
+              </Link>
+            </nav>
+          </div>
         </div>
       </motion.div>
     </footer>

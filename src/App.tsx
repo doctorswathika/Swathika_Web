@@ -26,6 +26,8 @@ import AdminBookings from "./pages/admin/AdminBookings";
 import AdminGoogleReviews from "./pages/admin/AdminGoogleReviews";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +59,8 @@ const App = () => (
             <Route path="/services/gynaecomastia-correction" element={<GynaecomastiaCorrection />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             {/* Admin Portal */}
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminBlog />} />
