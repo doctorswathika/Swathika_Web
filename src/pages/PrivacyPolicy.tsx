@@ -169,11 +169,7 @@ export default function PrivacyPolicy() {
                 transition={{ duration: 1, delay: 0.3, ease: EASE }}
                 className="mt-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 border-b border-border/60 pb-10 lg:pb-14"
               >
-                <p className="font-sans-body text-[15px] leading-[1.85] text-foreground/65 max-w-xl lg:text-[16px]">
-                  This page explains how we collect, use, store, and protect the
-                  personal information you share with us when you visit this website
-                  or book a consultation.
-                </p>
+
                 <p className="font-sans-body text-[11px] uppercase tracking-[0.35em] text-muted-foreground/70 flex-shrink-0">
                   Dr. Swathika Rajendran
                 </p>
