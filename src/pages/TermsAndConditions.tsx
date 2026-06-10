@@ -156,11 +156,7 @@ export default function TermsAndConditions() {
                 transition={{ duration: 1, delay: 0.3, ease: EASE }}
                 className="mt-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 border-b border-border/60 pb-10 lg:pb-14"
               >
-                <p className="font-sans-body text-[15px] leading-[1.85] text-foreground/65 max-w-xl lg:text-[16px]">
-                  Please read these Terms and Conditions carefully before using this
-                  website or booking a consultation. By accessing our services, you
-                  agree to be bound by these terms.
-                </p>
+
                 <p className="font-sans-body text-[11px] uppercase tracking-[0.35em] text-muted-foreground/70 flex-shrink-0">
                   Dr. Swathika Rajendran
                 </p>
@@ -249,21 +245,8 @@ export default function TermsAndConditions() {
             ]} />
           </Section>
 
-          {/* ── 05 — Intellectual Property ── */}
-          <Section id="tc-ip" number="05" title="Intellectual Property Rights">
-            <Para>All content available on this Website, including but not limited to:</Para>
-            <Bullets items={["Text", "Graphics", "Logos", "Images", "Videos", "Website design and layout"]} />
-            <Para className="mt-4">
-              is the intellectual property of Dr. Swathika Rajendran or licensed content
-              providers and is protected under applicable copyright and intellectual property laws.
-            </Para>
-            <Para>
-              Unauthorized use, reproduction, or distribution of Website content is prohibited.
-            </Para>
-          </Section>
-
-          {/* ── 06 — Privacy ── */}
-          <Section id="tc-privacy" number="06" title="Privacy">
+          {/* ── 05 — Privacy ── */}
+          <Section id="tc-privacy" number="05" title="Privacy">
             <Para>
               Your use of this Website is also governed by Our Privacy Policy, which explains
               how We collect, use, and protect Your information.
@@ -273,8 +256,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 07 — Third-Party Links ── */}
-          <Section id="tc-thirdparty" number="07" title="Third-Party Links">
+          {/* ── 06 — Third-Party Links ── */}
+          <Section id="tc-thirdparty" number="06" title="Third-Party Links">
             <Para>
               This Website may contain links to third-party websites for informational purposes.
             </Para>
@@ -289,8 +272,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 08 — Limitation of Liability ── */}
-          <Section id="tc-liability" number="08" title="Limitation of Liability">
+          {/* ── 07 — Limitation of Liability ── */}
+          <Section id="tc-liability" number="07" title="Limitation of Liability">
             <Para>
               While We strive to keep the information on this Website accurate and updated,
               We make no warranties or guarantees regarding:
@@ -303,8 +286,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 09 — Website Availability ── */}
-          <Section id="tc-availability" number="09" title="Website Availability">
+          {/* ── 08 — Website Availability ── */}
+          <Section id="tc-availability" number="08" title="Website Availability">
             <Para>
               We reserve the right to modify, suspend, or discontinue any part of the Website
               without prior notice.
@@ -314,8 +297,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 10 — Changes to Terms ── */}
-          <Section id="tc-changes" number="10" title="Changes to Terms &amp; Conditions">
+          {/* ── 09 — Changes to Terms ── */}
+          <Section id="tc-changes" number="09" title="Changes to Terms &amp; Conditions">
             <Para>We may revise or update these Terms &amp; Conditions periodically.</Para>
             <Para>
               Any updates will be posted on this page with the revised effective date. Continued
@@ -323,8 +306,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 11 — Governing Law ── */}
-          <Section id="tc-law" number="11" title="Governing Law">
+          {/* ── 10 — Governing Law ── */}
+          <Section id="tc-law" number="10" title="Governing Law">
             <Para>
               These Terms &amp; Conditions shall be governed and interpreted in accordance with
               the laws of India and applicable regulations in Tamil Nadu.
@@ -335,8 +318,8 @@ export default function TermsAndConditions() {
             </Para>
           </Section>
 
-          {/* ── 12 — Contact Information ── */}
-          <Section id="tc-contact" number="12" title="Contact Information">
+          {/* ── 11 — Contact Information ── */}
+          <Section id="tc-contact" number="11" title="Contact Information">
             <Para>
               If You have any questions regarding these Terms &amp; Conditions, You may contact
               Us through the official contact details provided on the Website.
