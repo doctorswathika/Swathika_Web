@@ -4,6 +4,7 @@ import { Menu, X, LogIn, LogOut } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
+import { trackCtaClick } from "@/lib/analytics";
 
 const navLinks: { label: string; href: string; isRoute?: boolean }[] = [
   { label: "About Me", href: "/about", isRoute: true },
@@ -60,8 +61,9 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const handleNavClick = (href: string, isRoute?: boolean) => {
+  const handleNavClick = (href: string, isRoute?: boolean, label?: string) => {
     setMenuOpen(false);
+    if (label) trackCtaClick(`Nav — ${label}`);
     if (isRoute) {
       setTimeout(() => handleNav(href, true), 300);
     } else {
@@ -159,7 +161,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={() => handleNavClick(l.href, l.isRoute)}
+                  onClick={() => handleNavClick(l.href, l.isRoute, l.label)}
                   className="group relative font-serif-display text-2xl md:text-4xl tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
                   {l.label}
@@ -173,7 +175,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
-                onClick={() => handleNavClick("/book-consultation", true)}
+                onClick={() => { trackCtaClick("Book Consultation — Nav Menu"); handleNavClick("/book-consultation", true); }}
                 className="cta-luxe mt-4 px-8 py-3 rounded-full gradient-rose-gold text-foreground text-sm font-sans-body font-medium tracking-widest uppercase"
               >
                 Book Consultation

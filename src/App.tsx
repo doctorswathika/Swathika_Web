@@ -28,10 +28,15 @@ import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import { useLandingTracker } from "./hooks/useLandingTracker";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  // Track which platform brought this visitor — fires once per session
+  useLandingTracker();
+
+  return (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -76,6 +81,7 @@ const App = () => (
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
-);
+  );
+};
 
 export default App;

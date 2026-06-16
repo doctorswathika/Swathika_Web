@@ -3,6 +3,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { Link } from "react-router-dom";
+import { trackCtaClick } from "@/lib/analytics";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -72,7 +73,7 @@ export default function Footer() {
               {quickLinks.map((l) => (
                 <button
                   key={l.href}
-                  onClick={() => handleNavClick(l.href, l.isRoute)}
+                  onClick={() => { trackCtaClick(`Footer Nav — ${l.label}`); handleNavClick(l.href, l.isRoute); }}
                   className="text-left text-[14px] text-foreground/75 font-sans-body font-light hover:text-foreground hover:translate-x-1 transition-all duration-500"
                 >
                   {l.label}
@@ -93,6 +94,7 @@ export default function Footer() {
                 href={`https://api.whatsapp.com/send?phone=${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackCtaClick("Footer — WhatsApp")}
                 className="flex items-center gap-3 text-[14px] text-foreground/75 font-sans-body font-light hover:text-foreground transition-colors group"
               >
                 <MessageCircle className="w-4 h-4 text-[hsl(142_60%_45%)] group-hover:scale-110 transition-transform" />
@@ -100,6 +102,7 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${email}`}
+                onClick={() => trackCtaClick("Footer — Email")}
                 className="flex items-center gap-3 text-[14px] text-foreground/75 font-sans-body font-light hover:text-foreground transition-colors group"
               >
                 <Mail className="w-4 h-4 text-[hsl(var(--rose-gold))] group-hover:scale-110 transition-transform" />

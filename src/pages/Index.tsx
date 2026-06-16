@@ -10,6 +10,7 @@ import SocialMediaSection from "@/components/SocialMediaSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
 
 const faqs = [
   {
@@ -99,6 +100,9 @@ const jsonLd = {
 };
 
 const Index = () => {
+  // Track which homepage sections visitors scroll into view
+  useScrollTracking();
+
   return (
     <>
       <Helmet>
@@ -124,15 +128,15 @@ const Index = () => {
       </Helmet>
       <Navbar />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <AwarenessSection />
-        <GoogleReviewsSection />
-        <BookConsultationCTA />
-        <BlogSection />
-        <SocialMediaSection />
-        <FAQSection />
+        <div data-section="Hero"><HeroSection /></div>
+        <div data-section="About"><AboutSection /></div>
+        <div data-section="Services"><ServicesSection /></div>
+        <div data-section="Awareness"><AwarenessSection /></div>
+        <div data-section="Reviews"><GoogleReviewsSection /></div>
+        <div data-section="Book Consultation CTA"><BookConsultationCTA /></div>
+        <div data-section="Blog"><BlogSection /></div>
+        <div data-section="Social Media"><SocialMediaSection /></div>
+        <div data-section="FAQ"><FAQSection /></div>
       </main>
       <Footer />
     </>

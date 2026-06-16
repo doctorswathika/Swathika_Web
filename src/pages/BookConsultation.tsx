@@ -7,6 +7,7 @@ import { MapPin, Phone, Mail, Clock, Send, Loader2, CheckCircle2, ShieldCheck } 
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
+import { trackFormSubmit } from "@/lib/analytics";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Please share your name").max(100),
@@ -95,6 +96,7 @@ export default function BookConsultation() {
       return;
     }
     setConfirmed(true);
+    trackFormSubmit("Book Consultation");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

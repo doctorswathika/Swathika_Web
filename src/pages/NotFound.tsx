@@ -1,11 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { trackPageView } from "@/lib/analytics";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    // Report the broken URL to GA4 as a custom event
+    trackPageView(location.pathname, `404 — ${location.pathname}`);
   }, [location.pathname]);
 
   return (

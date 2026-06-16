@@ -3,6 +3,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { trackCtaClick } from "@/lib/analytics";
 
 import mastectomyImg from "@/assets/services/mastectomy.jpg";
 import breastConservingImg from "@/assets/services/breast-conserving.jpg";
@@ -44,7 +45,11 @@ function ServiceCard({
 }) {
   const isCrisp = slug === "breast-reduction-augmentation";
   return (
-    <Link to={`/services/${slug}`} onClick={() => window.scrollTo(0, 0)} className="group block">
+    <Link
+      to={`/services/${slug}`}
+      onClick={() => { window.scrollTo(0, 0); trackCtaClick(`Service Card — ${title}`); }}
+      className="group block"
+    >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}

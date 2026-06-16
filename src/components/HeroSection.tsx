@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import drSwathikaHero from "@/assets/dr-swathika-hero.jpeg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { trackCtaClick } from "@/lib/analytics";
 
 const WHATSAPP_NUMBER = "919940808876";
 
@@ -196,7 +197,7 @@ export default function HeroSection() {
                 className="flex justify-center"
               >
                 <button
-                  onClick={() => navigate("/book-consultation")}
+                  onClick={() => { trackCtaClick("Book a Consultation — Hero"); navigate("/book-consultation"); }}
                   className="cta-luxe group inline-flex items-center gap-3 px-11 py-5 rounded-full gradient-rose-gold font-sans-body font-bold text-lg tracking-wide text-foreground shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.45)] ring-2 ring-[hsl(var(--primary)/0.3)]"
                 >
                   Book a Consultation
@@ -211,9 +212,10 @@ export default function HeroSection() {
       {/* Floating contact icons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
         <motion.button
-          onClick={() =>
-            window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, "_blank", "noopener,noreferrer")
-          }
+          onClick={() => {
+            trackCtaClick("WhatsApp Floating Button");
+            window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`, "_blank", "noopener,noreferrer");
+          }}
           className="w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] flex items-center justify-center shadow-lg hover:shadow-[hsl(142_70%_45%)]/30 hover:scale-110 transition-all duration-300 cursor-pointer"
           aria-label="Chat on WhatsApp"
           initial={{ opacity: 0, scale: 0 }}

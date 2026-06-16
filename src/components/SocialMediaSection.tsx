@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Youtube, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import { ImageIcon } from "lucide-react";
+import { trackCtaClick } from "@/lib/analytics";
 
 import doctorImage from "@/assets/social/dr-swathika-social.png";
 
@@ -115,6 +116,7 @@ export default function SocialMediaSection() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackCtaClick(`Social — ${label}`)}
                   className="group flex items-center justify-between gap-6 py-6 lg:py-7 border-b border-border/60 transition-all duration-500 hover:pl-3"
                 >
                   <div className="flex items-center gap-5 lg:gap-7 min-w-0 flex-1">

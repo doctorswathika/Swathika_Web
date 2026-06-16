@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { trackCtaClick } from "@/lib/analytics";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -91,7 +92,17 @@ export default function FAQSection() {
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
             className="lg:col-span-7"
           >
-            <Accordion type="single" collapsible className="space-y-0">
+            <Accordion
+              type="single"
+              collapsible
+              className="space-y-0"
+              onValueChange={(value) => {
+                if (!value) return; // closing — don't fire
+                const index = parseInt(value.replace("faq-", ""), 10);
+                const question = faqs[index]?.q;
+                if (question) trackCtaClick(`FAQ — ${question}`);
+              }}
+            >
               {faqs.map((faq, i) => (
                 <AccordionItem
                   key={i}

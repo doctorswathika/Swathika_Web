@@ -6,6 +6,8 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { trackCtaClick, trackServiceView } from "@/lib/analytics";
+import { useEffect } from "react";
 
 interface ServicePageLayoutProps {
   title: string;
@@ -38,6 +40,11 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   const handleNav = useHashNavigation();
   const { content: dbContent } = useSiteContent();
+
+  // Fire a GA4 event every time this service page is viewed
+  useEffect(() => {
+    trackServiceView(title, category);
+  }, [title, category]);
 
   /** Get content for a key — inlined CMS wins over prop fallback */
   const get = (suffix: string, fallback: string) => {
@@ -281,6 +288,7 @@ export default function ServicePageLayout({
               <div className="pt-2">
                 <Link
                   to="/book-consultation"
+                  onClick={() => trackCtaClick(`Book Consultation — Service Page (${title})`)}
                   className="cta-luxe inline-flex items-center gap-3 px-9 py-4 rounded-full gradient-rose-gold text-foreground font-sans-body font-semibold text-[14px] tracking-[0.05em] shadow-elegant"
                 >
                   Book Consultation

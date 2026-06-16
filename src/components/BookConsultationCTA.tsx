@@ -3,6 +3,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { trackCtaClick } from "@/lib/analytics";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -81,7 +82,7 @@ export default function BookConsultationCTA() {
             className="flex justify-center pt-4"
           >
             <button
-              onClick={() => navigate("/book-consultation")}
+              onClick={() => { trackCtaClick("Book a Consultation — Mid-Page CTA"); navigate("/book-consultation"); }}
               className="cta-luxe group inline-flex items-center gap-3 px-10 py-5 rounded-full gradient-rose-gold font-sans-body font-semibold text-[15px] tracking-[0.05em] text-foreground shadow-luxe"
             >
               <Calendar className="w-4 h-4" />
