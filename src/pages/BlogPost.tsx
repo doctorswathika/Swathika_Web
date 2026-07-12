@@ -238,7 +238,7 @@ export default function BlogPostPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="prose prose-lg max-w-none font-sans-body text-foreground/90 leading-[1.85] [&_p]:text-[17px] [&_p]:font-light [&_h1]:font-serif-display [&_h2]:font-serif-display [&_h2]:font-light [&_h2]:text-3xl [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-serif-display [&_h3]:font-light [&_a]:text-primary [&_a]:no-underline [&_a]:border-b [&_a]:border-primary/40 hover:[&_a]:border-primary [&_blockquote]:border-l-2 [&_blockquote]:border-[hsl(var(--rose-gold))] [&_blockquote]:font-serif-display [&_blockquote]:italic [&_blockquote]:text-foreground/80 [&_blockquote]:text-xl [&_img]:rounded-[14px] [&_img]:my-8"
+            className="tiptap prose prose-lg max-w-none font-sans-body text-foreground/90 leading-[1.85] [&_p]:text-[17px] [&_p]:font-light [&_h1]:font-serif-display [&_h2]:font-serif-display [&_h2]:font-light [&_h2]:text-3xl [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-serif-display [&_h3]:font-light [&_a]:text-primary [&_a]:no-underline [&_a]:border-b [&_a]:border-primary/40 hover:[&_a]:border-primary [&_blockquote]:border-l-2 [&_blockquote]:border-[hsl(var(--rose-gold))] [&_blockquote]:font-serif-display [&_blockquote]:italic [&_blockquote]:text-foreground/80 [&_blockquote]:text-xl [&_img]:rounded-[14px] [&_img]:my-8 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-6 [&_li]:mb-2 [&_li::marker]:text-foreground [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-6"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

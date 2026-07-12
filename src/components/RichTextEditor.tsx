@@ -63,7 +63,7 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
     },
     editorProps: {
       attributes: {
-        class: "prose prose-lg max-w-none focus:outline-none min-h-[300px] px-4 py-3 font-sans-body text-foreground",
+        class: "tiptap prose prose-lg max-w-none focus:outline-none min-h-[300px] px-4 py-3 font-sans-body text-foreground",
       },
     },
   });
