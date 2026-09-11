@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
+import Auth from "@/pages/Auth";
 
 const ADMIN_EMAIL = "doctorswathika@gmail.com";
 
@@ -12,7 +13,6 @@ interface AdminGuardProps {
 export default function AdminGuard({ children }: AdminGuardProps) {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const isAdmin = (session: { user?: { email?: string | null } } | null) =>
@@ -20,7 +20,8 @@ export default function AdminGuard({ children }: AdminGuardProps) {
 
     const evaluate = (session: any) => {
       if (!isAdmin(session)) {
-        navigate("/auth", { replace: true });
+        setAuthorized(false);
+        setLoading(false);
         return;
       }
       setAuthorized(true);
@@ -34,7 +35,7 @@ export default function AdminGuard({ children }: AdminGuardProps) {
     supabase.auth.getSession().then(({ data: { session } }) => evaluate(session));
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   if (loading) {
     return (
@@ -44,7 +45,9 @@ export default function AdminGuard({ children }: AdminGuardProps) {
     );
   }
 
-  if (!authorized) return null;
+  if (!authorized) {
+    return <Auth />;
+  }
 
   return <>{children}</>;
 }

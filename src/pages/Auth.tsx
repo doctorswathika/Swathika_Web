@@ -129,20 +129,9 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [initializing, setInitializing] = useState(true);
+  const [initializing, setInitializing] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
-
-  useEffect(() => {
-    // If already logged in, redirect to home
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        navigate("/", { replace: true });
-      } else {
-        setInitializing(false);
-      }
-    });
-  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -191,6 +180,7 @@ export default function Auth() {
     <>
       <Helmet>
         <title>Admin Sign In — Dr. Swathika Rajendran</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <Navbar />
       <main className="pt-24 min-h-screen bg-background relative overflow-hidden flex items-center justify-center">

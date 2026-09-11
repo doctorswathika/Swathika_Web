@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogIn, LogOut } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -195,25 +195,23 @@ export default function Navbar() {
                 </motion.button>
               )}
 
-              {/* Login / Logout */}
-              <motion.button
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: (navLinks.length + (user?.email?.toLowerCase() === "doctorswathika@gmail.com" ? 2 : 1)) * 0.08, duration: 0.5 }}
-                onClick={async () => {
-                  if (user) {
+              {/* Sign Out (Visible only to authenticated users) */}
+              {user && (
+                <motion.button
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: (navLinks.length + 2) * 0.08, duration: 0.5 }}
+                  onClick={async () => {
                     await supabase.auth.signOut();
                     setMenuOpen(false);
-                  } else {
-                    handleNavClick("/auth", true);
-                  }
-                }}
-                className="flex items-center gap-2 text-sm font-sans-body tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {user ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
-                {user ? "Sign Out" : "Login / Sign Up"}
-              </motion.button>
+                  }}
+                  className="flex items-center gap-2 text-sm font-sans-body tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </motion.button>
+              )}
             </nav>
           </motion.div>
         )}
