@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import {
-  BarChart3,
   LogOut,
   ChevronLeft,
   BookOpen,
@@ -16,7 +15,6 @@ const NAV_ITEMS = [
   { label: "Blog", icon: BookOpen, path: "/admin/blog" },
   { label: "Google Reviews", icon: MessageSquare, path: "/admin/google-reviews" },
   { label: "Bookings", icon: CalendarCheck, path: "/admin/bookings" },
-  { label: "Analytics", icon: BarChart3, path: "/admin/analytics" },
 ];
 
 export default function AdminLayout() {
@@ -27,7 +25,7 @@ export default function AdminLayout() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     toast({ title: "Signed out", description: "You have been signed out." });
-    navigate("/auth");
+    navigate("/");
   };
 
   return (
