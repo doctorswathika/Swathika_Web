@@ -90,7 +90,7 @@ export default function BookConsultation() {
     if (error) {
       toast({
         title: "Couldn't send your request",
-        description: "Please try again, or message us on WhatsApp.",
+        description: `Error: ${error.message || "Please try again"}`,
         variant: "destructive",
       });
       return;
