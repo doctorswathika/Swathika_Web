@@ -79,15 +79,18 @@ export default function BookConsultation() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("bookings").insert({
+    const insertData = {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
       service: formData.service || null,
       message: formData.message || "",
-    });
-    setSubmitting(false);
+    };
+
+    const { error } = await supabase.from("bookings").insert(insertData);
+    
     if (error) {
+      setSubmitting(false);
       toast({
         title: "Couldn't send your request",
         description: `Error: ${error.message || "Please try again"}`,
@@ -95,6 +98,25 @@ export default function BookConsultation() {
       });
       return;
     }
+
+    // Attempt to invoke the email function directly (fallback for webhook)
+    try {
+      await supabase.functions.invoke("send-booking-email", {
+        body: {
+          type: "INSERT",
+          table: "bookings",
+          record: {
+            ...insertData,
+            created_at: new Date().toISOString()
+          },
+          schema: "public"
+        }
+      });
+    } catch (e) {
+      console.error("Email notification failed:", e);
+    }
+
+    setSubmitting(false);
     setConfirmed(true);
     trackFormSubmit("Book Consultation");
   };

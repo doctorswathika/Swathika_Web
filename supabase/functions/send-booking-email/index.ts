@@ -17,14 +17,24 @@ interface WebhookPayload {
   schema: string;
 }
 
+export const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
 serve(async (req) => {
+  // Handle CORS preflight requests
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
   try {
     const payload: WebhookPayload = await req.json();
 
     // Only process INSERT events for the bookings table
     if (payload.type !== "INSERT" || payload.table !== "bookings") {
       return new Response(JSON.stringify({ message: "Not a new booking insert, ignoring." }), {
-        headers: { "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
       });
     }
@@ -86,20 +96,20 @@ serve(async (req) => {
 
     if (res.ok) {
       return new Response(JSON.stringify({ success: true, data }), {
-        headers: { "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
       });
     } else {
       console.error("Resend error:", data);
       return new Response(JSON.stringify({ success: false, error: data }), {
-        headers: { "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 400,
       });
     }
   } catch (error: any) {
     console.error("Function error:", error);
     return new Response(JSON.stringify({ error: error.message }), {
-      headers: { "Content-Type": "application/json" },
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });
   }
