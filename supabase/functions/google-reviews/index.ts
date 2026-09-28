@@ -53,15 +53,22 @@ serve(async (req: Request) => {
       );
     }
 
-    const reviews = data.result.reviews.map((r: any) => ({
-      review_id: `google_${r.time}`,
-      author_name: r.author_name,
-      rating: r.rating,
-      text: r.text || "",
-      profile_photo_url: r.profile_photo_url || null,
-      relative_time: r.relative_time_description,
-      review_time: r.time,
-    }));
+    const reviews = data.result.reviews.map((r: any) => {
+      // Create a stable unique ID based on the author, because a Google user can only leave one review per place.
+      // This prevents duplicates if a user edits their review and the timestamp changes.
+      const authorId = r.author_url ? r.author_url.split('/contrib/')[1]?.split('/')[0] : null;
+      const uniqueId = authorId || r.author_name;
+
+      return {
+        review_id: `google_${uniqueId}`,
+        author_name: r.author_name,
+        rating: r.rating,
+        text: r.text || "",
+        profile_photo_url: r.profile_photo_url || null,
+        relative_time: r.relative_time_description,
+        review_time: r.time,
+      };
+    });
 
     // Upsert reviews into DB (don't change is_displayed for existing)
     for (const review of reviews) {
