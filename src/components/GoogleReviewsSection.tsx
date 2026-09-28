@@ -87,8 +87,9 @@ export default function GoogleReviewsSection() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const lastRemoteSyncRef = useRef(0);
 
+  // Enable loop only if we have enough reviews, to prevent Embla from visually cloning them
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", duration: 35, containScroll: false, skipSnaps: false, dragFree: false },
+    { loop: reviews.length >= 4, align: "center", duration: 35, containScroll: false, skipSnaps: false, dragFree: false },
     [Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
 
@@ -102,11 +103,14 @@ export default function GoogleReviewsSection() {
       .neq("text", "")
       .order("rating", { ascending: false })
       .order("review_time", { ascending: false, nullsFirst: false })
-      .limit(10);
+      .limit(20);
 
     if (data) {
       setReviews((prev) => {
-        const next = data as Review[];
+        // Filter out any duplicates by author_name that might still exist in the database
+        const nextRaw = data as Review[];
+        const next = nextRaw.filter((v, i, a) => a.findIndex(t => (t.author_name === v.author_name)) === i).slice(0, 10);
+        
         // shallow-compare ids+text to avoid unnecessary re-renders
         const sameLength = prev.length === next.length;
         const sameOrder = sameLength && prev.every((r, i) => r.id === next[i].id && r.text === next[i].text);

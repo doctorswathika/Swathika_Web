@@ -52,7 +52,15 @@ export default function AdminGoogleReviews() {
       .from("google_reviews")
       .select("*")
       .order("review_time", { ascending: false });
-    if (data) setReviews(data as GoogleReview[]);
+      
+    if (data) {
+      // Filter out duplicate reviews by author_name
+      const uniqueReviews = (data as GoogleReview[]).filter((v, i, a) => 
+        a.findIndex(t => (t.author_name === v.author_name)) === i
+      );
+      setReviews(uniqueReviews);
+    }
+    
     if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
     setLoading(false);
   };
