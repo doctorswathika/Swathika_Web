@@ -109,7 +109,7 @@ export default function GoogleReviewsSection() {
       setReviews((prev) => {
         // Filter out any duplicates by author_name that might still exist in the database
         const nextRaw = data as Review[];
-        const next = nextRaw.filter((v, i, a) => a.findIndex(t => (t.author_name === v.author_name)) === i).slice(0, 10);
+        const next = nextRaw.filter((v, i, a) => a.findIndex(t => t.id === v.id) === i).slice(0, 10);
         
         // shallow-compare ids+text to avoid unnecessary re-renders
         const sameLength = prev.length === next.length;

@@ -54,9 +54,9 @@ export default function AdminGoogleReviews() {
       .order("review_time", { ascending: false });
       
     if (data) {
-      // Filter out duplicate reviews by author_name
-      const uniqueReviews = (data as GoogleReview[]).filter((v, i, a) => 
-        a.findIndex(t => (t.author_name === v.author_name)) === i
+      // De-duplicate by database primary key (id), not author name
+      const uniqueReviews = (data as GoogleReview[]).filter((v, i, a) =>
+        a.findIndex(t => t.id === v.id) === i
       );
       setReviews(uniqueReviews);
     }
